@@ -1,0 +1,83 @@
+/* global */
+
+.navigation-wrapper {
+	width: 100%;
+	height: 80px;
+	background-color: black;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.navigation-wrapper > .logo-links-wrapper {
+	display: flex;
+	align-items: center;
+	gap: 30px;
+}
+
+/* logo */
+
+.navigation-wrapper > .logo-links-wrapper > .logo-column img {
+	height: 30px;
+	width: auto;
+	margin: 0 25px;
+}
+
+/* links column */
+
+.navigation-wrapper > .logo-links-wrapper > .links-column {
+	width: 450px;
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
+
+.navigation-wrapper > .logo-links-wrapper > .links-column > .explore span {
+	font-weight: 700;
+	color: #f4e187;
+}
+
+/* links column - links wrapper */
+
+.links-wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.links-wrapper > .nav-link a {
+	font-weight: 900;
+	color: white;
+	text-decoration: none;
+	font-size: 1.15em;
+}
+
+.links-wrapper > .spark-chevron a {
+	font-weight: 700;
+	font-size: 1.1em;
+	color: #acacac;
+	text-decoration: none;
+}
+
+.links-wrapper > .spark-chevron i {
+	color: #c6c6c6;
+	margin-left: 10px;
+	font-size: 0.8em;
+}
+
+/* create-login-signup */
+
+.create-login-signup {
+	width: 500px;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	gap: 15px;
+	margin-right: 5px;
+}
+
+.create-login-signup > .search-wrapper a {
+	color: #7b7e8b;
+	font-size: 2em;
+	margin: 0 10px;
+}
