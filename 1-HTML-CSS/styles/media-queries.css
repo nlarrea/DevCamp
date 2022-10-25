@@ -1,0 +1,116 @@
+/* works for every device that has 615px or less */
+@media (max-width: 615px) {
+	/* navigation */
+
+	.navigation-wrapper {
+		flex-direction: column;
+		height: 100%;
+	}
+
+	.navigation-wrapper > .left-column {
+		order: 2;
+		margin-top: 10px;
+		margin-bottom: 15px;
+	}
+
+	.navigation-wrapper > .center-column {
+		order: 1;
+		width: 100%; /* width = content width */
+	}
+
+	.navigation-wrapper > .right-column {
+		order: 3;
+		margin-top: 15px;
+	}
+
+	.links-wrapper {
+		flex-direction: column;
+		margin-bottom: 20px;
+	}
+
+	.links-wrapper > .nav-link {
+		margin: 10px 0;
+		font-size: 1.5em;
+		width: 100%; /* to adjust and don't translate when hover (centered it) */
+	}
+
+	/* hero section */
+	.hero-section {
+		padding: 50px 10px;
+	}
+
+	/* features section */
+	.features-section {
+		height: 100%;
+	}
+
+	.features-section > .columns-wrapper {
+		width: 100%;
+		flex-direction: column;
+	}
+
+	/* footer */
+	.footer {
+		height: 100%;
+	}
+
+	/* SKEWED HEADERS */
+
+	.skewed-header > .skewed-header-wrapper > .skewed-header-content {
+		flex-direction: column;
+	}
+
+	.skewed-header > .header-bg {
+		background-size: 550px;
+	}
+
+	/* ABOUT */
+
+	/* page container */
+	.page-container {
+		padding: 0 21px;
+	}
+
+	.page-container > .content-wrapper > #chef {
+		margin: 0 0 25px 0 /* !important */;
+		width: 100% /* !important */;
+		/* 2 options:
+			1. use .page-container in the selectors part
+			2. don't use it and add "!important" */
+	}
+
+	/* SQUARE GRIDS */
+
+	.square {
+		grid-template-columns: 1fr !important;
+		/* works, but need to change the order now */
+	}
+
+	/* changing the order */
+	.square > .square-text-wrapper {
+		order: 1;
+	}
+
+	/* changing the order */
+	.square > .img-wrapper {
+		order: 2;
+	}
+
+	/* MENU -> don't need to change anything */
+
+	/* CONTACT */
+
+	.contact-grid-wrapper {
+		width: 100%;
+		grid-template-columns: 1fr;
+		grid-gap: 10px;
+	}
+
+	.form input {
+		padding: 1.5rem 0rem; /* now fits every input on the page */
+	}
+
+	.form textarea {
+		padding: 1.5rem 0rem;
+	}
+}

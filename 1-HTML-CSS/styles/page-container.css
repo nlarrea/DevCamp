@@ -1,0 +1,24 @@
+/* page container styles */
+
+.page-container {
+	display: flex;
+	justify-content: center;
+}
+
+.page-container > .content-wrapper {
+	width: 1000px;
+}
+
+.page-container > .content-wrapper > #chef {
+	width: 350px;
+	margin: 23px 40px 20px 0;
+	border: 1px solid #cea135;
+	/* "moves" the img to the left and the text surrounds it */
+	float: left;
+}
+
+.page-container > .content-wrapper p {
+	letter-spacing: 1px;
+	line-height: 30px; /* to set space between text lines */
+	text-align: justify;
+}

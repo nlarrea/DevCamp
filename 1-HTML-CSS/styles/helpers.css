@@ -1,0 +1,28 @@
+/* spacers styles */
+
+.spacer60 {
+	/* to give us some margin whenever we need it */
+	height: 60px;
+	width: 100%;
+}
+
+.spacer10 {
+	height: 10px;
+	width: 100%;
+}
+
+/* anchor links */
+
+.anchor-link {
+	text-decoration: none;
+}
+
+.anchor-link:focus {
+	outline: none;
+}
+
+.anchor-link h1::after {
+	font-family: "Font Awesome 5 Free"; /* need to say where the icon is taken from */
+	content: " \f0c1"; /* this is de unicode of a link icon from FontAwesome */
+	font-weight: 900;
+}

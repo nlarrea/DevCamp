@@ -1,0 +1,82 @@
+/* hero section styles */
+
+.hero-section {
+    background-image: url("../img/background/fries-hero-bg.jpg");
+    padding: 100px;
+    height: 300px;
+    background-attachment: fixed; /* to say we don't want the image to move while scrolling -> cool effect */
+    background-position: center; /* to center the image */
+    background-repeat: no-repeat; /* to don't repeat the image */
+    background-size: cover; /* to make the image cover all the space, instead of having a "zoomed" image */
+}
+
+.hero-section > .top-heading {
+	padding: 1px 20px;
+	background-color: #11122b;
+	color: #cbcbcb;
+	width: 290px;
+	border-radius: 2px;
+}
+
+.hero-section > .bottom-heading {
+	padding: 1px 20px;
+	margin-top: 15px;
+	background-color: #cea135;
+	color: #11122b;
+	width: 107px;
+	border-radius: 2px;
+}
+
+/* features section styles */
+
+.features-section {
+	height: 400px;
+	background-image: url("../img/background/fries-multiply-bg.jpg");
+	background-color: #cea135;
+	border-top: 10px solid white;
+	color: #11122b;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: 'Ubuntu Condensed', sans-serif;
+	box-shadow: inset 0 -26px 79px -8px rgba(0, 0, 0, 0.58);
+}
+
+.features-section > .columns-wrapper {
+	width: 1000px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.features-section > .columns-wrapper > .column {
+	padding: 20px;
+	margin: 42px;
+	text-align: center;
+	border-bottom: 5px solid transparent;
+	border-radius: 10px;
+	transition: 1s;
+}
+.features-section > .columns-wrapper > .column:hover {
+	border-bottom: 5px solid #11122b;
+}
+
+/* this selects to the icon (first element of column) */
+.features-section > .columns-wrapper > .column :nth-child(1) {
+	font-size: 3em;
+}
+
+/* this selects the first paragraph (second element of column) */
+.features-section > .columns-wrapper > .column :nth-child(2) {
+	font-size: 1.5em;
+	font-weight: 900;
+	height: 50px;
+	transition: 1s;
+}
+.features-section > .columns-wrapper > .column :nth-child(2):hover {
+	letter-spacing: 1px;
+}
+
+/* this selects the second paragraph (third element of column) */
+.features-section > .columns-wrapper > .column :nth-child(3) {
+	letter-spacing: 2px;
+}
