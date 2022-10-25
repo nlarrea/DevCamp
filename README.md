@@ -4,9 +4,9 @@ El contenido visto en este repositorio es aquel que se ha trabajado a lo largo d
 
 Todo el contenido está repartido en tres apartados principales:
 
-* [HTML Y CSS](https://github.com/NLarrea/DevCamp-HTML-CSS/tree/main/1-HTML-CSS)
-* [PROYECTO FINAL](https://github.com/NLarrea/DevCamp-HTML-CSS/tree/main/2-FINAL_PROJECT)
-* [JAVASCRIPT](https://github.com/NLarrea/DevCamp-HTML-CSS/tree/main/3-JAVASCRIPT)
+* [HTML Y CSS](https://github.com/NLarrea/DevCamp-CodingFoundations/tree/main/1-HTML-CSS)
+* [PROYECTO FINAL](https://github.com/NLarrea/DevCamp-CodingFoundations/tree/main/2-FINAL_PROJECT)
+* JAVASCRIPT
 
 <br><hr><br>
 
