@@ -52,6 +52,10 @@
 	font-size: 1.15em;
 }
 
+.links-wrapper > .nav-link a:hover {
+	color: #acacac;
+}
+
 .links-wrapper > .spark-chevron a {
 	font-weight: 700;
 	font-size: 1.1em;
@@ -60,9 +64,12 @@
 }
 
 .links-wrapper > .spark-chevron i {
-	color: #c6c6c6;
 	margin-left: 10px;
 	font-size: 0.8em;
+}
+
+.links-wrapper > .spark-chevron a:hover {
+	color: #c6c6c6;
 }
 
 /* create-login-signup */
@@ -80,4 +87,8 @@
 	color: #7b7e8b;
 	font-size: 2em;
 	margin: 0 10px;
+}
+
+.create-login-signup > .search-wrapper a:hover {
+	color: #acacac;
 }
