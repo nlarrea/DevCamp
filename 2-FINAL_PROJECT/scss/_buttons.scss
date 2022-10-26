@@ -1,4 +1,4 @@
-/* grey buttons */
+// grey buttons
 
 .grey-btn {
 	background-color: #36383f;
@@ -11,19 +11,19 @@
 	display: flex;
 	align-items: center;
 	gap: 10px;
+
+	& i {
+		color: #4bce79;
+		font-size: 1.2em;
+	}
+
+	&:hover {
+		background-color: #5a5f73;
+		cursor: pointer;
+	}
 }
 
-.grey-btn i {
-	color: #4bce79;
-	font-size: 1.2em;
-}
-
-.grey-btn:hover {
-	background-color: #5a5f73;
-	cursor: pointer;
-}
-
-/* green buttons */
+// green buttons
 
 .green-btn {
 	background-color: #47cf73;
@@ -33,15 +33,15 @@
 	font-size: 2em;
 	font-weight: 700;
 	padding: 18px 25px;
+
+	&:hover {
+		background-color: #248c46;
+		color: white;
+		cursor: pointer;
+	}
 }
 
-.green-btn:hover {
-	background-color: #248c46;
-	color: white;
-	cursor: pointer;
-}
-
-/* black buttons */
+// black buttons
 
 .black-btn {
 	background-color: #111111;
@@ -51,9 +51,9 @@
 	font-size: 2em;
 	font-weight: 700;
 	padding: 18px 25px;
-}
 
-.black-btn:hover {
-	background-color: #36383f;
-	cursor: pointer;
+	&:hover {
+		background-color: #36383f;
+		cursor: pointer;
+	}
 }

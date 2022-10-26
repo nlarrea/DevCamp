@@ -9,14 +9,16 @@
 	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@900&display=swap" rel="stylesheet">
 	<!-- CSS styles -->
-	<link rel="stylesheet" href="../css/common.css">
+	<!-- <link rel="stylesheet" href="../css/common.css">
 	<link rel="stylesheet" href="../css/buttons.css">
 	<link rel="stylesheet" href="../css/nav.css">
 	<link rel="stylesheet" href="../css/page-container.css">
-	<link rel="stylesheet" href="../css/media-queries.css">
+	<link rel="stylesheet" href="../css/media-queries.css"> -->
+	<!-- SCSS styles -->
+	<link rel="stylesheet" href="../scss/index.css">
 </head>
 <body>
-	<div class="navigation-wrapper">
+	<header class="navigation-wrapper">
 		<div class="logo-links-wrapper">
 			<div class="logo-column">
 				<img src="../img/logos/codepen-wordmark-display-inside-white.avif" alt="CodePen-logo">
@@ -72,10 +74,10 @@
 				<button class="grey-btn">Sign Up</button>
 			</div>
 		</div>
-	</div>
+	</header>
 
-	<div class="features-section">
-		<div class="left-section">
+	<section class="features-section">
+		<div class="description-section">
 			<div class="text-content">
 				<div class="top-header">
 					<p>
@@ -94,20 +96,22 @@
 				<button class="black-btn">Learn More</button>
 			</div>
 		</div>
-		<div class="right-section">
+
+		<div class="projects-section">
 			<div class="img-header">
 				<p>This is <a href="#">CodePen Projects</a>!</p>
 			</div>
+			
 			<img src="../img/right-side-img.png" alt="example-image">
 		</div>
-	</div>
+	</section>
 
-	<div class="codepen-for-wrapper">
+	<section class="codepen-for-wrapper">
 		<a href="#" class="codepen-for-item">CodePen for <span>TEAMS</span></a>
 		<a href="#" class="codepen-for-item">CodePen for <span>EDUCATION</span></a>
 		<a href="#" class="codepen-for-item">CodePen for <span>PRIVACY</span></a>
 		<a href="#" class="codepen-for-item">CodePen for <span>WRITING</span></a>
-	</div>
+	</section>
 
 	<div class="page-end"></div>
 </body>
