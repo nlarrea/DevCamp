@@ -28,6 +28,7 @@
 }
 
 .features-section > .left-section > .text-content > .top-header {
+	width: 100%;
 	color: #b8b9bd;
 	font-weight: 300;
 	font-size: 2.5em;
@@ -77,6 +78,10 @@
 .features-section > .right-section > .img-header a {
 	color: #86dfff;
 	text-decoration: none;
+}
+
+.features-section > .right-section > .img-header a:hover {
+	color: #86ffff;
 }
 
 .features-section > .right-section img {

@@ -27,9 +27,9 @@
 
 .navigation-wrapper > .logo-links-wrapper > .links-column {
 	width: 450px;
-	display: flex;
-	flex-direction: column;
-	gap: 5px;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-gap: 5px;
 }
 
 .navigation-wrapper > .logo-links-wrapper > .links-column > .explore span {
