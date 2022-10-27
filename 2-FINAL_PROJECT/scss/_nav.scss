@@ -8,6 +8,8 @@
 	align-items: center;
 	justify-content: space-between;
 
+	// logo and links in general
+
 	.logo-links-wrapper {
 		display: flex;
 		align-items: center;
@@ -25,69 +27,66 @@
 			grid-template-columns: 1fr;
 			grid-gap: 5px;
 
-			.explore span {
+			.explore {
 				font-weight: 700;
 				color: #f4e187;
 			}
-		}
-	}
-}
 
-/* links wrapper -> put it out to be able to use it in other
-parts of the style (footer or something if any) */
-
-.links-wrapper {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-
-	.nav-link a {
-		font-weight: 900;
-		color: white;
-		text-decoration: none;
-		font-size: 1.15em;
-
-		&:hover {
-			color: #acacac;
-		}
-	}
-
-	.spark-chevron {
-		a {
-			font-weight: 700;
-			font-size: 1.1em;
-			color: #acacac;
-			text-decoration: none;
-
-			&:hover {
-				color: #c6c6c6;
+			.links-wrapper {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+			
+				.nav-link a {
+					font-weight: 900;
+					color: white;
+					text-decoration: none;
+					font-size: 1.15em;
+			
+					&:hover {
+						color: #acacac;
+					}
+				}
+			
+				.spark-chevron {
+					a {
+						font-weight: 700;
+						font-size: 1.1em;
+						color: #acacac;
+						text-decoration: none;
+			
+						&:hover {
+							color: #c6c6c6;
+						}
+					}
+			
+					i {
+						margin-left: 10px;
+						font-size: 0.8em;
+					}
+				}
 			}
 		}
-
-		i {
-			margin-left: 10px;
-			font-size: 0.8em;
-		}
 	}
-}
 
-// create, search, log in and sign up
+	// create, search, log in and sign up section
 
-.create-login-signup {
-	width: 500px;
-	display: flex;
-	align-items: center;
-	justify-content: flex-end;
-	gap: 15px;
-	margin-right: 5px;
+	.create-login-signup {
+		width: 500px;
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		gap: 15px;
+		margin-right: 5px;
 
-	.search-wrapper a {
-		color: #7b7e8b;
-		font-size: 2em;
-		margin: 0 10px;
+		.search-icon a {
+			color: #7b7e8b;
+			font-size: 2em;
+			margin: 0 10px;
 
-		&:hover {
-			color: #acacac;
+			&:hover {
+				color: #acacac;
+			}
 		}
 	}
 }
