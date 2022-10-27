@@ -6,7 +6,7 @@ Todo el contenido está repartido en tres apartados principales:
 
 * [HTML Y CSS](https://github.com/NLarrea/DevCamp-CodingFoundations/tree/main/1-HTML-CSS)
 * [PROYECTO FINAL](https://github.com/NLarrea/DevCamp-CodingFoundations/tree/main/2-FINAL_PROJECT)
-* JAVASCRIPT
+* [JAVASCRIPT](https://github.com/NLarrea/DevCamp-CodingFoundations/tree/main/3-JAVASCRIPT)
 
 <br><hr><br>
 
