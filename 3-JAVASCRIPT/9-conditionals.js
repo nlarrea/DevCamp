@@ -50,17 +50,17 @@ if(age <= 10){
 var age = 8;
 if(age <= 10){
 	console.log("You can eat from kid's menu");
-	console.log("You're not old enought to drive");
-	console.log("You're not old enought to rent a car");
+	console.log("You're not old enough to drive");
+	console.log("You're not old enough to rent a car");
 	
 } else if (age>10 && age<25){
 	console.log("You can not eat from kid's menu");
-	console.log("You're old enought to drive");
-	console.log("You're not old enought to rent a car");
+	console.log("You're old enough to drive");
+	console.log("You're not old enough to rent a car");
 } else {
 	console.log("You can not eat from kid's menu");
-	console.log("You're old enought to drive");
-	console.log("You're old enought to rent a car");
+	console.log("You're old enough to drive");
+	console.log("You're old enough to rent a car");
 }
 
 
@@ -81,3 +81,48 @@ switch(typeof dataPoint){
 		console.log("No matches");
 		// doesn't need a 'break'
 }
+
+
+
+// TERNARY OPERATORS
+function ageVerification(age){
+	/*
+	if(age > 25){
+		console.log("You can rent a car");
+	} else {
+		console.log("You're not old enough yet")
+	}
+	*/
+	let answer = age > 25 ? "You can rent a car" : "You're not old enough yet";
+	console.log(answer);
+}
+ageVerification(15); // prints: You're not old enough yet
+ageVerification(55); // prints: You can rent a car
+
+function adminControls(user){
+	/*
+	if(user){
+		if(user.admin){
+			console.log("showing admin controls...");
+		} else {
+			console.log("you need to be an admin");
+		}
+	} else {
+		console.log("you need to be logged in");
+	}
+	*/
+	let response = user ? (user.admin ? "showing admin controls..." : "you need to be an admin") : "you need to be logged in";
+	console.log(response);
+}
+let user1 = {
+	name: 'Naia',
+	admin: true
+}
+adminControls(user1); // prints: showing admin controls...
+let user2 = {
+	name: 'Cristina',
+	admin: false
+}
+adminControls(user2); // prints: you need to be an admin
+let user3 = null;
+adminControls(user3); // prints: you need to be logged in
