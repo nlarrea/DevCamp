@@ -113,6 +113,14 @@ function adminControls(user){
 	*/
 	let response = user ? (user.admin ? "showing admin controls..." : "you need to be an admin") : "you need to be logged in";
 	console.log(response);
+	/* that line of code is the same as this:
+	let response = user ? user.admin ? "showing admin controls..." : "you need to be an admin" : "you need to be logged in" 
+	
+	and also, the same as this:
+	let response = user 
+    	? user.admin ? "showing admin controls..." : "You need to be an admin"
+    	: "You need to be logged in";
+	*/
 }
 let user1 = {
 	name: 'Naia',
