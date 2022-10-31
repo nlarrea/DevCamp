@@ -8,7 +8,7 @@ El apartado *head* está estructurado de la siguiente manera:
 
 * `<script>`: un script importado para poder utilizar los iconos de la página [FontAwesome](https://fontawesome.com/).
 
-* `<link>`: importación de los tipos de fuentes utilizadas en CSS para dar estilo a los textos, así como la importación de la página CSS generada a partir de los archivos .scss para estilar la web en general.
+* `<link>`: importación de los tipos de fuentes utilizadas en CSS para dar estilo a los textos, así como la importación de las páginas CSS para estilar la web en general.
 
 <br><hr><br>
 
@@ -68,4 +68,5 @@ El *body* está estructurado de la siguiente manera:
 
 <br><hr><br>
 
-[Volver a la página README principal.](../README.md)
+* [Volver a la página README principal.](../README.md)
+* [Ir al archivo README-css](../css/README-css.md)

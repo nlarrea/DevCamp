@@ -14,7 +14,7 @@ Los objetivos que se deben cumplir para completar el proyecto son los siguientes
 
 ## Resultado esperado del proyecto
 
-A lo largo del proyecto se espera que el alumno demuestre sus habilidades para crear aplicaciones con HTML, CSS y Flexbos, así como mostrar cómo estilar aplicaciones haciendo uso de Scss.
+A lo largo del proyecto se espera que el alumno demuestre sus habilidades para crear aplicaciones con HTML, CSS y Flexbos.
 
 Sabiendo esto, así es como debería verse el resultado:
 
@@ -31,7 +31,7 @@ Sabiendo esto, así es como debería verse el resultado:
 El código está estructurado en dos carpetas principales:
 
 * **html:** carpeta que contiene todos los documentos .html necesarios para el proyecto[<sup id="pieT1">1</sup>](#pieN1).
-* **scss:** carpeta que contiene todos los documentos .scss y .css necesarios para la creación del proyecto.
+* **css:** carpeta que contiene todos los documentos .css necesarios para la creación del proyecto.
 
 <sub>[<sup id="pieN1">1</sup>](#pieT1) Este proyecto solo contiene un archivo .html, pero se mantiene dentro de una carpeta por si se deseara crear más páginas.</sub>
 
@@ -46,7 +46,7 @@ A continuación, se explicará la estructura y el contenido de cada uno de los a
 
 ## Resultado obtenido
 
-Tras realizar el código del archivo HTML y estilar la web haciendo uso de **Scss** y *media queries*, este es el resultado obtenido:
+Tras realizar el código del archivo HTML y estilar la web haciendo uso de **CSS** y *media queries*, este es el resultado obtenido:
 
 * Resultado para pantallas superiores a 1280px de ancho:
 

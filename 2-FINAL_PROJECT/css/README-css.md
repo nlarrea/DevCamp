@@ -518,4 +518,5 @@ Y finalmente, el código para cuando se dispone de una pantalla inferior a 769px
 
 <br><hr><br>
 
-[Volver a la página README principal.](../README.md)
+* [Volver a la página README principal.](../README.md)
+* [Ir al archivo README-html](../html/README-html.md)
