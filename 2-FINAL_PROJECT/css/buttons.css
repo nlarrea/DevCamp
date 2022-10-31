@@ -1,0 +1,59 @@
+/* grey buttons */
+
+.grey-btn {
+	background-color: #36383f;
+	border: none;
+	border-radius: 3px;
+	color: #f7f5e6;
+	font-size: 1.15em;
+	font-weight: 700;
+	padding: 15px 23px;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.grey-btn i {
+	color: #4bce79;
+	font-size: 1.2em;
+}
+
+.grey-btn:hover {
+	background-color: #5a5f73;
+	cursor: pointer;
+}
+
+/* green buttons */
+
+.green-btn {
+	background-color: #47cf73;
+	border: none;
+	border-radius: 4px;
+	color: black;
+	font-size: 2em;
+	font-weight: 700;
+	padding: 18px 25px;
+}
+
+.green-btn:hover {
+	background-color: #248c46;
+	color: white;
+	cursor: pointer;
+}
+
+/* black buttons */
+
+.black-btn {
+	background-color: #111111;
+	border: none;
+	border-radius: 4px;
+	color: white;
+	font-size: 2em;
+	font-weight: 700;
+	padding: 18px 25px;
+}
+
+.black-btn:hover {
+	background-color: #36383f;
+	cursor: pointer;
+}

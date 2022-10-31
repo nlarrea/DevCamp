@@ -1,2 +1,2 @@
-# ignore every component from css file because we're told to work with scss
-css/
+# ignore every component from scss file because we're told to work with css
+scss/

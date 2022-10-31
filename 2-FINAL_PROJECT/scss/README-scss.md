@@ -32,7 +32,7 @@ Con este código se consigue *"llamar"* a los demás archivos .scss a utilizar a
 <br><hr><br>
 
 
-<h2 id="common">_common.css</h2>
+<h2 id="common">_common.scss</h2>
 
 En este archivo se encuentra el código que es común para todos los elementos de la página web. Por ello, este es el código escrito en este documento:
 
@@ -59,7 +59,7 @@ Si se quisiera modificar alguno de estos valores, simplemente se modificaría se
 <br><hr><br>
 
 
-<h2 id="nav">_nav.css</h2>
+<h2 id="nav">_nav.scss</h2>
 
 Este archivo es el encargado de estilar el menú de navegación situado en la cabecera de la página.
 
@@ -187,7 +187,7 @@ Dentro de este bloque, **.navigation-wrapper**, se encuentran dos bloques princi
 <br><hr><br>
 
 
-<h2 id="buttons">_buttons.css</h2>
+<h2 id="buttons">_buttons.scss</h2>
 
 Este archivo contiene 3 bloques de código principales:
 
@@ -196,7 +196,7 @@ Este archivo contiene 3 bloques de código principales:
 ```scss
 .grey-btn {
     background-color: #36383f; // color de fondo del botón
-    border: none; // para quitar el fondo
+    border: none; // para quitar el borde
     border-radius: 3px; // radio del borde
     color: #f7f5e6; // color de texto
     font-size: 1.15em; // tamaño del texto
@@ -269,7 +269,7 @@ Este archivo contiene 3 bloques de código principales:
 <br><hr><br>
 
 
-<h2 id="page-container">_page-container.css</h2>
+<h2 id="page-container">_page-container.scss</h2>
 
 Este documento está formado por tres bloques de código principales:
 
@@ -295,7 +295,7 @@ Este documento está formado por tres bloques de código principales:
         // se utiliza Flexbox para:
         display: flex;
         flex-direction: column; // usar una disposición vertical
-        align-items: flex-start; // alinear textos y botones a la derecha
+        align-items: flex-start; // alinear textos y botones a la izquierda
         justify-content: flex-start; // alinear textos y botones arriba
         margin-left: 60px; // margen izquierdo para bloque que contiene textos y botones
 
@@ -345,7 +345,7 @@ Este documento está formado por tres bloques de código principales:
         // se usa Flexbox para:
         display: flex;
         flex-direction: column; // disposición en columna (vertical)
-        align-items: flex-start; // alinear texto e imagen a la derecha
+        align-items: flex-start; // alinear texto e imagen a la izquierda
         justify-content: flex-end; // alinear bloque en la parte inferior
         gap: 8px; // espacio entre texto e imagen
 
@@ -436,7 +436,7 @@ Con este código se pretendía dejar un pequeño espacio al final de la página 
 <br><hr><br>
 
 
-<h2 id="media-queries">_media-queries.css</h2>
+<h2 id="media-queries">_media-queries.scss</h2>
 
 Finalmente, se encuentra el archivo dedicado a hacer que la página web posea un diseño responsive para que pueda visualizarse de forma correcta en los dispositivos de distintos tamaños.
 

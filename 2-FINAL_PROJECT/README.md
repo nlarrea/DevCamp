@@ -40,7 +40,7 @@ El código está estructurado en dos carpetas principales:
 A continuación, se explicará la estructura y el contenido de cada uno de los archivos incluidos en las carpetas en los siguientes archivos:
 
 * [README-html](./html/README-html.md)
-* [README-scss](./scss/README-scss.md)
+* [README-css](./css/README-css.md)
 
 <br><hr><br>
 

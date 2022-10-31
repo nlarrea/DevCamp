@@ -1,0 +1,72 @@
+@media (max-width: 1280px) {
+	.navigation-wrapper {
+		width: 100%;
+		height: 100%;
+		flex-direction: column;
+		padding: 10px 0;
+	}
+	.navigation-wrapper > .logo-links-wrapper {
+		width: 80%;
+		flex-direction: column;
+	}
+	.navigation-wrapper > .logo-links-wrapper > .links-column {
+		width: 100%;
+		text-align: center;
+		margin-bottom: 40px;
+	}
+	.navigation-wrapper > .logo-links-wrapper > .links-column > .links-wrapper {
+		width: 100%;
+		justify-content: space-around;
+	}
+	.navigation-wrapper > .create-login-signup {
+		width: 100%;
+		justify-content: center;
+	}
+
+	.features-section {
+		height: 100%;
+		flex-direction: column;
+	}
+	.features-section > .description-section {
+		width: 80%;
+		margin: 0 0 50px;
+	}
+	.features-section > .description-section > .text-content > .bottom-header {
+		width: 100%;
+	}
+
+	.codepen-for-wrapper {
+		width: 100%;
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+@media (max-width: 768px) {
+	.navigation-wrapper > .logo-links-wrapper {
+		width: 90%;
+	}
+
+	.features-section > .description-section {
+		align-items: center;
+	}
+	.features-section > .description-section > .text-content {
+		font-size: 0.7em;
+	}
+	.features-section > .description-section > .text-content > .top-header, .features-section > .description-section > .text-content > .bottom-header {
+		width: 100%;
+		text-align: center;
+	}
+	.features-section > .description-section > .text-content > .top-header img {
+		height: 20px;
+	}
+	.features-section > .description-section > .buttons-wrapper {
+		font-size: 0.5em;
+	}
+	.features-section > .projects-section img {
+		width: 400px;
+	}
+
+	.codepen-for-wrapper {
+		grid-template-columns: 1fr;
+	}
+}
