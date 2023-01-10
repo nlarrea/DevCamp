@@ -10,7 +10,9 @@ Los objetivos que se deben cumplir para completar el proyecto son los siguientes
 * Imágenes - utilizar las herramientas disponibles para recrear los colores, etc.
 * No preocuparse por replicar ninguna característica de funcionalidad como el desplegagle, el desplazamiento, etc. Simplemente replicar la página de inicio.
 
-<br>
+
+<br><hr><br>
+
 
 ## Resultado esperado del proyecto
 
@@ -24,7 +26,9 @@ Sabiendo esto, así es como debería verse el resultado:
 
 </div>
 
+
 <br><hr><br>
+
 
 ## Descripción detallada de las funciones y elementos
 
@@ -42,7 +46,10 @@ A continuación, se explicará la estructura y el contenido de cada uno de los a
 * [README-html](./html/README-html.md)
 * [README-css](./css/README-css.md)
 
-<br><hr><br>
+
+<br><hr>
+<hr><br>
+
 
 ## Resultado obtenido
 
@@ -52,7 +59,7 @@ Tras realizar el código del archivo HTML y estilar la web haciendo uso de **CSS
 
 <div align="center">
 
-https://user-images.githubusercontent.com/110897750/198571381-fc434560-b8c3-4ad6-bfa1-3b4cd20bb2f0.mp4
+https://user-images.githubusercontent.com/110897750/211672691-f5427315-9169-4dcf-9fb8-f4b4d14381b5.mp4
 
 </div>
 
@@ -62,7 +69,7 @@ https://user-images.githubusercontent.com/110897750/198571381-fc434560-b8c3-4ad6
 
 <div align="center">
 
-https://user-images.githubusercontent.com/110897750/198571477-c0cfedd5-b13c-4384-af1a-c32762129e51.mp4
+https://user-images.githubusercontent.com/110897750/211672765-6ecbb467-65da-4367-938b-68d52c9b21bf.mp4
 
 </div>
 
@@ -72,12 +79,14 @@ https://user-images.githubusercontent.com/110897750/198571477-c0cfedd5-b13c-4384
 
 <div align="center">
 
-https://user-images.githubusercontent.com/110897750/198571552-339c751e-922b-4e60-a506-dbec5dd6808e.mp4
+https://user-images.githubusercontent.com/110897750/211672797-efcd688c-7a31-4b7b-a0b8-624fe00a69ac.mp4
 
 </div>
 
+
 <br><hr>
 <hr><br>
+
 
 # Contacto
 

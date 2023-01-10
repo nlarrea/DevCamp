@@ -4,9 +4,9 @@ En esta carpeta se encuentran contenidos los archivos necesarios para crear la p
 
 La estructura del proyecto consiste en tres carpetas diferentes:
 
-* **[html](https://github.com/NLarrea/DevCamp-CodingFoundations/tree/main/1-HTML-CSS/html)**: directorio que contiene todos los archivos HTML utilizados para crear la página web.
-* **[styles](https://github.com/NLarrea/DevCamp-CodingFoundations/tree/main/1-HTML-CSS/styles)**: directorio encargado de contener los archivos CSS en los que se encuentra el estilo de la página.
-* **[img](https://github.com/NLarrea/DevCamp-CodingFoundations/tree/main/1-HTML-CSS/img)**: directorio encargado de contener las imágenes utilizadas a lo largo de la página web.
+* **[html](./html/)**: directorio que contiene todos los archivos HTML utilizados para crear la página web.
+* **[styles](./styles/)**: directorio encargado de contener los archivos CSS en los que se encuentra el estilo de la página.
+* **[img](./img/)**: directorio encargado de contener las imágenes utilizadas a lo largo de la página web.
 
 
 <br><hr>
@@ -28,7 +28,7 @@ Contenido más interesante de la página:
 
 He aquí cómo ha quedado esta página principal:
 
-https://user-images.githubusercontent.com/110897750/197877682-1c1968db-e5f1-4749-9eb6-438017de2ec3.mp4
+https://user-images.githubusercontent.com/110897750/211672119-ba762fe9-e97c-4f23-a035-3287852731d3.mp4
 
 
 <br><hr>
@@ -47,7 +47,7 @@ Contenido más interesante de esta página:
 
 He aquí el resultado de la página:
 
-https://user-images.githubusercontent.com/110897750/197877888-febb6cb7-84fd-4072-acc7-258013810689.mp4
+https://user-images.githubusercontent.com/110897750/211672191-782ba09a-ca51-4e61-b5e6-479b1b66505f.mp4
 
 
 <br><hr>
@@ -65,7 +65,7 @@ Contenido interesante de este apartado:
 
 Así es como se ve la página tras finalizarla:
 
-https://user-images.githubusercontent.com/110897750/197877952-c18c9ad8-6c1a-4374-b23c-b1e2356b9ea2.mp4
+https://user-images.githubusercontent.com/110897750/211672429-69802129-53eb-44fc-82c2-9fe9620de9cc.mp4
 
 
 <br><hr>
@@ -82,7 +82,7 @@ Contenido interesante de esta página:
 
 Así es como queda la página:
 
-https://user-images.githubusercontent.com/110897750/197881550-e7ffd90a-0e9d-4c3d-bddc-61dabaed35fa.mp4
+https://user-images.githubusercontent.com/110897750/211672533-38f73845-a776-48ca-a34c-a3aa5d5cca73.mp4
 
 
 <br><hr>

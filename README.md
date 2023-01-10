@@ -1,14 +1,33 @@
 # DevCamp
 
-El contenido visto en este repositorio es aquel que se ha trabajado a lo largo del curso **Coding Foundations** del programa **DEVELOPERS FROM EUSKADI**, traído de las manos de *Lanbide* y la *Fundación VASS* e impartido por **BOTTEGA**, una de las principales escuelas de programación en EEUU.
+El contenido visto en este repositorio es aquel que se ha trabajado a lo largo de ciertos cursos pertenecientes al programa **DEVELOPERS FROM EUSKADI**, traído de las manos de *Lanbide* y la *Fundación VASS* e impartido por **BOTTEGA**, una de las principales escuelas de programación en EEUU.
 
-Todo el contenido está repartido en tres apartados principales:
-
-* [HTML Y CSS](https://github.com/NLarrea/DevCamp-CodingFoundations/tree/main/1-HTML-CSS)
-* [PROYECTO FINAL](https://github.com/NLarrea/DevCamp-CodingFoundations/tree/main/2-FINAL_PROJECT)
-* [JAVASCRIPT](https://github.com/NLarrea/DevCamp-CodingFoundations/tree/main/3-JAVASCRIPT)
 
 <br><hr><br>
+
+
+## Coding Foundations
+
+En esta sección del programa se estudian las bases de la programación con HTML, CSS y JavaScript. Para ello, se realizan varios proyectos que nos permiten ir adquiriendo conocimientos y habilidades en cada uno de los lenguajes.
+
+Todo el contenido trabajado en este curso está repartido en tres apartados principales:
+
+* #01 - [HTML Y CSS](./01-coding-foundations/1-HTML-CSS/)
+* #02 - [PROYECTO FINAL](./01-coding-foundations/2-FINAL_PROJECT/)
+* #03 - [JAVASCRIPT](./01-coding-foundations/3-JAVASCRIPT/)
+
+
+<br><hr><br>
+
+
+## Full-Stack
+
+Próximamente...
+
+
+<br><hr>
+<hr><br>
+
 
 # Contacto
 Si tienes alguna duda o sugerencia acerca del contenido de este documento o cualquier otro asunto, no dudes en contactar conmigo:
