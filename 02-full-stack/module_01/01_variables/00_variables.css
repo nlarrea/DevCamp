@@ -20,11 +20,11 @@ body {
   color: Tomato;
 }
 .page-wrapper .featured .subheading a {
-  color: cornflowerblue;
+  color: black;
   text-decoration: none;
 }
 .page-wrapper .featured .subheading a:hover {
-  color: darkolivegreen;
+  color: black;
   text-decoration: underline;
 }
 .page-wrapper .page-content {
@@ -48,10 +48,10 @@ body {
   color: Tomato;
 }
 .page-wrapper .page-content .container .sidebar .subheading a {
-  color: cornflowerblue;
+  color: mintcream;
   text-decoration: none;
 }
 .page-wrapper .page-content .container .sidebar .subheading a:hover {
-  color: darkolivegreen;
+  color: mintcream;
   text-decoration: underline;
 }/*# sourceMappingURL=00_variables.css.map */

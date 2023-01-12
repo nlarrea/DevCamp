@@ -2,15 +2,15 @@
 $off-white: #f6f6f6;
 $featured-color: darkred;
 
-@mixin featured {
+@mixin featured($link-color: black) {
     color: Tomato;
     
     .subheading a {
-        color: cornflowerblue;
+        color: $link-color;
         text-decoration: none;
 
         &:hover {
-            color: darkolivegreen;
+            color: $link-color;
             text-decoration: underline;
         }
     }
@@ -57,7 +57,7 @@ body {
                 text-align: right;
                 float: right;
                 width: 25%;
-                @include featured;
+                @include featured(mintcream);
             }
         }
     }

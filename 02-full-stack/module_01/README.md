@@ -147,6 +147,69 @@ Como se puede observar, el resultado no se vería modificado:
 ![01-variables-color-changed.png](../images/module-01/01-variables-color-changed.png)
 
 
+<br><hr><br>
+
+
+### Mixins con argumentos
+
+En el ejemplo de arriba hemos usado `mixins` sin argumentos, lo que significa que son *estáticos*, es decir, iguales para todos. Pero, ¿qué pasa si queremos que haya elementos compartiendo estilo con pequeñas diferencias? Para ello, se pueden usar argumentos en los `mixins`, como si se tratara de funciones:
+
+``` scss
+@mixin featured($link-color: black) {
+    color: Tomato;
+    
+    .subheading a {
+        color: $link-color;
+        text-decoration: none;
+
+        &:hover {
+            color: $link-color;
+            text-decoration: underline;
+        }
+    }
+}
+```
+
+<br>
+
+El `mixin` creado tiene una variable, `$link-color`, que por defecto tiene el valor `black`. Si no se le pasa ningún argumento, se usará el valor por defecto. Pero si se le pasa un argumento, se usará ese valor.
+
+No es necesario indicar que `$link-color` tenga un valor concreto al declarar el `mixin`, podría no ponerse ninguno y enconces habría que especificar siempre un color al llamar al `mixin`.
+
+<br>
+
+Como en este caso hemos especificado un valor por defecto, podemos realizar lo siguiente:
+
+``` scss
+.page-wrapper {
+    /* some code */
+
+    .featured {
+        @include featured; // no se pasa argumento -> usa el valor por defecto
+    }
+
+    .page-content{
+        /* some code */
+
+        .container {
+            /* some code */
+
+            .sidebar {
+                /* some code */
+                @include featured(mintcream); // usa el valor "mintcream"
+            }
+        }
+    }
+}
+```
+
+<br>
+
+El resultado sería el siguiente, donde se puede ver que cada link debajo del "About us" tiene un color distinto:
+
+![02-mixin-with-arguments.png](../images/module-01/02-mixin-with-arguments.png)
+
+
 <br><hr>
 <hr><br>
 
