@@ -5,6 +5,8 @@
 * [Variables en SCSS](#variables-en-scss)
 * [Mixins](#mixins)
 * [Valores por defecto](#default-values)
+* [Anidación en SCSS](#anidación-en-scss)
+    * [Anidación con pseudoclase](#anidación-con-pseudoclase)
 
 
 <br><hr>
@@ -235,3 +237,45 @@ Con SCSS se vuelve todo mucho más sencillo. Ya se ha visto en los ejemplos ante
 En este ejemplo, podemos entender que el elemento `.container` se encuentra dentro del elemento `.page-content`, que a su vez se encuentra dentro del elemento `.page-wrapper`.
 
 `.page-content` está dentro de `.page-wrapper`, pero `.featured` también, lo que significa que estos dos elementos se encuentran dentro de un mismo contenedor: `.page-wrapper`.
+
+
+<br><hr><br>
+
+
+### Anidación con pseudoclase
+
+De nuevo, en CSS la forma de dar estilo a un elemento con una pseudoclase era la de volver a definir el elemento en otro bloque de código, pero con la pseudoclase añadida.
+
+Ahora, con SCSS, se puede anidar el elemento con la pseudoclase, de la siguiente manera:
+
+``` scss
+.subheading a {
+    color: cornflowerblue;
+    text-decoration: none;
+
+    &:hover {
+        color: darkolivegreen;
+        text-decoration: underline;
+    }
+}
+```
+
+<br>
+
+El equivalente CSS sería el siguiente:
+
+``` css
+.subheading a {
+    color: cornflowerblue;
+    text-decoration: none;
+}
+
+.subheading a:hover {
+    color: darkolivegreen;
+    text-decoration: underline;
+}
+```
+
+<br>
+
+En este caso, refetir la referencia al elemento dos veces no es muy tedioso porque no ha habido que especificar sus contenedores, pero sigue siendo una forma de repetirse de forma innecesaria. Es mucho más rápido aplicar SCSS.

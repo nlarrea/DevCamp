@@ -20,6 +20,14 @@ body {
 .page-wrapper .featured {
   color: darkgreen;
 }
+.page-wrapper .featured .subheading a {
+  color: cornflowerblue;
+  text-decoration: none;
+}
+.page-wrapper .featured .subheading a:hover {
+  color: darkolivegreen;
+  text-decoration: underline;
+}
 .page-wrapper .page-content {
   background-color: darkgreen;
   padding: 42px;

@@ -35,6 +35,16 @@ body {
 
     .featured {
         @include heading-feature-styling;
+
+        .subheading a {
+            color: cornflowerblue;
+            text-decoration: none;
+
+            &:hover {
+                color: darkolivegreen;
+                text-decoration: underline;
+            }
+        }
     }
 
     .page-content{
