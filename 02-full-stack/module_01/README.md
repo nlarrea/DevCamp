@@ -200,3 +200,38 @@ $feature-color: darkgreen;
 En este caso, así es como quedaría:
 
 ![01-variables-color-changed.png](../images/module-01/01-variables-color-changed.png)
+
+
+<br><hr>
+<hr><br>
+
+
+## Anidación en SCSS
+
+Para anidar elementos en CSS se podía utilizar `<` para indicar que un elemento se encontraba dentro de otro.
+
+Con SCSS se vuelve todo mucho más sencillo. Ya se ha visto en los ejemplos anteriores la sintáxis para anidar elementos, o indicar que uno se encuentra dentro del otro. Para ello, basta con escribir y dar estilo al elemento dentro de su contenedor:
+
+``` scss
+.page-wrapper {
+    padding: 21px;
+
+    .featured {
+        @include heading-feature-styling;
+    }
+
+    .page-content{
+        @include section-feature-styling;
+
+        .container {
+            font-family: 'Courier New', Courier, monospace;
+        }
+    }
+}
+```
+
+<br>
+
+En este ejemplo, podemos entender que el elemento `.container` se encuentra dentro del elemento `.page-content`, que a su vez se encuentra dentro del elemento `.page-wrapper`.
+
+`.page-content` está dentro de `.page-wrapper`, pero `.featured` también, lo que significa que estos dos elementos se encuentran dentro de un mismo contenedor: `.page-wrapper`.
