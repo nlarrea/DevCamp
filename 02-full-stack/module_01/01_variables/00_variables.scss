@@ -1,19 +1,19 @@
 /* VARIABLES (at the top of the file) -> $ */
 $off-white: #f6f6f6;
-$feature-color: darkgreen;
+$featured-color: darkred;
 
+@mixin featured {
+    color: Tomato;
+    
+    .subheading a {
+        color: cornflowerblue;
+        text-decoration: none;
 
-/* MIXINS */
-@mixin heading-feature-styling {
-    $feature-color: DarkRed !default;
-    color: $feature-color;
-}
-
-@mixin section-feature-styling {
-    $feature-color: DarkRed !default;
-    background-color: $feature-color;
-    padding: 42px;
-    color: $off-white;
+        &:hover {
+            color: darkolivegreen;
+            text-decoration: underline;
+        }
+    }
 }
 
 body {
@@ -32,26 +32,33 @@ body {
 
 .page-wrapper {
     padding: 21px;
+    $featured-color: royalblue;
 
     .featured {
-        @include heading-feature-styling;
-
-        .subheading a {
-            color: cornflowerblue;
-            text-decoration: none;
-
-            &:hover {
-                color: darkolivegreen;
-                text-decoration: underline;
-            }
-        }
+        @include featured;
     }
 
     .page-content{
-        @include section-feature-styling;
+        background-color: $featured-color;
+        padding: 42px;
+        color: $off-white;
 
         .container {
+            height: 60px !important;
             font-family: 'Courier New', Courier, monospace;
+
+            .description {
+                float: left;
+                width: 75%;
+            }
+
+            .sidebar {
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                text-align: right;
+                float: right;
+                width: 25%;
+                @include featured;
+            }
         }
     }
 }

@@ -1,5 +1,4 @@
 /* VARIABLES (at the top of the file) -> $ */
-/* MIXINS */
 body {
   margin: 0;
   padding: 0;
@@ -18,7 +17,7 @@ body {
   padding: 21px;
 }
 .page-wrapper .featured {
-  color: darkgreen;
+  color: Tomato;
 }
 .page-wrapper .featured .subheading a {
   color: cornflowerblue;
@@ -29,10 +28,30 @@ body {
   text-decoration: underline;
 }
 .page-wrapper .page-content {
-  background-color: darkgreen;
+  background-color: royalblue;
   padding: 42px;
   color: #f6f6f6;
 }
 .page-wrapper .page-content .container {
+  height: 60px !important;
   font-family: "Courier New", Courier, monospace;
+}
+.page-wrapper .page-content .container .description {
+  float: left;
+  width: 75%;
+}
+.page-wrapper .page-content .container .sidebar {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: right;
+  float: right;
+  width: 25%;
+  color: Tomato;
+}
+.page-wrapper .page-content .container .sidebar .subheading a {
+  color: cornflowerblue;
+  text-decoration: none;
+}
+.page-wrapper .page-content .container .sidebar .subheading a:hover {
+  color: darkolivegreen;
+  text-decoration: underline;
 }/*# sourceMappingURL=00_variables.css.map */
