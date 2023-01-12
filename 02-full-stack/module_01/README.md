@@ -3,11 +3,12 @@
 * [¿Qué es SCSS?](#¿qué-es-scss)
 * [Diferencia entre SASS y SCSS](#diferencia-entre-sass-y-scss)
 * [Variables en SCSS](#variables-en-scss)
-* [Mixins](#mixins)
-    * [Mixins con argumentos](#mixins-con-argumentos)
 * [Valores por defecto](#default-values)
 * [Anidación en SCSS](#anidación-en-scss)
     * [Anidación con pseudoclase](#anidación-con-pseudoclase)
+* [Mixins](#mixins)
+    * [Mixins con argumentos](#mixins-con-argumentos)
+    * [Mixins con condicionales](#mixins-con-condicionales)
 
 
 <br><hr>
@@ -99,185 +100,9 @@ Por ejemplo, si modificamos la variable `$master-site-color` a un color verde, e
 <hr><br>
 
 
-## Mixins
-
-Son una especie de funciones que pueden ser "llamadas". Son muy útiles para aplicar los mismos estilos en diferentes elementos, o simplemente para ayudar a organizar los estilos. Para definir un *"mixin"*, se usa la sintaxis `@mixin`.
-
-En este ejemplo, vamos a crear los siguientes:
-
-``` scss
-@mixin heading-feature-styling {
-    color: $master-site-color;
-}
-
-@mixin section-feature-styling {
-    background-color: $master-site-color;
-    padding: 42px;
-    color: $off-white;
-}
-```
-
-<br>
-
-Esto haría que el programa se viera modificado, ***¿por qué? ¿Qué es lo que falta?***
-
-Ahora, nos queda indicar qué elementos deben *"coger"* las propiedades definidas en dichos mixins. Para ello, se usa la palabra reservada `@include`:
-
-``` scss
-.page-wrapper {
-    padding: 21px;
-
-    .featured {
-        @include heading-feature-styling;
-    }
-
-    .page-content{
-        @include section-feature-styling;
-
-        .container {
-            font-family: 'Courier New', Courier, monospace;
-        }
-    }
-}
-```
-
-<br>
-
-Como se puede observar, el resultado no se vería modificado:
-
-![01-variables-color-changed.png](../images/module-01/01-variables-color-changed.png)
-
-
-<br><hr><br>
-
-
-### Mixins con argumentos
-
-En el ejemplo de arriba hemos usado ***mixins*** sin argumentos, lo que significa que son *estáticos*, es decir, iguales para todos. Pero, ¿qué pasa si queremos que haya elementos compartiendo estilo con pequeñas diferencias? Para ello, se pueden usar argumentos en los ***mixins***, como si se tratara de funciones:
-
-``` scss
-@mixin featured($link-color: black) {
-    color: Tomato;
-    
-    .subheading a {
-        color: $link-color;
-        text-decoration: none;
-
-        &:hover {
-            color: $link-color;
-            text-decoration: underline;
-        }
-    }
-}
-```
-
-<br>
-
-El ***mixin*** creado tiene una variable, `$link-color`, que por defecto tiene el valor `black`. Si no se le pasa ningún argumento, se usará el valor por defecto. Pero si se le pasa un argumento, se usará ese valor.
-
-No es necesario indicar que `$link-color` tenga un valor concreto al declarar el ***mixin***, podría no ponerse ninguno y enconces habría que especificar siempre un color al llamar al ***mixin***.
-
-<br>
-
-Como en este caso hemos especificado un valor por defecto, podemos realizar lo siguiente:
-
-``` scss
-.page-wrapper {
-    /* some code */
-
-    .featured {
-        @include featured; // no se pasa argumento -> usa el valor por defecto
-    }
-
-    .page-content{
-        /* some code */
-
-        .container {
-            /* some code */
-
-            .sidebar {
-                /* some code */
-                @include featured(mintcream); // usa el valor "mintcream"
-            }
-        }
-    }
-}
-```
-
-<br>
-
-El resultado sería el siguiente, donde se puede ver que cada link debajo del "About us" tiene un color distinto:
-
-![02-mixin-with-arguments.png](../images/module-01/02-mixin-with-arguments.png)
-
-
-<br><hr><br>
-
-
-### Condicionales
-
-Se pueden crear sentencias condicionales dentro de los ***mixins***. Las sentencias condicionales (`if`, `else if` y `else`) pueden servir para definir distintos tipos de escenarios. Para definirlas, se debe escribir el caracter `@` antes de cada una de ellas.
-
-He aquí un ejemplo:
-
-``` scss
-@mixin featured($bg-color: 'dark') {
-    @if $bg-color == 'light' {
-        color: Tomato;
-    } @else if $bg-color == 'dark' {
-        color: blue;
-    } @else {
-        color: red;
-    }
-    
-    /* some other code */
-}
-```
-
-<br>
-
-Al igual que en el apartado anterior vimos cómo pasar parámetros a un ***mixin***, en este caso las llamadas al ***mixin*** funcionan de la misma forma:
-
-``` scss
-.page-wrapper {
-    /* some code */
-
-    .featured {
-        @include featured('light');
-    }
-
-    .page-content{
-        /* some code */
-
-        .container {
-            /* some code */
-
-            .sidebar {
-                /* some code */
-
-                @include featured('grey');
-            }
-        }
-    }
-}
-```
-
-<br>
-
-Lo que va a ocurrir es que el `@include` de la clase `.featured` entrará en el primer `@if` tomando el color *tomato*. El `@include` de la clase `.sidebar` entrará en la tercera opción (`@else`) tomando el color *red* porque no encaja con ninguna de las opciones anteriores.
-
-Si no se le hubiera indicado ningún valor, hubiera entrado en la sentencia `@else if` porque tendría ese valor por defecto.
-
-Este es el resultado:
-
-![03-mixin-with-conditional.png](../images/module-01/03-mixin-with-conditional.png)
-
-
-<br><hr>
-<hr><br>
-
-
 ## Valores por defecto
+
+Aunque aún no se ha hablado de ellos, en este y el siguiente apartado se van a usar los ***mixins***. Los mixins son una especie de funciones que se pueden usar en SCSS de las cuales hablaremos más adelante. No es importante saber qué son o cómo funcionan por ahora.
 
 Podemos crear valores por defecto de la siguiente manera:
 
@@ -411,3 +236,179 @@ En este caso, refetir la referencia al elemento dos veces no es muy tedioso porq
 <hr><br>
 
 
+## Mixins
+
+Son una especie de funciones que pueden ser "llamadas". Son muy útiles para aplicar los mismos estilos en diferentes elementos, o simplemente para ayudar a organizar los estilos. Para definir un *"mixin"*, se usa la sintaxis `@mixin`.
+
+En este ejemplo, vamos a crear los siguientes:
+
+``` scss
+@mixin heading-feature-styling {
+    color: $master-site-color;
+}
+
+@mixin section-feature-styling {
+    background-color: $master-site-color;
+    padding: 42px;
+    color: $off-white;
+}
+```
+
+<br>
+
+Esto haría que el programa se viera modificado, ***¿por qué? ¿Qué es lo que falta?***
+
+Ahora, nos queda indicar qué elementos deben *"coger"* las propiedades definidas en dichos mixins. Para ello, se usa la palabra reservada `@include`:
+
+``` scss
+.page-wrapper {
+    padding: 21px;
+
+    .featured {
+        @include heading-feature-styling;
+    }
+
+    .page-content{
+        @include section-feature-styling;
+
+        .container {
+            font-family: 'Courier New', Courier, monospace;
+        }
+    }
+}
+```
+
+<br>
+
+Como se puede observar, el resultado no se vería modificado:
+
+![01-variables-color-changed.png](../images/module-01/01-variables-color-changed.png)
+
+
+<br><hr><br>
+
+
+### Mixins con argumentos
+
+En el ejemplo de arriba hemos usado ***mixins*** sin argumentos, lo que significa que son *estáticos*, es decir, iguales para todos. Pero, ¿qué pasa si queremos que haya elementos compartiendo estilo con pequeñas diferencias? Para ello, se pueden usar argumentos en los ***mixins***, como si se tratara de funciones:
+
+``` scss
+@mixin featured($link-color: black) {
+    color: Tomato;
+    
+    .subheading a {
+        color: $link-color;
+        text-decoration: none;
+
+        &:hover {
+            color: $link-color;
+            text-decoration: underline;
+        }
+    }
+}
+```
+
+<br>
+
+El ***mixin*** creado tiene una variable, `$link-color`, que por defecto tiene el valor `black`. Si no se le pasa ningún argumento, se usará el valor por defecto. Pero si se le pasa un argumento, se usará ese valor.
+
+No es necesario indicar que `$link-color` tenga un valor concreto al declarar el ***mixin***, podría no ponerse ninguno y enconces habría que especificar siempre un color al llamar al ***mixin***.
+
+<br>
+
+Como en este caso hemos especificado un valor por defecto, podemos realizar lo siguiente:
+
+``` scss
+.page-wrapper {
+    /* some code */
+
+    .featured {
+        @include featured; // no se pasa argumento -> usa el valor por defecto
+    }
+
+    .page-content{
+        /* some code */
+
+        .container {
+            /* some code */
+
+            .sidebar {
+                /* some code */
+                @include featured(mintcream); // usa el valor "mintcream"
+            }
+        }
+    }
+}
+```
+
+<br>
+
+El resultado sería el siguiente, donde se puede ver que cada link debajo del "About us" tiene un color distinto:
+
+![02-mixin-with-arguments.png](../images/module-01/02-mixin-with-arguments.png)
+
+
+<br><hr><br>
+
+
+### Mixins con condicionales
+
+Se pueden crear sentencias condicionales dentro de los ***mixins***. Las sentencias condicionales (`if`, `else if` y `else`) pueden servir para definir distintos tipos de escenarios. Para definirlas, se debe escribir el caracter `@` antes de cada una de ellas.
+
+He aquí un ejemplo:
+
+``` scss
+@mixin featured($bg-color: 'dark') {
+    @if $bg-color == 'light' {
+        color: Tomato;
+    } @else if $bg-color == 'dark' {
+        color: blue;
+    } @else {
+        color: red;
+    }
+    
+    /* some other code */
+}
+```
+
+<br>
+
+Al igual que en el apartado anterior vimos cómo pasar parámetros a un ***mixin***, en este caso las llamadas al ***mixin*** funcionan de la misma forma:
+
+``` scss
+.page-wrapper {
+    /* some code */
+
+    .featured {
+        @include featured('light');
+    }
+
+    .page-content{
+        /* some code */
+
+        .container {
+            /* some code */
+
+            .sidebar {
+                /* some code */
+
+                @include featured('grey');
+            }
+        }
+    }
+}
+```
+
+<br>
+
+Lo que va a ocurrir es que el `@include` de la clase `.featured` entrará en el primer `@if` tomando el color *tomato*. El `@include` de la clase `.sidebar` entrará en la tercera opción (`@else`) tomando el color *red* porque no encaja con ninguna de las opciones anteriores.
+
+Si no se le hubiera indicado ningún valor, hubiera entrado en la sentencia `@else if` porque tendría ese valor por defecto.
+
+Este es el resultado:
+
+![03-mixin-with-conditional.png](../images/module-01/03-mixin-with-conditional.png)
+
+
+<br><hr>
+<hr><br>
