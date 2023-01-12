@@ -1,0 +1,30 @@
+/* VARIABLES (at the top of the file) -> $ */
+/* MIXINS */
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #f6f6f6;
+  height: 100vh;
+  width: 100vw;
+}
+
+.container {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 0.8rem;
+}
+
+.page-wrapper {
+  padding: 21px;
+}
+.page-wrapper .featured {
+  color: darkgreen;
+}
+.page-wrapper .page-content {
+  background-color: darkgreen;
+  padding: 42px;
+  color: #f6f6f6;
+}
+.page-wrapper .page-content .container {
+  font-family: "Courier New", Courier, monospace;
+}/*# sourceMappingURL=00_variables.css.map */
