@@ -45,13 +45,13 @@ body {
   text-align: right;
   float: right;
   width: 25%;
-  color: Tomato;
+  color: red;
 }
 .page-wrapper .page-content .container .sidebar .subheading a {
-  color: mintcream;
+  color: black;
   text-decoration: none;
 }
 .page-wrapper .page-content .container .sidebar .subheading a:hover {
-  color: mintcream;
+  color: black;
   text-decoration: underline;
 }/*# sourceMappingURL=00_variables.css.map */

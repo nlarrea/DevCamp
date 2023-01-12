@@ -2,15 +2,21 @@
 $off-white: #f6f6f6;
 $featured-color: darkred;
 
-@mixin featured($link-color: black) {
-    color: Tomato;
+@mixin featured($bg-color: 'dark') {
+    @if $bg-color == 'light' {
+        color: Tomato;
+    } @else if $bg-color == 'dark' {
+        color: blue;
+    } @else {
+        color: red;
+    }
     
     .subheading a {
-        color: $link-color;
+        color: black;
         text-decoration: none;
 
         &:hover {
-            color: $link-color;
+            color: black;
             text-decoration: underline;
         }
     }
@@ -35,7 +41,7 @@ body {
     $featured-color: royalblue;
 
     .featured {
-        @include featured;
+        @include featured('light');
     }
 
     .page-content{
@@ -57,7 +63,7 @@ body {
                 text-align: right;
                 float: right;
                 width: 25%;
-                @include featured(mintcream);
+                @include featured('grey');
             }
         }
     }

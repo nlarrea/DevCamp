@@ -4,6 +4,7 @@
 * [Diferencia entre SASS y SCSS](#diferencia-entre-sass-y-scss)
 * [Variables en SCSS](#variables-en-scss)
 * [Mixins](#mixins)
+    * [Mixins con argumentos](#mixins-con-argumentos)
 * [Valores por defecto](#default-values)
 * [Anidación en SCSS](#anidación-en-scss)
     * [Anidación con pseudoclase](#anidación-con-pseudoclase)
@@ -152,7 +153,7 @@ Como se puede observar, el resultado no se vería modificado:
 
 ### Mixins con argumentos
 
-En el ejemplo de arriba hemos usado `mixins` sin argumentos, lo que significa que son *estáticos*, es decir, iguales para todos. Pero, ¿qué pasa si queremos que haya elementos compartiendo estilo con pequeñas diferencias? Para ello, se pueden usar argumentos en los `mixins`, como si se tratara de funciones:
+En el ejemplo de arriba hemos usado ***mixins*** sin argumentos, lo que significa que son *estáticos*, es decir, iguales para todos. Pero, ¿qué pasa si queremos que haya elementos compartiendo estilo con pequeñas diferencias? Para ello, se pueden usar argumentos en los ***mixins***, como si se tratara de funciones:
 
 ``` scss
 @mixin featured($link-color: black) {
@@ -172,9 +173,9 @@ En el ejemplo de arriba hemos usado `mixins` sin argumentos, lo que significa qu
 
 <br>
 
-El `mixin` creado tiene una variable, `$link-color`, que por defecto tiene el valor `black`. Si no se le pasa ningún argumento, se usará el valor por defecto. Pero si se le pasa un argumento, se usará ese valor.
+El ***mixin*** creado tiene una variable, `$link-color`, que por defecto tiene el valor `black`. Si no se le pasa ningún argumento, se usará el valor por defecto. Pero si se le pasa un argumento, se usará ese valor.
 
-No es necesario indicar que `$link-color` tenga un valor concreto al declarar el `mixin`, podría no ponerse ninguno y enconces habría que especificar siempre un color al llamar al `mixin`.
+No es necesario indicar que `$link-color` tenga un valor concreto al declarar el ***mixin***, podría no ponerse ninguno y enconces habría que especificar siempre un color al llamar al ***mixin***.
 
 <br>
 
@@ -208,6 +209,68 @@ Como en este caso hemos especificado un valor por defecto, podemos realizar lo s
 El resultado sería el siguiente, donde se puede ver que cada link debajo del "About us" tiene un color distinto:
 
 ![02-mixin-with-arguments.png](../images/module-01/02-mixin-with-arguments.png)
+
+
+<br><hr><br>
+
+
+### Condicionales
+
+Se pueden crear sentencias condicionales dentro de los ***mixins***. Las sentencias condicionales (`if`, `else if` y `else`) pueden servir para definir distintos tipos de escenarios. Para definirlas, se debe escribir el caracter `@` antes de cada una de ellas.
+
+He aquí un ejemplo:
+
+``` scss
+@mixin featured($bg-color: 'dark') {
+    @if $bg-color == 'light' {
+        color: Tomato;
+    } @else if $bg-color == 'dark' {
+        color: blue;
+    } @else {
+        color: red;
+    }
+    
+    /* some other code */
+}
+```
+
+<br>
+
+Al igual que en el apartado anterior vimos cómo pasar parámetros a un ***mixin***, en este caso las llamadas al ***mixin*** funcionan de la misma forma:
+
+``` scss
+.page-wrapper {
+    /* some code */
+
+    .featured {
+        @include featured('light');
+    }
+
+    .page-content{
+        /* some code */
+
+        .container {
+            /* some code */
+
+            .sidebar {
+                /* some code */
+
+                @include featured('grey');
+            }
+        }
+    }
+}
+```
+
+<br>
+
+Lo que va a ocurrir es que el `@include` de la clase `.featured` entrará en el primer `@if` tomando el color *tomato*. El `@include` de la clase `.sidebar` entrará en la tercera opción (`@else`) tomando el color *red* porque no encaja con ninguna de las opciones anteriores.
+
+Si no se le hubiera indicado ningún valor, hubiera entrado en la sentencia `@else if` porque tendría ese valor por defecto.
+
+Este es el resultado:
+
+![03-mixin-with-conditional.png](../images/module-01/03-mixin-with-conditional.png)
 
 
 <br><hr>
@@ -342,3 +405,9 @@ El equivalente CSS sería el siguiente:
 <br>
 
 En este caso, refetir la referencia al elemento dos veces no es muy tedioso porque no ha habido que especificar sus contenedores, pero sigue siendo una forma de repetirse de forma innecesaria. Es mucho más rápido aplicar SCSS.
+
+
+<br><hr>
+<hr><br>
+
+
