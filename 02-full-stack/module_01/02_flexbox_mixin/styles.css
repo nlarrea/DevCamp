@@ -1,21 +1,30 @@
 .container {
   display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: stretch;
 }
 .container .item {
   flex: 1;
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
+  align-items: stretch;
   border: 1px solid grey;
   border-radius: 5px;
   margin-bottom: 10px;
 }
 .container .item .content {
   display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: stretch;
 }
 .container .item .content .metadata {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: stretch;
   margin-left: 20px;
 }
 .container .item .content .metadata .title {
@@ -23,16 +32,18 @@
 }
 .container .item .btn-group {
   display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
   align-items: center;
 }
 .container .item .btn-group .button {
   height: 100%;
-  display: flex;
-  align-items: center;
-  flex-direction: row;
   width: 42px;
-  justify-content: center;
   font-size: 2em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 .container .item .btn-group .button a {
   color: green;
