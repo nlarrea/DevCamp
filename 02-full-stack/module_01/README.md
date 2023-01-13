@@ -12,6 +12,7 @@
     * [Listas](#listas)
     * [Directiva each](#directiva-each)
     * [Interpolación de Strings](#interpolación-de-strings)
+* [Import](#import)
 
 <br><hr>
 <hr><br>
@@ -554,3 +555,20 @@ $cars: 'maserati', 'tesla', 'porsche';
 El resultado sería el siguiente:
 
 ![00_resultado.png](../images/module-01/03-dinamizar/00_resultado.png)
+
+
+<br><hr>
+<hr><br>
+
+
+## Import
+
+La directiva `@import` permite importar archivos SCSS dentro de otros archivos SCSS. Esto permite dividir el código en archivos más pequeños y reutilizar código.
+
+Por lo general, se usa un archivo principal que importa todos los demás archivos.
+
+Esto requiere **tener cuidado con el orden de importación** de los archivos. Como recordatorio, SCSS viene de Sassy Cascading Style Sheets, lo que significa que el orden de importación de los archivos es importante, ya que unos elementos podrían modificar a otros.
+
+<br>
+
+Se ha de saber también, que `@import` es una directiva un poco antigua. En la actualidad, se recomienda utilizar `@use` para importar archivos SCSS.
