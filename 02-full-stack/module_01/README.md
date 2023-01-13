@@ -8,11 +8,13 @@
 * [Mixins](#mixins)
     * [Mixins con argumentos](#mixins-con-argumentos)
     * [Mixins con condicionales](#mixins-con-condicionales)
+    * [Content](#content)
 * [Crear clases dinámicas](#crear-clases-dinámicas)
     * [Listas](#listas)
     * [Directiva each](#directiva-each)
     * [Interpolación de Strings](#interpolación-de-strings)
 * [Import](#import)
+
 
 <br><hr>
 <hr><br>
@@ -407,6 +409,113 @@ Si no se le hubiera indicado ningún valor, hubiera entrado en la sentencia `@el
 Este es el resultado:
 
 ![01-mixin-with-conditional.png](../images/module-01/02-mixins/01-mixin-with-conditional.png)
+
+
+<br><hr><br>
+
+
+## Content
+
+El `@content` es una palabra clave que permite realizar lo mismo que lo visto en el apartado de [mixins con argumentos](#mixins-con-argumentos), pero de una forma más sencilla e intuitiva.
+
+<br>
+
+Vamos a suponer que tenemos el siguiente código HTML:
+
+``` html
+<body>
+    <div class="error">
+        There was an error processing your request.
+    </div>
+    <div class="success">
+        Your request was processed successfully.
+    </div>
+</body>
+```
+
+<br>
+
+Queremos que cada div tenga unos colores diferentes, pero los demás estilos sean los mismos. Para ello, vamos a crear un ***mixin*** que se aplique a ambos elementos:
+
+``` scss
+@mixin notification($background-color, $color, $border){
+    width: 90%;
+    height: 35px;
+    text-align: center;
+    padding-top: 10px;
+    font-size: 1.2em;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-radius: 3px;
+    margin: 10px;
+    background-color: $background-color;
+    color: $color;
+    border: $border;
+}
+```
+
+<br>
+
+Ahora, para llamar al ***mixin*** y modificar los valores que queramos, se puede hacer de la siguiente forma:
+
+``` scss
+.error {
+    @include notification($background-color: DarkRed, $color: white, $border: 1px solid LightSlateGray)
+}
+
+.success {
+    @include notification($background-color: MediumSeaGreen, $color: MintCream, $border: 1px solid LightSalmon)
+}
+```
+
+<br>
+
+Esto sería lo primero que se nos hubiera ocurrido. Sin embargo, a la hora de llamar al ***mixin***, no se ve de forma tan clara qué valores están siendo modificados.
+
+Para ayudar a ver esto de forma más clara, se puede utilizar el `@content`, manteniendo dentro del ***mixin*** el código que se quiere repetir, y fuera del ***mixin***, el código que se quiere modificar.:
+
+``` scss
+@mixin notification{
+    width: 90%;
+    height: 35px;
+    text-align: center;
+    padding-top: 10px;
+    font-size: 1.2em;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-radius: 3px;
+    margin: 10px;
+    @content;
+}
+```
+
+<br>
+
+Ahora, para llamar al ***mixin*** y modificar los valores que queramos, se puede hacer de la siguiente forma:
+
+``` scss
+.error {
+    @include notification{
+        background-color: darkred;
+        color: white;
+        border: 1px solid lightslategray;
+    }
+
+}
+
+.success {
+    @include notification{
+        background-color: mediumseagreen;
+        color: mintcream;
+        border: 1px solid lightsalmon;
+        width: 75%; // sobreescribe el valor del mixin
+    }
+}
+```
+
+<br>
+
+El resultado es el siguiente:
+
+![02-content.png](../images/module-01/02-mixins/02-content.png)
 
 
 <br><hr>

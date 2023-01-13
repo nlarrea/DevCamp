@@ -1,0 +1,28 @@
+.error {
+  width: 90%;
+  height: 35px;
+  text-align: center;
+  padding-top: 10px;
+  font-size: 1.2em;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border-radius: 3px;
+  margin: 10px;
+  background-color: darkred;
+  color: white;
+  border: 1px solid lightslategray;
+}
+
+.success {
+  width: 90%;
+  height: 35px;
+  text-align: center;
+  padding-top: 10px;
+  font-size: 1.2em;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border-radius: 3px;
+  margin: 10px;
+  background-color: mediumseagreen;
+  color: mintcream;
+  border: 1px solid lightsalmon;
+  width: 75%;
+}/*# sourceMappingURL=style.css.map */
