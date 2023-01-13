@@ -14,7 +14,7 @@ $cars: 'maserati', 'tesla', 'porsche'; // lista con los 3 nombres de las fotos
 @each $car-name in $cars {
     /* STRING INTERPOLATION -> variables en los strings */
     .car-#{$car-name} {     // esto creará las tres clases, una para cada coche
-        background-image: url('../../images/module-01/03/#{$car-name}.jpg');
+        background-image: url("../images/03-dinamizar/#{$car-name}.jpg");
         background-repeat: no-repeat;
         height: 300px;
         width: 500px;

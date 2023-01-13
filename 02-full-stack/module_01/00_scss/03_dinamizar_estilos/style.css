@@ -11,7 +11,7 @@ clase va a ser una clase dinámica
 /* EACH DIRECTIVE -> como la sentencia ".forEach()" de JS (para entendernos) */
 /* STRING INTERPOLATION -> variables en los strings */
 .car-maserati {
-  background-image: url("../../images/module-01/03/maserati.jpg");
+  background-image: url("../images/03-dinamizar/maserati.jpg");
   background-repeat: no-repeat;
   height: 300px;
   width: 500px;
@@ -22,7 +22,7 @@ clase va a ser una clase dinámica
 
 /* STRING INTERPOLATION -> variables en los strings */
 .car-tesla {
-  background-image: url("../../images/module-01/03/tesla.jpg");
+  background-image: url("../images/03-dinamizar/tesla.jpg");
   background-repeat: no-repeat;
   height: 300px;
   width: 500px;
@@ -33,7 +33,7 @@ clase va a ser una clase dinámica
 
 /* STRING INTERPOLATION -> variables en los strings */
 .car-porsche {
-  background-image: url("../../images/module-01/03/porsche.jpg");
+  background-image: url("../images/03-dinamizar/porsche.jpg");
   background-repeat: no-repeat;
   height: 300px;
   width: 500px;

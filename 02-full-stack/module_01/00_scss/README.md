@@ -1,5 +1,7 @@
 # Introducción a SCSS
 
+<div id="indice"></div>
+
 * [¿Qué es SCSS?](#¿qué-es-scss)
 * [Diferencia entre SASS y SCSS](#diferencia-entre-sass-y-scss)
 * [Variables y estructura SCSS](#variables-y-estructura-scss)
@@ -22,6 +24,8 @@
 
 ## ¿Qué es SCSS?
 
+<sub>[<< Volver al índice](#indice) | [SASS vs SCSS >>](#diferencia-entre-sass-y-scss)</sub>
+
 SCSS son las siglas de Sassy Cascading Style Sheets. Fue creado hace aproximadamente 10 años por Hampton Catlin.
 
 ¿Dónde se puede usar SCSS? A día de hoy, puede usarse en prácticamente cualquier tipo de framework. No está atado a ningún tipo concreto de elemento.
@@ -37,6 +41,8 @@ Técnicamente, SCSS es un preprocesador, lo que significa que es un tipo de leng
 
 ## Diferencia entre SASS y SCSS
 
+<sub>[<< SCSS](#¿qué-es-scss) | [Volver al índice](#indice) | [Variables >>](#variables-y-estructura-scss)</sub>
+
 **SASS** es la versión original de SCSS. No se parece en nada al CSS y se preocupa por cosas como la indentación. No tiene llaves, tiene signos de más y signos de igual por todas partes, etc.
 
 **SCSS** se parece exactamente al CSS, usa llaves y puntos y comas. Es mucho más familiar.
@@ -49,6 +55,8 @@ Si quieres escribir código CSS puro, un archivo SCSS lo procesará, mientras qu
 
 
 ## Variables y estructura SCSS
+
+<sub>[<< SASS vs SCSS](#diferencia-entre-sass-y-scss) | [Volver al índice](#indice) | [Valores por defecto >>](#valores-por-defecto)</sub>
 
 Las variables son una especie de contenedor donde se puede almacenar el valor de una propiedad. En este caso, vamos a crear dos variables de colores para aplicarlas a lo largo el programa:
 
@@ -90,7 +98,7 @@ body {
 
 Este sería el resultado:
 
-![00-variables.png](../images/module-01/01-variables/00-variables.png)
+![00-variables.png](./images/01-variables/00-variables.png)
 
 <br>
 
@@ -98,13 +106,15 @@ Como se puede ver, las variables son muy útiles para no tener que repetir el mi
 
 Por ejemplo, si modificamos la variable `$master-site-color` a un color verde, el programa se vería así:
 
-![01.variables-color-changed.png](../images/module-01/01-variables/01-variables-color-changed.png)
+![01.variables-color-changed.png](./images/01-variables/01-variables-color-changed.png)
 
 
 <br><hr><br>
 
 
 ### Valores por defecto
+
+<sub>[<< Variables](#variables-y-estructura-scss) | [Volver al índice](#indice) | [Anidación >>](#anidación-en-scss)</sub>
 
 Aunque aún no se ha hablado de ellos, en este y el siguiente apartado se van a usar los ***mixins***. Los mixins son una especie de funciones que se pueden usar en SCSS de las cuales hablaremos más adelante. No es importante saber qué son o cómo funcionan por ahora.
 
@@ -128,7 +138,7 @@ Podemos crear valores por defecto de la siguiente manera:
 
 Así es como se vería:
 
-![00-variables.png](../images/module-01/01-variables/00-variables.png)
+![00-variables.png](./images/01-variables/00-variables.png)
 
 <br>
 
@@ -156,13 +166,15 @@ $feature-color: darkgreen;
 
 En este caso, así es como quedaría:
 
-![01-variables-color-changed.png](../images/module-01/01-variables/01-variables-color-changed.png)
+![01-variables-color-changed.png](./images/01-variables/01-variables-color-changed.png)
 
 
 <br><hr><br>
 
 
 ### Anidación en SCSS
+
+<sub>[<< Variables](#variables-y-estructura-scss) | [Volver al índice](#indice) | [Mixins >>](#mixins)</sub>
 
 Para anidar elementos en CSS se podía utilizar `<` para indicar que un elemento se encontraba dentro de otro.
 
@@ -239,6 +251,8 @@ En este caso, refetir la referencia al elemento dos veces no es muy tedioso porq
 
 ## Mixins
 
+<sub>[<< Variables](#variables-y-estructura-scss) | [Volver al índice](#indice) | [Con argumentos >>](#mixins-con-argumentos)</sub>
+
 Son una especie de funciones que pueden ser "llamadas". Son muy útiles para aplicar los mismos estilos en diferentes elementos, o simplemente para ayudar a organizar los estilos. Para definir un *"mixin"*, se usa la sintaxis `@mixin`.
 
 En este ejemplo, vamos a crear los siguientes:
@@ -283,13 +297,15 @@ Ahora, nos queda indicar qué elementos deben *"coger"* las propiedades definida
 
 Como se puede observar, el resultado no se vería modificado:
 
-![01-variables-color-changed.png](../images/module-01/01-variables/01-variables-color-changed.png)
+![01-variables-color-changed.png](./images/01-variables/01-variables-color-changed.png)
 
 
 <br><hr><br>
 
 
 ### Mixins con argumentos
+
+<sub>[<< Mixins](#mixins) | [Volver al índice](#indice) | [Con condiciones >>](#mixins-con-condicionales)</sub>
 
 En el ejemplo de arriba hemos usado ***mixins*** sin argumentos, lo que significa que son *estáticos*, es decir, iguales para todos. Pero, ¿qué pasa si queremos que haya elementos compartiendo estilo con pequeñas diferencias? Para ello, se pueden usar argumentos en los ***mixins***, como si se tratara de funciones:
 
@@ -346,13 +362,15 @@ Como en este caso hemos especificado un valor por defecto, podemos realizar lo s
 
 El resultado sería el siguiente, donde se puede ver que cada link debajo del "About us" tiene un color distinto:
 
-![00-mixin-with-arguments.png](../images/module-01/02-mixins/00-mixin-with-arguments.png)
+![00-mixin-with-arguments.png](./images/02-mixins/00-mixin-with-arguments.png)
 
 
 <br><hr><br>
 
 
 ### Mixins con condicionales
+
+<sub>[<< Mixins](#mixins) | [Volver al índice](#indice) | [Content >>](#content)</sub>
 
 Se pueden crear sentencias condicionales dentro de los ***mixins***. Las sentencias condicionales (`if`, `else if` y `else`) pueden servir para definir distintos tipos de escenarios. Para definirlas, se debe escribir el caracter `@` antes de cada una de ellas.
 
@@ -408,13 +426,16 @@ Si no se le hubiera indicado ningún valor, hubiera entrado en la sentencia `@el
 
 Este es el resultado:
 
-![01-mixin-with-conditional.png](../images/module-01/02-mixins/01-mixin-with-conditional.png)
+![01-mixin-with-conditional.png](./images/02-mixins/01-mixin-with-conditional.png)
 
 
-<br><hr><br>
+<br><hr>
+<hr><br>
 
 
 ## Content
+
+<sub>[<< Mixins](#mixins) | [Volver al índice](#indice) | [Clases dinámicas >>](#crear-clases-dinámicas)</sub>
 
 El `@content` es una palabra clave que permite realizar lo mismo que lo visto en el apartado de [mixins con argumentos](#mixins-con-argumentos), pero de una forma más sencilla e intuitiva.
 
@@ -515,7 +536,7 @@ Ahora, para llamar al ***mixin*** y modificar los valores que queramos, se puede
 
 El resultado es el siguiente:
 
-![02-content.png](../images/module-01/02-mixins/02-content.png)
+![02-content.png](./images/02-mixins/02-content.png)
 
 
 <br><hr>
@@ -523,6 +544,8 @@ El resultado es el siguiente:
 
 
 ## Crear clases dinámicas
+
+<sub>[<< Content](#content) | [Volver al índice](#indice) | [Listas >>](#listas)</sub>
 
 En este apartado se va a hablar de cómo crear clases dinámicas utilizando un ejemplo muy sencillo:
 
@@ -555,6 +578,8 @@ Para crear las clases dinámicas, se va a utilizar la interpolación de strings.
 
 ### Listas
 
+<sub>[<< Clases dinámicas](#crear-clases-dinámicas) | [Volver al índice](#indice) | [Each >>](#directiva-each)</sub>
+
 Para crear una lista en SCSS, se realiza lo siguiente:
 
 ``` scss
@@ -570,6 +595,8 @@ Como se puede ver, es una variable, cuya sintaxis es la misma que la de cualquie
 
 
 ### Directiva each
+
+<sub>[<< Clases dinámicas](#crear-clases-dinámicas) | [Volver al índice](#indice) | [Interpolar strings >>](#interpolación-de-strings)</sub>
 
 La directiva `each` permite recorrer una lista y ejecutar un bloque de código para cada uno de los elementos de la lista.
 
@@ -604,6 +631,8 @@ Dentro de este bloque utilizaremos la interpolación de strings para crear las c
 
 
 ### Interpolación de Strings
+
+<sub>[<< Clases dinámicas](#crear-clases-dinámicas) | [Volver al índice](#indice) | [Import >>](#import)</sub>
 
 La interpolación de strings permite crear una cadena de texto que se modifique utilizando variables.
 
@@ -663,7 +692,7 @@ $cars: 'maserati', 'tesla', 'porsche';
 
 El resultado sería el siguiente:
 
-![00_resultado.png](../images/module-01/03-dinamizar/00_resultado.png)
+![00_resultado.png](./images/03-dinamizar/00_resultado.png)
 
 
 <br><hr>
@@ -671,6 +700,8 @@ El resultado sería el siguiente:
 
 
 ## Import
+
+<sub>[<< Clases dinámicas](#crear-clases-dinámicas) | [Volver al índice](#indice)</sub>
 
 La directiva `@import` permite importar archivos SCSS dentro de otros archivos SCSS. Esto permite dividir el código en archivos más pequeños y reutilizar código.
 
@@ -681,3 +712,23 @@ Esto requiere **tener cuidado con el orden de importación** de los archivos. Co
 <br>
 
 Se ha de saber también, que `@import` es una directiva un poco antigua. En la actualidad, se recomienda utilizar `@use` para importar archivos SCSS.
+
+
+<br><hr><br>
+
+[Volver al índice](#indice)
+
+
+<br><hr>
+<hr><br>
+
+
+# Contacto
+
+Si tienes alguna duda o sugerencia acerca del contenido de este documento o cualquier otro asunto, no dudes en contactar conmigo:
+
+<div align="center">
+&emsp;<a href="https://twitter.com/nloust_"><img width="16" alt="twitter_logo" src="https://user-images.githubusercontent.com/110897750/195668304-54d1fbb3-bea1-4f9d-9ee7-7e494bd79013.png"> @nloust_</a> <!-- twitter: -->
+&emsp;<a href="https://www.instagram.com/n.loust/"><img width="16" alt="instagram_logo" src="https://seeklogo.com/images/I/instagram-new-2016-logo-4773FE3F99-seeklogo.com.png"> @n.loust</a> <!-- instagram: -->
+&emsp;<a href="https://www.linkedin.com/in/naia-larrea/"><img width="16" alt="linkedin_logo" src="https://user-images.githubusercontent.com/110897750/195669519-30e44b5d-4bef-47d3-9e37-81cff0ee5e55.png"> Naia Larrea</a> <!-- linkedin: -->
+</div>
