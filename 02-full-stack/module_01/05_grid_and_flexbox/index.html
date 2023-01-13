@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DailySmarty</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;900&family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #ffffff;
+        }
+
+        p, li {
+            font-family: 'PT Serif', serif;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .content-wrapper {
+            width: 660px;
+        }
+
+        .style-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 75px;
+            margin-bottom: 75px;
+        }
+
+        .style-details-text {
+            text-align: right;
+        }
+
+        .style-details-text div {
+            color: #808080;
+            font-weight: normal;
+        }
+
+        .style-details-text h3 {
+            margin-top: 40px;
+            margin-bottom: 10px;
+        }
+
+        .style-details-logo img {
+            width: 100%; /* fills the column */
+        }
+
+        .dos-donts-wrapper {
+            margin-top: 75px;
+            margin-bottom: 75px;
+            display: grid;
+            grid-template-columns: 2fr 2fr 1fr;
+            gap: 30px;
+        }
+
+        .donts-image-box {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .donts-image-box div {
+            font-size: 14px;
+            color: #999999;
+        }
+
+        .donts-image-box img {
+            width: 50%;
+        }
+
+        .dos-donts-heading {
+            font-weight: 900;
+            margin-bottom: 20px;
+            margin-left: 40px;
+        }
+
+        .blue-text {
+            color: #0079ff;
+        }
+
+        .red-text {
+            color: #dc0004;
+        }
+
+        .dos-donts-list li {
+            margin-top: 30px;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+
+        .alternate-options-wrapper {
+            margin-top: 75px;
+            margin-bottom: 75px;
+        }
+
+        .alternate-options-wrapper h3 {
+            color: #999999;
+            font-size: 18px;
+            font-weight: 900;
+        }
+
+        .alternate-options-wrapper li {
+            margin-top: 30px;
+            margin-bottom: 30px;
+            font-size: 19px;
+        }
+
+        .alternate-options-images {
+            margin-top: 80px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            justify-items: center;
+            gap: 100px 40px; /* space-btw-rows space-btw-columns */
+        }
+
+        .image-logos {
+            width: 60%;
+        }
+
+        .text-logos {
+            width: 90%;
+        }
+
+        .additional-branding-detail {
+            margin-top: 75px;
+            margin-bottom: 75px;
+        }
+
+        .additional-branding-detail a {
+            color: #4fb8e8;
+            font-size: 19px;
+        }
+        
+        .additional-branding-detail p {
+            margin-bottom: 42px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content-wrapper">
+            <h2>Branding Guidelines</h2>
+            <p>Welcome to the DailySmarty branding guidelines! We're happy that you see the worth of our product and understand the value in promoting it correctly.</p>
+            <p>The folowing guides have been provided to assist you in maintaining the integrity and intedended useage of our logo and branding in your marketing materials. Keeping with these guidelines will reinforce both your and our professionalism and legitimacy in the eyes of the audience.</p>
+            <p>Thank you again for your interest and relationship with DailySmarty. Please see the guidelines outlined below (logo assets can be downloaded below):</p>
+            
+            <div class="style-details">
+                <div class="style-details-text">
+                    <h3>Primary Logo</h3>
+                    <div>White Space = 1/4 logo width</div>
+                    <div>White logo on primary blue</div>
+    
+                    <h3>Primary Color</h3>
+                    <div>#0079FF</div>
+                    <div>RGB 0, 121, 255</div>
+    
+                    <h3>Name</h3>
+                    <div>Capitalize “D” and “S”</div>
+                    <div>No space between the words</div>
+                </div>
+    
+                <div class="style-details-logo">
+                    <img src="./img/logo-with-margin.png" alt="logo-with-margin">
+                </div>
+            </div>
+
+            <div class="dos-donts-wrapper">
+                <div class="dos-donts-list">
+                    <div class="dos-donts-heading blue-text">
+                        Logo Do's
+                    </div>
+
+                    <ul>
+                        <li>Provide adequate white space surrounding the logo.</li>
+                        <li>Icon must always be white</li>
+                        <li>Keep a large size so the icon doesn't get obscured.</li>
+                        <li>Place logo on white or light background colors</li>
+                    </ul>
+                </div>
+
+                <div class="dos-donts-list">
+                    <div class="dos-donts-heading red-text">
+                        Logo Dont's
+                    </div>
+
+                    <ul>
+                        <li>Strech or scale the logo non-uniformely</li>
+                        <li>Crop or partially cover the logo with other objects</li>
+                        <li>Alter the logo or wordmark color to anything other than our primary color</li>
+                    </ul>
+                </div>
+
+                <div class="donts-images">
+                    <div class="donts-image-box">
+                        <img src="./img/dont_stretch.png" alt="dont_stretch">
+                        <div>Stretch</div>
+                    </div>
+                    <div class="donts-image-box">
+                        <img src="./img/dont_crop.png" alt="dont_crop">
+                        <div>Crop</div>
+                    </div>
+                    <div class="donts-image-box">
+                        <img src="./img/dont_color.png" alt="dont_color">
+                        <div>Color</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alternate-options-wrapper">
+                <h3>Alternate Options</h3>
+                <ul>
+                    <li>The circular badge can be used separately from the wordmark.</li>
+                    <li>The icon may be extracted from the logo and applied separately - but it must remain white and have a background of our primary blue color.</li>
+                    <li>The wordmark may be used separately from the circular badge.</li>
+                    <li>Logo Do's and Do Not's above still apply.</li>
+                </ul>
+
+                <div class="alternate-options-images">
+                    <img class="image-logos" src="./img/ds_circle_logo.png" alt="ds_circle_logo">
+                    <img class="image-logos" src="./img/ds_square_logo.png" alt="ds_square_logo">
+                    <img class="text-logos" src="./img/ds_icon_text_logo.png" alt="ds_icon_text_logo">
+                    <img class="text-logos" src="./img/ds_text_logo.png" alt="ds_text_logo">
+                </div>
+            </div>
+
+            <div class="additional-branding-detail">
+                <h3>Asset Download</h3>
+                <p>
+                    <a href="#">Download .zip file.</a>
+                </p>
+                <h3>Usage</h3>
+                <p>
+                    Please remember to adhere to the above guidlines when referencing and using our logos. If you are unsure of the correct protocol for a particular usecase, feel free to ask us at the following email: support@dailysmarty.com.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
