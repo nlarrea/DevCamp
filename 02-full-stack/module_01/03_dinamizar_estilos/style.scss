@@ -1,0 +1,24 @@
+/*
+queremos generar el nombre de las clases de estos elementos
+de forma dinámica en scss
+
+vamos a crear 3 clases iguales pero cada una con una de las imágenes
+en background-image, pero solo vamos a escribir una única clase. Esta
+clase va a ser una clase dinámica
+*/
+
+/* LIST */
+$cars: 'maserati', 'tesla', 'porsche'; // lista con los 3 nombres de las fotos
+
+/* EACH DIRECTIVE -> como la sentencia ".forEach()" de JS (para entendernos) */
+@each $car-name in $cars {
+    /* STRING INTERPOLATION -> variables en los strings */
+    .car-#{$car-name} {     // esto creará las tres clases, una para cada coche
+        background-image: url('../../images/module-01/03/#{$car-name}.jpg');
+        background-repeat: no-repeat;
+        height: 300px;
+        width: 500px;
+        object-fit: fill;
+        float: left;
+    }
+}

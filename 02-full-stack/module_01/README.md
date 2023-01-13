@@ -2,14 +2,16 @@
 
 * [¿Qué es SCSS?](#¿qué-es-scss)
 * [Diferencia entre SASS y SCSS](#diferencia-entre-sass-y-scss)
-* [Variables en SCSS](#variables-en-scss)
-* [Valores por defecto](#default-values)
-* [Anidación en SCSS](#anidación-en-scss)
-    * [Anidación con pseudoclase](#anidación-con-pseudoclase)
+* [Variables y estructura SCSS](#variables-y-estructura-scss)
+    * [Valores por defecto](#default-values)
+    * [Anidación](#anidación-en-scss)
 * [Mixins](#mixins)
     * [Mixins con argumentos](#mixins-con-argumentos)
     * [Mixins con condicionales](#mixins-con-condicionales)
-
+* [Crear clases dinámicas](#crear-clases-dinámicas)
+    * [Listas](#listas)
+    * [Directiva each](#directiva-each)
+    * [Interpolación de Strings](#interpolación-de-strings)
 
 <br><hr>
 <hr><br>
@@ -43,7 +45,7 @@ Si quieres escribir código CSS puro, un archivo SCSS lo procesará, mientras qu
 <hr><br>
 
 
-## Variables en SCSS
+## Variables y estructura SCSS
 
 Las variables son una especie de contenedor donde se puede almacenar el valor de una propiedad. En este caso, vamos a crear dos variables de colores para aplicarlas a lo largo el programa:
 
@@ -85,7 +87,7 @@ body {
 
 Este sería el resultado:
 
-![00-variables.png](../images/module-01/00-variables.png)
+![00-variables.png](../images/module-01/01-variables/00-variables.png)
 
 <br>
 
@@ -93,14 +95,13 @@ Como se puede ver, las variables son muy útiles para no tener que repetir el mi
 
 Por ejemplo, si modificamos la variable `$master-site-color` a un color verde, el programa se vería así:
 
-![01.variables-color-changed.png](../images/module-01/01-variables-color-changed.png)
+![01.variables-color-changed.png](../images/module-01/01-variables/01-variables-color-changed.png)
 
 
-<br><hr>
-<hr><br>
+<br><hr><br>
 
 
-## Valores por defecto
+### Valores por defecto
 
 Aunque aún no se ha hablado de ellos, en este y el siguiente apartado se van a usar los ***mixins***. Los mixins son una especie de funciones que se pueden usar en SCSS de las cuales hablaremos más adelante. No es importante saber qué son o cómo funcionan por ahora.
 
@@ -124,7 +125,7 @@ Podemos crear valores por defecto de la siguiente manera:
 
 Así es como se vería:
 
-![00-variables.png](../images/module-01/00-variables.png)
+![00-variables.png](../images/module-01/01-variables/00-variables.png)
 
 <br>
 
@@ -152,14 +153,13 @@ $feature-color: darkgreen;
 
 En este caso, así es como quedaría:
 
-![01-variables-color-changed.png](../images/module-01/01-variables-color-changed.png)
+![01-variables-color-changed.png](../images/module-01/01-variables/01-variables-color-changed.png)
 
 
-<br><hr>
-<hr><br>
+<br><hr><br>
 
 
-## Anidación en SCSS
+### Anidación en SCSS
 
 Para anidar elementos en CSS se podía utilizar `<` para indicar que un elemento se encontraba dentro de otro.
 
@@ -189,11 +189,9 @@ En este ejemplo, podemos entender que el elemento `.container` se encuentra dent
 
 `.page-content` está dentro de `.page-wrapper`, pero `.featured` también, lo que significa que estos dos elementos se encuentran dentro de un mismo contenedor: `.page-wrapper`.
 
+<br>
 
-<br><hr><br>
-
-
-### Anidación con pseudoclase
+* **Anidación con pseudoclase**
 
 De nuevo, en CSS la forma de dar estilo a un elemento con una pseudoclase era la de volver a definir el elemento en otro bloque de código, pero con la pseudoclase añadida.
 
@@ -282,7 +280,7 @@ Ahora, nos queda indicar qué elementos deben *"coger"* las propiedades definida
 
 Como se puede observar, el resultado no se vería modificado:
 
-![01-variables-color-changed.png](../images/module-01/01-variables-color-changed.png)
+![01-variables-color-changed.png](../images/module-01/01-variables/01-variables-color-changed.png)
 
 
 <br><hr><br>
@@ -345,7 +343,7 @@ Como en este caso hemos especificado un valor por defecto, podemos realizar lo s
 
 El resultado sería el siguiente, donde se puede ver que cada link debajo del "About us" tiene un color distinto:
 
-![02-mixin-with-arguments.png](../images/module-01/02-mixin-with-arguments.png)
+![00-mixin-with-arguments.png](../images/module-01/02-mixins/00-mixin-with-arguments.png)
 
 
 <br><hr><br>
@@ -407,8 +405,152 @@ Si no se le hubiera indicado ningún valor, hubiera entrado en la sentencia `@el
 
 Este es el resultado:
 
-![03-mixin-with-conditional.png](../images/module-01/03-mixin-with-conditional.png)
+![01-mixin-with-conditional.png](../images/module-01/02-mixins/01-mixin-with-conditional.png)
 
 
 <br><hr>
 <hr><br>
+
+
+## Crear clases dinámicas
+
+En este apartado se va a hablar de cómo crear clases dinámicas utilizando un ejemplo muy sencillo:
+
+Imagina que se tiene este código HTML:
+
+``` html
+<body>
+    <div class="car-maserati"></div>
+    <div class="car-tesla"></div>
+    <div class="car-porsche"></div>
+</body>
+```
+
+Y se desea utilizar 3 imágenes diferentes para cada uno de los `div`. El estilo de cada elemento va a ser el mismo, siendo la imagen de fondo la única diferencia.
+
+***¿Qué se puede hacer?***
+
+Vamos a aprender a crear clases dinámicas para escribir únicamente un bloque de código que se aplique a los tres elementos gracias a modificar su clase.
+
+Para ello, vamos a seguir los siguientes pasos:
+
+1. Crear una lisa con el nombre (sin extensión) de cada imagen que se va a utilizar.
+2. Utilizar la directiva `each` para recorrer la lista y crear una clase dinámica para cada elemento.
+
+Para crear las clases dinámicas, se va a utilizar la interpolación de strings. Esto permite crear una cadena de texto que se modifique utilizando variables.
+
+
+<br><hr><br>
+
+
+### Listas
+
+Para crear una lista en SCSS, se realiza lo siguiente:
+
+``` scss
+$cars: 'maserati', 'tesla', 'porsche';
+```
+
+<br>
+
+Como se puede ver, es una variable, cuya sintaxis es la misma que la de cualquier otra variable. La diferencia es que en lugar de contener un valor, contiene una lista de valores.
+
+
+<br><hr><br>
+
+
+### Directiva each
+
+La directiva `each` permite recorrer una lista y ejecutar un bloque de código para cada uno de los elementos de la lista.
+
+La sintaxis es la siguiente:
+
+``` scss
+@each $item in $list {
+    /* some code */
+}
+```
+
+<br>
+
+En nuestro ejemplo, vamor a realizar lo siguiente:
+
+``` scss
+@each $car-name in $cars {
+    .car-#{$car-name} {
+        /* some code */
+    }
+}
+```
+
+<br>
+
+Con estas líneas de código, se creará una clase dinámica para cada elemento de la lista. El nombre de la clase será el nombre del elemento de la lista precedido por la palabra `car-`. Lo que daría como resultado las mismas clases que las que hemos visto en el [código HTML](#crear-clases-dinámicas).
+
+Dentro de este bloque utilizaremos la interpolación de strings para crear las clases dinámicas.
+
+
+<br><hr><br>
+
+
+### Interpolación de Strings
+
+La interpolación de strings permite crear una cadena de texto que se modifique utilizando variables.
+
+Para introducir una variable dentro de un string se utiliza el caracter `#` seguido del nombre de la variable.
+
+``` scss
+#{$variable}
+```
+
+<br>
+
+Siguiendo nuestro ejemplo, el código sería el siguiente:
+
+``` scss
+.car-#{$car-name} {
+    background-image: url('../../images/module-01/03/#{$car-name}.jpg');
+    background-repeat: no-repeat;
+    height: 300px;
+    width: 500px;
+    object-fit: fill;
+    float: left;
+}
+```
+
+<br>
+
+Con la línea de código mostrada aquí:
+
+``` scss
+background-image: url('../../images/module-01/03/#{$car-name}.jpg');
+```
+
+<br>
+
+Se está creando una cadena de texto que contiene la ruta de la imagen. El nombre de la imagen se obtiene de la variable `$car-name` que se está interpolando en el string.
+
+<br>
+
+El código final completo sería el siguiente:
+
+``` scss
+$cars: 'maserati', 'tesla', 'porsche';
+
+@each $car-name in $cars {
+    .car-#{$car-name} {
+        background-image: url('../../images/module-01/03/#{$car-name}.jpg');
+        background-repeat: no-repeat;
+        height: 300px;
+        width: 500px;
+        object-fit: fill;
+        float: left;
+    }
+}
+```
+
+<br>
+
+El resultado sería el siguiente:
+
+![00_resultado.png](../images/module-01/03-dinamizar/00_resultado.png)
