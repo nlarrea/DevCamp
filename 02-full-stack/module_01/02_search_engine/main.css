@@ -1,0 +1,60 @@
+.container {
+    display: grid;
+    grid-template-rows: repeat(auto-fit, minmax(100px, 1fr));
+    grid-template-columns: 1fr 1fr 1fr;
+
+    margin-top: 5em;
+    justify-items: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.homepage-logo {
+    grid-column: 2; /* son 3 columnas y lo queremos en la del medio */
+    grid-row: 1;
+}
+
+.homepage-logo img {
+    width: 10.5rem;
+}
+
+.homepage-search-bar {
+    grid-column: 1/-1; /* desde la primera columna, hasta la última */
+    grid-row: 2;
+}
+
+.homepage-search-bar input {
+    width: 66vw;
+    height: 11.8rem;
+    padding-left: 0.75em;
+    /*
+        em = porcentaje del elemento padre (en ese atributo)
+        rem = lo mismo, pero teniendo en cuenta el root, no inheritance
+    */
+}
+
+.homepage-search-bar input[type=text] {
+    font-size: 2.5em;
+    font-family: Arial, 'Font Awesome\ 5 Free', Helvetica, sans-serif;
+    font-weight: 600;
+    color: #585858;
+    box-shadow: 2px 3px 20px 1px rgba(0, 0, 0, 0.1);
+    border: 0px solid transparent;
+    border-radius: 0.5rem;
+}
+
+.homepage-search-bar input[type=text]::placeholder {
+    font-family: Arial, 'Font Awesome\ 5 Free', Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    color: #a4a4a4;
+}
+
+.homepage-search-bar input[type=text]:focus {
+    outline: none;
+    box-shadow: 2px 3px 20px 1px rgba(0, 0, 0, 0.3);
+}
+
+.recent-posts-wrapper {
+    grid-column: 1/-1;
+    grid-row: 3;
+}
