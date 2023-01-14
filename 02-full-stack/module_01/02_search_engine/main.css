@@ -67,7 +67,7 @@ html {
     color: #a4a4a4;
 }
 
-.homepage-search-bar input[type=text]:focus {
+.homepage-search-bar input[type="text"]:focus {
     outline: none;
     box-shadow: 2px 3px 20px 1px rgba(0, 0, 0, 0.3);
 }
