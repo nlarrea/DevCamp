@@ -1,0 +1,31 @@
+/* TASK 1 STYLES */
+.taskOne {
+  color: #e76f51;
+}
+
+/* TASK 2 STYLES */
+.taskTwo {
+  color: #e76f51;
+}
+
+/* TASK 3 STYLES */
+.taskThree .nestedDiv p {
+  color: red;
+}
+
+/* TASK 4 STYLES */
+.taskFour {
+  background-color: #237c95;
+  height: 200px;
+  width: 200px;
+  margin: 10px;
+}
+
+/* TASK 5 STYLES */
+.taskFive {
+  background-image: url("https://s3.amazonaws.com/bottega-devcamp/scss/cars/maserati.jpg");
+  width: 300px;
+  height: 300px;
+  -o-object-fit: fill;
+     object-fit: fill;
+}/*# sourceMappingURL=index.css.map */
