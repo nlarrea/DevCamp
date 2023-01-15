@@ -1,0 +1,89 @@
+/* GRID 1 STYLES */
+.gridOne {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+/* GRID 2 STYLES */
+.gridTwo {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+}
+
+.firts-column {
+    background-color: red;
+}
+
+.second-column {
+    background-color: blue;
+}
+
+.third-column {
+    background-color: yellow;
+}
+
+/* GRID 3 STYLES */
+.gridThree {
+    display: grid;
+    grid-template-rows: 1fr 3fr;
+    width: 500px;
+    height: 300px;
+}
+
+.gridThree div:first-child {
+    background-color: green;
+}
+
+.gridThree div:last-child {
+    background-color: orange;
+}
+
+.gridThree > div img {
+    width: 500px;
+    height: 225px;
+    object-fit: cover;
+}
+
+/* GRID 4 STYLES */
+.gridFour {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    width: 500px;
+    background-color: green;
+}
+
+#grid4-secondRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+/* GRID 5 STYLES */
+.gridFive {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    width: 500px;
+    background-color: gray;
+}
+
+.grid5-secondRow {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+.grid5-secondRow img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* GRID 6 STYLES */
+.gridSix {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    width: 500px;
+    background-color: gray;
+}
+
+.gridSix > p {
+    font-family: 'Caveat', cursive;
+}
