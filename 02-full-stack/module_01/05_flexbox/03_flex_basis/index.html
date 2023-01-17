@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex basis</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            margin: 0;
+            height: calc(100vh - 20px);
+            width: calc(100vw - 20px);
+            border: 10px solid red;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .blocks {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 1000px;
+        }
+
+        .block {
+            background-color: cadetblue;
+            height: 200px;
+            margin: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /*
+        flex-basis: you give it a start size and it mantains the ratio
+        even when you change screen size
+        
+        flex-grow: tells to each element how much to grow in respective
+        to the rest of the flex-grow element -> element with bigger number
+        is going to grow X times faster than the others
+
+        flex-shrink: opposite of flex-grow -> element with bigger number
+        is going to shrink X times faster than the others
+        */
+
+        .block1 {
+            flex-basis: 400px;
+            /* flex-grow: 4; */
+            flex-shrink: 2;
+        }
+
+        .block2 {
+            flex-basis: 100px;
+            /* flex-grow: 1; */
+            flex-shrink: 1;
+        }
+
+        .block3 {
+            flex-basis: 200px;
+            /* flex-grow: 2; */
+            flex-shrink: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="blocks">
+            <div class="block block1">1</div>
+            <div class="block block2">2</div>
+            <div class="block block3">3</div>
+        </div>
+    </div>
+</body>
+</html>

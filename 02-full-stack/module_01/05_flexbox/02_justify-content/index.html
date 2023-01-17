@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container { /* flex container */
+            margin: 0;
+            height: calc(100vh - 20px);
+            width: calc(100vw - 20px);
+            border: 10px solid red;
+            
+            display: flex;
+            justify-content: center;
+        }
+
+        .container > .img-blocks { /* flex container */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="img-blocks">
+            <!-- random images from unsplash and a 150x150 size: -->
+            <img src="https://source.unsplash.com/random/150x150" alt="random img">
+            <img src="https://source.unsplash.com/random/150x150" alt="random img">
+            <img src="https://source.unsplash.com/random/150x150" alt="random img">
+        </div>
+    </div>
+</body>
+</html>
