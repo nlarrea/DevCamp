@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capstone Project</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/0f3793b933.js" crossorigin="anonymous"></script>
+
+    <style>
+        html {
+            font-family: 'Oxygen', sans-serif;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        .navbar {
+            background-color: #415068;
+        }
+
+        .navbar div {
+            display: none;
+        }
+
+        .navbar .toggle, .navbar .brand {
+            display: inline-block;
+        }
+
+        .navbar .link {
+            display: block;
+            text-align: center;
+            padding: 1em;
+            text-decoration: none;
+            background-color: #223047;
+            color: white;
+        }
+
+        .navbar .link:hover, .navbar .link:active {
+            color: #223047;
+            background-color: white;
+        }
+
+        .navbar .brand {
+            width: 10em;
+            text-align: center;
+            padding: 1em;
+            color: white;
+        }
+
+        .navbar a {
+            text-decoration: none;
+        }
+
+        .navbar .toggle {
+            padding: 1em;
+            color: black;
+        }
+
+        @media (min-width: 48em){ /* desktop mode */
+            .navbar {
+                display: flex;
+            }
+
+            .navbar div {
+                display: flex;
+            }
+
+            .navbar .left, .navbar .right {
+                display: flex;
+                flex: 1;
+            }
+
+            .navbar .link {
+                width: auto;
+            }
+
+            .navbar .right {
+                justify-content: flex-end;
+            }
+
+            .navbar .toggle {
+                display: none;
+            }
+        }
+
+        @media (max-width: 48em){ /* for smartphones */
+            .navbar.active .toggle {
+                background-color: #223047;
+                color: white;
+            }
+
+            .navbar .brand {
+                text-align: left; /* to make it move closer to the toggle */
+            }
+
+            .navbar.active div {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="#" class="toggle" id="nav-hamburger">
+            <i class="fa-solid fa-bars"></i>
+        </a>
+
+        <a href="#" class="brand">nlarrea</a>
+
+        <div class="left">
+            <a href="#" class="link">Link 1</a>
+            <a href="#" class="link">Link 2</a>
+        </div>
+
+        <div class="right">
+            <a href="#" class="link">Link 3</a>
+        </div>
+    </div>
+</body>
+<script>
+    const btnToggle = document.querySelector("#nav-hamburger");
+    const linksWrapper = document.querySelectorAll(".link");
+
+    btnToggle.addEventListener("click", (e) => {
+        btnToggle.parentElement.classList.toggle("active");
+    })
+</script>
+</html>
