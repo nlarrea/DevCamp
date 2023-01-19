@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change order with Flexbox</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            margin: 0;
+            height: calc(100vh - 20px);
+            width: calc(100vw - 20px);
+            border: 10px solid red;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .blocks {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 1000px;
+        }
+
+        .block {
+            background-color: cadetblue;
+            height: 200px;
+            margin: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .block1 {
+            flex-basis: 400px;
+            flex-shrink: 2;
+        }
+
+        .block2 {
+            flex-basis: 100px;
+            order: 1;
+        }
+
+        .block3 {
+            flex-basis: 400px;
+            order: 2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="blocks">
+            <div class="block block1">1</div>
+            <div class="block block2">2</div>
+            <div class="block block3">3</div>
+        </div>
+    </div>
+</body>
+</html>

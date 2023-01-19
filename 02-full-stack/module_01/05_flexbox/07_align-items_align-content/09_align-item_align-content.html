@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>align-item vs align-content</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            margin: 0;
+            height: calc(100vh - 20px);
+            width: calc(100vw - 20px);
+            border: 10px solid red;
+
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            /* align-items: center; /* moves everything to the center with some space */
+            align-content: center; /* removes the space, now everythins goes to the center */
+        }
+
+        img {
+            margin: 10px;
+            height: 90px;
+            width: 150px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- emmet: img[src="./images/$.jpg"]*6 -->
+        <img src="./images/1.jpg" alt="image-1">
+        <img src="./images/2.jpg" alt="image-2">
+        <img src="./images/3.jpg" alt="image-3">
+        <img src="./images/4.jpg" alt="image-4">
+        <img src="./images/5.jpg" alt="image-5">
+        <img src="./images/6.jpg" alt="image-6">
+    </div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex Wrap</title>
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            margin: 0;
+            height: calc(100vh - 20px);
+            width: calc(100vw - 20px);
+            border: 10px solid red;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container > .img-blocks {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .img-blocks img {
+            margin: 5px;
+            height: 120px;
+            width: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="img-blocks">
+            <img src="./images/1.jpg" alt="random-img1">
+            <img src="./images/2.jpg" alt="random-img2">
+            <img src="./images/3.jpg" alt="random-img3">
+            <img src="./images/4.jpg" alt="random-img4">
+            <img src="./images/5.jpg" alt="random-img5">
+            <img src="./images/6.jpg" alt="random-img6">
+            <img src="./images/7.jpg" alt="random-img7">
+            <img src="./images/8.jpg" alt="random-img8">
+        </div>
+    </div>
+</body>
+</html>

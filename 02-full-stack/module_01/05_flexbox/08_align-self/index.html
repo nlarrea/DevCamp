@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>align-self</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            margin: 0;
+            height: calc(100vh - 20px);
+            width: calc(100vw - 20px);
+            border: 10px solid red;
+            display: flex;
+        }
+
+        img {
+            margin: 10px;
+            height: 70px;
+            width: 120px;
+        }
+
+        .img2 {
+            align-self: flex-end; /* moves only this element */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="./images/1.jpg" class="img1" alt="image-1">
+        <img src="./images/2.jpg" class="img2" alt="image-2">
+        <img src="./images/3.jpg" class="img3" alt="image-3">
+    </div>
+</body>
+</html>
