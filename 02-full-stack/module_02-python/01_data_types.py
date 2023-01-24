@@ -47,8 +47,53 @@ print(sentence[12])             # o
 print(sentence[0:5])            # The q -> the range doesn't take the last char, it only takes the first 4 instead of 5
 first_word = sentence[0:3]
 print(first_word)               # The
-new_sentence = "thy" + sentence[3:]     # takes all the sentence from the 4th char untill the end (start counting from 0 -> 4th char = index 3)
+new_sentence = "Thy" + sentence[3:] # all the sentence from the 4th char untill the end (start counting from 0 -> 4th char = index 3)
 print(new_sentence)             # thy quick brown fox jumped
+
+# HEREDOC = multiline string
+content = """
+Nullam id dolor id nibh ultricies vehivula ut id elit. Nullam quis risus eget urna mollis ornare vel eu leo
+
+Vestibulum id ligula porta felis euismod semper. Cum sociis natoque penatibus et magnis dis partutient montes, nascetur ridiculus mus. Cras justo odio, dapibus ac facilisis in.
+
+Integer posuere erat a ante venenatis dapibus posuere velit aliquet.
+""".strip() # .strip() deletes the whitespaces at the end and beginning of the string
+print(content)
+
+content = """
+Nullam id dolor id nibh ultricies vehivula ut id elit. Nullam quis risus eget urna mollis ornare vel eu leo
+
+Vestibulum id ligula porta felis euismod semper. Cum sociis natoque penatibus et magnis dis partutient montes, nascetur ridiculus mus. Cras justo odio, dapibus ac facilisis in.
+
+Integer posuere erat a ante venenatis dapibus posuere velit aliquet.
+"""         # the same as before, but not using .strip(), so it adds \n at the beginning and at the end
+print(repr(content))    # shows the string as the computer is reading it. Great to see the new line characters, etc.
+
+# how to write the same in a single line:
+content = "\nNullam id dolor id nibh ultricies vehivula ut id elit. Nullam quis risus eget urna mollis ornare vel eu leo\n\nVestibulum id ligula porta felis euismod semper. Cum sociis natoque penatibus et magnis dis partutient montes, nascetur ridiculus mus. Cras justo odio, dapibus ac facilisis in.\n\nInteger posuere erat a ante venenatis dapibus posuere velit aliquet.\n"
+
+# STRING INTERPOLATION -> strings that can change during the program using code like variables
+name = "Cristina"
+greeting = f"Hi {name}!"
+print(greeting)     # Hi Cristina!
+
+# this kind of strings can't scape special chars with "\", this is the way it should be done:
+sentence = f"this is my {{bracket}} blog post"
+# it prints: this is my {bracket} blog post
+#
+# this would return an error: f"this is my \{bracket\} blog post"
+
+# it is a great way to create a dynami email!
+name = "Naia"
+product = "Python learning course"
+email_content = f"""
+Hi {name},
+
+Thank you for purchasing {product}!
+
+Regards,
+Sales Team
+"""
 
 
 
