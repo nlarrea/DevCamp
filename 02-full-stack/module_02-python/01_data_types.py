@@ -114,6 +114,15 @@ sentence = "The quick brown fox jumped over the lazy dog"
 sentence = sentence.replace("quick", "slow")
 print(sentence)     # The slow brown fox jumped over the lazy dog
 
+# STRIP STRINGS
+url = "   https://google.com      "
+url = url.strip()               # remove whitespaces from both sides
+url = url.lstrip("https://")    # remove 'https://' from the left
+url = url.rstrip(".com")        # remove '.com' from the right
+url = url.capitalize()
+print(url)                      # Google
+
+
 
 
 # Bytes and byte arrays
