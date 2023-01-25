@@ -95,6 +95,18 @@ Regards,
 Sales Team
 """
 
+# FIND A SUBSTRING IN ANOTHER STRING -> 3 options
+sentence = "The quick brown fox jumped over the lazy dog"
+# 1st option -> .find()
+print(sentence.find("quick"))           # 4 -> index of where 'quick' starts
+print(sentence.find("oops"))            # -1 -> it doesn't exist in the sentence
+# 2nd option -> .index()
+print(sentence.index("quick"))          # 4 -> index of where 'quick' starts
+#print(sentence.index("oops"))          # error -> throws an error whenever the substring doesn't exist
+# 3rd option -> 'in' operator
+print("quick" in sentence)              # True
+print("oops" in sentence)               # False
+
 
 
 # Bytes and byte arrays
