@@ -122,6 +122,26 @@ url = url.rstrip(".com")        # remove '.com' from the right
 url = url.capitalize()
 print(url)                      # Google
 
+# PARTITION -> returns a tuple with 3 elements
+heading = "Python: An Introduction"
+header, _, subheader = heading.partition(": ")
+# it's gonna give us the header, the partition element and the subheader
+print(header)                   # Python
+print(_)                        # ': ' -> data we don't want (we save it into variable called "_")
+print(subheader)                # An Introduction
+# -> even if it finds another match, the second value will only be the first partition match
+heading = "Python: An Introduction, and Python: Advanced"
+header, _, subheader = heading.partition(": ")
+print(header)                   # Python
+print(_)                        # ': '
+print(subheader)                # An Introduction, and Python: advanced
+
+# SPLIT
+# this let us separate strings using a partition, but creates a list with every parts
+tags = "python, coding, programming, development"
+list_of_tags = tags.split(",")
+print(list_of_tags)             # ["python", "coding", "programming", "development"]
+# if no arguments are given to .split(), it tryes to split from whitespaces
 
 
 
