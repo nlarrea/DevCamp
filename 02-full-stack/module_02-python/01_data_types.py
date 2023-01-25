@@ -143,6 +143,17 @@ list_of_tags = tags.split(",")
 print(list_of_tags)             # ["python", "coding", "programming", "development"]
 # if no arguments are given to .split(), it tryes to split from whitespaces
 
+# CHECK IF THERE ARE NUMBERS IN A STRING
+api_data = "5"
+greeting = "Hi"
+# check if is alphanumeric -> careful! whitespaces are no alphanumeric
+print(api_data.isalpha())       # False
+print(greeting.isalpha())       # True
+print("Hi there". isalpha())    # False
+# check if is numeric -> this one is a better option to make sure it is a number
+print(api_data.isnumeric())     # True
+print(greeting.isnumeric())     # False
+
 
 
 # Bytes and byte arrays
