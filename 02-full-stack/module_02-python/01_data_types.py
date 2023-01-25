@@ -42,6 +42,8 @@ print(sentence)                 # original string doesn't get modified
 sentence = "The quick brown fox jumped"
 print(sentence[0])              # T
 print(sentence[12])             # o
+print(sentence[-1])             # d -> the last char
+print(sentence[-3])             # p -> the third starting from the back
 # we can't do this:
 # sentence[1] = 'r' -> Python doesn't let change the value of a char from a string
 print(sentence[0:5])            # The q -> the range doesn't take the last char, it only takes the first 4 instead of 5
@@ -106,6 +108,11 @@ print(sentence.index("quick"))          # 4 -> index of where 'quick' starts
 # 3rd option -> 'in' operator
 print("quick" in sentence)              # True
 print("oops" in sentence)               # False
+
+# REPLACE PART OF THE STRING
+sentence = "The quick brown fox jumped over the lazy dog"
+sentence = sentence.replace("quick", "slow")
+print(sentence)     # The slow brown fox jumped over the lazy dog
 
 
 
