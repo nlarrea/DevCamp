@@ -16,6 +16,45 @@ tip = sub_total * 0.2       # same as: tip = sub_total * 1/5
 total = sub_total + tip
 print(total)
 
+product_id = 123
+sale_price = 14.99
+tip_percentage = 1/5
+print(tip_percentage)               # 0.2
+new_product = 150
+# integers and floats can work together
+print(sale_price + new_product)     # 164.99
+
+# OPERATORS
+# addition -> +
+addition_value = 100 + 42
+print(addition_value)               # 142
+# subtraction -> -
+subtraction_value = 100 - 42.3
+print(subtraction_value)            # 57.7
+# division -> /
+print(100 / 42.3)                   # 2.364066193853428
+# floor division -> //
+print(100 // 42)                    # 2 -> rounds the value to smallest
+# multiplication -> *
+print(100 * 38)                     # 3800
+# modulus -> %
+print(10 % 2)                       # 0 -> even numbers always return a 0 when calculating %2
+print(11 % 2)                       # 1 -> odd numbers always return a 1 when calculating %2
+print(10 % 3)                       # 1
+# exponents -> **
+print(11 ** 2)                      # 121
+
+# ORDER OF OPERATIONS
+calculation = 8 + 2 * 5 - (9  + 2) ** 2
+print(calculation)                  # -103
+""" this is the order:
+P = ()
+E = **
+M = * D = / -> the one on the left is the first being executed
+A = +
+S = -
+"""
+
 
 
 # STRINGS
