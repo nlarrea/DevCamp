@@ -50,10 +50,31 @@ print(calculation)                  # -103
 """ this is the order:
 P = ()
 E = **
-M = * D = / -> the one on the left is the first being executed
+M = * and D = / -> the one on the left is the first being executed
 A = +
 S = -
 """
+
+# ASSIGNMENT OPERATOR
+total = 100
+total = total + 10
+print(total)                # 110
+# now using the operator:
+total = 100
+total += 10
+print(total)                # 110
+total -= 20
+print(total)                # 90
+total *= 2
+print(total)                # 180
+total /= 10
+print(total)                # 18.0
+total //= 5
+print(total)                # 3
+total **= 2
+print(total)                # 9
+total %= 2
+print(total)                # 1
 
 
 
