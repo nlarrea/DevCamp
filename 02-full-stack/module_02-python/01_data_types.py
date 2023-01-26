@@ -91,6 +91,16 @@ product_cost += (commission_rate * product_cost)
 print(product_cost * qty)           # 42962.40000000000282883716451
 # decimals give much more precision -> a MUST TO when it comes to anything that is finance related
 
+# CONVERTION BETWEEN NUMERIC DATA TYPES
+product_cost = 88.80
+commission_rate = 0.08
+qty = 450
+print(int(product_cost))            # 88 -> ignores whatever is not the integer number part
+print(float(qty))                   # 450.0
+from decimal import Decimal
+print(Decimal(product_cost))        # 88.7999999999971578...
+print(complex(commission_rate))     # (0.08 + 0j)
+
 
 
 # STRINGS
