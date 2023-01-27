@@ -524,6 +524,14 @@ print(id(post))             # 2037450353792 -> give us the id of the object
 post += ("published",)
 print(id(post))             # 2037450600144 -> we can see that now, post object has changed, it's not the same as before
 
+# LISTS NESTED IN TUPLES
+post = ("Python Basics", "Intro guide to python", "Some cool python content")
+tags = ["python", "coding", "tutorial"]
+post += (tags,)
+print(post)                 # ('Python Basics', 'Intro guide to python', 'Some cool python content', ['python', 'coding', 'tutorial'])
+print(post[-1])             # ['python', 'coding', 'tutorial']
+print(post[-1][1])          # coding
+
 
 
 # Sets
