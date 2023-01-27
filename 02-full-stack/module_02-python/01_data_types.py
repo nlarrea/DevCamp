@@ -338,7 +338,14 @@ print(totals)                               # 1, 234, 543, 2345
 totals.sort(reverse=True)
 print(totals)                               # 2345, 543, 234, 1
 
-
+# JOIN
+uri = "https://www.google.com/search?q="
+tags = ["python", "development", "tutorial"]
+formatted_tags = "+".join(tags)             # join all of the tags using the string as separator
+print(formatted_tags)                       # python+development+tutorial
+query_uri = f"{uri}{formatted_tags}"
+print(query_uri)                            # https://www.google.com/search?q=python+development+tutorial
+# we can use whatever string we want to join the list elements
 
 
 
