@@ -616,3 +616,30 @@ removed_team = teams.pop("astros", "No team found by that name")
 print(removed_team)             # No team found by that name
 removed_team = teams.pop("yankees", "No team found by that name")
 print(removed_team)             # ['Judge', 'Stanton'] -> the value of the removed item
+
+# LISTS OF NESTED DICTIONARIES
+teams = [
+    {
+        "astros": {
+            "2B": "Altuve",
+            "SS": "Correa",
+            "3B": "Bregman"
+        }
+    },
+    {
+        "angels": {
+            "OF": "Trout",
+            "DH": "Pujols"
+        }
+    }
+]
+print(teams)
+""" this is what is printed
+[{'astros': {'2B': 'Altuve', 'SS': 'Correa', '3B': 'Bregman'}}, {'angels': {'OF': 'Trout', 'DH': 'Pujols'}}]
+"""
+# it is a list, so we can use it as it is
+print(teams[0])                     # {'astros': {'2B': 'Altuve', 'SS': 'Correa', '3B': 'Bregman'}}
+angels = teams[1].get("angels", "Team not found")
+print(angels)                       # {'OF': 'Trout', 'DH': 'Pujols'}
+print(list(angels.values()))        # ['Trout', 'Pujols']
+print(list(angels.values())[1])     # Pujols
