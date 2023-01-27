@@ -591,3 +591,28 @@ print(list(team_groupings)[1])          # ('angels', ['Trout', 'Pujols'])
 print(list(team_groupings)[1][0])       # angels
 print(list(team_groupings)[1][1])       # ['Trout', 'Pujols']
 print(list(team_groupings)[1][1][0])    # Trout
+
+# REMOVE ELEMENTS FROM DICTIONARIES
+teams = {
+    "astros": ["Altuve", "Correa", "Bregman"],
+    "angels": ["Trout", "Pujols"],
+    "yankees": ["Judge", "Stanton"],
+    "red sox": ["Price", "Betts"]
+}
+# 'del' keyword -> useful when we know that the key exists
+del teams["astros"]
+print(teams)
+""" this is what is printed
+{
+    'angels': ['Trout', 'Pujols'],
+    'yankees': ['Judge', 'Stanton'],
+    'red sox': ['Price', 'Betts']
+}
+"""
+# if the key doesn't exist, it raises an error
+# del teams["mets"]             # KeyError
+# .pop() -> like .get(), we give to it a second argument, if the first doesn't exist, returns the message
+removed_team = teams.pop("astros", "No team found by that name")
+print(removed_team)             # No team found by that name
+removed_team = teams.pop("yankees", "No team found by that name")
+print(removed_team)             # ['Judge', 'Stanton'] -> the value of the removed item
