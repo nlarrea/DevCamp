@@ -276,6 +276,33 @@ print(greeting.isnumeric())     # False
 
 # great to store multiple data types with an order
 
+users = ["Cristina", "June", "Naia"]
+print(users)                    # [ 'Cristina', 'June', 'Naia' ]
+
+# INSERT NEW ELEMENTS
+users.insert(2, "Raquel")       # [ 'Cristina', 'June', 'Raquel', 'Naia' ] -> insert in index = 2
+users.append("Thom")            # [ 'Cristina', 'June', 'Raquel', 'Naia', 'Thom' ] -> insert at the end
+
+# ACCESS ELEMENTS
+print(users[3])                 # Naia
+print([users[3]])               # ['Naia']
+
+# EDIT VALUES
+users[4] = "Irene"
+print(users)                    # [ 'Cristina', 'June', 'Raquel', 'Naia', 'Irene' ]
+
+# REMOVE ELEMENTS FROM THE LIST
+# .remove() -> when you know the value to remove
+users.remove("Raquel")
+print(users)                    # ['Cristina', 'June', 'Naia', 'Irene']
+# .pop() -> when you want the last element and you wanna use it
+popped_user = users.pop()       # pop -> removes the last element and returnes its value
+print(popped_user)              # Irene
+print(users)                    # ['Cristina', 'June', 'Naia']
+# del -> when you only know the index of the element
+del users[1]
+print(users)                    # ['Cristina', 'Naia']
+
 
 
 # Tuples
