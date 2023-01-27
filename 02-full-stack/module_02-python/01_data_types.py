@@ -303,6 +303,27 @@ print(users)                    # ['Cristina', 'June', 'Naia']
 del users[1]
 print(users)                    # ['Cristina', 'Naia']
 
+# MIXED LISTS
+users = ["Kristine", "Tiffany", "Jordan", "Leann"]
+ids = [1, 2, 3, 4]
+mixed_list = [42, 10.3, "Altuve", users]        # nested list -> list inside list
+print(mixed_list)                               # [42, 10.3, 'Altuve', ['Kristine', 'Tiffany', 'Jordan', 'Leann']]
+user_list = mixed_list.pop()
+print(user_list)                                # ['Kristine', 'Tiffany', 'Jordan', 'Leann']
+print(mixed_list)                               # [42, 10.3, 'Altuve']
+
+# NESTED LISTS
+nested_lits = [[123], [234], [345]]
+
+# LENGTH OF A LIST
+tags = ["python", "development", "tutorials", "code"]
+print(len(tags))                            # 4
+
+# INDEX OF AN ELEMENT
+last_item = tags[-1]
+index_of_last_item = tags.index(last_item)
+print(index_of_last_item)                   # 3
+
 
 
 # Tuples
