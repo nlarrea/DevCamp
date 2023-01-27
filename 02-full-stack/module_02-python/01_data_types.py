@@ -491,3 +491,60 @@ print(new_tags)                 # ['python', 'development', 'tutorials', 'code',
 # Disctionaries
 
 # key-value data is stored here
+
+# creating a dictionary
+players = {
+    "ss": "Correa"
+}
+print(players)                          # {'ss': 'Correa'}
+# create disctionary with more items
+players = {
+    "ss": "Correa",
+    "2b": "Altuve",
+    "3b": "Bregman",
+    "DH": "Gattis",
+    "OF": "Springer"
+}
+# now, instead of working with indexes, we'll work with key-value structures
+
+# QUERY THE VALUES
+second_base = players["2b"]
+print(second_base)                      # Altuve
+# print(players["abc"])                 # KeyError: 'abc' -> because that key doesn't exist
+designated_hitter = players["DH"]
+print(designated_hitter)                # Gattis
+
+# NESTED COLLECTIONS
+# lists as dictionary values
+teams = {
+    "astros": ["Altuve", "Correa", "Bregman"],
+    "angels": ["Trout", "Pujols"],
+    "yankees": ["Judge", "Stanton"]
+}
+print(teams["astros"])                  # ['Altuve', 'Correa', 'Bregman']
+print(teams["astros"][1])               # Correa
+print(teams["astros"][:2])              # ['Altuve', 'Correa']
+# we can save the values (lists) in different variables
+angels = teams["angels"]
+print(angels)                           # ['Trout', 'Pujols']
+
+# ADD NEW KEY-VALUE PAIRS
+teams["red sox"] = ["Price", "Betts"]   # keys are strings, can have whitespaces, but not recomended
+print(teams)
+""" this is what is printed -> the new pair has been added
+{
+    'astros': ['Altuve', 'Correa', 'Bregman'],
+    'angels': ['Trout', 'Pujols'],
+    'yankees': ['Judge', 'Stanton'],
+    'red sox': ['Price', 'Betts']
+}
+"""
+
+# GET
+featured_team = teams["astros"]         # this works, but if the key didn't exist, it would raise an error
+# sometimes you just want to have a fallback -> .get()
+featured_team = teams.get("mets", "No featured team")
+print(featured_team)                    # No featured team
+# if the key ('mets') doesn't exist, the featured_team will take the second argument as value
+featured_team = teams.get("yankees", "No featured team")
+print(featured_team)                    # ['Judge', 'Stanton']
