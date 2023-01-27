@@ -538,6 +538,21 @@ print(post[:2])             # ('Python Basics', 'Intro guide to python')
 print(post[1:])             # ('Intro guide to python', 'Some cool python content', 'published')
 print(post[1::2])           # ('Intro guide to python', 'published')
 
+# REMOVE ELEMENTS FROM TUPLES -> tuples are immutable -> need to slice
+# remove from end
+post = ("Python Basics", "Intro guide to python", "Some cool python content", "published")
+post = post[:-1]
+print(post)                 # ('Python Basics', 'Intro guide to python', 'Some cool python content')
+# remove from beginning
+post = post[1:]
+print(post)                 # ('Intro guide to python', 'Some cool python content')
+# remove specific element (not recommended)
+post = ("Python Basics", "Intro guide to python", "Some cool python content", "published")
+post = list(post)
+post.remove("published")
+post = tuple(post)
+print(post)                 # ('Python Basics', 'Intro guide to python', 'Some cool python content')
+
 
 
 # Sets
@@ -587,7 +602,7 @@ angels = teams["angels"]
 print(angels)                           # ['Trout', 'Pujols']
 
 # ADD NEW KEY-VALUE PAIRS
-teams["red sox"] = ["Price", "Betts"]   # keys are strings, can have whitespaces, but not recomended
+teams["red sox"] = ["Price", "Betts"]   # keys are strings, can have whitespaces, but not recommended
 print(teams)
 """ this is what is printed -> the new pair has been added
 {
