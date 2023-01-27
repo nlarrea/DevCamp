@@ -101,6 +101,21 @@ from decimal import Decimal
 print(Decimal(product_cost))        # 88.7999999999971578...
 print(complex(commission_rate))     # (0.08 + 0j)
 
+# FUNCTIONS FOR NUMBER DATA TYPES
+import math
+loss = -20.25
+product_cost = 89.99
+print(abs(loss))                    # 20.25 -> doesn't need to import math
+print(math.floor(product_cost))     # 89 -> rounds down
+print(math.ceil(product_cost))      # 90 -> rounds up
+print(abs(math.floor(loss)))        # 21 -> math.floor is called before abs -> math.floor(-20.25) = -21 -> abs(-21) = 21
+print(math.floor(abs(loss)))        # 20
+print(round(product_cost))          # 90 -> rounds up or down, to the nearest
+print(math.sqrt(product_cost))      # 9.486305919587455
+print(math.pow(5, 2))               # 25.0
+print(5 ** 2)                       # 25
+print()
+
 
 
 # STRINGS
