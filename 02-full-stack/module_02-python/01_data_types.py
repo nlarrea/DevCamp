@@ -338,6 +338,28 @@ print(totals)                               # 1, 234, 543, 2345
 totals.sort(reverse=True)
 print(totals)                               # 2345, 543, 234, 1
 
+# SORT WITHOUT CHANGING ORIGINAL LIST -> sorted()
+sale_prices = [
+    100,
+    83,
+    220,
+    40,
+    100,
+    400,
+    10,
+    1,
+    3
+]
+"""
+sort() doesn't return anything and modifies the original list, but sometimes
+we don't want that
+"""
+sorted_list = sorted(sale_prices)
+print(sorted_list)                      # [1, 3, 10, 40, 83, 100, 100, 220, 400]
+sorted_list = sorted(sale_prices, reverse=True)
+print(sorted_list)                      # [400, 220, 100, 100, 83, 40, 10, 3, 1]
+print(sale_prices)                      # [100, 83, 220, 40, 100, 400, 10, 1, 3] -> not modified
+
 # JOIN
 uri = "https://www.google.com/search?q="
 tags = ["python", "development", "tutorial"]
