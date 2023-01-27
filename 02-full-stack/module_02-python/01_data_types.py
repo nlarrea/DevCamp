@@ -272,7 +272,7 @@ print(greeting.isnumeric())     # False
 
 # COLLECTIONS
 
-# Lists
+# Lists -> []
 
 # great to store multiple data types with an order
 
@@ -476,9 +476,53 @@ print(new_tags)                 # ['python', 'development', 'tutorials', 'code',
 
 
 
-# Tuples
+# Tuples -> ()
 
 # similar to lists, but they can not change its value
+
+# tuples are often used to unpacking
+post = ("Python Basics", "Intro guide to python", "Some cool python content")
+title, sub_heading, content = post      # this is unpacking
+print(title)                            # Python Basics
+print(sub_heading)                      # Intro guide to python
+print(content)                          # Some cool python content
+""" this does the same thing that this
+title = post[0]
+sub_heading = post[1]
+content = post[2]
+"""
+# when should we use use tuples and when should we use lists?
+# tuples = immutable -> much more control
+# lists = mutable
+#
+# if we use a list and there is a .sort(), the values are not gonna store in the order we want:
+post = ["Python Basics", "Intro guide to python", "Some cool python content"]
+post.sort()
+title, sub_heading, content = post
+print(title)                            # Intro guide to python
+print(sub_heading)                      # Python Basics
+print(content)                          # Some cool python content
+# now the data is not correct
+#
+# but if we .sort() a tuple, that would be an error, because tuples are immutable
+
+# ADD ELEMENTS TO TUPLES
+post = ("Python Basics", "Intro guide to python", "Some cool python content")
+# post = post + ("published")           # this is gonna be treated as a mathematical operation
+# to solve this, we have to add a comma at the end
+post += ("published",)
+print(post)                             # ('Python Basics', 'Intro guide to python', 'Some cool python content', 'published')
+title, sub_heading, content, status = post
+print(title)                            # Python Basics
+print(sub_heading)                      # Intro guide to python
+print(content)                          # Some cool python content
+print(status)                           # published
+
+# ID FUNCTION
+post = ("Python Basics", "Intro guide to python", "Some cool python content")
+print(id(post))             # 2037450353792 -> give us the id of the object
+post += ("published",)
+print(id(post))             # 2037450600144 -> we can see that now, post object has changed, it's not the same as before
 
 
 
@@ -488,7 +532,7 @@ print(new_tags)                 # ['python', 'development', 'tutorials', 'code',
 
 
 
-# Disctionaries
+# Disctionaries -> {}
 
 # key-value data is stored here
 
