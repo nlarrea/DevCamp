@@ -22,7 +22,10 @@ Todo el contenido trabajado en este curso está repartido en tres apartados prin
 
 ## Full-Stack
 
-Próximamente...
+En esta sección, se trabajaran diferentes temas sobre el desarrollo web, como son el backend, el frontend y las bases de datos. A continuación, se muestra el contenido trabajado durante este curso:
+
+* #01 - [HTML, CSS y UX/UI](./02-full-stack/module_01-html_css_uxui/)
+* #02 - [Python](./02-full-stack/module_02-python/)
 
 
 <br><hr>
