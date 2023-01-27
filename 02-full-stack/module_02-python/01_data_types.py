@@ -404,6 +404,38 @@ print(tag_range)                        # ['python', 'tutorials', 'programming']
 tag_range = tags[::-1]
 print(tag_range)                        # ['computer science', 'programming', 'code', 'tutorials', 'development', 'python']
 
+# FIND THE STATISTICAL MEDIAN
+"""
+tools:
+- math library
+- sorted function
+- list slicing
+- computations
+"""
+sale_prices = [
+    100,
+    83,
+    220,
+    40,
+    100,
+    400,
+    10,
+    1,
+    3
+]
+import math
+sorted_list = sorted(sale_prices)
+num_of_sales = len(sale_prices)
+median = sorted_list[math.floor(num_of_sales/2)]
+print(median)                                       # 83
+half_slices = math.floor(num_of_sales/2)
+first_sales_items = sorted_list[:half_slices]       # get the first slice of the list
+print(first_sales_items)                            # [1, 3, 10, 40]
+last_sales_items = sorted_list[-(half_slices):]     # negative index -> last slice of the list
+print(last_sales_items)                             # [100, 100, 220, 400]
+median = sorted_list[half_slices:(half_slices + 1)]
+print(median)                                       # [83]
+
 
 
 # Tuples
