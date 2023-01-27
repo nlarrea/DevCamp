@@ -436,6 +436,29 @@ print(last_sales_items)                             # [100, 100, 220, 400]
 median = sorted_list[half_slices:(half_slices + 1)]
 print(median)                                       # [83]
 
+# SLICE CLASS
+tags = [
+    "python",
+    "development",
+    "tutorials",
+    "code",
+    "programming"
+]
+print(tags[:2])             # ['python', 'development']
+# this is fine, but sometimes we don't know the slice range
+slice_obj = slice(2)        # this allows us to store our slice in a variable
+print(slice_obj)            # slice(None, 2, None) -> start point (None), end point (2) and the interval (None)
+print(tags[slice_obj])      # ['python', 'development']
+# another example
+slice_obj = slice(1, 4, 2)
+print(tags[1:4:2])          # ['development', 'code']
+print(tags[slice_obj])      # ['development', 'code']
+# we can know where the slice object starts, stops or its step
+print(slice_obj.start)      # 1
+print(slice_obj.stop)       # 4
+print(slice_obj.step)       # 2
+# this is great to don't repeat code when slicing in different lists using the same pattern
+
 
 
 # Tuples
