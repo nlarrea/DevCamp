@@ -324,6 +324,22 @@ last_item = tags[-1]
 index_of_last_item = tags.index(last_item)
 print(index_of_last_item)                   # 3
 
+# SORT LISTS
+print(tags)                                 # ['python', 'development', 'tutorials', 'code']
+tags.sort()
+print(tags)                                 # ['code', 'development', 'python', 'tutorials']
+# backwards
+tags.sort(reverse=True)
+print(tags)                                 # ['tutorials', 'python', 'development', 'code']
+# same with numbers
+totals = [234, 1, 543, 2345]
+totals.sort()
+print(totals)                               # 1, 234, 543, 2345
+totals.sort(reverse=True)
+print(totals)                               # 2345, 543, 234, 1
+
+
+
 
 
 # Tuples
