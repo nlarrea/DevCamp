@@ -459,6 +459,21 @@ print(slice_obj.stop)       # 4
 print(slice_obj.step)       # 2
 # this is great to don't repeat code when slicing in different lists using the same pattern
 
+# ADD TO A LIST WITH PLACE AND COPY PROCESSES
+tags = ["python", "development", "tutorials", "code"]
+# wrong way to add an element
+tags[-1] = "programming"        # replaces code, not adding elements
+tags.extend("programming")
+print(tags)                     # ['python', 'development', 'tutorials', 'programming', 'p', 'r', 'o', 'g', 'r', 'a', 'm', 'm', 'i', 'n', 'g']
+# correct way
+tags = ["python", "development", "tutorials", "code"]
+tags.extend(["programming"])
+print(tags)                     # ['python', 'development', 'tutorials', 'code', 'programming']
+# without modifying the original list
+tags = ["python", "development", "tutorials", "code"]
+new_tags = tags + ["programming"]
+print(new_tags)                 # ['python', 'development', 'tutorials', 'code', 'programming']
+
 
 
 # Tuples
