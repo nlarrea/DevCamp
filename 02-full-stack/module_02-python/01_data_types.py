@@ -347,6 +347,41 @@ query_uri = f"{uri}{formatted_tags}"
 print(query_uri)                            # https://www.google.com/search?q=python+development+tutorial
 # we can use whatever string we want to join the list elements
 
+# RANGES
+tags = ["python", "development", "tutorials", "code"]
+tag_range = tags[1:2]
+print(tag_range)                        # development -> the second argument of the range is not included
+# from index to the end
+tag_range = tags[1:]
+print(tag_range)                        # ['development', 'tutorials', 'code']
+# from beginning to index
+tag_range = tags[:2]
+print(tag_range)                        # ['python', 'development']
+# all the values except the last one
+tag_range = tags[:-1]
+print(tag_range)                        # ['python', 'development', 'tutorials']
+# copy the list
+tag_range = tags[:]
+print(tag_range)                        # ['python', 'development', 'tutorials', 'code']
+
+# RANGES AND SLICES
+tags = [
+    "python",
+    "development",
+    "tutorials",
+    "code",
+    "programming",
+    "computer science"
+]
+tag_range = tags[1:-1]                  # start with the second element to the very last element (not included)
+print(tag_range)                        # ['development', 'tutorials', 'code', 'programming']
+# three arguments
+tag_range = tags[:-1:2]                 # the third argument is the interval
+print(tag_range)                        # ['python', 'tutorials', 'programming']
+# reverse the list
+tag_range = tags[::-1]
+print(tag_range)                        # ['computer science', 'programming', 'code', 'tutorials', 'development', 'python']
+
 
 
 # Tuples
