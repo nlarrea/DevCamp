@@ -532,6 +532,12 @@ print(post)                 # ('Python Basics', 'Intro guide to python', 'Some c
 print(post[-1])             # ['python', 'coding', 'tutorial']
 print(post[-1][1])          # coding
 
+# SLICES
+post = ("Python Basics", "Intro guide to python", "Some cool python content", "published")
+print(post[:2])             # ('Python Basics', 'Intro guide to python')
+print(post[1:])             # ('Intro guide to python', 'Some cool python content', 'published')
+print(post[1::2])           # ('Intro guide to python', 'published')
+
 
 
 # Sets
