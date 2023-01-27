@@ -548,3 +548,46 @@ print(featured_team)                    # No featured team
 # if the key ('mets') doesn't exist, the featured_team will take the second argument as value
 featured_team = teams.get("yankees", "No featured team")
 print(featured_team)                    # ['Judge', 'Stanton']
+
+# DICTIONARY VIEW OBJECT
+players = {
+    "ss": "Correa",
+    "2b": "Altuve",
+    "3b": "Bregman",
+    "DH": "Gattis",
+    "OF": "Springer"
+}
+teams = {
+    "astros": ["Altuve", "Correa", "Bregman"],
+    "angels": ["Trout", "Pujols"],
+    "yankees": ["Judge", "Stanton"],
+    "red sox": ["Price", "Betts"]
+}
+# GRAB ONLY THE KEYS, VALUES OR BOTH
+print(players.keys())                   # dict_keys(['ss', '2b', '3b', 'DH', 'OF']) -> it is an object, not a list
+print(players.values())                 # dict_values(['Correa', 'Altuve', 'Bregman', 'Gattis', 'Springer'])
+print(players.items())                  # dict_items([('ss', 'Correa'), ('2b', 'Altuve'), ('3b', 'Bregman'), ('DH', 'Gattis'), ('OF', 'Springer')])
+# view objects are not lists, we can not use them as lists, but we can convert the view objects into lists
+print(list(players.values()))           # ['Correa', 'Altuve', 'Bregman', 'Gattis', 'Springer']
+
+# THREAT SAVE -> COPY THE LIST
+player_names = list(players.copy().values())
+
+# NESTED ITEMS
+team_groupings = teams.items()
+print(team_groupings)                   # prints all the teams and players together
+print(len(team_groupings))              # 4
+print(list(team_groupings))
+""" this is what is printed
+[
+    ('astros', ['Altuve', 'Correa', 'Bregman']),
+    ('angels', ['Trout', 'Pujols']),
+    ('yankees', ['Judge', 'Stanton']),
+    ('red sox', ['Price', 'Betts'])
+]
+"""
+# they are tupples -> can use them almost like lists
+print(list(team_groupings)[1])          # ('angels', ['Trout', 'Pujols'])
+print(list(team_groupings)[1][0])       # angels
+print(list(team_groupings)[1][1])       # ['Trout', 'Pujols']
+print(list(team_groupings)[1][1][0])    # Trout
