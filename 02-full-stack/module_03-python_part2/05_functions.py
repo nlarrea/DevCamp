@@ -51,3 +51,19 @@ def counter(max):
 
 
 counter(50)
+
+
+
+# DEVOLVER DATOS DE UNA FUNCIÓN -> return
+# así sería el flujo de trabajo real:
+def return_full_name(first, last):
+    return f"{first} {last}"
+
+
+kristine = return_full_name("Kristine", "Hudgens")
+
+def greeting(name):
+    print(f"Hi {name}!")
+
+
+greeting(kristine)
