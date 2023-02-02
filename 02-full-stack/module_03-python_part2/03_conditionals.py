@@ -100,7 +100,3 @@ if logged_in and not standard_user:     # to enter the 'if' logged_in must be Tr
     print("You can access the admin dashboard")
 else:
     print("You can only access the standard dashboard")
-
-
-
-# REMOVE THE FIRST AND LAST ELEMENT FROM A LIST
