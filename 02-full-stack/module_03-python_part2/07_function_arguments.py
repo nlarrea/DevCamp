@@ -87,3 +87,33 @@ kwargs = {
 el argumento puede tomar el nombre que sea, pero por norma convencional en python,
 a este tipo de 'keyword argument' de le seuele llamar 'kwargs'
 """
+
+
+
+# COMBINE ALL TYPE OF ARGUMENTS IN FUNCTIONS
+def greeting4(time_of_day, *args, **kwargs):
+    print(f"Hi {' '.join(args)}, I hope that you're having a great {time_of_day}")
+
+    if kwargs:
+        print("\nYour tasks for the day are:")
+        for key, val in kwargs.items():
+            print(f"\t- {key} => {val}")
+
+
+greeting4(
+    "Morning",                          # time_of_day -> porque está en primera posición
+    "Kristine", "Hudgens",              # *args -> coge todos los demás argumentos
+    # estos argumentos tienen nombre, por lo que se recogen en '**kwargs' como diccionario:
+    first = "Empty dishwasher",
+    second = "Take pupper outside",
+    third = "Math homework"
+)
+
+""" esta función imprime:
+Hi Kristine Hudgens, I hope that you're having a great Morning
+
+Your tasks for the day are:
+    - first => Empty dishwasher
+    - second => Take pupper outside
+    - third => Math homework
+"""
