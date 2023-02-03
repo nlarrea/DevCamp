@@ -106,5 +106,40 @@ py -m pip --version     # comprobar la versión de pip
 
 Si no tenemos instalada una versión de pip, podemos instalarla de diferentes maneras, ambas descritas en la [documentación oficial](https://pip.pypa.io/en/stable/installation/).
 
+
+<br><hr><br>
+
+
+### Instalar un módulo
+
+Se pueden encontrar módulos disponibles en [Pypi](https://pypi.python.org/pypi). Para instalar un módulo, podemos escribir lo siguiente en la terminal:
+
+```bash
+pip install <nombre del módulo>
+```
+
 <br>
 
+En este caso, vamos a utilizar la librería `numpy`, que nos permite trabajar con matrices y vectores. Para instalarla, escribiremos lo siguiente en la terminal:
+
+```bash
+pip install numpy
+```
+
+<br>
+
+Una vez instalado numpy, podemos importarlo en nuestro archivo y utilizarlo:
+
+```python
+import numpy as np
+
+num_range = np.arange(16)               # crear un array de 16 elementos
+print(num_range)
+# array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15])
+
+num_range = num_range.reshape(4, 4)     # convertir el array en una matriz de 4x4
+# array([[ 0,  1,  2,  3],
+#        [ 4,  5,  6,  7],
+#        [ 8,  9, 10, 11],
+#        [12, 13, 14, 15]])
+```
