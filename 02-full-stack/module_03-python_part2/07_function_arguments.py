@@ -45,4 +45,45 @@ greeting2("Afternoon", "Kristine", "M", "Hudgens")
 """
 no importa cuántos argumentos pasemos a la función, siempre va a cogerlos todos
 y juntarlos separándolos por un espacio
+
+las functiones que tengan * en un argumento, harán que ese argumento se comporte
+como una tupla
+
+se le puede llamar de cualquier forma al argumento con *, pero por norma general
+en python, se le suele llamar 'args'
+"""
+
+
+
+# KEYWORD ARGUMENTS IN FUNCTIONS -> combination between arg. unpacking and named arg.
+def greeting3(**kwargs):
+    if kwargs:
+        print(f"Hi {kwargs['first_name']} {kwargs['last_name']}, have a great day!")
+    else:
+        print("Hi Guest, have a great day!")
+
+
+greeting3(first_name = "Kristine", last_name = "Hudgens")
+# Hi Kristine Hudgens, have a great day!
+greeting3()
+# Hi Guest, have a great day!
+
+"""
+las funciones que tengan ** en un argumento, harán que ese argumento se
+comporte como un diciconario, al llamar a la función se le asignan names a las
+variables, y éstas son tratadas como claves del diccionario
+
+ejemplo:
+
+greeting3(first_name = "Kristine", last_name = "Hudgens")
+
+hace que ocurra lo siguiente dentro de la función:
+
+kwargs = {
+    'first_name': 'Kristine',
+    'last_name': 'Hudgens'
+}
+
+el argumento puede tomar el nombre que sea, pero por norma convencional en python,
+a este tipo de 'keyword argument' de le seuele llamar 'kwargs'
 """
