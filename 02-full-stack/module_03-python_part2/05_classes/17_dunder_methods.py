@@ -12,15 +12,25 @@ normalmente se usa para casos de debbuging, porque nos permite ver las diferenci
 entre los valores de los atributos de las diferentes instancias de una misma clase
 """
 
+# __repr__
+"""
+similar a __str__, se usa para mostrar la salida, pero se suele utilizar más
+para mostrar directamente los valores, de una forma más 'objeto'
+"""
+
 class Invoice:
     def __init__(self, client, total):
         self.client = client
-        self.total - total
+        self.total = total
 
     def __str__(self):
         return f"Infoice from {self.client} for {self.total}"
 
+    def __repr__(self):
+        return f"Invoice <value: client: {self.client}, total: {self.total}>"
 
-inv = Invoice()
 
-print(str(inv))     # This is the invoice class!
+inv = Invoice("Google", 100)
+
+print(str(inv))     # Infoice from Google for 100
+print(repr(inv))    # Invoice <value: client: Google, total: 100>
