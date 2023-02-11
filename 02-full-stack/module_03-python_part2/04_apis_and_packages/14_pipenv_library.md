@@ -32,7 +32,10 @@ pip install pipenv
 Ahora, para trabajar con ello, vamos desde la terminal al directorio donde vamos a tener el proyecto y si queremos trabajar con python3 (por ejemplo) escribimos:
 
 ```bash
-pipenv --three
+pipenv --three      # a mi no me funciona con esto
+
+# pero si con esto:
+pipenv --python 3
 ```
 
 <br>
