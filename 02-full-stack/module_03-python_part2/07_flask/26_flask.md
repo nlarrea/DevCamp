@@ -194,7 +194,6 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 import os
 
-# crea una nueva instancia de flask y lo guarda dentro de la variable 'app'
 app = Flask(__name__)
 
 # le decimos a flask dónde está la base de datos
@@ -243,7 +242,13 @@ pipenv shell
 
 
 python
->>> from app import db
-# dará un warning, pero no pasa nada
+>>> from app import app, db
+# podría dar un warning, pero no pasa nada
+
+>>> app.app_context().push()
 >>> db.create_all()
 ```
+
+<br>
+
+Los pasos que he seguido yo desde la terminal y los de la clase no son los mismos, esto se debe a las actualizaciones de Flask.
