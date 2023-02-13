@@ -162,3 +162,88 @@ python app.py
 <br>
 
 Veremos que nos salen los mismos mensajes que antes y no hay errores, por lo que se han importado correctamente todas las dependencias.
+
+
+<br><hr>
+<hr><br>
+
+
+## Crear una base de datos SQLite con SQLAlchemy
+
+Vamos a crear una base de datos SQLite, por lo que no vamos a usar código SQL puro, sino que vamos a usar SQLAlchemy. Vamos a crear el esquema (tabla) con la que vamos a trabajar, y vamos a permitir al código generar esa tabla por nosotros.
+
+<br>
+
+En primer lugar, vamos a acceder al archivo `app.py` y vamos a eliminar las siguientes líneas de código:
+
+```python
+@app.route('/')
+def hello():
+    return "Hey Flask"
+```
+
+<br>
+
+A continución, vamos a integrarlo con nuestro sistema de base de datos. Habíamos llamado anteriormente a la librería `os`, ahora vamos a utilizarla para crear un directorio para la base de datos. Este directorio es necesario porque sin él, flask no podrá saber dónde guardar la tabla SQLite.
+
+El código, tras realizar todas las modificaciones, queda de la siguiente manera:
+
+```python
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+from flask_marshmallow import Marshmallow
+import os
+
+# crea una nueva instancia de flask y lo guarda dentro de la variable 'app'
+app = Flask(__name__)
+
+# le decimos a flask dónde está la base de datos
+basedir = os.path.abspath(os.path.dirname(__file__))
+# le pasamos el directorio al que queremos que vaya, y le decimos que se llama 'app.sqlite'
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + os.path.join(basedir, "app.sqlite")
+# creamos un objeto de base de datos
+db = SQLAlchemy(app)        # instanciar objeto de SQLAlchemy
+ma = Marshmallow(app)       # instanciar objeto de Marshmallow
+
+# creamos el esquema de la tabla (heredera de db.Model)
+class Guide(db.Model):
+    # añadimos una columna de tipo integer, y decirmos que es una primary key
+    # primary_key=True -> hará que cada Guide tenga su propio ID, y cada ID incrementa automáticamente
+    id = db.Column(db.Integer, primary_key=True)
+    # creamos 2 columnas más de tipo string y limitamos su cantidad de chars a 100 y 144
+    title = db.Column(db.String(100), unique=False)
+    content = db.Column(db.String(144), unique=False)
+
+    def __init__(self, title, content):
+        self.title = title
+        self.content = content
+
+
+class GuideSchema(ma.Schema):
+    class Meta:
+        # indicamos los 'fields' a los que queremos acceder dentro de una tupla
+        fields = ("title", "content")
+
+
+guide_schema = GuideSchema()            # para trabajar con 'single guide'
+guides_schema = GuideSchema(many=True)  # para trabajar con 'multiple guides'
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
+```
+
+<br>
+
+Por último, desde la terminal, vamos a ejecutar el archivo `app.py`:
+
+```bash
+# si no está activado el entorno virtual, activarlo, si ya está activado, saltar este paso:
+pipenv shell
+
+
+python
+>>> from app import db
+# dará un warning, pero no pasa nada
+>>> db.create_all()
+```

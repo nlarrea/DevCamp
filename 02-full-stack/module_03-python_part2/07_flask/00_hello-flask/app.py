@@ -6,10 +6,36 @@ import os
 # crea una nueva instancia de flask y lo guarda dentro de la variable 'app'
 app = Flask(__name__)
 
-# creamos una 'route'
-@app.route('/')
-def hello():
-    return "Hey Flask"
+# le decimos a flask dónde está la base de datos
+basedir = os.path.abspath(os.path.dirname(__file__))
+# le pasamos el directorio al que queremos que vaya, y le decimos que se llama 'app.sqlite'
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + os.path.join(basedir, "app.sqlite")
+# creamos un objeto de base de datos
+db = SQLAlchemy(app)        # instanciar objeto de SQLAlchemy
+ma = Marshmallow(app)       # instanciar objeto de Marshmallow
+
+# creamos el esquema de la tabla (heredera de db.Model)
+class Guide(db.Model):
+    # añadimos una columna de tipo integer, y decirmos que es una primary key
+    # primary_key=True -> hará que cada Guide tenga su propio ID, y cada ID incrementa automáticamente
+    id = db.Column(db.Integer, primary_key=True)
+    # creamos 2 columnas más de tipo string y limitamos su cantidad de chars a 100 y 144
+    title = db.Column(db.String(100), unique=False)
+    content = db.Column(db.String(144), unique=False)
+
+    def __init__(self, title, content):
+        self.title = title
+        self.content = content
+
+
+class GuideSchema(ma.Schema):
+    class Meta:
+        # indicamos los 'fields' a los que queremos acceder dentro de una tupla
+        fields = ("title", "content")
+
+
+guide_schema = GuideSchema()            # para trabajar con 'single guide'
+guides_schema = GuideSchema(many=True)  # para trabajar con 'multiple guides'
 
 
 if __name__ == "__main__":
