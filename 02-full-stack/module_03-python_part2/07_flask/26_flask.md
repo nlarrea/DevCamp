@@ -7,6 +7,9 @@
 * [Dependencias de Flask](#dependencias-de-flask)
 * [Crear una base de datos SQLite con SQLAlchemy](#crear-una-base-de-datos-sqlite-con-sqlalchemy)
 * [Crear un POST API Endpoint](#crear-un-post-api-endpoint)
+* [Crear un GET all Request](#crear-un-get-request)
+* [Crear un GET single Request](#crear-un-single-get-request)
+* [Crear un PUT Request](#actualizar-datos-con-un-put-request)
 
 
 <br><hr>
@@ -497,9 +500,9 @@ Como se puede observar, hemos obtenido los dos `guides` que habíamos añadido a
 <hr><br>
 
 
-## Implementar un Single GET Request
+## Crear un Single GET Request
 
-<sub>[<< GET all](#crear-un-get-request) | [Volver al índice](#indice) | []()</sub>
+<sub>[<< GET all](#crear-un-get-request) | [Volver al índice](#indice) | [PUT >>](#actualizar-datos-con-un-put-request)</sub>
 
 Hemos creado un endpoint de `GET` para obtener todos los `guides` de la base de datos. Ahora, vamos a crear un endpoint de `GET` para obtener un único `guide` de la base de datos.
 
@@ -554,3 +557,70 @@ Nuestra base de datos solo tiene 2 elementos, por lo que podemos obtener el elem
 Es de destacar que, si intentamos obtener un elemento que no existe, no obtendremos un error, sino que obtendremos un objeto vacío:
 
 ![api-get_empty](./media/02-GET_single/api-get_empty.png)
+
+
+<br><hr>
+<hr><br>
+
+
+## Actualizar datos con un PUT Request
+
+<sub>[<< Single GET](#implementar-un-single-get-request) | [Volver al índice](#indice) | [ >>](#)</sub>
+
+En ocasiones se deseará modificar los datos de un elemento de la base de datos. Para ello, se puede utilizar el método `PUT`.
+
+<br>
+
+Para ello, vamos a modificar el archivo `app.py` y añadiremos las siguientes líneas de código debajo del apartado anterior de `GET`:
+
+```python
+# endpoint for updating a guide
+@app.route("/guide/<id>", methods=["PUT"])
+def guide_update(id):
+    guide = Guide.query.get(id)         # indicamos qué elemento queremos modificar
+
+    # obtenemos los datos escritos para modificar el elemento
+    title = request.json['title']
+    content = request.json['content']
+
+    # modificamos el elemento
+    guide.title = title
+    guide.content = content
+
+    # guardamos los cambios
+    db.session.commit()
+
+    return guide_schema.jsonify(guide)
+```
+
+<br>
+
+Para esta función, vuelve a necesitarse conocer el `id` del elemento que queremos modificar.
+
+<br>
+
+Ahora, para comprobar que funciona, realizaremos la petición `PUT` desde **Thunder Client** siguiendo los siguientes pasos:
+
+1. Abrir la extensión **Thunder Client** desde VSCode y clicar en `New Request`.
+
+2. Seleccionar la opción `PUT` y escribir la siguiente URL: `localhost:5000/guide/1`, para modificar el primer elemento, por ejemplo.
+
+3. En el apartado de `Body`, escribiremos los cambios que deseemos realizar. Tendremos que escribir tanto el `title` como el `content` del elemento que queremos modificar, si no escribiéramos alguno de los dos, se quedaría como string vacío debido a que en la función hemos especificado que se modifiquen ambos valores.
+
+![api-put](./media/03-PUT/api-put.png)
+
+<br>
+
+> Como se observa en la imagen, hemos modificado únicamente el `title`, pero hemos reescrito el `content` para dejarlo como estaba anteriormente.
+
+Tras clicar en `Send`, obtendremos el resultado mostrado en el recuadro de color verde.
+
+<br>
+
+Ahora, vamos a comprobar que se ha modificado correctamente. Para ello, vamos a realizar una petición `GET` para [obtener todos los elementos](#crear-un-get-request) que tenemos en la base de datos:
+
+![api-get_put_result](./media/03-PUT/api-get_put_result.png)
+
+<br>
+
+Como se puede observar, el elemento con el `id` 1 ha sido modificado correctamente.

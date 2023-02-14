@@ -70,6 +70,24 @@ def get_guide(id):          # la función necesita que le pasemos el ID del 'gui
 
     return guide_schema.jsonify(guide)
 
+# endpoint for updating a guide
+@app.route("/guide/<id>", methods=["PUT"])
+def guide_update(id):
+    guide = Guide.query.get(id)         # indicamos qué elemento queremos modificar
+
+    # obtenemos los datos escritos para modificar el elemento
+    title = request.json['title']
+    content = request.json['content']
+
+    # modificamos el elemento
+    guide.title = title
+    guide.content = content
+
+    # guardamos los cambios
+    db.session.commit()
+    
+    return guide_schema.jsonify(guide)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
