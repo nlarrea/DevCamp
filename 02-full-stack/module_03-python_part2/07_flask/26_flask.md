@@ -624,3 +624,57 @@ Ahora, vamos a comprobar que se ha modificado correctamente. Para ello, vamos a 
 <br>
 
 Como se puede observar, el elemento con el `id` 1 ha sido modificado correctamente.
+
+
+<br><hr>
+<hr><br>
+
+
+## Eliminar datos con un DELETE Request
+
+<sub>[<< PUT](#actualizar-datos-con-un-put-request) | [Volver al índice](#indice)</sub>
+
+En esta sección vamos a ver cómo eliminar un elemento de la base de datos.
+
+Para poder hacer esto, vamos a añadir las siguientes líneas de código debajo del apartado anterior de `PUT`:
+
+```python
+# endpoint for deleting a record
+@app.route("/guide/<id>", methods=["DELETE"])
+def guide_delete(id):
+    guide = Guide.query.get(id)
+    db.session.delete(guide)
+    db.session.commit()
+
+    return guide_schema.jsonify(guide)
+```
+
+<br>
+
+Para realizar la petición `DELETE`, vamos a seguir los siguientes pasos:
+
+1. Abrir la extensión **Thunder Client** desde VSCode y clicar en `New Request`.
+
+2. Seleccionar la opción `DELETE` y escribir la siguiente URL: `localhost:5000/guide/2`, para eliminar el segundo elemento, por ejemplo.
+
+3. Clicar en `Send`.
+
+<br>
+
+Al haber añadido un `return` en la función `guide_delete()`, obtendremos el elemento que hemos eliminado:
+
+![api-delete](./media/04-DELETE/api-delete.png)
+
+<br>
+
+Si quisiéramos que en lugar de recibir de vuelta el elemento eliminado obtuviéramos un mensaje, podríamos modificar el `return` de la función `guide_delete()` de la siguiente manera:
+
+```python
+return "Guide was successfully deleted!"
+```
+
+<br>
+
+Si [añadimos 2 elementos más](#crear-un-post-api-endpoint) a la base de datos haciendo uso de la petición `POST` y eliminamos el elemento con el `id` 3, obtendremos el siguiente resultado:
+
+![api-delete_with_message](./media/04-DELETE/api-delete_with_message.png)
