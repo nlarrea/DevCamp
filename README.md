@@ -28,6 +28,7 @@ He aquí el contenido trabajado:
 
 * #01 - [HTML, CSS y UX/UI](./02-full-stack/module_01-html_css_uxui/)
 * #02 - [Python](./02-full-stack/module_02-python/)
+* #03 - [Python part 2](./02-full-stack/module_03-python_part2/)
 
 
 <br><hr>
