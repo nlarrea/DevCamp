@@ -62,6 +62,14 @@ def get_guides():
 
     return jsonify(result)
 
+# endpoint for querying single guide
+@app.route("/guide/<id>", methods=["GET"])
+def get_guide(id):          # la función necesita que le pasemos el ID del 'guide'
+    # pedimos que obtenga el elemento con el ID que se le haya pasado
+    guide = Guide.query.get(id)
+
+    return guide_schema.jsonify(guide)
+
 
 if __name__ == "__main__":
     app.run(debug=True)

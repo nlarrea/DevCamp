@@ -432,6 +432,8 @@ Además, comprobando el resultado del test que habíamos añadido en la sección
 
 ## Crear un GET Request
 
+<sub>[<< POST](#crear-un-post-api-endpoint) | [Volver al índice](#indice) | [GET all >>](#crear-un-get-request)</sub>
+
 Hemos creado un endpoint de `POST` para añadir `guides` a la base de datos. Ahora, vamos a crear un endpoint de `GET` para obtener los `guides` de la misma.
 
 Para ello, añadiremos las siguientes líneas de código al archivo `app.py`, justo debajo de donde habíamos añadido el endpoint de `POST`:
@@ -489,3 +491,66 @@ Obtendremos el siguiente resultado:
 <br>
 
 Como se puede observar, hemos obtenido los dos `guides` que habíamos añadido a la base de datos. **¡Perfecto!**
+
+
+<br><hr>
+<hr><br>
+
+
+## Implementar un Single GET Request
+
+<sub>[<< GET all](#crear-un-get-request) | [Volver al índice](#indice) | []()</sub>
+
+Hemos creado un endpoint de `GET` para obtener todos los `guides` de la base de datos. Ahora, vamos a crear un endpoint de `GET` para obtener un único `guide` de la base de datos.
+
+A este tipo de petición también se le llama *show route* o *show endpoint*.
+
+<br>
+
+De nuevo, tendremos que modificar el archivo `app.py`. Vamos a añadir las siguientes líneas de código debajo del apartado anterior de `GET`:
+
+```python
+# endpoint for querying single guide
+@app.route("/guide/<id>", methods=["GET"])
+def get_guide(id):          # la función necesita que le pasemos el ID del 'guide'
+    # pedimos que obtenga el elemento con el ID que se le haya pasado
+    guide = Guide.query.get(id)
+
+    return guide_schema.jsonify(guide)
+```
+
+<br>
+
+Como se puede observar, la función `get_guide()` necesita que le pasemos el `id` del `guide` que queremos obtener. En los casos anteriores no era necesario pasar ningún parámetro, ya que o bien se añadía un nuevo `guide` a la base de datos, o bien se obtenían todos los `guides` de la misma.
+
+Sin embargo, ahora queremos tratar u obtener un `guide` en concreto, por lo que necesitamos que la función `get_guide()` sepa qué `guide` queremos obtener.
+
+<br>
+
+Sabiendo esto, volvemos a arrancar la aplicación teniendo activado el entorno virtual:
+
+```bash
+pipenv shell
+
+python app.py
+```
+
+<br>
+
+Y volvemos a entrar en la aplicación correspondiente para realizar la petición `GET`.
+
+Como ya hemos visto antes, para hacer una petición `GET` hay que indicar que se trata de una petición `GET`, y como la url debe seguir el patrón `localhost:5000/guide/<id>`, escribiremos dicha url modificando `<id>` por el número **id** del elemento que queramos obtener.
+
+Nuestra base de datos solo tiene 2 elementos, por lo que podemos obtener el elemento con el `id` 1 o el elemento con el `id` 2:
+
+![api-get1](./media/02-GET_single/api-get1.png)
+
+<br>
+
+![api-get2](./media/02-GET_single/api-get2.png)
+
+<br>
+
+Es de destacar que, si intentamos obtener un elemento que no existe, no obtendremos un error, sino que obtendremos un objeto vacío:
+
+![api-get_empty](./media/02-GET_single/api-get_empty.png)
