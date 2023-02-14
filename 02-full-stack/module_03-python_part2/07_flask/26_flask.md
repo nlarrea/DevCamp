@@ -401,13 +401,13 @@ Los pasos a seguir serán los siguientes:
 
 3. En la sección `Tests` vamos a añadir la opción de que compruebe que aquello que obtengamos sea de tipo JSON.
 
-![api-paso1](./media/api-paso1.png)
+![api-paso1](./media/00-POST/api-paso1.png)
 
 <br>
 
 4. En la sección `Body` vamos a añadir el contenido que queremos que se añada a la base de datos. En este caso, vamos a añadir un `title` y un `content`.
 
-![api-paso2](./media/api-paso2.png)
+![api-paso2](./media/00-POST/api-paso2.png)
 
 <br>
 
@@ -417,13 +417,13 @@ Los pasos a seguir serán los siguientes:
 
 Si los pasos se han seguido correctamente, deberíamos obtener una respuesta como la siguiente:
 
-![api-response](./media/api-response.png)
+![api-response](./media/00-POST/api-response.png)
 
 <br>
 
 Además, comprobando el resultado del test que habíamos añadido en la sección `Tests`, deberíamos obtener lo siguiente:
 
-![api-test_results](./media/api-test_results.png)
+![api-test_results](./media/00-POST/api-test_results.png)
 
 
 <br><hr>
@@ -431,3 +431,61 @@ Además, comprobando el resultado del test que habíamos añadido en la sección
 
 
 ## Crear un GET Request
+
+Hemos creado un endpoint de `POST` para añadir `guides` a la base de datos. Ahora, vamos a crear un endpoint de `GET` para obtener los `guides` de la misma.
+
+Para ello, añadiremos las siguientes líneas de código al archivo `app.py`, justo debajo de donde habíamos añadido el endpoint de `POST`:
+
+```python
+# endpoint to query all guides
+@app.route("/guides", methods=["GET"])
+def get_guides():
+    all_guides = Guide.query.all()              # devuelve todos los Guide del sistema (app)
+    result = guides_schema.dump(all_guides)     # trabajaremos con el schema de múltiples
+
+    return jsonify(result)
+```
+
+<br>
+
+A continuación, comprobaremos que funciona. Para ello, volveré a hacer uso de **Thunder Client** desde VSCode (puede utilizarse cualquier otra herramienta).
+
+En primer lugar, activaremos el entorno virtual y arrancaremos el servidor (si no lo estuvieran ya):
+
+```bash
+pipenv shell
+
+python app.py
+```
+
+<br>
+
+Una vez arrancado el servidor, vamos a hacer una petición `GET` desde **Thunder Client**. Para ello, vamos a seguir los siguientes pasos:
+
+1. Abrir la extensión **Thunder Client** desde VSCode y clicar en `New Request`.
+
+2. Seleccionar la opción `GET` y escribir la siguiente URL: `localhost:5000/guides`.
+
+![api-get](./media/01-GET/api-get.png)
+
+Como ya habíamos hecho una petición `POST` anteriormente, ya deberíamos tener un `guide` en la base de datos. Por lo tanto, si hacemos una petición `GET` deberíamos obtener como resultado el `guide` que habíamos añadido anteriormente.
+
+<br>
+
+Vamos a añadir un nuevo `guide` a la base de datos, para comprobar que funciona todo correctamente. Para ello, vamos a repetir los pasos que ya habíamos seguido para añadir un `guide` a la base de datos, pero en este caso, vamos a añadir un nuevo `guide` con un `title` y un `content` diferentes.
+
+Tener en cuenta que se debe cambiar el tipo de petición a `POST`, y que la url cambia de `localhost:5000/guides` a `localhost:5000/guide` para este tipo de peticiones.
+
+![api-post_more_data](./media/01-GET/api-post_more_data.png)
+
+<br>
+
+Ahora, vamos a comprobar que se ha añadido correctamente. Para ello, vamos a volver a realizar una petición `GET`, cambuando la url de `localhost:5000/guide` a `localhost:5000/guides`.
+
+Obtendremos el siguiente resultado:
+
+![api-get_result](./media/01-GET/api-get_result.png)
+
+<br>
+
+Como se puede observar, hemos obtenido los dos `guides` que habíamos añadido a la base de datos. **¡Perfecto!**
