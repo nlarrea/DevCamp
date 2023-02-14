@@ -1,5 +1,20 @@
 # Flask
 
+<div id="indice"></div>
+
+* [Instalar Flask](#instalar-flask)
+    * [Arrancar la aplicación](#arrancar-la-aplicación)
+* [Dependencias de Flask](#dependencias-de-flask)
+* [Crear una base de datos SQLite con SQLAlchemy](#crear-una-base-de-datos-sqlite-con-sqlalchemy)
+* [Crear un POST API Endpoint](#crear-un-post-api-endpoint-con-flask)
+
+
+<br><hr>
+<hr><br>
+
+
+## Instalar Flask
+
 Los requisitos para trabajar con Flask en este curso son:
 
 * Tener pipvenv instalado
@@ -48,7 +63,11 @@ if __name__ == "__main__":
     app.run(debug=True)
 ```
 
-<br>
+
+<br><hr><br>
+
+
+### Arrancar la aplicación
 
 Ahora, volveremos a la terminal y ejecutaremos los siguientes comandos:
 
@@ -252,3 +271,146 @@ python
 <br>
 
 Los pasos que he seguido yo desde la terminal y los de la clase no son los mismos, esto se debe a las actualizaciones de Flask.
+
+
+<br><hr>
+<hr><br>
+
+
+## Crear un POST API Endpoint con Flask
+
+Una vez llegados a este punto, vamos a comenzar a construir la API. Para ello, vamos a comenzar a añadir `guides` a la aplicación.
+
+Como se trata de una API, vamos a utilizar el método `POST` para añadir `guides` a la base de datos. Pero antes de llegar a eso, vamos a añadir las siguientes líneas de código al archivo `app.py`:
+
+```python
+# modificamos la importación de Flask
+from flask import Flask, request, jsonify
+
+# endpoint to create a new guide
+@app.route("/guide", methods=["POST"])  # creamos un guide con el verbo POST
+def add_guide():
+    title = request.json['title']       # obtener dato de json y guardarlo en variable
+    content = request.json['content']
+
+    new_guide = Guide(title, content)   # nueva isntancia de Guide
+
+    # comunicarse con la data base
+    db.session.add(new_guide)           # añadir el guide al db
+    db.session.commit()
+
+    # asegurarnos de que funciona el código
+    guide = Guide.query.get(new_guide.id)
+    
+    return guide_schema.jsonify(guide)
+```
+
+<br>
+
+El código al completo, tras realizar todas las modificaciones, queda de la siguiente manera:
+
+```python
+from flask import Flask, request, jsonify
+from flask_sqlalchemy import SQLAlchemy
+from flask_marshmallow import Marshmallow
+import os
+
+app = Flask(__name__)
+
+basedir = os.path.abspath(os.path.dirname(__file__))
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + os.path.join(basedir, "app.sqlite")
+# creamos un objeto de base de datos
+db = SQLAlchemy(app)        # instanciar objeto de SQLAlchemy
+ma = Marshmallow(app)       # instanciar objeto de Marshmallow
+
+# creamos el esquema de la tabla (heredera de db.Model)
+class Guide(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100), unique=False)
+    content = db.Column(db.String(144), unique=False)
+
+    def __init__(self, title, content):
+        self.title = title
+        self.content = content
+
+
+class GuideSchema(ma.Schema):
+    class Meta:
+        fields = ("title", "content")
+
+
+guide_schema = GuideSchema()            # para trabajar con 'single guide'
+guides_schema = GuideSchema(many=True)  # para trabajar con 'multiple guides'
+
+# endpoint to create a new guide
+@app.route("/guide", methods=["POST"])  # creamos un guide con el verbo POST
+def add_guide():
+    # obtener dato de json y guardarlo en variable
+    title = request.json['title']
+    content = request.json['content']
+
+    new_guide = Guide(title, content)   # nueva isntancia de Guide
+
+    # comunicarse con la data base -> añadir el guide al db
+    db.session.add(new_guide)
+    db.session.commit()
+
+    # asegurarnos de que funciona el código
+    guide = Guide.query.get(new_guide.id)
+    return guide_schema.jsonify(guide)
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
+```
+
+<br>
+
+Ahora, vamos a probar el código. Para ello, desde la terminal, vamos a hacer lo siguiente:
+
+```bash
+# si no está activado el entorno virtual, activarlo, si ya está activado, saltar este paso:
+pipenv shell
+
+python app.py
+```
+
+<br>
+
+Ya está en marcha el servidor. Ahora, vamos a comprobar que funciona haciendo una petición `POST` desde **Postman** o cualquier otra aplicación que permita realizar las mismas acciones. En mi caso usaré **Thunder Client** desde Visual Studio Code.
+
+<br>
+
+Los pasos a seguir serán los siguientes:
+
+1. Abrir la extensión **Thunder Client** desde VSCode y clicar en `New Request`.
+
+2. Seleccionar la opción `POST` y escribir la siguiente URL: `localhost:5000/guide`.
+
+    La URL se obtiene de la respuesta al arrancarel archivo app.py desde la terminal, como ya vimos en [apartados anteriores](#arrancar-la-aplicación). El `/guide` es el endpoint que hemos creado en el archivo `app.py`, dentro de la sección de `@app.route()`.
+
+3. En la sección `Tests` vamos a añadir la opción de que compruebe que aquello que obtengamos sea de tipo JSON.
+
+![api-paso1](./media/api-paso1.png)
+
+<br>
+
+4. En la sección `Body` vamos a añadir el contenido que queremos que se añada a la base de datos. En este caso, vamos a añadir un `title` y un `content`.
+
+![api-paso2](./media/api-paso2.png)
+
+<br>
+
+5. Clicar en la opción `Send` y comprobar que se ha añadido correctamente.
+
+<br>
+
+Si los pasos se han seguido correctamente, deberíamos obtener una respuesta como la siguiente:
+
+![api-response](./media/api-response.png)
+
+<br>
+
+Además, comprobando el resultado del test que habíamos añadido en la sección `Tests`, deberíamos obtener lo siguiente:
+
+![api-test_results](./media/api-test_results.png)

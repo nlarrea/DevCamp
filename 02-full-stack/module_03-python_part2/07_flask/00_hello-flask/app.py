@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 import os
@@ -36,6 +36,23 @@ class GuideSchema(ma.Schema):
 
 guide_schema = GuideSchema()            # para trabajar con 'single guide'
 guides_schema = GuideSchema(many=True)  # para trabajar con 'multiple guides'
+
+# endpoint to create a new guide
+@app.route("/guide", methods=["POST"])  # creamos un guide con el verbo POST
+def add_guide():
+    title = request.json['title']       # obtener dato de json y guardarlo en variable
+    content = request.json['content']
+
+    new_guide = Guide(title, content)   # nueva isntancia de Guide
+
+    # comunicarse con la data base
+    db.session.add(new_guide)           # añadir el guide al db
+    db.session.commit()
+
+    # asegurarnos de que funciona el código
+    guide = Guide.query.get(new_guide.id)
+    
+    return guide_schema.jsonify(guide)
 
 
 if __name__ == "__main__":
