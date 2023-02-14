@@ -6,7 +6,7 @@
     * [Arrancar la aplicación](#arrancar-la-aplicación)
 * [Dependencias de Flask](#dependencias-de-flask)
 * [Crear una base de datos SQLite con SQLAlchemy](#crear-una-base-de-datos-sqlite-con-sqlalchemy)
-* [Crear un POST API Endpoint](#crear-un-post-api-endpoint-con-flask)
+* [Crear un POST API Endpoint](#crear-un-post-api-endpoint)
 
 
 <br><hr>
@@ -14,6 +14,8 @@
 
 
 ## Instalar Flask
+
+<sub>[Volver al índice](#indice) | [Arrancar la app >>](#arrancar-la-aplicación)</sub>
 
 Los requisitos para trabajar con Flask en este curso son:
 
@@ -69,6 +71,8 @@ if __name__ == "__main__":
 
 ### Arrancar la aplicación
 
+<sub>[<< Instalar Flask](#instalar-flask) | [Volver al índice](#indice) | [Dependencias de Flask >>](#dependencias-de-flask)</sub>
+
 Ahora, volveremos a la terminal y ejecutaremos los siguientes comandos:
 
 ```bash
@@ -105,6 +109,8 @@ Si lo paramos y volvemos a la página de `localhost:5000` y refrescamos, veremos
 
 
 ## Dependencias de Flask
+
+<sub>[<< Arrancar la app](#arrancar-la-aplicación) | [Volver al índice](#indice) | [Crear base de datos SQLite >>](#crear-una-base-de-datos-sqlite-con-sqlalchemy)</sub>
 
 En este apartado, vamos a ver cómo instalar dependencias que prodrían ser necesarias para nuestro proyecto.
 
@@ -188,6 +194,8 @@ Veremos que nos salen los mismos mensajes que antes y no hay errores, por lo que
 
 
 ## Crear una base de datos SQLite con SQLAlchemy
+
+<sub>[<< Dependencias de Flask](#dependencias-de-flask) | [Volver al índice](#indice) | [Crear una POST API >>](#crear-un-post-api-endpoint)</sub>
 
 Vamos a crear una base de datos SQLite, por lo que no vamos a usar código SQL puro, sino que vamos a usar SQLAlchemy. Vamos a crear el esquema (tabla) con la que vamos a trabajar, y vamos a permitir al código generar esa tabla por nosotros.
 
@@ -277,7 +285,9 @@ Los pasos que he seguido yo desde la terminal y los de la clase no son los mismo
 <hr><br>
 
 
-## Crear un POST API Endpoint con Flask
+## Crear un POST API Endpoint
+
+<sub>[<< Crear base de datos SQLite](#crear-una-base-de-datos-sqlite-con-sqlalchemy) | [Volver al índice](#indice) | [Crear GET Request >>](#crear-un-get-request)</sub>
 
 Una vez llegados a este punto, vamos a comenzar a construir la API. Para ello, vamos a comenzar a añadir `guides` a la aplicación.
 
@@ -414,3 +424,10 @@ Si los pasos se han seguido correctamente, deberíamos obtener una respuesta com
 Además, comprobando el resultado del test que habíamos añadido en la sección `Tests`, deberíamos obtener lo siguiente:
 
 ![api-test_results](./media/api-test_results.png)
+
+
+<br><hr>
+<hr><br>
+
+
+## Crear un GET Request
