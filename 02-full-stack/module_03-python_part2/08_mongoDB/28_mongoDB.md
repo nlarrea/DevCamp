@@ -13,6 +13,8 @@
 * **Consultar**
     * [Consultar todos los documentos de una colección](#consultar-documentos)
     * [Consultar documentos específicos](#consultar-documentos-específicos)
+    * [Selección de arrays anidados usando `$slice`](#selección-de-arrays-anidados-usando-slice)
+* [Eliminar documentos](#eliminar-documentos)
 
 
 <br><hr>
@@ -381,7 +383,7 @@ WHERE name = "The Art of War";
 
 ## Introducción a las proyecciones
 
-<sub>[<< Consultar específicos](#consultar-documentos-específicos) | [Volver al índice](#indice) <!--| []() --> </sub>
+<sub>[<< Consultar específicos](#consultar-documentos-específicos) | [Volver al índice](#indice) | [Query nested array](#selección-de-arrays-anidados-usando-slice) </sub>
 
 Las proyecciones son una forma de filtrar los datos que nos devuelve una consulta.
 
@@ -436,3 +438,85 @@ La forma de hacer esto mismo con una consulta en SQL sería:
 SELECT publishedDate, authors FROM books
 WHERE name = "Confident Ruby";
 ```
+
+
+<br><hr>
+<hr><br>
+
+
+## Selección de arrays anidados usando `$slice`
+
+<sub>[<< Intro a proyecciones](#introducción-a-las-proyecciones) | [Volver al índice](#indice) <!--| []() --> </sub>
+
+Tal y como indica el título, en MongoDB, podemos hacer queries de arrays anidados usando `$slice`.
+
+Imaginemos que tenemos el siguiente documento:
+
+```mongo
+db.books.insertOne({
+    "name": "Blink",
+    "publishedDate": new Date(),
+    "authors": [
+        {"name": "Malcolm Gladwell"},
+        {"name": "Ghost Writer"},
+    ]
+})
+```
+
+<br>
+
+Como vemos, en el apartado de `authors` tenemos un array con 2 objetos, cada uno con un atributo `name`. El objetivo es poder acceder a este documento dejando fuera el segundo autor.
+
+Para ello, vamos a realizar lo siguiente:
+
+```mongo
+db.books.find(
+    {
+        name: "Blink"
+    },
+    {
+        publishedDate: 1,
+        name: 1,
+        authors: {
+            $slice: 1
+        }
+    }
+)
+```
+
+<br>
+
+Usamos `authors` como filtro, y le pasamos un objeto con el atributo `$slice` y el valor `1` para indicar que queremos solo el primer elemento del array.
+
+![mongo-slice1](./media/mongo-slice1.png)
+
+<br>
+
+Si le pasaramos el valor de `$slice: 2`, nos devolvería los 2 primeros elementos del array, es decir, los dos autores.
+
+![mongo-slice2](./media/mongo-slice2.png)
+
+<br>
+
+Si solo quisiéramos que nos devolviera el nombre del segundo autor, podríamos hacer lo siguiente:
+
+```mongo
+db.books.find(
+    {
+        name: "Blink"
+    },
+    {
+        publishedDate: 1,
+        name: 1,
+        authors: {
+            $slice: -1
+        }
+    }
+)
+```
+
+<br>
+
+Al pasarle el valor `-1` a `$slice`, nos devuelve el último elemento del array, es decir, el segundo autor.
+
+![mongo-sliceNeg1](./media/mongo-sliceNeg1.png)
