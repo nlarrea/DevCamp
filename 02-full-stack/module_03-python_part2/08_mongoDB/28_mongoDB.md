@@ -345,7 +345,7 @@ También podemos ver que MongoDB ha añadido un campo `_id` a cada documento, qu
 
 ## Consultar documentos específicos
 
-<sub>[<< Consultar documentos](#consultar-documentos) | [Volver al índice](#indice)</sub>
+<sub>[<< Consultar documentos](#consultar-documentos) | [Volver al índice](#indice) | [Intro a proyecciones >>](#introducción-a-las-proyecciones)</sub>
 
 Hay ocasiones en las que no queremos consultar todos los documentos de una colección, sino que queremos consultar documentos específicos.
 
@@ -374,3 +374,65 @@ SELECT * FROM books
 WHERE name = "The Art of War";
 ```
 
+
+<br><hr>
+<hr><br>
+
+
+## Introducción a las proyecciones
+
+<sub>[<< Consultar específicos](#consultar-documentos-específicos) | [Volver al índice](#indice) <!--| []() --> </sub>
+
+Las proyecciones son una forma de filtrar los datos que nos devuelve una consulta.
+
+Para usarlas:
+
+```mongo
+db.books.find(
+    {
+        name: "Confident Ruby"
+    },
+    {
+        publishedDate: 1,
+        authors: 1
+    }
+)
+```
+
+<br>
+
+Hemos visto quá ocurre al usar `find()` anteriormente, pero en esta ocasión, le hemos pasado 2 objetos como argumentos:
+
+* El primero es el filtro, que es el que nos va a devolver los documentos que cumplan con las condiciones que le pasemos.
+
+* El segundo es la proyección. Si queremos que nos pase unos atributos concretos, los introducimos en el segundo objeto y les damos el valor de `1` ó `0` si queremos o no que lo muestre.
+
+<br>
+
+Si no quisiéramos que nos devolviera el campo `_id`, podríamos hacer lo siguiente:
+
+```mongo
+db.books.find(
+    {
+        name: "Confident Ruby"
+    },
+    {
+        _id: 0,
+        publishedDate: 1,
+        authors: 1
+    }
+)
+```
+
+<br>
+
+Con este ejemplo, dejaríamos de ver el campo `_id` en la respuesta que nos devuelve la terminal.
+
+<br>
+
+La forma de hacer esto mismo con una consulta en SQL sería:
+
+```sql
+SELECT publishedDate, authors FROM books
+WHERE name = "Confident Ruby";
+```
