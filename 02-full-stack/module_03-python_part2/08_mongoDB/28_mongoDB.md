@@ -3,15 +3,25 @@
 <div id="indice"></div>
 
 * [Instalar MongoDB](#instalar-mongodb)
-* [Usar MongoDB](#usar-mongodb)
+* [Introducción a MongoDB](#introducción-a-mongodb)
+* **Crear**
     * [Crear un usuario](#crear-un-usuario)
     * [Crear una colección](#crear-una-colección)
+* **Añadir**
     * [Añadir documentos a una colección](#añadir-documentos-a-una-colección)
     * [Añadir varios documentos a una colección](#añadir-varios-documentos-a-una-colección)
+* **Consultar**
+    * [Consultar todos los documentos de una colección](#consultar-documentos)
+    * [Consultar documentos específicos](#consultar-documentos-específicos)
+
+
+<br><hr>
+<hr><br>
+
 
 ## Instalar MongoDB
 
-<sub>[Volver al índice](#indice) | [Usar MongoDB >>](#usar-mongodb)</sub>
+<sub>[Volver al índice](#indice) | [Introducción >>](#introducción-a-mongodb)</sub>
 
 Se puede acceder a la página de descargas de MongoDB desde [este link](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-windows/). En ella aparecen los pasos a seguir para instalar MongoDB en Linux, macOS y Windows.
 
@@ -28,7 +38,7 @@ Además de instalar MongoDB, también se debe instalar la terminal de MongoDB, `
 <hr><br>
 
 
-## Usar MongoDB
+## Introducción a MongoDB
 
 <sub>[<< Instalar MongoDB](#instalar-mongodb) | [Volver al índice](#indice) | [Crear usuario >>](#crear-un-usuario)</sub>
 
@@ -68,10 +78,11 @@ Esto se debe a que el simple hecho de crear una base de datos llamada `mongoCour
 Si escribimos `db`, veremos que nos devuelve `mongoCourse`. Ese `db` es el objeto que se crea y a través del cual podemos interactuar con la base de datosm, porque hace referencia siempre a la base de datos con la que se está trabajando.
 
 
-<br><hr><br>
+<br><hr>
+<hr><br>
 
 
-### Crear un usuario
+## Crear un usuario
 
 <sub>[<< Usar MongoDB](#usar-mongodb) | [Volver al índice](#indice) | [Crear colección >>](#crear-una-colección)</sub>
 
@@ -155,7 +166,7 @@ Si volvemos a ejecutar el comando `db.getUsers()`, veremos que ya no aparece el 
 <br><hr><br>
 
 
-### Crear una colección
+## Crear una colección
 
 <sub>[<< Crear usuario](#crear-un-usuario) | [Volver al índice](#indice) | [Añadir documentos >>](#añadir-documentos-a-una-colección)</sub>
 
@@ -190,10 +201,11 @@ show collections
 Y veremos que se nos ha creado la colección `books`.
 
 
-<br><hr><br>
+<br><hr>
+<hr><br>
 
 
-### Añadir documentos a una colección
+## Añadir documentos a una colección
 
 <sub>[<< Crear colección](#crear-una-colección) | [Volver al índice](#indice) | [Añadir varios a la vez >>](#añadir-varios-documentos-a-una-colección)</sub>
 
@@ -254,7 +266,7 @@ Esto puede ser útil y problemático al mismo tiempo, por lo que es importante c
 <br><hr><br>
 
 
-### Añadir varios documentos a una colección
+## Añadir varios documentos a una colección
 
 <sub>[<< Añadir documentos](#añadir-documentos-a-una-colección) | [Volver al índice](#indice)</sub>
 
@@ -297,3 +309,68 @@ En este caso, al haber insertado varios documentos a la vez y haberse creado má
 <br>
 
 Donde tenemos una *respuesta* por cada documento que hemos insertado.
+
+
+<br><hr>
+<hr><br>
+
+
+## Consultar documentos
+
+<sub>[<< Añadir varios documentos >>](#añadir-varios-documentos-a-una-colección) | [Volver al índice](#indice) | [Consultar específicos >>](#consultar-documentos-específicos)</sub>
+
+Para consultar documentos, vamos a utilizar el comando `find()`.
+
+Vamos a continuar con el ejemplo de los libros, por lo que vamos a escribir el siguiente comando:
+
+```mongo
+db.books.find()
+```
+
+<br>
+
+Se nos devolverán todos los documentos que tenemos en la colección `books`:
+
+![mongo-find](./media/mongo-find.png)
+
+<br>
+
+Este es el equivalente a `SELECT * FROM books;` en SQL.
+
+También podemos ver que MongoDB ha añadido un campo `_id` a cada documento, que es el identificador único de cada documento.
+
+
+<br><hr><br>
+
+
+## Consultar documentos específicos
+
+<sub>[<< Consultar documentos](#consultar-documentos) | [Volver al índice](#indice)</sub>
+
+Hay ocasiones en las que no queremos consultar todos los documentos de una colección, sino que queremos consultar documentos específicos.
+
+Para ello:
+
+```mongo
+db.books.find({name: "The Art of War"})
+```
+
+<br>
+
+Si ejecutamos el comando anterior, veremos que nos devuelve el documento que tiene el nombre `The Art of War`:
+
+![mongo-find_specific1](./media/mongo-find_specific1.png)
+
+<br>
+
+Si consultamos un dato y hay más de un documento con ese dato, se nos devolverán todos los documentos que tengan ese dato.
+
+<br>
+
+En SQL esto sería equivalente a:
+
+```sql
+SELECT * FROM books
+WHERE name = "The Art of War";
+```
+
