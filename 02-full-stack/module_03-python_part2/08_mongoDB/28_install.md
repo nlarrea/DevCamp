@@ -6,6 +6,8 @@
 * [Usar MongoDB](#usar-mongodb)
     * [Crear un usuario](#crear-un-usuario)
     * [Crear una colección](#crear-una-colección)
+    * [Añadir documentos a una colección](#añadir-documentos-a-una-colección)
+    * [Añadir varios documentos a una colección](#añadir-varios-documentos-a-una-colección)
 
 ## Instalar MongoDB
 
@@ -77,7 +79,7 @@ Escribir en Mongo es bastante similar a escribir código JavaScript. Por ello, s
 
 <br>
 
-Ahora, vamos a crear un usuario para nuestra base de datos (para almacenarlo en ella). Para ello, crearemos un archivo al que (en mi caso) llamaré `mongo.js` y escribiremos el siguiente código:
+Ahora, vamos a crear un usuario para nuestra base de datos (para almacenarlo en ella). Para ello, crearemos un archivo al que (en mi caso) llamaré `createUser.js` y escribiremos el siguiente código:
 
 ```js
 db.createUser({
@@ -193,5 +195,105 @@ Y veremos que se nos ha creado la colección `books`.
 
 ### Añadir documentos a una colección
 
-<sub>[<< Crear colección](#crear-una-colección) | [Volver al índice](#indice)</sub>
+<sub>[<< Crear colección](#crear-una-colección) | [Volver al índice](#indice) | [Añadir varios a la vez >>](#añadir-varios-documentos-a-una-colección)</sub>
 
+Vamos a añadir libros a nuestra base de datos:
+
+```mongo
+db.books.insertOne({
+    "name": "OOP Programming",
+    "publishedDate": new Date(),
+    "authors": [
+        {"name": "Jon Snow"},
+        {"name": "Ned Stark"},
+    ]
+})
+```
+
+<br>
+
+Si copiamos el código y lo pegamos en la `mongosh`, veremos que se nos ha añaadido el documento correctamente:
+
+![mongo-collections1](./media/mongo-collections1.png)
+
+<br>
+
+Podemos modificar el código anterior y escribir el siguiente para añadir otro libro:
+
+```mongo
+db.books.insertOne({
+    "name": "OOP Programming",
+    "publishedDate": new Date(),
+    "authors": [
+        {"name": "Jon Snow Jr"},
+    ]
+})
+```
+
+<br>
+
+Vamos incluso a añadir un tercer libro:
+
+```mongo
+db.books.insertOne({
+    "name": "OOP Programming",
+    "startDate": new Date(),
+    "authors": [
+        {"name": "Jon Snow Jr"},
+    ]
+})
+```
+
+<br>
+
+Hay datos iguales y otros diferentes en los documentos. Es importante conocer que **MongoDB no sigue ningún esquema**, se pueden añadir documentos con diferentes campos y no se van a ver afectados los demás documentos, ni se nos devolverá ningún error.
+
+Esto puede ser útil y problemático al mismo tiempo, por lo que es importante conocerlo.
+
+
+<br><hr><br>
+
+
+### Añadir varios documentos a una colección
+
+<sub>[<< Añadir documentos](#añadir-documentos-a-una-colección) | [Volver al índice](#indice)</sub>
+
+Hemos visto cómo insertar documentos en una colección, pero podríamos querer añadir varios documentos a la vez.
+
+Para ello, realizaremos lo siguiente:
+
+```mongo
+db.books.insertMany([
+    {
+        "name": "Confident Ruby",
+        "publishedDate": new Date(),
+        "authors": [
+            {"name": "Avdi Grimm"}
+        ]
+    },
+    {
+        "name": "The Art of War",
+        "publishedDate": new Date(),
+        "authors": [
+            {"name": "Steven Pressfield"}
+        ]
+    },
+    {
+        "name": "Blink",
+        "publishedDate": new Date(),
+        "authors": [
+            {"name": "Malcom Gladwell"}
+        ]
+    }
+])
+```
+
+<br>
+
+En este caso, al haber insertado varios documentos a la vez y haberse creado más de uno, la respuesta que nos devuelve la terminal es:
+
+![mongo-collections2](./media/mongo-collections2.png)
+
+<br>
+
+Donde tenemos una *respuesta* por cada documento que hemos insertado.
