@@ -10,11 +10,15 @@
 * **Añadir**
     * [Añadir documentos a una colección](#añadir-documentos-a-una-colección)
     * [Añadir varios documentos a una colección](#añadir-varios-documentos-a-una-colección)
-* **Consultar**
+* **Consultar o buscar**
     * [Consultar todos los documentos de una colección](#consultar-documentos)
     * [Consultar documentos específicos](#consultar-documentos-específicos)
     * [Introducción a las proyecciones](#introducción-a-las-proyecciones)
     * [Selección de arrays anidados usando `$slice`](#selección-de-arrays-anidados-usando-slice)
+    * [Colecciones anidadas](#colecciones-anidadas)
+    * [Buscar un único documento](#buscar-un-único-documento)
+    * [Seleccionar documentos con parte de strings - Regex](#seleccionar-documentos-con-parte-de-strings---regex)
+    * [Comprobar si un campo existe o no](#comprobar-si-un-campo-existe-o-no)
 * [Eliminar documentos](#eliminar-documentos)
 
 
@@ -445,7 +449,7 @@ WHERE name = "Confident Ruby";
 
 ## Selección de arrays anidados usando `$slice`
 
-<sub>[<< Intro a proyecciones](#introducción-a-las-proyecciones) | [Volver al índice](#indice) | [Eliminar documentos >>](#eliminar-documentos) </sub>
+<sub>[<< Intro a proyecciones](#introducción-a-las-proyecciones) | [Volver al índice](#indice) | [Colecciones anidadas >>](#colecciones-anidadas) </sub>
 
 Tal y como indica el título, en MongoDB, podemos hacer queries de arrays anidados usando `$slice`.
 
@@ -521,13 +525,208 @@ Al pasarle el valor `-1` a `$slice`, nos devuelve el último elemento del array,
 ![mongo-sliceNeg1](./media/mongo-sliceNeg1.png)
 
 
+<br><hr><br>
+
+
+## Colecciones anidadas
+
+<sub>[<< Selección de arrays anidados](#selección-de-arrays-anidados-usando-slice) | [Volver al índice](#indice) | [Buscar un único documento >>](#buscar-un-único-documento)</sub>
+
+Antes de comenzar, vamos a [eliminar del documento](#eliminar-documentos) todos aquellos documentos que tengan `Blink` como nombre para que se vea todo de forma más clara.
+
+<br>
+
+A continuación, realizamos lo siguiente para añadir y tener un único elemento con ese nombre en la colección:
+
+```mongo
+db.books.insertOne({
+    "name": "Blink",
+    "publishedDate": new Date(),
+    "authors": [
+        {"name": "Malcolm Gladwell", "active": true},
+        {"name": "Ghost Writer", "active": true},
+    ]
+});
+```
+
+<br>
+
+Ahora, lo que queremos es obtener el nombre del autor sin que nos indique si está activo o no.
+
+Para ello:
+
+```mongo
+db.books.find(
+    {
+        name: "Blink"
+    },
+    {
+        name: 1,
+        publishedDate: 1,
+        "authors.name": 1
+    }
+)
+```
+
+<br>
+
+`authors` es un array de objetos, y queremos que nos devuelva el atributo `name` de cada uno de ellos.
+
+Tenemos que seleccionar el atributo `name` de `authors` y para ello, tenemos que usar la notación de punto.
+
+Este sería el resultado:
+
+![mongo-nested_fields](./media/mongo-nested_fields.png)
+
+
+<br><hr><br>
+
+
+## Buscar un único documento
+
+<sub>[<< Colecciones anidadas](#colecciones-anidadas) | [Volver al índice](#indice) | [Regex >>](#seleccionar-documentos-con-parte-de-strings---regex)</sub>
+
+Antes de comenzar, vamos a introducir de nuevo el documento con nombre `Blink` para así tener dos documentos con dicho nombre.
+
+<br>
+
+Si usamos `find()` nos devolverá los dos documentos. ¿Cómo podemos hacer para que nos devuelva solo uno? Para ello, vamos a usar el método `findOne()`.
+
+```mongo
+db.books.findOne({name: "Blink"})
+```
+
+<br>
+
+Este sería el resultado de usar la función `find()`, donde nos devuelve los dos documentos:
+
+![mongo-find_vs_findone1](./media/mongo-find_vs_findone1.png)
+
+<br>
+
+Mientras que esta sería la salida de `findOne()`, que solo devuelve un documento:
+
+![mongo-find_vs_findone2](./media/mongo-find_vs_findone2.png)
+
+<br>
+
+`findOne()` es una función que nos asegura que sólo vamos a recibir un documento, lo cual en determinadas ocasiones puede ser muy útil.
+
+
+<br><hr><br>
+
+
+## Seleccionar documentos con parte de strings - Regex
+
+<sub>[<< Buscar un único documento](#buscar-un-único-documento) | [Volver al índice](#indice) | [Comprobar si existe un campo >>](#comprobar-si-un-campo-existe-o-no)</sub>
+
+Vamos a tratar de hacer *match* con parte de un string y el título (`name` en este caso) de un documento. Para ello, vamos a insertar primero un documento con el siguiente contenido:
+
+```mongo
+db.books.insertOne({
+    "name": "Deep Work: Rules for Focused Success in a Distracted World",
+    "publishedDate": new Date(),
+    "authors": [
+        {"name": "Cal Newport"},
+    ]
+});
+```
+
+<br>
+
+Ahora que está añadido, vamos a utilizar **Expresiones Regulares** para escribir parte del `name` y hacer *match* con el nombre del documento.
+
+Para ello, vamos a usar el siguiente comando:
+
+```mongo
+db.books.findOne({name: /.*deep work.*/i})
+```
+
+<br>
+
+El resultado de añadir el documento y tratar de localizarlo haciendo uso de las expresiones regulares, sería el siguiente:
+
+![mongo-regex1](./media/mongo-regex1.png)
+
+<br>
+
+Si intentáramos localizar el documento sin usar el formato de expresiones regulares, el resultado sería el siguiente:
+
+![mongo-regex2](./media/mongo-regex2.png)
+
+<br>
+
+Como se puede observar, la respuesta esta vez ha sido `null`.
+
+<br>
+
+***¿Cómo funciona?***
+
+* En primer lugar, los `/` son importantes porque indican que se trata de una expresión regular (*también llamadas **regex** para abreviar*).
+
+* Con los `.*` del comienzo y final, indicamos que puede haber cualquier número de caracteres antes y después de la palabra `deep work`.
+
+* Con el `i` al final, indicamos que no queremos que sea insensible a mayúsculas y minúsculas, es decir, que no importará si originalmente está en mayúsculas o minúsculas, lo detectará siempre que sea la *misma letra*.
+
+
+<br><hr><br>
+
+
+## Comprobar si un campo existe o no
+
+<sub>[<< Regex](#seleccionar-documentos-con-parte-de-strings---regex) | [Volver al índice](#indice) | [Eliminar documentos >>](#eliminar-documentos)</sub>
+
+Vamos a comenzar esta sección insertando un nuevo elemento en la colección `books`:
+
+```mongo
+db.books.insertOne({
+    "name": "Deep Work: Rules for Focused Success in a Distracted World",
+    "publishedDate": new Date(),
+    "reviews": 100,
+    "authors": [
+        {"name": "Cal Newport"}
+    ]
+})
+```
+
+<br>
+
+Este va a ser el único documento que contenga el campo `reviews`. Ahora, imaginemos que estamos realizando una búsqueda y necesitamos saber si el documento tiene o no el campo `reviews` para mostrar su contenido o no.
+
+Para ello, vamos a seguir los siguientes pasos:
+
+```mongo
+db.books.find({reviews: {$exists: true}})
+```
+
+<br>
+
+El atributo `$exists` nos permite comprobar si un campo existe o no. En este caso, le estamos diciendo que nos devuelva todos los documentos que tengan el campo `reviews`.
+
+El resultado sería el siguiente:
+
+![mongo-exists](./media/mongo-exists.png)
+
+<br>
+
+Como podemos observar, nos devuelve el documento que contiene el campo `reviews` y no el/los que no lo contienen.
+
+<br>
+
+Si quisiéramos que nos devolviera aquellos documentos que **no** contienen el campo `reviews`, tendríamos que cambiar el valor de `$exists` a `false`:
+
+```mongo
+db.books.find({reviews: {$exists: false}})
+```
+
+
 <br><hr>
 <hr><br>
 
 
 ## Eliminar documentos
 
-<sub>[<< Seleccionar arrays anidados](#selección-de-arrays-anidados-usando-slice) | [Volver al índice](#indice)</sub>
+<sub>[<< Comprobar si existe un campo](#comprobar-si-un-campo-existe-o-no) | [Volver al índice](#indice)</sub>
 
 Hemos visto diferentes formas de seleccionar documentos, ahora, vamos a ver cómo eliminar los que queramos.
 
@@ -558,7 +757,3 @@ db.books.deleteMany({name: "OOP Programming"})
 Este sería el mensaje esta vez:
 
 ![mongo-deletemany](./media/mongo-deletemany.png)
-
-
-<br><hr>
-<hr><br>
