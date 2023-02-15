@@ -13,6 +13,7 @@
 * **Consultar**
     * [Consultar todos los documentos de una colección](#consultar-documentos)
     * [Consultar documentos específicos](#consultar-documentos-específicos)
+    * [Introducción a las proyecciones](#introducción-a-las-proyecciones)
     * [Selección de arrays anidados usando `$slice`](#selección-de-arrays-anidados-usando-slice)
 * [Eliminar documentos](#eliminar-documentos)
 
@@ -377,13 +378,12 @@ WHERE name = "The Art of War";
 ```
 
 
-<br><hr>
-<hr><br>
+<br><hr><br>
 
 
 ## Introducción a las proyecciones
 
-<sub>[<< Consultar específicos](#consultar-documentos-específicos) | [Volver al índice](#indice) | [Query nested array](#selección-de-arrays-anidados-usando-slice) </sub>
+<sub>[<< Consultar específicos](#consultar-documentos-específicos) | [Volver al índice](#indice) | [Query nested array >>](#selección-de-arrays-anidados-usando-slice) </sub>
 
 Las proyecciones son una forma de filtrar los datos que nos devuelve una consulta.
 
@@ -440,13 +440,12 @@ WHERE name = "Confident Ruby";
 ```
 
 
-<br><hr>
-<hr><br>
+<br><hr><br>
 
 
 ## Selección de arrays anidados usando `$slice`
 
-<sub>[<< Intro a proyecciones](#introducción-a-las-proyecciones) | [Volver al índice](#indice) <!--| []() --> </sub>
+<sub>[<< Intro a proyecciones](#introducción-a-las-proyecciones) | [Volver al índice](#indice) | [Eliminar documentos >>](#eliminar-documentos) </sub>
 
 Tal y como indica el título, en MongoDB, podemos hacer queries de arrays anidados usando `$slice`.
 
@@ -520,3 +519,46 @@ db.books.find(
 Al pasarle el valor `-1` a `$slice`, nos devuelve el último elemento del array, es decir, el segundo autor.
 
 ![mongo-sliceNeg1](./media/mongo-sliceNeg1.png)
+
+
+<br><hr>
+<hr><br>
+
+
+## Eliminar documentos
+
+<sub>[<< Seleccionar arrays anidados](#selección-de-arrays-anidados-usando-slice) | [Volver al índice](#indice)</sub>
+
+Hemos visto diferentes formas de seleccionar documentos, ahora, vamos a ver cómo eliminar los que queramos.
+
+Para ello, vamos a usar los siguientes comandos:
+
+```mongo
+db.books.deleteOne({name: "OOP Programming"})
+```
+
+<br>
+
+Si existen varios documentos con el mismo nombre, solo eliminará el primero que encuentre.
+
+La terminal nos devolverá un mensaje mostrando la cantidad de elementos que ha eliminado:
+
+![mongo-deleteOne](./media/mongo-deleteOne.png)
+
+<br>
+
+Si quisieramos eliminar todos los documentos que tengan el mismo nombre, podríamos usar el siguiente comando:
+
+```mongo
+db.books.deleteMany({name: "OOP Programming"})
+```
+
+<br>
+
+Este sería el mensaje esta vez:
+
+![mongo-deletemany](./media/mongo-deletemany.png)
+
+
+<br><hr>
+<hr><br>
