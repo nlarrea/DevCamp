@@ -47,7 +47,7 @@ Además de instalar MongoDB, también se debe instalar la terminal de MongoDB, `
 
 ## Introducción a MongoDB
 
-<sub>[<< Instalar MongoDB](#instalar-mongodb) | [Volver al índice](#indice) | [Crear usuario >>](#crear-un-usuario)</sub>
+<sub>[<< Instalación](#instalar-mongodb) | [Volver al índice](#indice) | [Crear usuario >>](#crear-un-usuario)</sub>
 
 Lo primero que debemos hacer es **acceder a la terminal** de MongoDB, `mongosh`. Para ello, abrimos una terminal y ejecutamos el comando `mongosh`.
 
@@ -57,7 +57,7 @@ Veremos que se nos ha conectado a la base de datos `test` por defecto.
 
 Para **ver todas las bases de datos** que tenemos, ejecutamos el comando:
 
-```mongo
+```shell
 show dbs
 ```
 
@@ -67,7 +67,7 @@ Para crear una **nueva base de datos**, ejecutamos el comando `use <nombre de la
 
 Si volvemos a escribir el comando `show dbs`, veremos que no se ha añadido la base de datos `mongoCourse` a la lista anterior.
 
-```mongo
+```shell
 use mongoCourse
 # switched to db mongoCourse
 
@@ -122,7 +122,7 @@ Una vez creado el código, lo copiamos, volvemos a la `mongo shell` y lo pegamos
 
 <br>
 
-Para crear más usuarios, simplemente volveríamos a escribir el código anterior, pero cambiando los valores de las claves `user` y `pwd`:
+Para crear más usuarios, simplemente volveríamos a escribir el código anterior, y podríamos ir cambiando los valores de las claves `user` y `pwd`:
 
 > Al ser un ejemplo, sólo he modificado el nombre de usuario.
 
@@ -143,7 +143,7 @@ db.createUser({
 
 Para **ver todos los usuarios** que tenemos en la base de datos, ejecutamos el comando `db.getUsers()`:
 
-```mongo
+```js
 db.getUsers()
 ```
 
@@ -159,7 +159,7 @@ Como se puede observar, nos devuelve ambos usuarios.
 
 Podemos eliminar un usuario escribiendo el siguiente comando directamente en la terminal:
 
-```mongo
+```js
 db.dropUser("cris")
 ```
 
@@ -187,7 +187,7 @@ A lo largo de este curso, vamos a crear una base de datos para almacenar libros,
 
 Para realizar esto, vamos a ir a la terminal de `mongosh` y escribiremos el siguiente comando:
 
-```mongo
+```shell
 db.createCollection("books")
 ```
 
@@ -199,7 +199,7 @@ Tras hacer esto, la terminal devolverá un `{ ok: 1 }`, lo que significa que se 
 
 Para **ver todas las colecciones** que tenemos en la base de datos, ejecutamos el comando:
 
-```mongo
+```shell
 show collections
 ```
 
@@ -218,7 +218,7 @@ Y veremos que se nos ha creado la colección `books`.
 
 Vamos a añadir libros a nuestra base de datos:
 
-```mongo
+```js
 db.books.insertOne({
     "name": "OOP Programming",
     "publishedDate": new Date(),
@@ -239,7 +239,7 @@ Si copiamos el código y lo pegamos en la `mongosh`, veremos que se nos ha añaa
 
 Podemos modificar el código anterior y escribir el siguiente para añadir otro libro:
 
-```mongo
+```js
 db.books.insertOne({
     "name": "OOP Programming",
     "publishedDate": new Date(),
@@ -253,7 +253,7 @@ db.books.insertOne({
 
 Vamos incluso a añadir un tercer libro:
 
-```mongo
+```js
 db.books.insertOne({
     "name": "OOP Programming",
     "startDate": new Date(),
@@ -275,13 +275,13 @@ Esto puede ser útil y problemático al mismo tiempo, por lo que es importante c
 
 ## Añadir varios documentos a una colección
 
-<sub>[<< Añadir documentos](#añadir-documentos-a-una-colección) | [Volver al índice](#indice)</sub>
+<sub>[<< Añadir documentos](#añadir-documentos-a-una-colección) | [Volver al índice](#indice) | [Consultar documentos >>](#consultar-documentos)</sub>
 
 Hemos visto cómo insertar documentos en una colección, pero podríamos querer añadir varios documentos a la vez.
 
 Para ello, realizaremos lo siguiente:
 
-```mongo
+```js
 db.books.insertMany([
     {
         "name": "Confident Ruby",
@@ -324,13 +324,13 @@ Donde tenemos una *respuesta* por cada documento que hemos insertado.
 
 ## Consultar documentos
 
-<sub>[<< Añadir varios documentos >>](#añadir-varios-documentos-a-una-colección) | [Volver al índice](#indice) | [Consultar específicos >>](#consultar-documentos-específicos)</sub>
+<sub>[<< Añadir varios](#añadir-varios-documentos-a-una-colección) | [Volver al índice](#indice) | [Consultar específicos >>](#consultar-documentos-específicos)</sub>
 
 Para consultar documentos, vamos a utilizar el comando `find()`.
 
 Vamos a continuar con el ejemplo de los libros, por lo que vamos a escribir el siguiente comando:
 
-```mongo
+```shell
 db.books.find()
 ```
 
@@ -352,13 +352,13 @@ También podemos ver que MongoDB ha añadido un campo `_id` a cada documento, qu
 
 ## Consultar documentos específicos
 
-<sub>[<< Consultar documentos](#consultar-documentos) | [Volver al índice](#indice) | [Intro a proyecciones >>](#introducción-a-las-proyecciones)</sub>
+<sub>[<< Consultar documentos](#consultar-documentos) | [Volver al índice](#indice) | [Proyecciones >>](#introducción-a-las-proyecciones)</sub>
 
 Hay ocasiones en las que no queremos consultar todos los documentos de una colección, sino que queremos consultar documentos específicos.
 
 Para ello:
 
-```mongo
+```shell
 db.books.find({name: "The Art of War"})
 ```
 
@@ -387,13 +387,13 @@ WHERE name = "The Art of War";
 
 ## Introducción a las proyecciones
 
-<sub>[<< Consultar específicos](#consultar-documentos-específicos) | [Volver al índice](#indice) | [Query nested array >>](#selección-de-arrays-anidados-usando-slice) </sub>
+<sub>[<< Consultar específicos](#consultar-documentos-específicos) | [Volver al índice](#indice) | [Consultar arrays anidados >>](#selección-de-arrays-anidados-usando-slice) </sub>
 
 Las proyecciones son una forma de filtrar los datos que nos devuelve una consulta.
 
 Para usarlas:
 
-```mongo
+```js
 db.books.find(
     {
         name: "Confident Ruby"
@@ -417,7 +417,7 @@ Hemos visto quá ocurre al usar `find()` anteriormente, pero en esta ocasión, l
 
 Si no quisiéramos que nos devolviera el campo `_id`, podríamos hacer lo siguiente:
 
-```mongo
+```js
 db.books.find(
     {
         name: "Confident Ruby"
@@ -449,13 +449,13 @@ WHERE name = "Confident Ruby";
 
 ## Selección de arrays anidados usando `$slice`
 
-<sub>[<< Intro a proyecciones](#introducción-a-las-proyecciones) | [Volver al índice](#indice) | [Colecciones anidadas >>](#colecciones-anidadas) </sub>
+<sub>[<< Proyecciones](#introducción-a-las-proyecciones) | [Volver al índice](#indice) | [Colecciones anidadas >>](#colecciones-anidadas) </sub>
 
 Tal y como indica el título, en MongoDB, podemos hacer queries de arrays anidados usando `$slice`.
 
 Imaginemos que tenemos el siguiente documento:
 
-```mongo
+```js
 db.books.insertOne({
     "name": "Blink",
     "publishedDate": new Date(),
@@ -472,7 +472,7 @@ Como vemos, en el apartado de `authors` tenemos un array con 2 objetos, cada uno
 
 Para ello, vamos a realizar lo siguiente:
 
-```mongo
+```js
 db.books.find(
     {
         name: "Blink"
@@ -503,7 +503,7 @@ Si le pasaramos el valor de `$slice: 2`, nos devolvería los 2 primeros elemento
 
 Si solo quisiéramos que nos devolviera el nombre del segundo autor, podríamos hacer lo siguiente:
 
-```mongo
+```js
 db.books.find(
     {
         name: "Blink"
@@ -530,7 +530,7 @@ Al pasarle el valor `-1` a `$slice`, nos devuelve el último elemento del array,
 
 ## Colecciones anidadas
 
-<sub>[<< Selección de arrays anidados](#selección-de-arrays-anidados-usando-slice) | [Volver al índice](#indice) | [Buscar un único documento >>](#buscar-un-único-documento)</sub>
+<sub>[<< Consultar arrays anidados](#selección-de-arrays-anidados-usando-slice) | [Volver al índice](#indice) | [Buscar un único documento >>](#buscar-un-único-documento)</sub>
 
 Antes de comenzar, vamos a [eliminar del documento](#eliminar-documentos) todos aquellos documentos que tengan `Blink` como nombre para que se vea todo de forma más clara.
 
@@ -538,7 +538,7 @@ Antes de comenzar, vamos a [eliminar del documento](#eliminar-documentos) todos 
 
 A continuación, realizamos lo siguiente para añadir y tener un único elemento con ese nombre en la colección:
 
-```mongo
+```js
 db.books.insertOne({
     "name": "Blink",
     "publishedDate": new Date(),
@@ -555,7 +555,7 @@ Ahora, lo que queremos es obtener el nombre del autor sin que nos indique si est
 
 Para ello:
 
-```mongo
+```js
 db.books.find(
     {
         name: "Blink"
@@ -592,7 +592,7 @@ Antes de comenzar, vamos a introducir de nuevo el documento con nombre `Blink` p
 
 Si usamos `find()` nos devolverá los dos documentos. ¿Cómo podemos hacer para que nos devuelva solo uno? Para ello, vamos a usar el método `findOne()`.
 
-```mongo
+```shell
 db.books.findOne({name: "Blink"})
 ```
 
@@ -622,7 +622,7 @@ Mientras que esta sería la salida de `findOne()`, que solo devuelve un document
 
 Vamos a tratar de hacer *match* con parte de un string y el título (`name` en este caso) de un documento. Para ello, vamos a insertar primero un documento con el siguiente contenido:
 
-```mongo
+```js
 db.books.insertOne({
     "name": "Deep Work: Rules for Focused Success in a Distracted World",
     "publishedDate": new Date(),
@@ -638,7 +638,7 @@ Ahora que está añadido, vamos a utilizar **Expresiones Regulares** para escrib
 
 Para ello, vamos a usar el siguiente comando:
 
-```mongo
+```shell
 db.books.findOne({name: /.*deep work.*/i})
 ```
 
@@ -678,7 +678,7 @@ Como se puede observar, la respuesta esta vez ha sido `null`.
 
 Vamos a comenzar esta sección insertando un nuevo elemento en la colección `books`:
 
-```mongo
+```js
 db.books.insertOne({
     "name": "Deep Work: Rules for Focused Success in a Distracted World",
     "publishedDate": new Date(),
@@ -695,7 +695,7 @@ Este va a ser el único documento que contenga el campo `reviews`. Ahora, imagin
 
 Para ello, vamos a seguir los siguientes pasos:
 
-```mongo
+```shell
 db.books.find({reviews: {$exists: true}})
 ```
 
@@ -715,7 +715,7 @@ Como podemos observar, nos devuelve el documento que contiene el campo `reviews`
 
 Si quisiéramos que nos devolviera aquellos documentos que **no** contienen el campo `reviews`, tendríamos que cambiar el valor de `$exists` a `false`:
 
-```mongo
+```shell
 db.books.find({reviews: {$exists: false}})
 ```
 
@@ -732,7 +732,7 @@ Hemos visto diferentes formas de seleccionar documentos, ahora, vamos a ver cóm
 
 Para ello, vamos a usar los siguientes comandos:
 
-```mongo
+```shell
 db.books.deleteOne({name: "OOP Programming"})
 ```
 
@@ -748,7 +748,7 @@ La terminal nos devolverá un mensaje mostrando la cantidad de elementos que ha 
 
 Si quisieramos eliminar todos los documentos que tengan el mismo nombre, podríamos usar el siguiente comando:
 
-```mongo
+```shell
 db.books.deleteMany({name: "OOP Programming"})
 ```
 
