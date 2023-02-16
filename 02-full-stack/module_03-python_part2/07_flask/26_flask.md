@@ -6,10 +6,12 @@
     * [Arrancar la aplicación](#arrancar-la-aplicación)
 * [Dependencias de Flask](#dependencias-de-flask)
 * [Crear una base de datos SQLite con SQLAlchemy](#crear-una-base-de-datos-sqlite-con-sqlalchemy)
-* [Crear un POST API Endpoint](#crear-un-post-api-endpoint)
-* [Crear un GET all Request](#crear-un-get-request)
-* [Crear un GET single Request](#crear-un-single-get-request)
-* [Crear un PUT Request](#actualizar-datos-con-un-put-request)
+* **Peticiones HTTP:**
+    * [POST Request](#crear-un-post-api-endpoint)
+    * [GET all Request](#crear-un-get-request)
+    * [GET single Request](#crear-un-single-get-request)
+    * [PUT Request](#actualizar-datos-con-un-put-request)
+    * [DELETE Request](#eliminar-datos-con-un-delete-request)
 
 
 <br><hr>
@@ -31,11 +33,11 @@ A continucaión, vamos a ver cómo crear un proyecto con Flask. Para ello, abrir
 
 ```bash
 # crear un directorio para el proyecto
-# hay que poner todo el url del directorio, no como tengo aquí de ejemplo
-mkdir 00_hello-flask
+# hay que poner todo el url del directorio, no como aquí
+mkdir hello-flask
 
 # entrar en el directorio
-cd 00_hello-flask
+cd hello-flask
 
 # crear el entorno virtual
 pipenv --python 3   # versión 3 de python
@@ -55,7 +57,7 @@ Creamos el archivo `app.py` y escribimos las siguientes líneas de código:
 ```python
 from flask import Flask
 
-# crea una nueva instancia de flask y lo guarda dentro de la variable 'app'
+# crea nueva instancia de flask y la guarda dentro de variable 'app'
 app = Flask(__name__)
 
 # creamos una 'route'
@@ -122,7 +124,7 @@ En este apartado, vamos a ver cómo instalar dependencias que prodrían ser nece
 La primera que vamos a instalar es `flask-sqlalchemy`. Lo que hace es permitirnos comunicarnos con una base de datos sin necesitar escribir código SQL como tal. Para ello, ejecutaremos los siguientes comandos:
 
 ```bash
-# desde el directorio del proyecto
+# desde el directorio del proyecto (hello-flask)
 pipenv install Flask-SQLAlchemy
 ```
 
@@ -131,7 +133,7 @@ pipenv install Flask-SQLAlchemy
 La siguiente que vamos a instalar es `flask-marshmallow`. Lo que nos permite es renderizar los datos JSON de una forma muchísimo más sencilla. Para ello, ejecutaremos los siguientes comandos:
 
 ```bash
-# desde el directorio del proyecto
+# desde el directorio del proyecto (hello-flask)
 pipenv install flask-marshmallow
 ```
 
@@ -140,7 +142,7 @@ pipenv install flask-marshmallow
 La última que vamos a instalar es una que combina las dos anteriores: `marshmallow-sqlalchemy`. Lo que nos permite es combinar las dos dependencias anteriores. Para ello, ejecutaremos los siguientes comandos:
 
 ```bash
-# desde el directorio del proyecto
+# desde el directorio del proyecto (hello-flask)
 pipenv install marshmallow-sqlalchemy
 ```
 
@@ -148,7 +150,7 @@ pipenv install marshmallow-sqlalchemy
 
 Si miramos en el archivo `Pipfile`, veremos que ahora tenemos las tres dependencias instaladas:
 
-```python
+```pipfile
 [packages]
 flask = "*"
 flask-sqlalchemy = "*"
@@ -166,7 +168,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 import os
 
-# crea una nueva instancia de flask y lo guarda dentro de la variable 'app'
+# crea instancia de flask y la guarda dentro de variable
 app = Flask(__name__)
 
 # creamos una 'route'
@@ -228,18 +230,22 @@ app = Flask(__name__)
 
 # le decimos a flask dónde está la base de datos
 basedir = os.path.abspath(os.path.dirname(__file__))
-# le pasamos el directorio al que queremos que vaya, y le decimos que se llama 'app.sqlite'
+
+# le pasamos el directorio al que queremos que vaya
+# y le decimos que se llama 'app.sqlite'
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + os.path.join(basedir, "app.sqlite")
+
 # creamos un objeto de base de datos
 db = SQLAlchemy(app)        # instanciar objeto de SQLAlchemy
 ma = Marshmallow(app)       # instanciar objeto de Marshmallow
 
 # creamos el esquema de la tabla (heredera de db.Model)
 class Guide(db.Model):
-    # añadimos una columna de tipo integer, y decirmos que es una primary key
+    # añadimos una columna de tipo integer, decirmos que es una primary key
     # primary_key=True -> hará que cada Guide tenga su propio ID, y cada ID incrementa automáticamente
     id = db.Column(db.Integer, primary_key=True)
-    # creamos 2 columnas más de tipo string y limitamos su cantidad de chars a 100 y 144
+    # creamos 2 columnas más de tipo string 
+    # limitamos su cantidad de chars a 100 y 144
     title = db.Column(db.String(100), unique=False)
     content = db.Column(db.String(144), unique=False)
 
@@ -250,7 +256,7 @@ class Guide(db.Model):
 
 class GuideSchema(ma.Schema):
     class Meta:
-        # indicamos los 'fields' a los que queremos acceder dentro de una tupla
+        # indicamos los campos a los que queremos acceder dentro de una tupla
         fields = ("title", "content")
 
 
@@ -267,7 +273,7 @@ if __name__ == "__main__":
 Por último, desde la terminal, vamos a ejecutar el archivo `app.py`:
 
 ```bash
-# si no está activado el entorno virtual, activarlo, si ya está activado, saltar este paso:
+# si el entorno virtual ya está activado, saltar este paso:
 pipenv shell
 
 
@@ -283,6 +289,10 @@ python
 
 Los pasos que he seguido yo desde la terminal y los de la clase no son los mismos, esto se debe a las actualizaciones de Flask.
 
+<br>
+
+Si nos fijamos en el directorio de trabajo, ahora aparecerá un archivo llamado `app.sqlite`. Este es el archivo de la base de datos que hemos creado.
+
 
 <br><hr>
 <hr><br>
@@ -290,7 +300,7 @@ Los pasos que he seguido yo desde la terminal y los de la clase no son los mismo
 
 ## Crear un POST API Endpoint
 
-<sub>[<< Crear base de datos SQLite](#crear-una-base-de-datos-sqlite-con-sqlalchemy) | [Volver al índice](#indice) | [Crear GET Request >>](#crear-un-get-request)</sub>
+<sub>[<< Crear base de datos SQLite](#crear-una-base-de-datos-sqlite-con-sqlalchemy) | [Volver al índice](#indice) | [GET all Request >>](#crear-un-get-request)</sub>
 
 Una vez llegados a este punto, vamos a comenzar a construir la API. Para ello, vamos a comenzar a añadir `guides` a la aplicación.
 
@@ -303,7 +313,8 @@ from flask import Flask, request, jsonify
 # endpoint to create a new guide
 @app.route("/guide", methods=["POST"])  # creamos un guide con el verbo POST
 def add_guide():
-    title = request.json['title']       # obtener dato de json y guardarlo en variable
+    # obtener datos de json y guardarlos en sus variables
+    title = request.json['title']
     content = request.json['content']
 
     new_guide = Guide(title, content)   # nueva isntancia de Guide
@@ -358,7 +369,7 @@ guides_schema = GuideSchema(many=True)  # para trabajar con 'multiple guides'
 # endpoint to create a new guide
 @app.route("/guide", methods=["POST"])  # creamos un guide con el verbo POST
 def add_guide():
-    # obtener dato de json y guardarlo en variable
+    # obtener datos de json y guardarlos en variables
     title = request.json['title']
     content = request.json['content']
 
@@ -435,7 +446,7 @@ Además, comprobando el resultado del test que habíamos añadido en la sección
 
 ## Crear un GET Request
 
-<sub>[<< POST](#crear-un-post-api-endpoint) | [Volver al índice](#indice) | [GET all >>](#crear-un-get-request)</sub>
+<sub>[<< POST](#crear-un-post-api-endpoint) | [Volver al índice](#indice) | [Single GET Request >>](#crear-un-single-get-request)</sub>
 
 Hemos creado un endpoint de `POST` para añadir `guides` a la base de datos. Ahora, vamos a crear un endpoint de `GET` para obtener los `guides` de la misma.
 
@@ -565,7 +576,7 @@ Es de destacar que, si intentamos obtener un elemento que no existe, no obtendre
 
 ## Actualizar datos con un PUT Request
 
-<sub>[<< Single GET](#implementar-un-single-get-request) | [Volver al índice](#indice) | [ >>](#)</sub>
+<sub>[<< Single GET Request](#crear-un-single-get-request) | [Volver al índice](#indice) | [DELETE >>](#eliminar-datos-con-un-delete-request)</sub>
 
 En ocasiones se deseará modificar los datos de un elemento de la base de datos. Para ello, se puede utilizar el método `PUT`.
 
