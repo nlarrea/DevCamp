@@ -43,8 +43,8 @@ He aquí el contenido trabajado:
 # Links de interés - documentación
 
 * **Coding Foundations**
-    * [HTML](https://developer.mozilla.org/es/docs/Web/HTML)
-    * [CSS](https://developer.mozilla.org/es/docs/Web/CSS)
+    * [HTML](https://htmlreference.io/)
+    * [CSS](https://cssreference.io/)
     * Frameworks y recursos adicionales
         * [Bootstrap](https://getbootstrap.com/)
         * [Font Awesome](https://fontawesome.com/)
@@ -58,7 +58,7 @@ He aquí el contenido trabajado:
     * [Python](https://www.python.org/)
     * [JavaScript](https://developer.mozilla.org/es/docs/Web/JavaScript)
     * Trabajar con APIs
-        * [Flask](https://flask.palletsprojects.com/en/1.1.x/)
+        * [Flask](https://flask.palletsprojects.com/en/2.2.x/)
     * Bases de datos
         * [MongoDB](https://www.mongodb.com/es)
 
@@ -79,8 +79,8 @@ Si tienes alguna duda o sugerencia acerca del contenido de este documento o cual
 
 <div align="center">
 
-[![Twitter](https://img.shields.io/badge/Twitter-@nloust_-181717?style=flat-square&logo=Twitter&logoColor=1DA1F2&labelColor=181717&label)](https://twitter.com/nloust_) &emsp;
-[![Instagram](https://img.shields.io/badge/Instagram-@n.loust-181717?style=flat-square&logo=Instagram&logoColor=E4405F&labelColor=181717&label)](https://www.instagram.com/n.loust/) &emsp;
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Naia%20Larrea-181717?style=flat-square&logo=LinkedIn&logoColor=0A66C2&labelColor=181717&label)](https://www.linkedin.com/in/naia-larrea/)
+[![Twitter](https://img.shields.io/badge/Twitter-@nloust_-1DA1F2?style=flat-square&logo=Twitter&logoColor=white&labelColor=181717&label)](https://twitter.com/nloust_) &emsp;
+[![Instagram](https://img.shields.io/badge/Instagram-@n.loust-E4405F?style=flat-square&logo=Instagram&logoColor=white&labelColor=181717&label)](https://www.instagram.com/n.loust/) &emsp;
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Naia%20Larrea-0A66C2?style=flat-square&logo=LinkedIn&logoColor=white&labelColor=181717&label)](https://www.linkedin.com/in/naia-larrea/)
 
 </div>
