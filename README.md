@@ -48,6 +48,8 @@ He aquí el contenido trabajado:
     * Frameworks y recursos adicionales
         * [Bootstrap](https://getbootstrap.com/)
         * [Font Awesome](https://fontawesome.com/)
+        * [Grid](https://css-tricks.com/snippets/css/complete-guide-grid/)
+        * [Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
 
 <br>
 
