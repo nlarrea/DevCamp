@@ -7,7 +7,7 @@
 * [Dependencias de Flask](#dependencias-de-flask)
 * [Crear una base de datos SQLite con SQLAlchemy](#crear-una-base-de-datos-sqlite-con-sqlalchemy)
 * **Peticiones HTTP:**
-    * [POST Request](#crear-un-post-api-endpoint)
+    * [POST Request](#crear-un-post-request)
     * [GET all Request](#crear-un-get-request)
     * [GET single Request](#crear-un-single-get-request)
     * [PUT Request](#actualizar-datos-con-un-put-request)
@@ -33,7 +33,6 @@ A continucaión, vamos a ver cómo crear un proyecto con Flask. Para ello, abrir
 
 ```bash
 # crear un directorio para el proyecto
-# hay que poner todo el url del directorio, no como aquí
 mkdir hello-flask
 
 # entrar en el directorio
@@ -168,10 +167,8 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 import os
 
-# crea instancia de flask y la guarda dentro de variable
 app = Flask(__name__)
 
-# creamos una 'route'
 @app.route('/')
 def hello():
     return "Hey Flask"
@@ -200,7 +197,7 @@ Veremos que nos salen los mismos mensajes que antes y no hay errores, por lo que
 
 ## Crear una base de datos SQLite con SQLAlchemy
 
-<sub>[<< Dependencias de Flask](#dependencias-de-flask) | [Volver al índice](#indice) | [Crear una POST API >>](#crear-un-post-api-endpoint)</sub>
+<sub>[<< Dependencias de Flask](#dependencias-de-flask) | [Volver al índice](#indice) | [Crear una POST API >>](#crear-un-post-request)</sub>
 
 Vamos a crear una base de datos SQLite, por lo que no vamos a usar código SQL puro, sino que vamos a usar SQLAlchemy. Vamos a crear el esquema (tabla) con la que vamos a trabajar, y vamos a permitir al código generar esa tabla por nosotros.
 
@@ -231,21 +228,16 @@ app = Flask(__name__)
 # le decimos a flask dónde está la base de datos
 basedir = os.path.abspath(os.path.dirname(__file__))
 
-# le pasamos el directorio al que queremos que vaya
-# y le decimos que se llama 'app.sqlite'
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + os.path.join(basedir, "app.sqlite")
 
 # creamos un objeto de base de datos
 db = SQLAlchemy(app)        # instanciar objeto de SQLAlchemy
 ma = Marshmallow(app)       # instanciar objeto de Marshmallow
 
-# creamos el esquema de la tabla (heredera de db.Model)
+# creamos el esquema de la tabla
 class Guide(db.Model):
-    # añadimos una columna de tipo integer, decirmos que es una primary key
-    # primary_key=True -> hará que cada Guide tenga su propio ID, y cada ID incrementa automáticamente
     id = db.Column(db.Integer, primary_key=True)
-    # creamos 2 columnas más de tipo string 
-    # limitamos su cantidad de chars a 100 y 144
+
     title = db.Column(db.String(100), unique=False)
     content = db.Column(db.String(144), unique=False)
 
@@ -256,7 +248,6 @@ class Guide(db.Model):
 
 class GuideSchema(ma.Schema):
     class Meta:
-        # indicamos los campos a los que queremos acceder dentro de una tupla
         fields = ("title", "content")
 
 
@@ -298,7 +289,7 @@ Si nos fijamos en el directorio de trabajo, ahora aparecerá un archivo llamado 
 <hr><br>
 
 
-## Crear un POST API Endpoint
+## Crear un POST Request
 
 <sub>[<< Crear base de datos SQLite](#crear-una-base-de-datos-sqlite-con-sqlalchemy) | [Volver al índice](#indice) | [GET all Request >>](#crear-un-get-request)</sub>
 
@@ -307,11 +298,10 @@ Una vez llegados a este punto, vamos a comenzar a construir la API. Para ello, v
 Como se trata de una API, vamos a utilizar el método `POST` para añadir `guides` a la base de datos. Pero antes de llegar a eso, vamos a añadir las siguientes líneas de código al archivo `app.py`:
 
 ```python
-# modificamos la importación de Flask
 from flask import Flask, request, jsonify
 
 # endpoint to create a new guide
-@app.route("/guide", methods=["POST"])  # creamos un guide con el verbo POST
+@app.route("/guide", methods=["POST"])
 def add_guide():
     # obtener datos de json y guardarlos en sus variables
     title = request.json['title']
@@ -320,7 +310,7 @@ def add_guide():
     new_guide = Guide(title, content)   # nueva isntancia de Guide
 
     # comunicarse con la data base
-    db.session.add(new_guide)           # añadir el guide al db
+    db.session.add(new_guide)
     db.session.commit()
 
     # asegurarnos de que funciona el código
@@ -343,11 +333,10 @@ app = Flask(__name__)
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + os.path.join(basedir, "app.sqlite")
-# creamos un objeto de base de datos
-db = SQLAlchemy(app)        # instanciar objeto de SQLAlchemy
-ma = Marshmallow(app)       # instanciar objeto de Marshmallow
 
-# creamos el esquema de la tabla (heredera de db.Model)
+db = SQLAlchemy(app)
+ma = Marshmallow(app)
+
 class Guide(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), unique=False)
@@ -363,23 +352,20 @@ class GuideSchema(ma.Schema):
         fields = ("title", "content")
 
 
-guide_schema = GuideSchema()            # para trabajar con 'single guide'
-guides_schema = GuideSchema(many=True)  # para trabajar con 'multiple guides'
+guide_schema = GuideSchema()
+guides_schema = GuideSchema(many=True)
 
 # endpoint to create a new guide
-@app.route("/guide", methods=["POST"])  # creamos un guide con el verbo POST
+@app.route("/guide", methods=["POST"])
 def add_guide():
-    # obtener datos de json y guardarlos en variables
     title = request.json['title']
     content = request.json['content']
 
-    new_guide = Guide(title, content)   # nueva isntancia de Guide
+    new_guide = Guide(title, content)
 
-    # comunicarse con la data base -> añadir el guide al db
     db.session.add(new_guide)
     db.session.commit()
 
-    # asegurarnos de que funciona el código
     guide = Guide.query.get(new_guide.id)
     return guide_schema.jsonify(guide)
 
@@ -393,8 +379,7 @@ if __name__ == "__main__":
 Ahora, vamos a probar el código. Para ello, desde la terminal, vamos a hacer lo siguiente:
 
 ```bash
-# si no está activado el entorno virtual, activarlo, si ya está activado, saltar este paso:
-pipenv shell
+pipenv shell    # si entorno virtual activado, saltar este paso
 
 python app.py
 ```
@@ -446,7 +431,7 @@ Además, comprobando el resultado del test que habíamos añadido en la sección
 
 ## Crear un GET Request
 
-<sub>[<< POST](#crear-un-post-api-endpoint) | [Volver al índice](#indice) | [Single GET Request >>](#crear-un-single-get-request)</sub>
+<sub>[<< POST](#crear-un-post-request) | [Volver al índice](#indice) | [Single GET Request >>](#crear-un-single-get-request)</sub>
 
 Hemos creado un endpoint de `POST` para añadir `guides` a la base de datos. Ahora, vamos a crear un endpoint de `GET` para obtener los `guides` de la misma.
 
@@ -526,7 +511,7 @@ De nuevo, tendremos que modificar el archivo `app.py`. Vamos a añadir las sigui
 ```python
 # endpoint for querying single guide
 @app.route("/guide/<id>", methods=["GET"])
-def get_guide(id):          # la función necesita que le pasemos el ID del 'guide'
+def get_guide(id):
     # pedimos que obtenga el elemento con el ID que se le haya pasado
     guide = Guide.query.get(id)
 
