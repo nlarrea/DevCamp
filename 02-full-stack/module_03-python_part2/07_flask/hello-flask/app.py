@@ -41,7 +41,7 @@ guide_schema = GuideSchema()                # para trabajar con un solo 'guide'
 guides_schema = GuideSchema(many=True)      # para trabajar con múltiples 'guide'
 
 
-# endpoint to create a new guide
+# endpoint to create a new guide -> POST
 @app.route("/guide", methods=["POST"])      # indicamos el verbo POST -> para añadir un guide
 def add_guide():
     # obtener datos de json y guardarlos en variables
