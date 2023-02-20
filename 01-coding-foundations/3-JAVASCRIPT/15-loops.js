@@ -28,6 +28,25 @@ for(var player in players){
 	*/
 }
 
+for(let player in players){
+    console.log(player)
+    /* prints:
+    0
+    1
+    2
+    3 */
+}
+
+// FOR OF
+for(let player of players){
+    console.log(player);
+    /* prints:
+    	Altuve
+    	Bregman
+    	Correa
+    	Springer */
+}
+
 // FOREACH
 players.forEach(function(element){
 	console.log(element);
