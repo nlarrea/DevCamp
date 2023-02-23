@@ -79,7 +79,7 @@ Si tienes alguna duda o sugerencia acerca del contenido de este documento o cual
 
 <div align="center">
 
-[![Twitter](https://img.shields.io/badge/Twitter-@nloust_-1DA1F2?style=flat-square&logo=Twitter&logoColor=white&labelColor=181717&label)](https://twitter.com/nloust_) &emsp;
+[![Twitter](https://img.shields.io/badge/Twitter-@nlarrea__-1DA1F2?style=flat-square&logo=Twitter&logoColor=white&labelColor=181717&label)](https://twitter.com/nlarrea_) &emsp;
 [![Instagram](https://img.shields.io/badge/Instagram-@n.loust-E4405F?style=flat-square&logo=Instagram&logoColor=white&labelColor=181717&label)](https://www.instagram.com/n.loust/) &emsp;
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Naia%20Larrea-0A66C2?style=flat-square&logo=LinkedIn&logoColor=white&labelColor=181717&label)](https://www.linkedin.com/in/naia-larrea/)
 
