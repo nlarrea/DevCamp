@@ -16,3 +16,10 @@ async function queryApis(){
 }
 
 queryApis();
+
+/* 
+como hemos usado asyn-await, se realizarán las llamadas al API siguiendo el
+orden en el que se han escrito dichas llamadas dentro de la función asíncrona
+'quetyApis' sin importar el tiempo que tarde en llegar la respuesta de ninguna
+de las dos llamadas
+*/
