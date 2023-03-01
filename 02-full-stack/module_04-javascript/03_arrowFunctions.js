@@ -9,7 +9,7 @@ fullName("Naia", "Larrea");
 
 
 // function expression -> cuadno la guardamos en una variable
-fullNameExpression = function(fName, lName){
+const fullNameExpression = function(fName, lName){
     console.log(`${fName} ${lName}`);   // Naia Larrea
 }
 
@@ -17,7 +17,7 @@ fullNameExpression("Naia", "Larrea");
 
 
 // arrow function
-helloWorld = () => {
+const helloWorld = () => {
     console.log("Hello World!");        // Hello World!
 }
 
@@ -27,7 +27,7 @@ helloWorld();
 
 // ARROW FUNCTION WITH SINGLE ARGUMENT
 
-firsName = fName => {console.log(fName.toUpperCase());}     // NAIA
+const firsName = fName => {console.log(fName.toUpperCase());}     // NAIA
 firsName("Naia");
 // si solo usamos 1 argumento, no son necesarios los paréntesis, sino si lo son
 
@@ -35,7 +35,7 @@ firsName("Naia");
 
 // ARROW FUNCTION WITH MORE ARGUMENTS
 
-fullNameArrow = (fName, lName) => {
+const fullNameArrow = (fName, lName) => {
     console.log(`${fName} ${lName}`);   // Naia Larrea
 }
 fullNameArrow("Naia", "Larrea");
