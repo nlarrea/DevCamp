@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js"></script>
+    <title>Debugger</title>
+</head>
+<body>
+    
+</body>
+<script>
+    const links = [
+        "https://google.com",
+        "https://devcamp.com",
+        "https://airbnb.com"
+    ];
+
+    const webLinks = _.reduce(links, function(content, link){
+        // descomentar 'debugger;' para que funcione
+        //debugger;   // carga toda la página hasta este punto y se pausa
+        // podemos ver el estado de las variables paso a paso
+        return `<a href='${link}'>${link}</a>`.concat(content);
+    }, "");
+</script>
+</html>
