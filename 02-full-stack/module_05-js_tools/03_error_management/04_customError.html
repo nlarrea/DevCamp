@@ -13,9 +13,9 @@
     // clase que hereda de la clase Error
     class DevcampError extends Error {
         constructor(msg = "An error occurred", ...params){
-            super(...params); // llama al constructor de la clase Error
+            super(msg, ...params); // llama al constructor de la clase Error
             
-            this.msg = msg;
+            this.name = "DevcampError";     // customiza el nombre del error
         }
     }
 
@@ -26,7 +26,7 @@
     try{
         console.log(siteComponent(widget));
     } catch(e){
-        throw new DevcampError("DevcampError", e);
+        throw new DevcampError(e);
     }
 
     // lo ponemos al final para que salte el error

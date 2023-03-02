@@ -15,7 +15,8 @@
     class ApiError extends Error {
         constructor(msg = 'An api error occurred', ...params){
             super(...params);
-
+            
+            this.name = "ApiError";
             this.msg = msg;
         }
     }
