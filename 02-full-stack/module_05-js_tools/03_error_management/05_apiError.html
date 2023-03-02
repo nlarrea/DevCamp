@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Api Errors</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // http://api.dailysmarty.com/posts
+
+    class ApiError extends Error {
+        constructor(msg = 'An api error occurred', ...params){
+            super(...params);
+
+            this.msg = msg;
+        }
+    }
+    
+    // request to the API
+    var request = new XMLHttpRequest();
+
+    // definir método y API a la que llamar
+    request.open("GET", "http://api.dailysmarty.com/posts", true);
+
+    // cuando se tenga la respuesta, llama a la función anónima (se ejecuta)
+    request.onload = function(){
+        // si todo ha ido bien
+        if(request.status >= 200 && request.status < 400){
+            // parsear datos obtenidos como JSON
+            var data = JSON.parse(request.responseText);
+            console.log(data);
+        } else{
+            throw new ApiError('ApiError', `An API error occurred with a status code of ${request.status}`);
+        }
+    }
+
+    request.send();     // llamar a la API como tal
+</script>
+</html>
