@@ -1,4 +1,18 @@
-# Forma de trabajo
+# Importar y exportar - local
+
+<div id="indice"></div>
+
+* [Introducción](#introducción)
+* **Exportar e importar:**
+    * [Una variable](#exportar-e-importar-una-variable)
+    * [Una función](#exportar-e-importar-una-función)
+    * [Varios elementos](#exportar-e-importar-varios-elementos-a-la-vez)
+    * [Todos los elementos](#exportar-e-importar-todos-los-elementos)
+    * [Por defecto](#exportar-e-importar-por-defecto)
+
+
+
+## Introducción
 
 Ahora que hemos creado todo lo necesario para poder realizar un proyecto, vamos a ver cuáles son las mejores pautas y prácticas a la hora de trabajar con proyectos en JavaScript.
 

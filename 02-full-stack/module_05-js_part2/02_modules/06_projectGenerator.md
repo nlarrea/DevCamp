@@ -1,4 +1,17 @@
-# Instalación de npm
+# npm
+
+<div id="indice"></div>
+
+* [Instalación de npm](#instalación-de-npm)
+* [Generación de proyectos](#generación-de-proyectos)
+* [Ejecución del proyecto](#ejecución-del-proyecto)
+
+
+<br><hr>
+<hr><br>
+
+
+## Instalación de npm
 
 Para saber si tenemos instalado `npm` en nuestro sistema, podemos ejecutar el siguiente comando en la terminal:
 
@@ -17,7 +30,7 @@ En este último caso, podemos ir a la página de [Node.js](https://nodejs.org/es
 <hr><br>
 
 
-# Generación de proyectos
+## Generación de proyectos
 
 Una vez nos aseguramos de tenerlo todo instalado, ejecutamos el siguiente comando en la terminal:
 
@@ -86,7 +99,7 @@ Se habrá creado la carpeta `node_modules` y se habrán descargado todas las dep
 <hr><br>
 
 
-# Ejecución del proyecto
+## Ejecución del proyecto
 
 A partir de ahora, vamos a ejecutar nuestro código en nuestro propio servidor local.
 

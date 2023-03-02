@@ -1,5 +1,17 @@
 # npm
 
+<div id="indice"></div>
+
+* [Introducción](#introducción)
+* [Package.json](#packagejson)
+
+
+<br><hr>
+<hr><br>
+
+
+## Introducción
+
 `npm` es el gestor de paquetes de Node.js. Es un programa que se instala en tu computadora y que te permite tanto instalar paquetes de Node.js, como otros paquetes de terceros.
 
 Ya hemos hablado de él en la sección anterior, pero vamos a profundizar un poco más en él.
