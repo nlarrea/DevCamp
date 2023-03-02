@@ -59,3 +59,79 @@ import { multiply } from "./helper";
 
 ## Exportar e importar varios elementos a la vez
 
+Para poder importar varios elementos a la vez, se utiliza el siguiente código:
+
+```js
+// bootstrap.js
+import { multiply, greeting } from "./helper";
+
+// acceder a los elementos importados:
+console.log(greeting);          // Hi there
+console.log(multiply(2, 3));    // 6
+```
+
+
+<br><hr>
+<hr><br>
+
+
+## Exportar e importar TODOS los elementos
+
+En este caso, la sintaxis varía un poco, se haría de la siguiente manera:
+
+```js
+// bootstrap.js
+import * as helper from "./helper";
+
+// acceder a los elementos importados:
+console.log(helper.greeting);           // Hi there
+console.log(helper.multiply(2, 3));     // 6
+```
+
+
+<br><hr>
+<hr><br>
+
+
+## Exportar e importar por defecto
+
+Vamos a crear un nuevo archivo llamado `navigation.js` en la carpeta `src`.
+
+En este archivo vamos a escribir el siguiente código:
+
+```js
+// navigation.js
+export default function() {
+    return "<div>Logo</div>;
+}
+
+// bootstrap.js
+import navigation from "./navigation";
+console.log(navigation());      // <div>Logo</div>
+```
+
+<br>
+
+Puede parecer que no tiene sentido exportar más elementos del archivo `navigation` puesto que los elementos tomarán el nombre del archivo. Sin embargo, en un archivo con elementos exportados por defecto, podemos seguir exportando otros elementos de la misma forma que la descrita en apartados anteriores.
+
+De esta forma, tendríamos algo así:
+
+```js
+// navigation.js
+export default function() {
+    return "<div>Logo</div>;
+}
+
+export const greeting = "Hi there";
+
+export function multiply(numOne, numTwo) {
+    return numOne * numTwo;
+}
+
+
+// bootstrap.js
+import navigation, { greeting, multiply } from "./navigation";
+console.log(navigation());          // <div>Logo</div>
+console.log(greeting);              // Hi there
+console.log(multiply(3, 3));        // 9
+```

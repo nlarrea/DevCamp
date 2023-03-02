@@ -29,9 +29,28 @@ console.log(multiply(2, 8));
 
 // IMPORTAR TODO DE UN ARCHIVO A LA VEZ
 
+/*
 import * as helper from "./helper";
 console.log(helper.greeting);
 console.log(helper.multiply(3, 4));
 /* usando este método, tenemos que guardar todo lo importado en algun tipo de
 variable-objeto -> le indicamos que 'importe todo como X' y llamamos a esa 'X'
 para acceder a todo lo que se ha importado */
+
+
+
+// IMPORT DEFAULT
+
+/*
+import navigation from "./navigation";
+console.log(navigation());
+*/
+
+
+
+// IMPORT DEFAULT AND NOT DEFAULT
+
+import navigation, { greeting, multiply } from "./navigation";
+console.log(navigation());
+console.log(greeting);
+console.log(multiply(3, 3));
