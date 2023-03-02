@@ -51,3 +51,11 @@ export function multiply(numOne, numTwo) {
 // bootstrap.js
 import { multiply } from "./helper";
 ```
+
+
+<br><hr>
+<hr><br>
+
+
+## Exportar e importar varios elementos a la vez
+

@@ -3,7 +3,7 @@
 // EXPORTAR UNA VARIABLE
 
 // vamos a exportar la constante e importarla en boostrap.js
-// export const greeting = "Hi there";
+export const greeting = "Hi there";
 
 
 
