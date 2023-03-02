@@ -33,7 +33,8 @@ He aquí el contenido trabajado:
 * #01 - [HTML, CSS y UX/UI](./02-full-stack/module_01-html_css_uxui/)
 * #02 - [Python - parte I](./02-full-stack/module_02-python/)
 * #03 - [Python - parte II](./02-full-stack/module_03-python_part2/)
-* #04 - [JavaScript](./02-full-stack/module_04-javascript/)
+* #04 - [JavaScript - parte I](./02-full-stack/module_04-javascript/)
+* #05 - [JavaScript - parte II](./02-full-stack/module_05-js_part2/)
 
 
 <br><hr>
