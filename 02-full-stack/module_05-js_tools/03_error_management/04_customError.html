@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error Management - Create a Custom Error Class</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // clase que hereda de la clase Error
+    class DevcampError extends Error {
+        constructor(msg = "An error occurred", ...params){
+            super(...params); // llama al constructor de la clase Error
+            
+            this.msg = msg;
+        }
+    }
+
+    function siteComponent(func){
+        return func();
+    }
+
+    try{
+        console.log(siteComponent(widget));
+    } catch(e){
+        throw new DevcampError("DevcampError", e);
+    }
+
+    // lo ponemos al final para que salte el error
+    const widget = () => {
+        return "<div>Hi there</div>";
+    }
+</script>
+</html>
