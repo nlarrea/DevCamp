@@ -1,0 +1,125 @@
+<!-- LODASH LIBRARY -->
+
+<!--
+es una librería muy completa y potente que permite realizar múltiples funciones
+con JS de forma mucho más sencilla
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Lodash Demo</title>
+        <!-- llamada al CDN que contiene el código de Lodash -->
+        <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js"></script>
+        <!-- en realidad, importaríamos el módulo, pero esto es para un ejemplo -->
+    </head>
+    <body>
+    </body>
+    <script>
+        // página principal de Lodash: https://lodash.com/
+        // documentación: https://lodash.com/docs/4.17.15
+
+        // TIMES -> cuántas veces queremos que se repita un proceso
+        const randNumber = () => Math.round(Math.random() * 100);
+
+        /* times toma 2 argumentos:
+            - el número de veces que queremos que se repita
+            - la función que queremos que se repita (no hay que poner los '()')
+        */
+        const sampleNumbers = _.times(5, randNumber);
+        console.log(sampleNumbers);     // [46, 79, 2, 25, 56] -> diferentes números cada vez
+        
+
+
+        // FILTER
+        const players = [
+            {name: "Bregman, A", battingAverage: 0.284},
+            {name: "Altuve, J", battingAverage: 0.346},
+            {name: "Springer, G", battingAverage: 0.283},
+            {name: "Gurriel, Y", battingAverage: 0.299},
+            {name: "Gonzalez, M", battingAverage: 0.303}
+        ];
+
+        const over300 = _.filter(players, player => player.battingAverage > 0.300);
+        console.log(over300);
+        // devuelve una lista con los 2 objetos que tienen un battingAverage > 0.3
+
+
+
+        // KEYBY
+        const roster = [
+            {position: "3B", name: "Bregman, A"},
+            {position: "2B", name: "Altuve, J"},
+            {position: "CF", name: "Springer, G"},
+            {position: "1B", name: "Gurriel, Y"},
+            {position: "LF", name: "Gonzalez, M"}
+        ]
+        /* 
+        todas las claves de los objetos de la lista son iguales, así que no hay
+        forma de diferenciarlos muy bien
+
+        keyby permite trabajar de forma sencilla con 'nested elements'
+        */
+        const positions = _.keyBy(roster, 'position');
+        console.log(positions);
+        /* 
+        nos devuelve un nuevo set de claves -> coge el valor de la clave 'position'
+        y lo usa como nueva clave. El valor de esa clave será el objeto entero
+
+        esto es muy útil para acceder a uno de los objetos de la lista en concreto,
+        por ejemplo, si quiero seleccionar el jugador con la posición '2F', al tener
+        el valor de 'position' como clave en 'positions', puedo hacer esto:
+        */
+        const secondBase = positions["2B"];
+        console.log(secondBase);
+        // devuelve el objeto: {position: "2B", name: "Altuve, J"}
+
+
+
+        // REDUCE -> seguir vídeo de la clase desde el min -17:17 (restantes)
+        /* 'reduce' recibe una colección, una función (puede ser tipo 'arrow' o no),
+        y desde donde queremos que empiece a contar el 'total' (valor acumulado) */
+        const sum = _.reduce([1, 2, 3], function(total, num){
+            return total + num;
+        }, 0);
+        console.log(sum);
+
+
+        // ejemplo 2
+        const homerunStats = [
+            {name: "Bregman, A", hr: 19},
+            {name: "Altuve, J", hr: 24},
+            {name: "Springer, G", hr: 34},
+            {name: "Gurriel, Y", hr: 18},
+            {name: "Gonzalez, M", hr: 23}
+        ];
+
+        const totalHomeruns = _.reduce(homerunStats, function(total, player){
+            return total + player.hr;
+        }, 0);
+        console.log(totalHomeruns);
+
+
+        // ejemplo 3
+        const links = [
+            "https://google.com",
+            "https://devcamp.com",
+            "https://airbnb.com"
+        ];
+
+        const webLinks = _.reduce(links, function(content, link){
+            return `<a href='${link}'>${link}</a><br/>`.concat(content);
+        }, "");
+        console.log(webLinks);
+
+
+
+        // RANDOM GENERATOR
+        // números aleatorios entre el 1 y el 100
+        const randomNumber = () => _.random(1, 100);
+        
+        const lodashSampleNumbers = _.times(5, randomNumber);
+        console.log(lodashSampleNumbers);
+    </script>
+</html>
