@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error Management</title>
+</head>
+<body>
+
+</body>
+<script>
+    function siteComponent(func){
+        return func();
+    }
+
+    const widget = () => {
+        return "<div>Hi there</div>";
+    }
+
+    try{
+        console.log(siteComponent(widget));
+    } catch(e){
+        console.log("An error occured with the siteComponent", e);
+    }
+</script>
+</html>
