@@ -1,4 +1,4 @@
-# npm
+# Generar proyectos
 
 <div id="indice"></div>
 
@@ -78,7 +78,7 @@ A continuación, nos pedirá que indiquemos el nombre del proyecto que queremos 
 
 Se habrá creado una carpeta con ese nombre y varios archivos en su interior.
 
-El archivo en el que camos a trabajar se encuentra dentro de la carpeta `src` y se llama `boostrap.js`.
+El archivo en el que vamos a trabajar se encuentra dentro de la carpeta `src` y se llama `boostrap.js`.
 
 <br>
 
@@ -125,4 +125,4 @@ Si accedemos a esa dirección en nuestro navegador, veremos el mensaje impreso e
 
 <br>
 
-Para detener el servidor, simplemente tendremos que pulsar `ctrl + c` en la terminal.
+Para detener el servidor, simplemente tendremos que pulsar `ctrl + C` en la terminal.

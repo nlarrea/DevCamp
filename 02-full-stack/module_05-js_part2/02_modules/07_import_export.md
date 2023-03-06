@@ -116,7 +116,7 @@ En este archivo vamos a escribir el siguiente código:
 ```js
 // navigation.js
 export default function() {
-    return "<div>Logo</div>;
+    return "<div>Logo</div>";
 }
 
 // bootstrap.js
@@ -133,7 +133,7 @@ De esta forma, tendríamos algo así:
 ```js
 // navigation.js
 export default function() {
-    return "<div>Logo</div>;
+    return "<div>Logo</div>";
 }
 
 export const greeting = "Hi there";
