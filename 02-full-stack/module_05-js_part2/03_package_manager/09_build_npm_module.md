@@ -58,7 +58,7 @@ Se nos pedirá que introduzcamos el usuario, el password y el email. Una vez hec
 
 <sub>[<< Primeros pasos](#primeros-pasos) | [Volver al índice](#indice) | [Código >>](#código---indexjs)</sub>
 
-En primer lugar, accederemos a GitHub y crearemos un nuevo repositorio para el módulo. En este caso, creareos un repositorio llamado `copr-msg-footer`.
+En primer lugar, accederemos a GitHub y crearemos un nuevo repositorio para el módulo. En este caso, creareos un repositorio llamado [`copr-msg-footer`](https://github.com/nlarrea/copr-msg-footer).
 
 <br>
 
@@ -85,7 +85,7 @@ Una vez ejecutado, se nos realizarán una serie de preguntas que deberemos respo
 package name: (copr-msg-footer)     # pulsar ENTER
 version: (1.0.0) 0.1.0
 description: This module allows for a dynamic footer to be generated for JS applications with an updated year and name.
-entry point: (index.js) index.js    # pulsar ENTER
+entry point: (index.js)             # pulsar ENTER
 test command:                       # pulsar ENTER
 git repository: https://github.com/nlarrea/copr-msg-footer
 keywords: footer
@@ -276,9 +276,7 @@ npm start
 
 Y abriendo el navegador en la dirección `http://localhost:3000`, veremos el siguiente mensaje en la consola:
 
-```
-Copyright 2023 DevCamp All rights reserved.
-```
+`Copyright 2023 DevCamp All rights reserved.`
 
 <br>
 
