@@ -31,10 +31,11 @@ En esta sección del curso, se estudia el uso de bibliotecas de frontend, la pro
 He aquí el contenido trabajado:
 
 * #01 - [HTML, CSS y UX/UI](./02-full-stack/module_01-html_css_uxui/)
-* #02 - [Python - parte I](./02-full-stack/module_02-python/)
-* #03 - [Python - parte II](./02-full-stack/module_03-python_part2/)
-* #04 - [JavaScript - parte I](./02-full-stack/module_04-javascript/)
-* #05 - [JavaScript - parte II](./02-full-stack/module_05-js_part2/)
+* #02 - [Python I](./02-full-stack/module_02-python/)
+* #03 - [Python II](./02-full-stack/module_03-python_part2/)
+* #04 - [JavaScript I](./02-full-stack/module_04-javascript/)
+* #05 - [JavaScript II](./02-full-stack/module_05-js_part2/)
+* #06 - [Git & GitHub](./02-full-stack/module_06-git_github/)
 
 
 <br><hr>

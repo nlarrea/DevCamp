@@ -31,7 +31,7 @@ En la página se encuentran varios recursos:
 
 <br>
 
-[#01 - RESETS, TAGS Y BRANCHES >>](./01_resets_tags_branches.md)
+[#01 - RESETS, TAGS Y BRANCHES >>](./01_resets_tags_branches.md#conceptos-de-flujo-de-trabajo)
 
 
 <br><hr>
