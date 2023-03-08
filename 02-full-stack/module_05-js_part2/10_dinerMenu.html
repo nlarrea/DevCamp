@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js"></script>
+    <title>Menu</title>
+</head>
+<body>
+    
+</body>
+<script>
+/* ENUNCIADO
+Build out a Diner menu in JAVASCRIPT. Here are your instructions to build that Diner.
+Bottega Diner
+Have the Main Menu and a Sides Menu
+You get one entree and two side choices at regular cost.
+- show them the entire menu (print out)
+- A user selects an entree.
+- “Waitress” makes a comment based on their selection
+- comment can either be a comparison of the two items, or random comment pulled from a comment vault.
+- Tell them the price
+- repeat the above options for side choices (comment and a price)
+- total up the cost
+
+BONUS
+Have breakfast, lunch, and dinner menu. Breakfast has different items, lunch and dinner have the same items but are different prices.
+
+BONUS: Allow for item customization (how items are prepared, decide additional cost implications)
+*/
+
+console.log("BOTTEGA DINER\n");
+
+const mainMenu = [
+    {
+        type: "salads",
+        options: [
+            {name: "house salad", price: 6.50},
+            {name: "green miso salad", price: 6.75},
+        ]
+    },
+    {
+        type: "small plates",
+        options: [
+            {name: "ravioli verde", price: 9.25},
+            {name: "eggplant gratinadas", price: 8.75},
+            {name: "smoked duck rolled tacos", price: 11.50},
+            {name: "macadamia-crusted chicken", price: 10.25},
+        ]
+    },
+    {
+        type: "burgers",
+        options: [
+            {name: "bacon cheeseburger", price: 8.50},
+            {name: "chili cheeseburger", price: 8.75},
+            {name: "bleu cheeseburger", price: 9.00},
+        ]
+    },
+    {
+        type: "sandwiches",
+        options: [
+            {name: "blt", price: 10.25},
+            {name: "turkey blat", price: 8.25},
+            {name: "hummus pita", price: 7.25},
+            {name: "italian sub", price: 7.25},
+        ]
+    }
+];
+
+const sideMenu = [
+    {name: "fresh cut fries", price: 3.50},
+    {name: "potato salad", price: 3.50},
+    {name: "cole slaw", price: 3.50},
+    {name: "baked beans", price: 3.50},
+    {name: "cabbage", price: 3.50},
+    {name: "collard greens", price: 3.50},
+    {name: "loaded fries", price: 5.95},
+];
+
+const showMenu = (menu) => {
+    if(menu[0].type){
+        for(item of menu){
+            console.log(`\n${item.type.toUpperCase()}`);
+            
+            // llamada a la propia función -> entra en el 'else'
+            showMenu(item.options);
+        }
+    } else {
+        for(item of menu){
+            console.log(`\t- ${item.name}: \t ${item.price}`);
+        }
+    }
+};
+
+console.log("\n--- MAIN MENU ---")
+showMenu(mainMenu);
+
+console.log("\n--- SIDE MENU ---");
+showMenu(sideMenu);
+
+
+const makeChoice = (menu) => {
+    if(menu[0].type){
+        let optionsMenu = [];
+
+        for(item of menu){
+            optionsMenu.push(...item.options);
+        }
+        
+        return makeChoice(optionsMenu);
+    } else {
+        let choice;
+        
+        do{
+            choice = prompt("Enter your choice: ");
+            if(choice !== null){
+                choice = menu.find(obj => obj.name === choice);
+            }
+
+            if(choice === undefined){
+                console.log("Sorry, that is not an option.\n");
+            }
+        } while(choice === undefined);
+    
+        return choice || "We're sorry you haven't found what you want.";
+    }
+};
+
+const makeComment = (choice, total) => {
+    if(typeof choice !== "string"){
+        console.log(`You hace chosen the ${choice.name.toUpperCase()}.`);
+        console.log(`It's ${total + choice.price}€ by now.`);
+        return total + choice.price;
+    } else {
+        console.log(choice);
+    }
+};
+
+let totalPrice = 0;
+
+// choose once from main menu
+let mainChoice = makeChoice(mainMenu);
+totalPrice = makeComment(mainChoice, totalPrice);
+
+// choose two items from side menu
+let sideChoice = makeChoice(sideMenu);
+totalPrice = makeComment(sideChoice, totalPrice);
+sideChoice = makeChoice(sideMenu);
+totalPrice = makeComment(sideChoice, totalPrice);
+</script>
+</html>
