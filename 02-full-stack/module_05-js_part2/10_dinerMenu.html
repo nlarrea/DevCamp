@@ -11,6 +11,7 @@
     
 </body>
 <script>
+
 /* ENUNCIADO
 Build out a Diner menu in JAVASCRIPT. Here are your instructions to build that Diner.
 Bottega Diner
@@ -106,16 +107,16 @@ const breakfastMenu = [
  * 
  * @param {Object[]} menu
  * @param {string} menu[].name
- * @param {string} menu[].price
+ * @param {number} menu[].price
  */
 const showMenu = (menu) => {
     if(menu[0].type){
         for(item of menu){
             console.log(`\n${item.type.toUpperCase()}`);
             
-            // llamada a la propia función -> entra en el 'else'
             showMenu(item.options);
         }
+
     } else {
         for(item of menu){
             console.log(`\t- ${item.name}: \t ${item.price}$`);
@@ -129,7 +130,7 @@ const showMenu = (menu) => {
  * 
  * @param {Object[]} menu
  * @param {string} menu[].name
- * @param {string} menu[].price
+ * @param {number} menu[].price
  * 
  * @returns {(Object|string)}
  */
@@ -142,6 +143,7 @@ const makeChoice = (menu) => {
         }
         
         return makeChoice(optionsMenu);
+
     } else {
         let choice;
         
@@ -165,6 +167,8 @@ const makeChoice = (menu) => {
  * Prints a comment on the console showing the actual choice and price.
  * 
  * @param {Object} choice
+ * @param {string} choice.name
+ * @param {number} choice.price
  * @param {number} total
  * 
  * @returns {number} sum of total price and current choice
@@ -173,7 +177,9 @@ const makeComment = (choice, total) => {
     if(typeof choice !== "string"){
         console.log(`\nYou hace chosen the ${choice.name.toUpperCase()}.`);
         console.log(`It's price is ${choice.price}$.`);
+
         return total + choice.price;
+
     } else {
         console.log(choice);
     }
@@ -243,7 +249,7 @@ if(chosenMenu === "breakfast"){
     showMenu(breakfastMenu);
 
     totalPrice += askItems(breakfastMenu, 2);
-
+    
 } else if(chosenMenu === "lunch"){
     // same as diner menu, but cheaper -> modify the price
     console.log("BOTTEGA LUNCH\n");
@@ -252,13 +258,14 @@ if(chosenMenu === "breakfast"){
      * Modifies the price of the given menu items.
      * 
      * @param {Object[]} menu
+     * @param {string} menu[].name
+     * @param {number} menu[].price
      * 
      * @returns {Object[]} menu with the modified price
      */
     const modifyPrice = (menu) => {
         if(menu[0].type){
             for(item of menu){
-                // llamada a la propia función -> entra en el 'else'
                 modifyPrice(item.options);
             }
         } else {
@@ -282,6 +289,7 @@ if(chosenMenu === "breakfast"){
     showMenu(sideLunchMenu);
 
     totalPrice += askItems(sideLunchMenu, 2);
+
 } else if(chosenMenu === "diner"){
     console.log("BOTTEGA DINER\n");
     
