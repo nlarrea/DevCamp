@@ -88,16 +88,10 @@ const showMenu = (menu) => {
         }
     } else {
         for(item of menu){
-            console.log(`\t- ${item.name}: \t ${item.price}`);
+            console.log(`\t- ${item.name}: \t ${item.price}$`);
         }
     }
 };
-
-console.log("\n--- MAIN MENU ---")
-showMenu(mainMenu);
-
-console.log("\n--- SIDE MENU ---");
-showMenu(sideMenu);
 
 
 const makeChoice = (menu) => {
@@ -115,38 +109,54 @@ const makeChoice = (menu) => {
         do{
             choice = prompt("Enter your choice: ");
             if(choice !== null){
-                choice = menu.find(obj => obj.name === choice);
+                choice = menu.find(obj => obj.name === choice.toLowerCase());
             }
 
             if(choice === undefined){
-                console.log("Sorry, that is not an option.\n");
+                console.log("\nSorry, that is not an option.\n");
             }
         } while(choice === undefined);
     
-        return choice || "We're sorry you haven't found what you want.";
+        return choice || "\nWe're sorry you haven't found what you want.";
     }
 };
 
+
 const makeComment = (choice, total) => {
     if(typeof choice !== "string"){
-        console.log(`You hace chosen the ${choice.name.toUpperCase()}.`);
-        console.log(`It's ${total + choice.price}€ by now.`);
+        console.log(`\nYou hace chosen the ${choice.name.toUpperCase()}.`);
+        console.log(`It's price is ${choice.price}$.`);
         return total + choice.price;
     } else {
         console.log(choice);
     }
 };
 
-let totalPrice = 0;
 
-// choose once from main menu
-let mainChoice = makeChoice(mainMenu);
-totalPrice = makeComment(mainChoice, totalPrice);
+// enseñar los menús
+console.log("\n--- MAIN MENU ---")
+showMenu(mainMenu);
 
-// choose two items from side menu
-let sideChoice = makeChoice(sideMenu);
-totalPrice = makeComment(sideChoice, totalPrice);
-sideChoice = makeChoice(sideMenu);
-totalPrice = makeComment(sideChoice, totalPrice);
+console.log("\n--- SIDE MENU ---");
+showMenu(sideMenu);
+
+
+// pedir un item del main y 2 del side
+// calcular precio total
+setTimeout(() => {
+    let totalPrice = 0;
+    
+    // main menu
+    let mainChoice = makeChoice(mainMenu);
+    totalPrice = makeComment(mainChoice, totalPrice);
+    
+    // side menu
+    let sideChoice = makeChoice(sideMenu);
+    totalPrice = makeComment(sideChoice, totalPrice);
+    sideChoice = makeChoice(sideMenu);
+    totalPrice = makeComment(sideChoice, totalPrice);
+
+    console.log(`\nThe total price is ${totalPrice || 0}$.`);
+}, 2000);
 </script>
 </html>
