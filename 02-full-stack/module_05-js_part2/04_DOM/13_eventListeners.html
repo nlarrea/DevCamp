@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <title>Event Listeners</title>
+</head>
+
+<style>
+  img {
+    width: 400px;
+  }
+  .container {
+    position: relative;
+    text-align: center;
+    color: white;
+  }
+  .show-img-overlay {
+    position: relative;
+    bottom: 60px;
+    font-size: 21px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .hide-img-overlay {
+    position: relative;
+    bottom: 60px;
+    font-size: 21px;
+    color: transparent;
+  }
+</style>
+<body>
+
+  <div class="container">
+    <img src="https://s3.amazonaws.com/bottega-devcamp/browser-js/laptop.jpg" class="site-img" alt="Laptop">
+    <div class="hide-img-overlay">Image Description</div>
+  </div>
+
+  <div class="container">
+    <img src="https://s3.amazonaws.com/bottega-devcamp/browser-js/another-laptop.jpg" class="site-img" alt="Laptop">
+    <div class="hide-img-overlay">Some Other Image Description</div>
+  </div>
+
+</body>
+<script>
+    // const img = document.getElementsByClassName('site-img')[0];
+    // solo queremos que devuelva el primero de los elementos
+
+    const imgs = document.querySelectorAll('.site-img');
+
+    /* addEventListener -> 2 argumentos: (evento, función) */
+    imgs.forEach(img => {
+        img.addEventListener('mouseover', (event) => {
+            const captionElement = event.target.parentElement.children[1];
+            /** explicación
+             * event.target -> item sobre el que se está pasando el mouse (la img de por sí)
+             * +.parentElement -> el item 'padre' del item sobre el que se está haciendo mouseover (div.container)
+             * +.children[1] -> el segundo 'hijo' que esté dentro del item 'padre' (div.hide-img-overlay)
+             */
+
+            captionElement.className = 'show-img-overlay';
+            /* añade esa clase a la imagen cuando se hace hover en ella */
+        })
+    })
+
+    imgs.forEach(img => {
+        img.addEventListener('mouseout', (event) => {
+            const captionElement = event.target.parentElement.children[1];
+
+            captionElement.className = 'hide-img-overlay';
+            /* añade esa clase a la imagen cuando se hace hover en ella */
+        })
+    })
+</script>
+</html>
