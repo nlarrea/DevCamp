@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remove classes by clicking elements</title>
+    <style>
+        .activeHeading {
+            color: firebrick;
+            font-size: 2em;
+            cursor: pointer;
+        }
+        
+        .nonActiveHeading {
+            color: cornflowerblue;
+            font-size: 4em;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="mainHeading" class="activeHeading someOtherClassName">Hi there</div>
+</body>
+<script>
+    const heading = document.getElementById('mainHeading');
+
+    // MY SOLUTION
+    /*
+    heading.addEventListener('click', () => {
+        heading.classList.toggle('activeHeading');
+        heading.classList.toggle('nonActiveHeading');
+    });
+    */
+
+    // JORDAN'S SOLUTION
+    // if the div only has one class name, this is a good idea, but if it has
+    // more than one, DO NEVER USE THIS
+    /* heading.onclick = () => {
+        if (heading.classList.contains('activeHeading')) {
+            heading.className = 'nonActiveHeading';
+        } else {
+            heading.className = 'activeHeading';
+        }
+    } */
+
+    // if the div has more than one class, this is good when it has more classes
+    heading.onclick = () => {
+        if (heading.classList.contains('activeHeading')) {
+            heading.classList.remove('activeHeading');
+            heading.classList.add('nonActiveHeading');
+        } else {
+            heading.classList.remove('nonActiveHeading');
+            heading.classList.add('activeHeading');
+        }
+    }
+</script>
+</html>
