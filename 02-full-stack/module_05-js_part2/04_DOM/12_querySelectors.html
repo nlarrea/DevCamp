@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remove classes by clicking elements</title>
+    <style>
+        .hideElement {
+            visibility: hidden;
+        }
+        
+        .showElement {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="widget showElement">
+        <div class="mainHeading">
+            <h1>Hi there</h1>
+        </div>
+    
+        <div class="subHeading">My Amazing subheading...</div>
+    </div>
+
+    <button onclick="contentToggle()">Toggle Content</button>
+</body>
+<script>
+    // seleccionar un elemento con clase
+    const heading = document.querySelector('.mainHeading');
+
+    // seleccionar varios elementos
+    // const headings = document.querySelectorAll('div');
+    // devuelve un 'NodeList'
+
+    /* function contentToggle(){
+        headings.forEach((heading) => {
+            if (heading.classList.contains('showElement')) {
+                heading.classList.remove('showElement');
+                heading.classList.add('hideElement');
+            } else {
+                heading.classList.remove('hideElement');
+                heading.classList.add('showElement');
+            }
+        })
+    } */
+
+    const widget = document.querySelector('.widget');
+    /* como hemos usado 'querySelector' en vez de 'querySelectorAll', ahora no
+    tenemos un 'NodeList', sino que tenemos solo un elemento */
+
+    function contentToggle() {
+        if (widget.classList.contains('showElement')) {
+            widget.classList.remove('showElement');
+            widget.classList.add('hideElement');
+        } else {
+            widget.classList.remove('hideElement');
+            widget.classList.add('showElement');
+        }
+    }
+</script>
+</html>
