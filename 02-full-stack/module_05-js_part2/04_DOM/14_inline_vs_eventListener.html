@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="dateComponent"></div>
+
+    <button id="dateBtn" onclick="renderDate()">Click for Date</button>
+</body>
+<script>
+    const dateElement = document.getElementById('dateComponent');
+    
+    // INLINE -> no necesitamos el elemento al que se observa
+    /* renderDate = () => {
+        dateElement.innerHTML = Date();
+    } */
+    
+    // EVENTLISTENER -> necesitamos el elemento al que se observa
+    const dateBtn = document.getElementById('dateBtn');
+    
+    dateBtn.addEventListener('click', (event) => {
+        dateElement.innerHTML = Date();
+    })
+
+    /** CUÁNDO USAR CADA UNA?
+     * eventListener se considera la mejor práctica, porque se tiene todo el
+     * código dedicado a un evento en un único lugar
+     * 
+     * sin embargo, depende de quien quiera que haya realizado el programa
+     */
+</script>
+</html>
