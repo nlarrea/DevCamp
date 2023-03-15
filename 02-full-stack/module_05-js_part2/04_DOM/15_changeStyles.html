@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change the Style with Vanilla JS</title>
+</head>
+
+<style>
+img {
+    width: 400px;
+}
+
+.site-img {
+    border: 0 40px 0 0 solid transparent;   /* initial values */
+}
+</style>
+
+<body>
+    <img class="site-img" src="https://s3.amazonaws.com/bottega-devcamp/browser-js/laptop.jpg" alt="image"/>
+</body>
+<script>
+const laptop = document.querySelector('.site-img');
+
+/* modifica el estilo del borde cuando el ratón 'entra' en la imagen */
+laptop.addEventListener('mouseover', (event) => {
+    event.target.style.borderRight = '40px solid red';
+});
+
+/* modifica el estilo del borde cuando el ratón 'sale' de la imagen */
+laptop.addEventListener('mouseout', (event) => {
+    event.target.style.borderRight = '40px solid transparent';
+});
+</script>
+</html>
