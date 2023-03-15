@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Counter</title>
+</head>
+<body>
+    <input type="text" class="msgInput">
+
+    <div>
+        Characters left <span class="msgCounter">144</span>
+    </div>
+</body>
+<script>
+    const msgInput = document.querySelector('.msgInput');
+    const msgCounter = document.querySelector('.msgCounter');
+    const max = 144;
+
+    // ensure character count
+    /**
+     * Devuelve si es válida o no la cantidad de chars.
+     * 
+     * @param {string} content
+     * @param {number} max
+     * 
+     * @return {bool}
+     */
+    const ensureContentLength = (content, max) => {
+        return !(content.length > max);
+    }
+
+    // event listener -> watch for keyup (check if user is typing)
+    /**
+     * Hace seguimiento de los que se introduce por teclado. Si hay más chars
+     * que el número indicado en 'max', deshabilita el input para que no se
+     * puedan añadir más.
+     */
+    msgInput.onkeyup = function() {
+        /* no podemos usar una arrow function aquí porque hay que usar 'this' y
+        con las arrow function funciona diferente */
+        
+        msgCounter.innerHTML = max - this.value.length;
+
+        if (!ensureContentLength(this.value, max-1)) {
+            msgInput.disabled = true;
+        }
+    }
+
+</script>
+</html>
