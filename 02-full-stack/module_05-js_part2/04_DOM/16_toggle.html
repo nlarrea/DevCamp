@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toggle</title>
+</head>
+<style>
+    .hidden {
+        display: none;
+    }
+</style>
+<body>
+    <button id="toggleBtn">Toggle Me</button>
+
+    <div id="mainHeading" class="hidden">
+        Hi there
+    </div>
+</body>
+<script>
+const btn = document.getElementById('toggleBtn');
+const heading = document.getElementById('mainHeading');
+
+btn.addEventListener('click', (event) => {
+    heading.classList.toggle('hidden');
+});
+</script>
+</html>
