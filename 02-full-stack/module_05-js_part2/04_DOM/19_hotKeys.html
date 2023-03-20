@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hot Keys</title>
+</head>
+
+<body>
+    <input type="text" id="searchBar">
+</body>
+
+<script>
+    const hotKeys = (e) => {
+        let windowEvent = window.event ? event : e;
+
+        // miramos si la tecla 'B' y la de 'ctrl' están pulsadas
+        if (windowEvent.keyCode === 66 && windowEvent.ctrlKey) {
+            const searchBar = document.querySelector('#searchBar');
+            searchBar.focus();
+        }
+    }
+
+    document.onkeydown = hotKeys;
+</script>
+</html>
