@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create HTML elements with JS</title>
+</head>
+
+<body>
+    <div class="widget">
+        <input type="text" id="chat-input">
+        <button id="msgBtn" onclick="sendMessage()">Submit</button>
+
+        <div id="chat-wrapper"></div>
+    </div>
+</body>
+
+<script>
+    function sendMessage(){
+        // crear nuevo div
+        const newDiv = document.createElement('div');
+        // añadirle una clase
+        newDiv.classList.add('chatMsg');
+        // obtener el valor del input
+        let chatInput = document.querySelector('#chat-input').value;
+        // convertir ese string obtenido en un obj de JS
+        const newContent = document.createTextNode(chatInput);
+        // añadir el contenido
+        newDiv.appendChild(newContent);
+
+        const widget = document.querySelector('.widget');
+        let chatWrapper = document.querySelector('#chat-wrapper');
+        /* para que se limpie el contenido del input cada vez que se
+        pulsa el botón */
+        document.querySelector('#chat-input').value = '';
+
+        /* modifica el elemento tras el cual vamos a escribir para que los
+        mensajes nuevos aparezcan siempre arriba y los viejos se vayan
+        moviendo hacia abajo */
+        if (document.querySelectorAll('.chatMsg').length > 0) {
+            chatWrapper = document.querySelectorAll('.chatMsg')[0];
+        }
+
+        widget.insertBefore(newDiv, chatWrapper);
+    }
+</script>
+</html>
