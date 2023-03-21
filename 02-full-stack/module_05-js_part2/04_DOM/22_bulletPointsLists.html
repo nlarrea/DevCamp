@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create and delete bullet points between lists</title>
+
+    <style>
+        .todoItem:hover {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="todos">
+        <h2>Pending Todos</h2>
+        <ul>
+            <li class="todoItem">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
+            <li class="todoItem">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, sunt!</li>
+            <li class="todoItem">Lorem ipsum dolor sit amet.</li>
+            <li class="todoItem">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque inventore debitis dolorem!</li>
+            <li class="todoItem">Lorem ipsum dolor sit.</li>
+        </ul>
+    </div>
+
+    <h2>Completed Todos</h2>
+    <ul class="completedTodoWrapper">
+        <div class="completed-footer"></div>
+    </ul>
+</body>
+
+<script>
+    const todos = document.querySelectorAll('.todoItem');
+    const completedTodos = document.querySelector('.completed-footer');
+    const completedTodoWrapper = document.querySelector('.completedTodoWrapper');
+
+    todos.forEach(todo => {
+        todo.addEventListener('click', (event) => {
+            let completedTodo = document.createElement('li');
+            let todoContent = document.createTextNode(todo.textContent);
+            completedTodo.appendChild(todoContent);
+            completedTodoWrapper.insertBefore(completedTodo, completedTodos);
+            todo.remove();
+        })
+    });
+</script>
+</html>
