@@ -36,6 +36,7 @@ He aquí el contenido trabajado:
 * #04 - [JavaScript I](./02-full-stack/module_04-javascript/)
 * #05 - [JavaScript II](./02-full-stack/module_05-js_part2/)
 * #06 - [Git & GitHub](./02-full-stack/module_06-git_github/)
+* #07 - [UML](./02-full-stack/module_07-uml/)
 
 
 <br><hr>
