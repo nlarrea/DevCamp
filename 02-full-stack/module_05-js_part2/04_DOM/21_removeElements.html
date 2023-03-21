@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remove elements with JS</title>
+</head>
+<body>
+    <div class="widget">
+        <input type="text" id="chat-input">
+        <button id="msgBtn" onclick="sendMessage()">Submit</button>
+        <button onclick="clearMessages()">Clear Messages</button>
+
+        <div class="chat-wrapper"></div>
+    </div>
+</body>
+<script>
+    function sendMessage() {
+        const newDiv = document.createElement('div');
+        newDiv.classList.add('chatMsg');
+
+        let chatInput = document.querySelector('#chat-input').value;
+        const newContent = document.createTextNode(chatInput);
+        newDiv.appendChild(newContent);
+
+        const widget = document.querySelector('.widget');
+        let chatWrapper = document.querySelector('#chat-wrapper');
+        document.querySelector('#chat-input').value = '';
+
+        if (document.querySelectorAll('.chatMsg').length > 0) {
+            chatWrapper = document.querySelectorAll('.chatMsg')[0];
+        }
+
+        widget.insertBefore(newDiv, chatWrapper);
+    }
+
+    function clearMessages() {
+        const messages = document.querySelectorAll('.chatMsg');
+        messages.forEach(message => message.remove());
+    }
+</script>
+</html>
