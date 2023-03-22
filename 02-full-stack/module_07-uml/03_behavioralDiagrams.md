@@ -9,6 +9,10 @@ Los diagramas que se van a ver aquí son:
 * [State Machine Diagrams](#state-machine-diagrams)
 * [Sequence Diagrams](#sequence-diagrams)
 
+<br>
+
+[<< STRUCTURAL DIAGRAMS](./02_structuralDiagrams.md#structural-diagrams)
+
 
 <br><hr>
 <hr><br>
@@ -35,6 +39,12 @@ Se pueden usar como boceto inicial para tener una idea de cómo continuar con el
 
 Todo lo que importa aquí es el flujo de acciones, y no el nombre de las funciones, por ejemplo. Se explica **qué pasa cuándo**.
 
+<div align="center">
+
+![activity-diagram](./media/behavioral-diagrams/activity-diagram.png)
+
+</div>
+
 
 <br><hr>
 <hr><br>
@@ -50,6 +60,14 @@ Los elementos que forman parte de este tipo de diagramas son:
 * Actors
 * Subsystems
 * Relationships
+
+<br>
+
+<div align="center">
+
+![use_case-diagram](./media/behavioral-diagrams/use_case-diagram.png)
+
+</div>
 
 
 <br><hr>
@@ -67,6 +85,14 @@ Los elementos que forman parte de este tipo de diagramas son:
 * Constraint
 * State
 * Transition
+
+<br>
+
+<div align="center">
+
+![state_machine-diagram](./media/behavioral-diagrams/state_machine-diagram.png)
+
+</div>
 
 
 <br><hr>
@@ -87,3 +113,30 @@ Los elementos que forman parte de este tipo de diagramas son:
 * Activation or Execution Occurrences
 * Messages
 * Lifelines
+
+<br>
+
+<div align="center">
+
+![sequence-diagram](./media/behavioral-diagrams/sequence-diagram.png)
+
+</div>
+
+
+<br><hr>
+<hr><br>
+
+[<< STRUCTURAL DIAGRAMS](./02_structuralDiagrams.md#structural-diagrams)
+
+
+<style>
+    img[alt$="-diagram"] {
+        width: 75%;
+        max-width: 600px;
+    }
+
+    img[alt="state_machine-diagram"] {
+        width: 65%;
+        max-width: 375px;
+    }
+</style>
