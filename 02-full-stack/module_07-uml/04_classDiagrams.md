@@ -1,5 +1,14 @@
 # Diagramas de clase
 
+* [Elementos](#elementos)
+* [Ejemplo](#ejemplo-de-un-diagrama-de-clase)
+* [Asociaciones](#asociaciones)
+
+
+<br><hr>
+<hr><br>
+
+
 ## Elementos
 
 Como recordatorio, decir que los elementos que crean un `class diagram` son:
@@ -70,6 +79,19 @@ De nuevo, hay que indicar la visibilidad del método, y añadirle los `( )` para
 ![class-diagram](./media/structural-diagrams/class-diagram.png)
 
 </div>
+
+
+<br><hr>
+<hr><br>
+
+
+## Asociaciones
+
+Las asociaciones son las relaciones que existen entre las clases. Para poder definir una asociación, se debe indicar:
+
+* Asociación
+* Multiplicidad
+* Navegabilidad
 
 
 <style>
