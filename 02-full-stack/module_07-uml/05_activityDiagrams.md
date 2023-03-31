@@ -43,11 +43,3 @@ El estado final se representa con un círculo con un punto en el centro. Así es
 ![activity-diagram-myExample](./media/behavioral-diagrams/activity-diagram-myExample.png)
 
 </div>
-
-<style>
-    img {
-        height: auto;
-        width: 75%;
-        max-width: 500px;
-    }
-</style>

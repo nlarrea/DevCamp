@@ -115,12 +115,3 @@ Permiten agrupar elementos de tal forma que se pueda visualizar de forma sencill
 <hr><br>
 
 [<< COMPONENTES](./01_components_and_commonElements.md#componentes-y-elementos-comunes) | [BEHAVIORAL DIAGRAMS >>](./03_behavioralDiagrams.md#behavioral-diagrams)
-
-
-
-<style>
-    img[alt$="-diagram"] {
-        width: 75%;
-        max-width: 600px;
-    }
-</style>

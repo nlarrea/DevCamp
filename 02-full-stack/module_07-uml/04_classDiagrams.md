@@ -92,11 +92,3 @@ Las asociaciones son las relaciones que existen entre las clases. Para poder def
 * Asociación
 * Multiplicidad
 * Navegabilidad
-
-
-<style>
-    img {
-        width: 75%;
-        max-width: 600px;
-    }
-</style>

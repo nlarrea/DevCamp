@@ -234,12 +234,3 @@ Ayudan a describir los elementos. Siguen una sintaxis específica (*naming conve
 <hr><br>
 
 [<< INTRODUCCIÓN](./00_intro.md#introducción-a-uml) | [STRUCTURAL DIAGRAMS >>](./02_structuralDiagrams.md#structural-diagrams)
-
-<style>
-    /* formatear cualquier imagen que en el 'alt' tenga el valor
-    de '-diagram' */
-    img[alt$="-diagram"] {
-        width: 75%;
-        max-width: 600px;
-    }
-</style>

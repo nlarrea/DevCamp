@@ -127,16 +127,3 @@ Los elementos que forman parte de este tipo de diagramas son:
 <hr><br>
 
 [<< STRUCTURAL DIAGRAMS](./02_structuralDiagrams.md#structural-diagrams)
-
-
-<style>
-    img[alt$="-diagram"] {
-        width: 75%;
-        max-width: 600px;
-    }
-
-    img[alt="state_machine-diagram"] {
-        width: 65%;
-        max-width: 375px;
-    }
-</style>
