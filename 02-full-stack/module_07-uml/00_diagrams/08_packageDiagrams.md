@@ -1,5 +1,9 @@
 # Package diagrams
 
+[<< DEPLOYMENT DIAGRAMS](./07_deploymentDiagrams.md#deployment-diagrams) | [SEQUENCE DUAGRAMS >>](./09_sequenceDiagrams.md#diagramas-de-secuencia)
+
+<br>
+
 Estos diagramas son una forma de envolver los demás componentes y diagramas, y aquello que representan.
 
 Por ejemplo, en un ***Class Diagram*** se genera un listado detallado de las clases, sus atributos y métodos, las conexiones que hay entre sí, pero se describe todo en un nivel superficial. Se habla de cómo debe estar escrito el código directamente.
@@ -45,4 +49,10 @@ Como resumen: tenemos una aplicación, y dentro de ella nos encontramos varios p
 
 Este tipo de diagrama puede ser muy útil para tener una idea general del sistema.
 
-![package-diagram-example](./media/structural-diagrams/package-diagram-example.png)
+![package-diagram-example](../media/structural-diagrams/package-diagram-example.png)
+
+
+<br><hr>
+<hr><br>
+
+[<< DEPLOYMENT DIAGRAMS](./07_deploymentDiagrams.md#deployment-diagrams) | [SEQUENCE DUAGRAMS >>](./09_sequenceDiagrams.md#diagramas-de-secuencia)

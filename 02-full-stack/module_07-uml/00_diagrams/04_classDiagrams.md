@@ -4,6 +4,10 @@
 * [Ejemplo](#ejemplo-de-un-diagrama-de-clase)
 * [Asociaciones](#asociaciones)
 
+<br>
+
+[<< BEHAVIORAL DIAGRAMS](./03_behavioralDiagrams.md#behavioral-diagrams) | [ACTIVITY DIAGRAMS >>](./05_activityDiagrams.md#activity-diagrams)
+
 
 <br><hr>
 <hr><br>
@@ -76,7 +80,7 @@ De nuevo, hay que indicar la visibilidad del método, y añadirle los `( )` para
 
 <div align="center">
 
-![class-diagram](./media/structural-diagrams/class-diagram.png)
+![class-diagram](../media/structural-diagrams/class-diagram.png)
 
 </div>
 
@@ -92,3 +96,10 @@ Las asociaciones son las relaciones que existen entre las clases. Para poder def
 * Asociación
 * Multiplicidad
 * Navegabilidad
+
+
+<br><hr>
+<hr><br>
+
+
+[<< BEHAVIORAL DIAGRAMS](./03_behavioralDiagrams.md#behavioral-diagrams) | [ACTIVITY DIAGRAMS >>](./05_activityDiagrams.md#activity-diagrams)

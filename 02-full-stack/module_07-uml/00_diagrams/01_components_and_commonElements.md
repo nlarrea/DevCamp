@@ -61,7 +61,7 @@ Ejemplo de un diagrama de `use case` con un `frame`:
 
 <div align="center">
 
-![uc-diagram](./media/basics/uc-diagram.png)
+![uc-diagram](../media/basics/uc-diagram.png)
 
 </div>
 
@@ -106,7 +106,7 @@ Ejemplo de un diagrama de `use case` con un `classifier`:
 
 <div align="center">
 
-![uc-diagram](./media/structural-diagrams/class-diagram.png)
+![uc-diagram](../media/structural-diagrams/class-diagram.png)
 
 </div>
 
@@ -153,7 +153,7 @@ Los comentarios, como ya hemos mencionado, son esos rectángulos con una línea 
 
 <div align="center">
 
-![uc-diagram](./media/structural-diagrams/class-diagram.png)
+![uc-diagram](../media/structural-diagrams/class-diagram.png)
 
 </div>
 
@@ -200,7 +200,7 @@ Si se elimina `SpotifyAPI`, `SongRequest` dejará de funcionar.
 
 <div align="center">
 
-![uc-diagram](./media/basics/dependency-diagram.png)
+![uc-diagram](../media/basics/dependency-diagram.png)
 
 </div>
 
@@ -223,7 +223,7 @@ Ayudan a describir los elementos. Siguen una sintaxis específica (*naming conve
 
 <div align="center">
 
-![feature-diagram](./media/basics/features-diagram.png)
+![feature-diagram](../media/basics/features-diagram.png)
 
 </div>
 

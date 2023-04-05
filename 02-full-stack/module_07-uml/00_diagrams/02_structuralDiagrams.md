@@ -29,7 +29,7 @@ Los elementos que conforman este tipo de diagramas son:
 
 <div align="center">
 
-![class-diagram](./media/structural-diagrams/class-diagram.png)
+![class-diagram](../media/structural-diagrams/class-diagram.png)
 
 </div>
 
@@ -75,7 +75,7 @@ Este es un ejemplo de un diagrama de despliegue:
 
 <div align="center">
 
-![deployment-diagram](./media/structural-diagrams/deployment-diagram.png)
+![deployment-diagram](../media/structural-diagrams/deployment-diagram.png)
 
 </div>
 
@@ -106,7 +106,7 @@ Permiten agrupar elementos de tal forma que se pueda visualizar de forma sencill
 
 <div align="center">
 
-![package-diagram](./media/structural-diagrams/package-diagram.png)
+![package-diagram](../media/structural-diagrams/package-diagram.png)
 
 </div>
 

@@ -1,5 +1,7 @@
 # Use Case diagrams
 
+[<< ACTIVITY DIAGRAMS](./05_activityDiagrams.md#activity-diagrams) | [DEPLOYMENT DIAGRAMS >>](./07_deploymentDiagrams.md#deployment-diagrams)
+
 La razón por la que se utiliza este tipo de diagramas principalmente, es la de poder definir las reglas de autorización y autenticación de los usuarios, así como las restricciones de acceso a los datos.
 
 Los elementos que forman este tipo de diagramas son los siguientes:
@@ -18,4 +20,10 @@ Los elementos que forman este tipo de diagramas son los siguientes:
 
 Vamos a crear un sistema de automatización de márqueting:
 
-![use-case-example](./media/behavioral-diagrams/use-case-example.png)
+![use-case-example](../media/behavioral-diagrams/use-case-example.png)
+
+
+<br><hr>
+<hr><br>
+
+[<< ACTIVITY DIAGRAMS](./05_activityDiagrams.md#activity-diagrams) | [DEPLOYMENT DIAGRAMS >>](./07_deploymentDiagrams.md#deployment-diagrams)

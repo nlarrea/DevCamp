@@ -1,5 +1,12 @@
 # Activity diagrams
 
+[<< CLASS DIAGRAMS](./04_classDiagrams.md#diagramas-de-clase) | [USE CASE DIAGRAMS >>](./06_useCaseDiagrams.md#use-case-diagrams)
+
+
+<br><hr>
+<hr><br>
+
+
 ## Elementos
 
 Los elementos que forman este tipo de diagramas son los siguientes:
@@ -40,6 +47,13 @@ El estado final se representa con un círculo con un punto en el centro. Así es
 
 <div align="center">
 
-![activity-diagram-myExample](./media/behavioral-diagrams/activity-diagram-myExample.png)
+![activity-diagram-myExample](../media/behavioral-diagrams/activity-diagram-myExample.png)
 
 </div>
+
+
+<br><hr>
+<hr><br>
+
+
+[<< CLASS DIAGRAMS](./04_classDiagrams.md#diagramas-de-clase) | [USE CASE DIAGRAMS >>](./06_useCaseDiagrams.md#use-case-diagrams)

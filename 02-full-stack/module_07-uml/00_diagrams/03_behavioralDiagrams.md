@@ -11,7 +11,7 @@ Los diagramas que se van a ver aquí son:
 
 <br>
 
-[<< STRUCTURAL DIAGRAMS](./02_structuralDiagrams.md#structural-diagrams)
+[<< STRUCTURAL DIAGRAMS](./02_structuralDiagrams.md#structural-diagrams) | [CLASS DIAGRAMS >>](./04_classDiagrams.md#diagramas-de-clase)
 
 
 <br><hr>
@@ -41,7 +41,7 @@ Todo lo que importa aquí es el flujo de acciones, y no el nombre de las funcion
 
 <div align="center">
 
-![activity-diagram](./media/behavioral-diagrams/activity-diagram.png)
+![activity-diagram](../media/behavioral-diagrams/activity-diagram.png)
 
 </div>
 
@@ -65,7 +65,7 @@ Los elementos que forman parte de este tipo de diagramas son:
 
 <div align="center">
 
-![use_case-diagram](./media/behavioral-diagrams/use_case-diagram.png)
+![use_case-diagram](../media/behavioral-diagrams/use_case-diagram.png)
 
 </div>
 
@@ -90,7 +90,7 @@ Los elementos que forman parte de este tipo de diagramas son:
 
 <div align="center">
 
-![state_machine-diagram](./media/behavioral-diagrams/state_machine-diagram.png)
+![state_machine-diagram](../media/behavioral-diagrams/state_machine-diagram.png)
 
 </div>
 
@@ -118,7 +118,7 @@ Los elementos que forman parte de este tipo de diagramas son:
 
 <div align="center">
 
-![sequence-diagram](./media/behavioral-diagrams/sequence-diagram.png)
+![sequence-diagram](../media/behavioral-diagrams/sequence-diagram.png)
 
 </div>
 
@@ -126,4 +126,4 @@ Los elementos que forman parte de este tipo de diagramas son:
 <br><hr>
 <hr><br>
 
-[<< STRUCTURAL DIAGRAMS](./02_structuralDiagrams.md#structural-diagrams)
+[<< STRUCTURAL DIAGRAMS](./02_structuralDiagrams.md#structural-diagrams) | [CLASS DIAGRAMS >>](./04_classDiagrams.md#diagramas-de-clase)

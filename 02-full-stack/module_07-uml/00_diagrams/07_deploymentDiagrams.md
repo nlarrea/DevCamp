@@ -11,6 +11,10 @@ Los elementos que lo forman son los siguientes:
 * [Dependencies](#dependencies)
 * [Associations](#associations)
 
+<br>
+
+[<< USE CASE DIAGRAMS](./06_useCaseDiagrams.md#use-case-diagrams) | [PACKAGE DIAGRAMS >>](./08_packageDiagrams.md#package-diagrams)
+
 
 <br><hr>
 <hr><br>
@@ -85,7 +89,7 @@ Partiendo de esta imagen:
 
 <div align="center">
 
-![deployment-diagram-example](./media/structural-diagrams/deployment-diagram-example.png)
+![deployment-diagram-example](../media/structural-diagrams/deployment-diagram-example.png)
 
 </div>
 
@@ -100,3 +104,10 @@ Este `node` tiene diferentes `dependencies`. Por un lado tiene la dependencia de
 <br>
 
 Por ello, de un simple vistazo, somos capaces de ver que el sistema requiere de otros dos sistemas.
+
+
+<br><hr>
+<hr><br>
+
+
+[<< USE CASE DIAGRAMS](./06_useCaseDiagrams.md#use-case-diagrams) | [PACKAGE DIAGRAMS >>](./08_packageDiagrams.md#package-diagrams)

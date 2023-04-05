@@ -1,5 +1,7 @@
 # State Machine Diagrams
 
+[<< SEQUENCE DIAGRAMS](./09_sequenceDiagrams.md#diagramas-de-secuencia)
+
 The goal of state machine diagrams is to visualize what an application or what a feature of our application will look like and how it can transition from one state to another state.
 
 > In low level, it can be how a button looks linke or what actions can be performed on a button based off of how a user's role is set up.
@@ -35,7 +37,7 @@ It is that large filled in black dot and it represents the start. It's where if 
 
 If you're building an API or something like that, it's when the request comes in and they pass the information, just the start of the system.
 
-![state_machine-diagram-entry-point.png](./media/behavioral-diagrams/state_machine-diagram-entry-point.png)
+![state_machine-diagram-entry-point.png](../media/behavioral-diagrams/state_machine-diagram-entry-point.png)
 
 
 <br><hr><br>
@@ -47,7 +49,7 @@ This is where it gets to asking questions. In the example below, the visitor use
 
 Choices are represented by 45 degree angle squares.
 
-![state_machine-diagram-choice.png](./media/behavioral-diagrams/state_machine-diagram-choice.png)
+![state_machine-diagram-choice.png](../media/behavioral-diagrams/state_machine-diagram-choice.png)
 
 
 <br><hr><br>
@@ -78,3 +80,10 @@ So, in our example, we have two different states. We have the sate where the use
 The transition is the arrow that goes from one state to another state. So, in our example, we have a transition from the visitor state to the registered user state.
 
 We also have choices that are represented by these arrows.
+
+
+<br><hr>
+<hr><br>
+
+
+[<< SEQUENCE DIAGRAMS](./09_sequenceDiagrams.md#diagramas-de-secuencia)
