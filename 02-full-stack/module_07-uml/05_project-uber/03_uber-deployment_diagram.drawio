@@ -1,0 +1,71 @@
+<mxfile host="app.diagrams.net" modified="2023-05-01T16:56:53.026Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" etag="XUqd8NP_ZePZCvLzckd8" version="21.2.3" type="device">
+  <diagram name="Página-1" id="-GZop3Cokw06zlzlFmHg">
+    <mxGraphModel dx="874" dy="476" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#ffffff" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="xJhg3cgx3qZvCSQAyH6--1" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Coming+Soon&quot; face=&quot;Coming Soon&quot;&gt;&lt;b&gt;Android deployment process with dependencies (3-4 nodes)&lt;br&gt;&lt;/b&gt;&lt;/font&gt;&lt;ul&gt;&lt;li&gt;&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Coming+Soon&quot; face=&quot;Coming Soon&quot;&gt;&lt;b&gt;API&lt;/b&gt;&lt;/font&gt;&lt;/li&gt;&lt;li&gt;&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Coming+Soon&quot; face=&quot;Coming Soon&quot;&gt;&lt;b&gt;Smartphone device&lt;/b&gt;&lt;/font&gt;&lt;/li&gt;&lt;li style=&quot;&quot;&gt;&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Coming+Soon&quot; face=&quot;Coming Soon&quot;&gt;&lt;b&gt;Android app&lt;/b&gt;&lt;/font&gt;&lt;/li&gt;&lt;/ul&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="40" y="40" width="200" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="xJhg3cgx3qZvCSQAyH6--2" value="&lt;h2&gt;&lt;u&gt;&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Coming+Soon&quot; face=&quot;Coming Soon&quot;&gt;Uber - Deployment Diagram&lt;/font&gt;&lt;/u&gt;&lt;/h2&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="280" y="40" width="280" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ypRRghnwdAj85FUOVrxT-1" value="dep Android application deployment" style="shape=folder;fontStyle=1;tabWidth=210;tabHeight=20;tabPosition=left;html=1;boundedLbl=1;labelInHeader=1;container=1;collapsible=0;whiteSpace=wrap;align=center;" vertex="1" parent="1">
+          <mxGeometry x="80" y="200" width="680" height="400" as="geometry" />
+        </mxCell>
+        <mxCell id="ypRRghnwdAj85FUOVrxT-2" value="" style="html=1;strokeColor=none;resizeWidth=1;resizeHeight=1;fillColor=none;part=1;connectable=0;allowArrows=0;deletable=0;whiteSpace=wrap;" vertex="1" parent="ypRRghnwdAj85FUOVrxT-1">
+          <mxGeometry width="670" height="280" relative="1" as="geometry">
+            <mxPoint y="30" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ypRRghnwdAj85FUOVrxT-3" value="&amp;lt;&amp;lt;device&amp;gt;&amp;gt;&lt;br&gt;Smartphone" style="verticalAlign=top;align=center;spacingTop=8;spacingLeft=2;spacingRight=12;shape=cube;size=10;direction=south;fontStyle=0;html=1;whiteSpace=wrap;" vertex="1" parent="ypRRghnwdAj85FUOVrxT-1">
+          <mxGeometry x="380" y="80" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ypRRghnwdAj85FUOVrxT-8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" edge="1" parent="ypRRghnwdAj85FUOVrxT-1" source="ypRRghnwdAj85FUOVrxT-4" target="ypRRghnwdAj85FUOVrxT-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ypRRghnwdAj85FUOVrxT-4" value="&amp;lt;&amp;lt;execution environment&amp;gt;&amp;gt;&lt;br&gt;Android" style="verticalAlign=top;align=center;spacingTop=8;spacingLeft=2;spacingRight=12;shape=cube;size=10;direction=south;fontStyle=0;html=1;whiteSpace=wrap;" vertex="1" parent="ypRRghnwdAj85FUOVrxT-1">
+          <mxGeometry x="380" y="210" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ypRRghnwdAj85FUOVrxT-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0;entryDx=25;entryDy=0;entryPerimeter=0;" edge="1" parent="ypRRghnwdAj85FUOVrxT-1" source="ypRRghnwdAj85FUOVrxT-5" target="ypRRghnwdAj85FUOVrxT-3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="590" y="105" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ypRRghnwdAj85FUOVrxT-5" value="API" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="ypRRghnwdAj85FUOVrxT-1">
+          <mxGeometry x="540" y="260" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ypRRghnwdAj85FUOVrxT-7" value="" style="rhombus;fillColor=#000000;" vertex="1" parent="ypRRghnwdAj85FUOVrxT-1">
+          <mxGeometry x="440" y="140" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ypRRghnwdAj85FUOVrxT-9" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="ypRRghnwdAj85FUOVrxT-1">
+          <mxGeometry x="30" y="50" width="220" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="ypRRghnwdAj85FUOVrxT-10" value="&amp;lt;&amp;lt;Deployment Specification&amp;gt;&amp;gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="ypRRghnwdAj85FUOVrxT-1">
+          <mxGeometry x="50" y="300" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ypRRghnwdAj85FUOVrxT-11" value="&amp;lt;&amp;lt;Uncompiled resources&amp;gt;&amp;gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="ypRRghnwdAj85FUOVrxT-1">
+          <mxGeometry x="50" y="230" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ypRRghnwdAj85FUOVrxT-12" value="&amp;lt;&amp;lt;Compiled resources&amp;gt;&amp;gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="ypRRghnwdAj85FUOVrxT-1">
+          <mxGeometry x="50" y="160" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ypRRghnwdAj85FUOVrxT-13" value="&amp;lt;&amp;lt;Compiled classes&amp;gt;&amp;gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="ypRRghnwdAj85FUOVrxT-1">
+          <mxGeometry x="50" y="90" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ypRRghnwdAj85FUOVrxT-14" value="&amp;lt;&amp;lt;Android Application Uber App&amp;gt;&amp;gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="ypRRghnwdAj85FUOVrxT-1">
+          <mxGeometry x="50" y="50" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ypRRghnwdAj85FUOVrxT-16" value="&amp;lt;&amp;lt;deploy&amp;gt;&amp;gt;" style="endArrow=blockThin;startArrow=none;endFill=1;startFill=0;endSize=8;html=1;verticalAlign=bottom;dashed=1;labelBackgroundColor=none;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=35;entryDy=150;entryPerimeter=0;edgeStyle=orthogonalEdgeStyle;dashPattern=8 8;" edge="1" parent="ypRRghnwdAj85FUOVrxT-1" source="ypRRghnwdAj85FUOVrxT-9" target="ypRRghnwdAj85FUOVrxT-4">
+          <mxGeometry x="-0.2121" width="160" relative="1" as="geometry">
+            <mxPoint x="230" y="230" as="sourcePoint" />
+            <mxPoint x="390" y="230" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
