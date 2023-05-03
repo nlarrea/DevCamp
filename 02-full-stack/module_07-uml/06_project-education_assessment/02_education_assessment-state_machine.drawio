@@ -1,0 +1,75 @@
+<mxfile host="app.diagrams.net" modified="2023-05-03T12:21:02.067Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" version="21.2.4" etag="KeFTo4xuzj3POq_PgDzu" type="device">
+  <diagram id="h1y-ZMw4cdfYqEcz3UKq" name="Página-1">
+    <mxGraphModel dx="874" dy="476" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#ffffff" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="WgfMLqBjxs0uGWOkMJ76-1" value="&lt;div&gt;Question answering state management:&lt;/div&gt;&lt;ul&gt;&lt;li&gt;Waiting for answer&lt;/li&gt;&lt;li&gt;Answer chosen&lt;/li&gt;&lt;li&gt;Answer confirmed&lt;/li&gt;&lt;li&gt;Submit status&lt;/li&gt;&lt;/ul&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Coming Soon;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DComing%2BSoon;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="200" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="WgfMLqBjxs0uGWOkMJ76-2" value="&lt;h2&gt;&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Coming+Soon&quot; face=&quot;Coming Soon&quot;&gt;&lt;u&gt;Education Assessment - State machine Diagram&lt;/u&gt;&lt;/font&gt;&lt;/h2&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="274" y="50" width="280" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="WgfMLqBjxs0uGWOkMJ76-8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="WgfMLqBjxs0uGWOkMJ76-3">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="276" y="240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WgfMLqBjxs0uGWOkMJ76-3" value="" style="ellipse;fillColor=strokeColor;html=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="225" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="WgfMLqBjxs0uGWOkMJ76-22" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="276" y="210" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WgfMLqBjxs0uGWOkMJ76-23" value="Waiting for answer" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="276" y="210" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="WgfMLqBjxs0uGWOkMJ76-24" value="disable_submit()" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="276" y="240" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="WgfMLqBjxs0uGWOkMJ76-25" value="" style="endArrow=none;html=1;rounded=0;exitX=0;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="WgfMLqBjxs0uGWOkMJ76-24" target="WgfMLqBjxs0uGWOkMJ76-24">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="346" y="420" as="sourcePoint" />
+            <mxPoint x="396" y="370" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WgfMLqBjxs0uGWOkMJ76-26" value="Checkbox is set" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;labelPosition=center;verticalLabelPosition=top;align=center;verticalAlign=bottom;labelBackgroundColor=none;" edge="1" parent="1" source="WgfMLqBjxs0uGWOkMJ76-23" target="WgfMLqBjxs0uGWOkMJ76-28">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="346" y="420" as="sourcePoint" />
+            <mxPoint x="396" y="370" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WgfMLqBjxs0uGWOkMJ76-27" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="516" y="210" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WgfMLqBjxs0uGWOkMJ76-28" value="Anser Chosen" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="516" y="210" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="WgfMLqBjxs0uGWOkMJ76-31" value="Checkbox is unset" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;labelBackgroundColor=none;" edge="1" parent="1" source="WgfMLqBjxs0uGWOkMJ76-29" target="WgfMLqBjxs0uGWOkMJ76-24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WgfMLqBjxs0uGWOkMJ76-36" value="Submit button is pushed" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="WgfMLqBjxs0uGWOkMJ76-29" target="WgfMLqBjxs0uGWOkMJ76-32">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WgfMLqBjxs0uGWOkMJ76-29" value="enable_submit()" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="516" y="240" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="WgfMLqBjxs0uGWOkMJ76-30" value="" style="endArrow=none;html=1;rounded=0;exitX=0;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="WgfMLqBjxs0uGWOkMJ76-29" target="WgfMLqBjxs0uGWOkMJ76-29">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="586" y="420" as="sourcePoint" />
+            <mxPoint x="636" y="370" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WgfMLqBjxs0uGWOkMJ76-38" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="WgfMLqBjxs0uGWOkMJ76-32" target="WgfMLqBjxs0uGWOkMJ76-37">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WgfMLqBjxs0uGWOkMJ76-32" value="Answer Confirmed" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="516" y="340" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WgfMLqBjxs0uGWOkMJ76-37" value="" style="ellipse;html=1;shape=endState;fillColor=strokeColor;" vertex="1" parent="1">
+          <mxGeometry x="436" y="355" width="30" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
