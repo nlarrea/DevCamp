@@ -1,0 +1,51 @@
+<mxfile host="app.diagrams.net" modified="2023-05-05T10:44:27.220Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36" etag="7SJH4SAf32AUPE86D1C1" version="21.2.8" type="device">
+  <diagram name="Página-1" id="V4pZzTbMki7J-xhmwb8O">
+    <mxGraphModel dx="874" dy="476" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#ffffff" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="iLPpHv8ZXfzyRCYscsvq-1" value="Journey system (5-6 packages)&lt;br&gt;&lt;ul&gt;&lt;li&gt;Journeys&lt;/li&gt;&lt;li&gt;Insights / Reports&lt;/li&gt;&lt;li&gt;Channels and App drivers (Slack, HipChat, SMS, etc.)&lt;/li&gt;&lt;/ul&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Coming Soon;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DComing%2BSoon;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="40" y="40" width="200" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="iLPpHv8ZXfzyRCYscsvq-2" value="&lt;h2&gt;&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Coming+Soon&quot; face=&quot;Coming Soon&quot;&gt;&lt;u&gt;Marketing Automation System - Package Diagram&lt;/u&gt;&lt;/font&gt;&lt;/h2&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="280" y="40" width="440" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="tCOLPKaZAGMZB_dzyef2-1" value="pkg MarketingAutomation" style="shape=folder;fontStyle=1;tabWidth=320;tabHeight=30;tabPosition=left;html=1;boundedLbl=1;labelInHeader=1;container=1;collapsible=0;recursiveResize=0;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="80" y="200" width="600" height="430" as="geometry" />
+        </mxCell>
+        <mxCell id="tCOLPKaZAGMZB_dzyef2-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0;exitDx=0;exitDy=65;exitPerimeter=0;entryX=0;entryY=0;entryDx=0;entryDy=65;entryPerimeter=0;dashed=1;dashPattern=8 8;endArrow=open;endFill=0;" edge="1" parent="tCOLPKaZAGMZB_dzyef2-1" source="tCOLPKaZAGMZB_dzyef2-3" target="tCOLPKaZAGMZB_dzyef2-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tCOLPKaZAGMZB_dzyef2-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0;exitDx=150;exitDy=65;exitPerimeter=0;entryX=0;entryY=0;entryDx=0;entryDy=100;entryPerimeter=0;dashed=1;dashPattern=8 8;endArrow=open;endFill=0;" edge="1" parent="tCOLPKaZAGMZB_dzyef2-1" source="tCOLPKaZAGMZB_dzyef2-3" target="tCOLPKaZAGMZB_dzyef2-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tCOLPKaZAGMZB_dzyef2-3" value="Journeys" style="shape=folder;fontStyle=1;tabWidth=110;tabHeight=30;tabPosition=left;html=1;boundedLbl=1;labelInHeader=1;container=1;collapsible=0;recursiveResize=0;whiteSpace=wrap;" vertex="1" parent="tCOLPKaZAGMZB_dzyef2-1">
+          <mxGeometry x="50" y="70" width="150" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="tCOLPKaZAGMZB_dzyef2-6" value="Channels" style="shape=folder;fontStyle=1;tabWidth=110;tabHeight=30;tabPosition=left;html=1;boundedLbl=1;labelInHeader=1;container=1;collapsible=0;recursiveResize=0;whiteSpace=wrap;" vertex="1" parent="tCOLPKaZAGMZB_dzyef2-1">
+          <mxGeometry x="320" y="50" width="240" height="350" as="geometry" />
+        </mxCell>
+        <mxCell id="tCOLPKaZAGMZB_dzyef2-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0;entryDx=0;entryDy=30;entryPerimeter=0;" edge="1" parent="tCOLPKaZAGMZB_dzyef2-6" source="tCOLPKaZAGMZB_dzyef2-11" target="tCOLPKaZAGMZB_dzyef2-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tCOLPKaZAGMZB_dzyef2-17" value="&amp;lt;&amp;lt;aggregate&amp;gt;&amp;gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0;entryDx=0;entryDy=30;entryPerimeter=0;" edge="1" parent="tCOLPKaZAGMZB_dzyef2-6" source="tCOLPKaZAGMZB_dzyef2-11" target="tCOLPKaZAGMZB_dzyef2-15">
+          <mxGeometry x="-0.7647" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tCOLPKaZAGMZB_dzyef2-11" value="Apps drivers" style="shape=folder;fontStyle=1;tabWidth=110;tabHeight=30;tabPosition=left;html=1;boundedLbl=1;labelInHeader=1;container=1;collapsible=0;recursiveResize=0;whiteSpace=wrap;" vertex="1" parent="tCOLPKaZAGMZB_dzyef2-6">
+          <mxGeometry x="40" y="50" width="160" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="tCOLPKaZAGMZB_dzyef2-13" value="Slack" style="shape=folder;fontStyle=1;tabWidth=90;tabHeight=30;tabPosition=left;html=1;boundedLbl=1;labelInHeader=1;container=1;collapsible=0;recursiveResize=0;whiteSpace=wrap;" vertex="1" parent="tCOLPKaZAGMZB_dzyef2-6">
+          <mxGeometry x="100" y="190" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="tCOLPKaZAGMZB_dzyef2-15" value="Hipchat" style="shape=folder;fontStyle=1;tabWidth=90;tabHeight=30;tabPosition=left;html=1;boundedLbl=1;labelInHeader=1;container=1;collapsible=0;recursiveResize=0;whiteSpace=wrap;" vertex="1" parent="tCOLPKaZAGMZB_dzyef2-6">
+          <mxGeometry x="100" y="260" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="tCOLPKaZAGMZB_dzyef2-8" value="Insights" style="shape=folder;fontStyle=1;tabWidth=110;tabHeight=30;tabPosition=left;html=1;boundedLbl=1;labelInHeader=1;container=1;collapsible=0;recursiveResize=0;whiteSpace=wrap;" vertex="1" parent="tCOLPKaZAGMZB_dzyef2-1">
+          <mxGeometry x="50" y="250" width="150" height="100" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
