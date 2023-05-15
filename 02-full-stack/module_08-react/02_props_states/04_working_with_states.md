@@ -103,10 +103,3 @@ export default class PortfolioContainer extends Component {
     }
 }
 ```
-
-
-<br><hr>
-<hr><br>
-
-
-## Props, states & this
