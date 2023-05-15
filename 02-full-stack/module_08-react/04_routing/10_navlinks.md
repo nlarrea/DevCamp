@@ -36,3 +36,7 @@ export default class NavigationComponent extends Component {
 Como se puede observar, se ha utilizado el componente `NavLink` para crear los enlaces. Este componente es similar a utilizar la etiqueta `a`. Sin embargo, si se usara dicha etiqueta, se perdería la funcionalidad de React, podría llevar a un comportamiento inesperado, y otros problemas, además de volver a cargar la página, lo cual ralentizaría su funcionamiento, por lo que no se recomienda.
 
 Además de esto, haciendo uso de `NavLink`, se añade de forma automática la clase `active` a aquel link en el que el usuario ha clicado. Con esto, se puede utilizar la propiedad `activeClassName` para reescribir el nombre de la clase `active` por el que se desee, lo cual puede ser útil para aplicar estilos a dicho link.
+
+<br/>
+
+> *Vamos a repetir el proceso mostrado para crear los enlaces de navegación `contact` y `blog`.*
