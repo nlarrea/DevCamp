@@ -137,3 +137,120 @@ export default function(props) {
 <br/>
 
 Finalmente, hemos añadido un link que nos llevará a la URL que corresponda a cada item del portfolio.
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+## Sin coincidencias de URL
+
+En ocasiones, se trata de acceder a través de una URL a una dirección que no existe. En estos casos, es probable que se desee mostrar un mensaje o página de error.
+
+En este apartado, se va a mostrar cómo hacer esto.
+
+<br/>
+
+En primer lugar, crearemos un nuevo componente llamado `no-match.js`, y lo crearemos dentro del directorio `components/pages`:
+
+```js
+// no-match.js
+
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+export default function() {
+    return (
+        <div>
+            <h2>We couldn't find that page</h2>
+            <Link to='/'>Return to homepage</Link>
+        </div>
+    );
+}
+```
+
+<br/>
+
+Ahora, vamos a modificar el componente `app.js` para que, en caso de que no se encuentre la URL, se muestre el componente `no-match.js`:
+
+```js
+// app.js
+
+// ...
+
+import NoMatch from './pages/no-match';
+
+export default class App extends Component {
+    render() {
+        return (
+            <div className='app'>
+                <!-- ... -->
+
+                <Router>
+                    <div>
+                        <!-- ... -->
+
+                        <Switch>
+                            <!-- ... -->
+                            <Route component={NoMatch} />
+                        </Switch>
+                    </div>
+                </Router>
+            </div>
+        );
+    }
+}
+```
+
+<br/>
+
+Con esto, estamos indicando que, en caso de que no se encuentre la URL, se muestre el componente `no-match.js`.
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+## URLs anidadas en Portfolio
+
+Si escribimos URLs como:
+
+```
+http://localhost:3000/portfolio/lo-que-sea
+```
+
+<br/>
+
+Como tenemos la ruta:
+
+```js
+// app.js
+
+<Route path='/portfolio/:slug' component={PortfolioDetail} />
+```
+
+<br/>
+
+Se va a mostrar el componente `portfolio-detail.js` con el mensaje `Portfolio Detail for lo-que-sea` como título.
+
+<br/>
+
+Sin embargo, si se trata acceder a una URL como:
+
+```
+http://localhost:3000/portfolio/lo-que-sea/otra-cosa
+```
+
+<br/>
+
+Lo que ocurre es que se muestra el mismo componente que antes, incluyendo el mismo mensaje, debido a que la ruta coincide con la ruta que hemos indicado en `app.js`.
+
+<br/>
+
+Si lo que queremos es que en caso de tratar acceder a esta segunda URL se muestre el componente de `no-match.js` que hemos creado antes, debemos añadir la propiedad `exact` a la ruta:
+
+```js
+// app.js
+
+<Route exact path='/portfolio/:slug' component={PortfolioDetail} />
+```
