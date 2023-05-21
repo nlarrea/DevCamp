@@ -65,6 +65,8 @@ He aquí el contenido trabajado:
         * [Flask](https://flask.palletsprojects.com/en/2.2.x/)
     * Bases de datos
         * [MongoDB](https://www.mongodb.com/es)
+    * [Node.JS](https://nodejs.org/es/)
+    * [npm](https://www.npmjs.com/)
 
 <br>
 
@@ -72,6 +74,7 @@ He aquí el contenido trabajado:
     * [Página web](https://bottega.edu/)
     * [Curso actual - Full Stack](https://bottega.edu/full-stack-development-certificate/)
     * [LinkedIn](https://www.linkedin.com/school/bottega-university/)
+    * [Application Data Manager](https://www.devcamp.space/)
 
 
 <br><hr>
