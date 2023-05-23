@@ -1,6 +1,6 @@
 # React File System
 
-<span id="index">Content:</span>
+<span id="index"></span>
 
 * [Node modules](#node_modules)
     * [Añadir dependencias](#añadir-dependencias)
@@ -71,7 +71,7 @@ Una vez instaladas las dependencias, vamos a ejecutar el comando `npm start` par
 
 
 <div align="right">
-    <a href="#index">Back to Content</a>
+    <a href="#index">Volver arriba</a>
 </div>
 
 
@@ -93,9 +93,9 @@ En nuestro caso, vamos a instalar la dependencia `moment` a modo de ejemplo. Par
 
 ```json
 "dependencies": {
-    # otras dependencias
+    ...
     "moment": "^2.29.1",
-    # otras dependencias
+    ...
 }
 ```
 
@@ -179,7 +179,7 @@ Se considera la forma estándar de instalar dependencias, y es la que más se su
 
 
 <div align="right">
-    <a href="#index">Back to Content</a>
+    <a href="#index">Volver arriba</a>
 </div>
 
 
@@ -308,7 +308,7 @@ Lo que hace `babel-polyfill` es mirar el buscador y cargar en él todas las func
 
 
 <div align="right">
-    <a href="#index">Back to Content</a>
+    <a href="#index">Volver arriba</a>
 </div>
 
 
@@ -328,7 +328,7 @@ Finalmente, encontraremos el archivo `index.html`, que es el archivo principal d
 
 
 <div align="right">
-    <a href="#index">Back to Content</a>
+    <a href="#index">Volver arriba</a>
 </div>
 
 
@@ -414,7 +414,7 @@ module.exports = {
 
 
 <div align="right">
-    <a href="#index">Back to Content</a>
+    <a href="#index">Volver arriba</a>
 </div>
 
 

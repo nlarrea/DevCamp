@@ -1,5 +1,13 @@
 # Route Setup
 
+
+[<< TERNARY OPERATOR](../03_conditionals/08_ternary_operator.md#ternarios) | [HOME](../../../README.md#devcamp) | [NAVLINKS >>](./10_navlinks.md#navlink)
+
+
+<br/><hr/>
+<hr/><br/>
+
+
 En esta sección se va a hablar de cómo configurar las rutas en React.
 
 En primer lugar, vamos a crear dos nuevos archivos dentro del directorio `components/pages`:
@@ -89,10 +97,13 @@ Aún, dichas rutas no están ligadas a ningún botón o link para poder navegar 
 * Al encontrarnos ya dentro de la durección `localhost:3000`, veremos que nos aparece directamente el componente `Home`.
 * Si escribimos `localhost:3000/about-me`, veremos que nos aparece el componente `About`.
 
-<br/>
-
 El *prop* `exact` que hemos añadido a la ruta `/` es necesario para que el componente `Home` se muestre únicamente cuando la ruta sea exactamente `/`. Si no lo añadiéramos, el componente `Home` se mostraría en todas las rutas que empiecen por `/` (`/about-me`, por ejemplo).
 
-<br/>
-
 Esto es posible gracias a que hemos importado el componente `Switch` de `react-router-dom`, el cual funciona como una especie de *if-else*.
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+[<< TERNARY OPERATOR](../03_conditionals/08_ternary_operator.md#ternarios) | [HOME](../../../README.md#devcamp) | [NAVLINKS >>](./10_navlinks.md#navlink)

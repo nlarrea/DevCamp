@@ -1,14 +1,17 @@
 # Trabajar con estados
 
+[<< COMPONENTES](../01_components/03_components.md#componentes-de-react) | [HOME](../../../README.md#devcamp) | [PROPS, STATE, THIS >>](./05_props_states_this.md#props-state--this)
+
+
+<br/><hr/>
+<hr/><br/>
+
+
 El estado (`state`) es el estado en el que se encuentra tu aplicación o alguno de los componentes.
 
 Mientras el componente sea uno basado en una clase, el propio componente será capaz de gestionar su propio estado. El estado está relacionado de alguna manera con los datos que se están manejando.
 
-<br>
-
 En este apartado, vamos a continuar trabajando con el mismo proyecto que en ejemplos anteriores, y vamos a ver cómo crear estados iniciales.
-
-<br>
 
 Como recordatorio, partimos del siguiente código en el archivo `portfolio-container.js`:
 
@@ -46,7 +49,7 @@ export default class PortfolioContainer extends Component {
 }
 ```
 
-<br>
+<br/>
 
 La sintaxis para crear un estado es la siguiente:
 
@@ -56,7 +59,7 @@ this.state = {
 }
 ```
 
-<br>
+<br/>
 
 Sabiendo esto, en primer lugar, vamos a comenzar modificando la función `portfolioItems()` para no tener que realizar *hardcoding* de los datos.
 
@@ -93,8 +96,8 @@ export default class PortfolioContainer extends Component {
     render() {
         return (
             <div>
-                <!-- mostrará lo que haya guardado en
-                'pageTitle' dentro del estado -->
+                /* mostrará lo que haya guardado en
+                'pageTitle' dentro del estado */
                 <h2>{this.state.pageTitle}</h2>
 
                 {this.portfolioItems()}
@@ -103,3 +106,10 @@ export default class PortfolioContainer extends Component {
     }
 }
 ```
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+[<< COMPONENTES](../01_components/03_components.md#componentes-de-react) | [HOME](../../../README.md#devcamp) | [PROPS, STATE, THIS >>](./05_props_states_this.md#props-state--this)

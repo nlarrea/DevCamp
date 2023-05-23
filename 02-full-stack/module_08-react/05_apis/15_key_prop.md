@@ -1,8 +1,14 @@
 # Key prop
 
-Cuando se trabaja con listas en React, es necesario que cada elemento tenga una propiedad `key` que sea única. Esta propiedad es necesaria para que React pueda identificar cada elemento de la lista y así poder actualizarlo de forma eficiente.
 
-<br/>
+[<< RENDER DATA](./14_render_data.md#render-data) | [HOME](../../../README.md#devcamp)
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+Cuando se trabaja con listas en React, es necesario que cada elemento tenga una propiedad `key` que sea única. Esta propiedad es necesaria para que React pueda identificar cada elemento de la lista y así poder actualizarlo de forma eficiente.
 
 Si accedemos al código del archivo `portfolio-container.js`, podemos ver que tenemos lo siguiente:
 
@@ -27,3 +33,9 @@ portfolioItems() {
     });
 }
 ```
+
+
+<br/><hr/>
+<hr/><br/>
+
+[<< RENDER DATA](./14_render_data.md#render-data) | [HOME](../../../README.md#devcamp)

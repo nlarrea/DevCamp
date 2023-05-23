@@ -1,10 +1,22 @@
 # Render data
 
+<div id="index"></div>
+
+* [Modificar el estado de la aplicación con datos de la API](#modificar-el-estado-de-la-aplicación-con-datos-de-la-api)
+
+<br/>
+
+
+[<< TRABAJAR CON APIs](./13_crear_y_llamar_datos.md#trabajar-con-apis) | [HOME](../../../README.md#devcamp) | [KEY PROP >>](./15_key_prop.md#key-prop)
+
+
+<br/><hr/>
+<hr/><br/>
+
+
 ## Modificar el estado de la aplicación con datos de la API
 
 Tal y como indica el título, habiendo comprobado que los datos se muestran por consola, ahora vamos a modificar el estado de la aplicación con los datos de la API.
-
-<br/>
 
 Seguiremos trabajando con el componente `PortfolioContainer`, lo primero que haremos, será eliminar del estado inicial los datos que han sido *hardcodeados* anteriormente:
 
@@ -30,8 +42,6 @@ export default class PortfolioContainer extends Component {
 <br/>
 
 Esto lo hacemos porque queremos que los datos vengan desde el servidor a traves de la API, y no que estén *hardcodeados* en el estado inicial.
-
-<br/>
 
 Una vez hecho esto, vamos a utilizar un método del ciclo de vida de los componentes de React, llamado `componentDidMount()`, que se ejecuta justo después de que el componente se haya montado en el DOM.
 
@@ -113,3 +123,10 @@ export default class PortfolioContaienr extends Component {
 <br/>
 
 Habiendo hecho esto, ya podemos comprobar que los datos se muestran correctamente en la aplicación.
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+[<< TRABAJAR CON APIs](./13_crear_y_llamar_datos.md#trabajar-con-apis) | [HOME](../../../README.md#devcamp) | [KEY PROP >>](./15_key_prop.md#key-prop)

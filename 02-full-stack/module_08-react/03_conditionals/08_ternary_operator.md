@@ -1,5 +1,13 @@
 # Ternarios
 
+
+[<< CONDICIONALES](./07_conditionals.md#condicionales) | [HOME](../../../README.md#devcamp) | [ROUTE SETUP >>](../04_routes_and_links/09_route_setUp.md#route-setup)
+
+
+<br/><hr/>
+<hr/><br/>
+
+
 De forma similar a la vista en el apartado anterior, podemos trabajar con condicionales en JSX usando el operador ternario.
 
 Vamos a trabajar este concepto creando un nuevo componente, un `navbar`. Para ello, dentro del directorio `components` vamos a crear `navigation/navigation-container.js`.
@@ -19,7 +27,7 @@ export default class App extends Component {
         return (
             <div className='app'>
                 <NavigationContainer />
-                <!-- ... -->
+                /* ... */
             </div>
         );
     }
@@ -79,3 +87,10 @@ Si por el contrario, se modificara de la siguiente manera:
 <br/>
 
 Debería desaparecer el botón.
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+[<< CONDICIONALES](./07_conditionals.md#condicionales) | [HOME](../../../README.md#devcamp) | [ROUTE SETUP >>](../04_routes_and_links/09_route_setUp.md#route-setup)

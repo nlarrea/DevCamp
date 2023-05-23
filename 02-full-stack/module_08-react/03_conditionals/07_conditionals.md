@@ -1,5 +1,13 @@
 # Condicionales
 
+
+[<< SET STATE](../02_props_states/06_set_state.md#modificar-el-estado-en-react) | [HOME](../../../README.md#devcamp) | [TERNARY OPERATOR >>](./08_ternary_operator.md#ternarios)
+
+
+<br/><hr/>
+<hr/><br/>
+
+
 En este apartado vamos a ver cómo usar condicionales en JSX.
 
 Para ello, vamos a añadir un nuevo atributo en el estado de nuestro archivo `portfolio-container.js`:
@@ -60,3 +68,10 @@ Si el valor de `isLoading` es `true`, entonces se mostrará el texto `Loading...
 <br/>
 
 Esto es muy útil cuando se pretenden mostrar datos obtenidos de un API. En caso de no tener aún dichos datos, podemos mostrar un mensaje de carga, y cuando se obtengan, mostrar los datos.
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+[<< SET STATE](../02_props_states/06_set_state.md#modificar-el-estado-en-react) | [HOME](../../../README.md#devcamp) | [TERNARY OPERATOR >>](./08_ternary_operator.md#ternarios)

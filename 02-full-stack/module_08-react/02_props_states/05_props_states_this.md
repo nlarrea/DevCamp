@@ -1,5 +1,21 @@
 # Props, State & This
 
+<div id="index"></div>
+
+* [Trabajando con Props y datos](#trabajando-con-props-y-datos)
+* [Modificar el estado](#modificar-el-estado)
+* [Problemas con los botones](#problemas-con-los-botones)
+
+<br/>
+
+
+[<< STATES](./04_working_with_states.md#trabajar-con-estados) | [HOME](../../../README.md#devcamp) | [SET STATE >>](./06_set_state.md#modificar-el-estado-en-react)
+
+
+<br/><hr/>
+<hr/><br/>
+
+
 Para poder entender React, es necesario entender el concepto de `props`, `state` y `this`. En este caso, vamos a explicar cómo trabajar con ellos a través de un ejemplo.
 
 Para el ejemplo, vamos a volver a utilizar la herramienta vista anteriormente para crear un proyecto de React. Para ello, vamos a ejecutar el siguiente comando:
@@ -8,7 +24,7 @@ Para el ejemplo, vamos a volver a utilizar la herramienta vista anteriormente pa
 js-generate
 ```
 
-<br>
+<br/>
 
 Se selecciona un nombre y el tipo de proyecto que se desea crear.
 
@@ -18,13 +34,11 @@ A continuación, tras ponerle un nombre y desde dentro del directorio del proyec
 npm start
 ```
 
-<br>
+<br/>
 
 Ahora se deberían instalar las dependencias necesarias.
 
 Una vez instaladas, ejecutaremos `npm start` para arrancar el servidor de desarrollo.
-
-<br>
 
 Vamos a crear un componente de clase que se llame `JournalList`, por lo que crearemos un nuevo directorio dentro de la carpeta `src` llamado `journals` y dentro de este, crearemos un archivo llamado `journal_list.js`.
 
@@ -60,7 +74,7 @@ export default class JournalLList extends Component {
 }
 ```
 
-<br>
+<br/>
 
 Si guardamos y accedemos al servidor, veremos que no ha cambiado absolutamente nada. Esto se debe a que tenemos que importar el componente en el archivo `app.js`:
 
@@ -81,7 +95,7 @@ function App() {
 }
 ```
 
-<br>
+<br/>
 
 Ahora veremos cómo en la página se muestra el siguiente texto:
 
@@ -90,13 +104,11 @@ React, Props, and State - Deep Drive
 Heyyy.
 ```
 
-<br>
+<br/>
 
 Eso significa que el componente se ha importado correctamente.
 
 No tiene mucho sentido *hardcodear* todo lo que se muestre, por lo que vamos a ver cómo trabajar con `props`.
-
-<br>
 
 En el archivo `journal_list.js`, hemos creado un componente de clase y hemos añadido un constructor que tiene un parámetro llamado `props`. Este parámetro es un objeto que contiene todas las propiedades que se le pasan al componente.
 
@@ -117,7 +129,7 @@ return (
 // ...
 ```
 
-<br>
+<br/>
 
 Ahora, en el archivo `journal_list.js`, vamos a añadir lo siguiente:
 
@@ -137,7 +149,7 @@ render() {
 // ...
 ```
 
-<br>
+<br/>
 
 Si guardamos y accedemos al servidor, veremos que se muestra el siguiente texto:
 
@@ -146,7 +158,7 @@ React, Props, and State - Deep Drive
 List 1
 ```
 
-<br>
+<br/>
 
 Esto significa que el valor pasado como propiedad a JournalList se ha mostrado correctamente.
 
@@ -166,12 +178,18 @@ return (
 );
 ```
 
-<br>
+<br/>
 
 Haciendo esto, se verá en la página que hay dos componentes iguales, uno con el texto `List 1` y otro con el texto `List 2`.
 
 
-<br><hr><br>
+<br/><hr/>
+<hr/><br/>
+
+
+<div align="right">
+    <a href="#index">Volver arriba</a>
+</div>
 
 
 ## Trabajando con props y datos
@@ -195,7 +213,7 @@ export const JournalEntry = () => {
 };
 ```
 
-<br>
+<br/>
 
 Ahora, en el archivo `journal_list.js`, vamos a importar el componente y lo vamos a utilizar dentro del método `render`:
 
@@ -220,7 +238,7 @@ render() {
 // ...
 ```
 
-<br>
+<br/>
 
 Si guardamos y accedemos al servidor, veremos que se muestra el siguiente texto:
 
@@ -234,11 +252,9 @@ Hi there
 Some amazing content
 ```
 
-<br>
+<br/>
 
 Se añaden dos componentes `JournalList` en el archivo `app.js`, por lo que se muestran dos componentes `JournalEntry` en la página, cada uno después o dentro de su correspondiente `JournalList`.
-
-<br>
 
 Vamos a eliminar los mensajes *hardcodeados* y vamos a pasarle directamente los mensajes a mostrar en cada componente `JournalEntry` desde el componente `JournalList`. Para ello, primero vamos a modificar el archivo `journal_entry.js` para que reciba las propiedades que le pasemos desde el componente `JournalList`:
 
@@ -257,7 +273,7 @@ const JournalEntry = props => {
 };
 ```
 
-<br>
+<br/>
 
 Ahora, en el archivo `journal_list.js`, vamos a modificar el método `render` para que pase las propiedades al componente `JournalEntry`:
 
@@ -278,7 +294,7 @@ render() {
 // ...
 ```
 
-<br>
+<br/>
 
 Si guardamos y accedemos al servidor, veremos que se muestra el siguiente texto:
 
@@ -292,7 +308,7 @@ Some Title
 More Content
 ```
 
-<br>
+<br/>
 
 Vamos a eliminar de `app.js` el segundo componente `JournalList` y vamos a añadir componentes `JournalEntry` con diferentes títulos en el archivo `journal_list.js`:
 
@@ -312,7 +328,7 @@ render() {
 };
 ```
 
-<br>
+<br/>
 
 Si guardamos y accedemos al servidor, veremos que se muestra el siguiente texto:
 
@@ -325,7 +341,7 @@ Some Other Title
 Even More Content
 ```
 
-<br>
+<br/>
 
 Dentro del archivo, vamos a crear una variable que contenga todos los datos que queremos mostrar en la página:
 
@@ -363,7 +379,7 @@ export default class JournalList extends Component {
 }
 ```
 
-<br>
+<br/>
 
 Si guardamos y accedemos al servidor, veremos que se muestra el siguiente texto:
 
@@ -378,12 +394,18 @@ Post Three
 Post Content
 ```
 
-<br>
+<br/>
 
 Hay que tener en cuenta que como hemos indicado `key={journalEntry.title}` en el componente `JournalEntry`, cada elemento de la lista debe tener un título diferente, ya que si no, React no sabrá a qué elemento de la lista nos referimos.
 
 
-<br><hr><br>
+<br/><hr/>
+<hr/><br/>
+
+
+<div align="right">
+    <a href="#index">Volver arriba</a>
+</div>
 
 
 ## Modificar el estado
@@ -419,13 +441,11 @@ export default class JournalList extends Component {
 }
 ```
 
-<br>
+<br/>
 
 Si miramos ahora el servidor, veremos que se nos muestra el mismo texto que el mencionado la última vez, sin embargo, aparece un botón en la parte inferior.
 
 Si pulsamos ese botón se borrará el contenido de la lista, pero no se actualizará la página. Esto es porque React no actualiza la página cada vez que se modifica el estado.
-
-<br>
 
 Vamos a crear otros dos métodos, el primero para mostrar el contenido de la lista y el segundo para hacer la función de *toggle*:
 
@@ -473,8 +493,13 @@ export default class JournalList extends Component {
 ```
 
 
-<br><hr>
-<hr><br>
+<br/><hr/>
+<hr/><br/>
+
+
+<div align="right">
+    <a href="#index">Volver arriba</a>
+</div>
 
 
 ## Problemas con los botones
@@ -547,3 +572,9 @@ export default class JournalList extends Component {
     }
 }
 ```
+
+
+<br/><hr/>
+<hr/><br/>
+
+[<< STATES](./04_working_with_states.md#trabajar-con-estados) | [HOME](../../../README.md#devcamp) | [SET STATE >>](./06_set_state.md#modificar-el-estado-en-react)

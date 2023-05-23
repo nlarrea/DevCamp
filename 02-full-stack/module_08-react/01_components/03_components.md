@@ -1,5 +1,25 @@
 # Componentes de React
 
+
+<span id="index"></span>
+
+* [Crear un componente de clase](#crear-un-componente-de-clase)
+* [Componentes de clase vs funcionales](#componentes-de-clase-vs-funcionales)
+    * [Cuándo usar cada tipo de componente](#cuándo-usar-cada-tipo-de-componente)
+    * [Constructores en los componentes de clase](#constructores-en-los-componentes-de-clase)
+* [Funciones customizadas](#funciones-customizadas)
+    * [Pasar datos a los componentes (props)](#pasar-datos-a-los-componentes-props)
+
+<br/>
+
+
+[<< FILE SYSTEM](../00_introduction/02_file_system.md#react-file-system) | [HOME](../../../README.md#devcamp) | [STATE >>](../02_props_states/04_working_with_states.md#trabajar-con-estados)
+
+
+<br/><hr/>
+<hr/><br/>
+
+
 Aunque parece muy evidente, el primer paso a seguir para poder utilizar los componentes de React, es importar React.
 
 Si abrimos el archivo `app.js`, veremos que ya tenemos importado React, por lo que podemos empezar a crear nuestros componentes.
@@ -9,8 +29,13 @@ import React, { Component } from 'react';
 ```
 
 
-<br><hr>
-<hr><br>
+<br/><hr/>
+<hr/><br/>
+
+
+<div align="right">
+    <a href="#index">Volver arriba</a>
+</div>
 
 
 ## Crear un componente de clase
@@ -39,7 +64,7 @@ export default class PortfolioContainer extends Component {
 }
 ```
 
-<br>
+<br/>
 
 Ahora, dentro del archivo `app.js`, debemos importar el componente que acabamos de crear. Después lo usaremos para que se vea debajo del título de la página.
 
@@ -66,7 +91,7 @@ export default class App extends Component {
 }
 ```
 
-<br>
+<br/>
 
 Ahora, si arrancamos la aplicación, veremos que se muestran las siguientes líneas de texto (con sus respectivos estilos):
 
@@ -77,18 +102,23 @@ May 10th 2023, 12:01:18 pm
 ```
 
 
-<br><hr>
-<hr><br>
+<br/><hr/>
+<hr/><br/>
 
 
-## Componentes de clase vs componentes funcionales
+<div align="right">
+    <a href="#index">Volver arriba</a>
+</div>
+
+
+## Componentes de clase vs funcionales
 
 Existen dos tipos de componentes en React:
 
 * Class-based components
 * Functional components (también llamados *presentational components*)
 
-<br>
+<br/>
 
 Para ver este tipo de componentes, vamos a continuar creando un portfolio a modo de ejemplo.
 
@@ -100,13 +130,11 @@ Por ello, para continuar, vamos a comenzar creando un nuevo directorio dentro de
 import PortfolioContainer from './portfolio/portfolio-container';
 ```
 
-<br>
+<br/>
 
 Después, crearemos un nuevo archivo llamado `portfolio-item.js` dentro de la carpeta `portfolio`.
 
 Hasta ahora, tendremos dos archivos *portfolio*, el primero de ellos, el `portfolio-container.js`, será el que contenga a todos los *portfolio items*. Es un archivo único que puede tener varios ítems en su interior.
-
-<br>
 
 Vamos a crear un componente funcional en el archivo `portfolio-item.js`:
 
@@ -124,7 +152,7 @@ export default function() {
 }
 ```
 
-<br>
+<br/>
 
 En los componentes funcionales, no hay que importar `{ Component }` porque no vamos a crear una clase que se extienda de `Component`.
 
@@ -146,7 +174,7 @@ export default class PortfolioContainer extends Component {
             <div>
                 <h2>Portfolio Items go here...</h2>
 
-                <!-- añadimos el componente funcional -->
+                /* añadimos el componente funcional */
                 <PortfolioItem />
             </div>
         )
@@ -154,7 +182,7 @@ export default class PortfolioContainer extends Component {
 }
 ```
 
-<br>
+<br/>
 
 Si arrancamos la aplicación, veremos que se muestra el título del componente funcional.
 
@@ -165,9 +193,10 @@ Portfolio Item
 May 10th 2023, 12:26:39 pm
 ```
 
-<br><hr><br>
+<br/><hr/><br/>
 
-### ¿Cuándo usar componentes de clase y cuándo componentes funcionales?
+
+### Cuándo usar cada tipo de componente
 
 Los componentes de clase se utilizan cuando necesitamos tener un estado o cuando necesitamos utilizar el ciclo de vida de los componentes (*State y Lifecycle Hooks*).
 
@@ -176,7 +205,7 @@ Son componentes que se deben usar cuando hace falta usar más lógica en el comp
 Si simplemente se desea renderizar algo, mostrarlo por pantalla, etc. enconces, se utilizan los componentes funcionales.
 
 
-<br><hr><br>
+<br/><hr/><br/>
 
 
 ### Constructores en los componentes de clase
@@ -212,13 +241,18 @@ export default class PortfolioContainer extends Component {
 }
 ```
 
-<br>
+<br/>
 
 En este caso, el contructor no tiene prácticamente ninguna utilidad, sin embargo, aquí es donde normalmente se situan todos los estados iniciales, donde se definen todos los valores de partida, etc.
 
 
-<br><hr>
-<hr><br>
+<br/><hr/>
+<hr/><br/>
+
+
+<div align="right">
+    <a href="#index">Volver arriba</a>
+</div>
 
 
 ## Funciones customizadas
@@ -249,8 +283,8 @@ export default class PortfolioContainer extends Component {
             <div>
                 <h2>Portfolio Items go here...</h2>
 
-                <!-- dentro de 'render()' se usan {} para
-                escribir JS -->
+                /* dentro de 'render()' se usan {} para
+                escribir JS */
                 {this.portfolioItems()}
             </div>
         )
@@ -258,7 +292,7 @@ export default class PortfolioContainer extends Component {
 }
 ```
 
-<br>
+<br/>
 
 Si arrancamos la aplicación, veremos que se muestran tres componentes funcionales, uno por cada elemento del array, aunque no es exactamente lo que queremos (*veremos más adelante cómo solucionarlo*).
 
@@ -272,7 +306,7 @@ Portfolio Item
 ```
 
 
-<br><hr><br>
+<br/><hr/><br/>
 
 
 ### Pasar datos a los componentes (props)
@@ -280,8 +314,6 @@ Portfolio Item
 Hemos visto cómo crear funciones personalizadas para crear tantos elementos como deseemos a partir de una lista de datos, pero ¿cómo podemos pasar datos a los componentes?
 
 Para que esto sea posible, debemos pasar datos de un componente padre a un componente hijo. Para ello, utilizaremos las *props*.
-
-<br>
 
 En primer lugar, accederemos al archivo donde estamos llamando al componente funcional, en este caso, el archivo `portfolio-container.js`, y vamos a modificar el método `portfolioItems()` para que envíe datos al componente funcional.
 
@@ -301,7 +333,7 @@ portfolioItems() {
 // ...
 ```
 
-<br>
+<br/>
 
 Estamos enviando cada dato de la lista (cada `item`) como `title` al componente funcional. Ahora, desde el componente funcional (`portfolio-item.js`), podemos acceder a ese dato.
 
@@ -319,7 +351,7 @@ export default function(props) {
 }
 ```
 
-<br>
+<br/>
 
 Indicamos a la función que tiene parámetros usando `props`, y después, podemos acceder a los datos que le estamos enviando desde el componente padre utilizando `props.title`.
 
@@ -327,11 +359,7 @@ Indicamos a la función que tiene parámetros usando `props`, y después, podemo
 
 Podemos crear tantas propiedades como queramos, y acceder a ellas desde el componente funcional de la misma forma.
 
-<br>
-
 Como queremos utilizar código JS dentro de JSX, debemos usar `{}` para llamar al atributo del objeto.
-
-<br>
 
 Si arrancamos la aplicación, veremos que se muestran los datos que estamos enviando desde el componente padre.
 
@@ -344,3 +372,9 @@ segundo dato
 tercer dato
 ```
 
+
+<br/><hr/>
+<hr/><br/>
+
+
+[<< FILE SYSTEM](../00_introduction/02_file_system.md#react-file-system) | [HOME](../../../README.md#devcamp) | [STATE >>](../02_props_states/04_working_with_states.md#trabajar-con-estados)

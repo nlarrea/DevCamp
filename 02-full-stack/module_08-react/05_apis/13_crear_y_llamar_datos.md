@@ -1,5 +1,21 @@
 # Trabajar con APIs
 
+<div id="index"></div>
+
+* [Crear información en el servidor](#crear-infromación-en-el-servidor)
+* [Importar y usar Axios](#importar-y-usar-axios)
+* [Reorganizar el código](#reorganizar-el-código)
+
+<br/>
+
+
+[<< ACCESS URL](../04_routes_and_links/12_access_url.md#trabajar-con-urls) | [HOME](../../../README.md#devcamp) | [RENDER DATA >>](./14_render_data.md#render-data)
+
+
+<br/><hr/>
+<hr/><br/>
+
+
 Hasta ahora, hemos mostrado los datos que hemos *hardcodeado* por pantalla.
 
 Ahora, vamos a trabjar con APIs para obtener datos reales. En este caso, dichos datos serán de un servidor proporcionado por Bottega, llamado [DevCamp Space](https://www.devcamp.space/).
@@ -11,6 +27,11 @@ En este servidor, tras crear una cuenta, podemos introducir diferentes datos, y 
 <hr/><br/>
 
 
+<div align="right">
+    <a href="#index">Volver arriba</a>
+</div>
+
+
 ## Crear infromación en el servidor
 
 Una vez entremos en el servidor, podremos acceder a una sección llamada 'Portfolio', donde podremos crear diferentes entradas de datos.
@@ -20,6 +41,11 @@ Una vez dentro, entraremos en la sección 'Portfolio Items', y crearemos un par 
 
 <br/><hr/>
 <hr/><br/>
+
+
+<div align="right">
+    <a href="#index">Volver arriba</a>
+</div>
 
 
 ## Importar y usar Axios
@@ -190,3 +216,10 @@ export default class PortfolioContainer extends Component {
 Tras hacer esto, comprobaremos que vuelven a mostrarse los datos de la misma manera que antes por consola.
 
 Viendo que así es, podemos volver a confirmar que todo funciona correctamente.
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+[<< ACCESS URL](../04_routes_and_links/12_access_url.md#trabajar-con-urls) | [HOME](../../../README.md#devcamp) | [RENDER DATA >>](./14_render_data.md#render-data)

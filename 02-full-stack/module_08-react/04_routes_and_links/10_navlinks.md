@@ -1,8 +1,14 @@
 # NavLink
 
-En el apartado anterior se ha visto cómo crear rutas de navegación en React. En esta sección se va a hablar de cómo crear enlaces que nos permitan navegar entre las diferentes rutas. O, dicho de otra manera, cómo ligar dichas rutas a elementos de la interfaz de usuario para poder navegar a las *diferentes páginas* de nuestra aplicación.
 
-<br/>
+[<< ROUTE SETUP](./09_route_setUp.md#route-setup) | [HOME](../../../README.md#devcamp) | [LINKS >>](./11_links.md#links)
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+En el apartado anterior se ha visto cómo crear rutas de navegación en React. En esta sección se va a hablar de cómo crear enlaces que nos permitan navegar entre las diferentes rutas. O, dicho de otra manera, cómo ligar dichas rutas a elementos de la interfaz de usuario para poder navegar a las *diferentes páginas* de nuestra aplicación.
 
 Para ello, vamos a acceder a nuestro archivo `navigation-container.js`, donde previamente teníamos los botones indicando las posibles diferentes páginas a visitar.
 
@@ -24,7 +30,7 @@ export default class NavigationComponent extends Component {
             <div>
                 <NavLink exact to='/'>Home</NavLink>
                 <NavLink to='/about-me'>About</NavLink>
-                <!-- ... -->
+                /* ... */
             </div>
         );
     }
@@ -37,6 +43,11 @@ Como se puede observar, se ha utilizado el componente `NavLink` para crear los e
 
 Además de esto, haciendo uso de `NavLink`, se añade de forma automática la clase `active` a aquel link en el que el usuario ha clicado. Con esto, se puede utilizar la propiedad `activeClassName` para reescribir el nombre de la clase `active` por el que se desee, lo cual puede ser útil para aplicar estilos a dicho link.
 
-<br/>
-
 > *Vamos a repetir el proceso mostrado para crear los enlaces de navegación `contact` y `blog`.*
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+[<< ROUTE SETUP](./09_route_setUp.md#route-setup) | [HOME](../../../README.md#devcamp) | [LINKS >>](./11_links.md#links)

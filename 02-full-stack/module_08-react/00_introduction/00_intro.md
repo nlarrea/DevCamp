@@ -1,6 +1,6 @@
 # REACT
 
-<span id="index">Content:</span>
+<div id="index"></div>
 
 * [Arquitectura](#architecture-overview)
 * [Node & NPM](#node-&-npm)
@@ -31,7 +31,7 @@ A modo de resumen, se puede decir que a partir de ahora vamos a centrarnos en cr
 
 
 <div align="right">
-    <a href="#index">Back to Content</a>
+    <a href="#index">Volver arriba</a>
 </div>
 
 
@@ -61,7 +61,7 @@ Si no tenemos instalado Node, podemos descargarlo desde su [página oficial](htt
 
 
 <div align="right">
-    <a href="#index">Back to Content</a>
+    <a href="#index">Volver arriba</a>
 </div>
 
 
@@ -83,7 +83,7 @@ En este curso se va a utilizar ***Visual Studio Code***, sin embargo, tal y como
 
 
 <div align="right">
-    <a href="#index">Back to Content</a>
+    <a href="#index">Volver arriba</a>
 </div>
 
 
