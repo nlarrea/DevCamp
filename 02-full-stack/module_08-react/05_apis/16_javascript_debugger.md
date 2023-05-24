@@ -65,3 +65,76 @@ Para acceder a herramientas propias de React, se puede utilizar la extensión de
 Esta herramienta permite seleccionar y visualizar los componentes de React que se están utilizando en la aplicación. Además, también permite ver el estado de los componentes, así como los props que se están pasando a cada uno de ellos.
 
 
+<br/><hr/>
+<hr/><br/>
+
+
+<div align="right">
+    <a href="#index">Volver arriba</a>
+</div>
+
+
+## Extraer los nombres de los datos del API con el depurador
+
+En este apartado vamos a ver cómo extraer los nombres de los datos recibidos a través del API. Para ello, vamos a utilizar el depurador de JavaScript.
+
+Al igual que en el [primer apartado](#introducción-al-depurador-de-javascript), vamos a utilizar la palabra clave `debugger` para detener la ejecución del código en el momento en el que se genera cada `PortfolioItem`.
+
+```js
+// portfolio-container.js
+
+// ...
+
+export default class PortfolioContainer extends Component {
+    // ...
+
+    portfolioItems() {
+        return this.state.data.map(item => {
+            debugger;
+            return <PortfolioItem key={item.id} title={item.name} url={item.url} slug={item.id} />;
+        });
+    }
+    
+    // ...
+}
+```
+
+<br/>
+
+Ahora, en la consola y tras arrancar la app, escribiremos lo siguiente:
+
+```js
+Object.keys(item)
+```
+
+<br/>
+
+Como ya mencionamos, `item` hace referencia a cada dato obtenido. Por ello, haciendo uso de `Object.keys()` podemos obtener las claves de cada uno de los datos, que en este caso son las mismas para todos:
+
+1. `id`
+2. `name`
+3. `description`
+4. `url`
+5. `category`
+6. `position`
+7. `thumb_image_url`
+8. `banner_image_url`
+9. `logo_url`
+10. `column_names_merged_with_images`
+
+<br/>
+
+Ahora, vamos a hacer una lista de lo que queremos enseñar en cada `PortfolioItem`, y vamos a relacionar cada elemento de la lista con las claves de los datos:
+
+| Elemento a enseñar | Clave del dato |
+| ------------------ | -------------- |
+| Imagen de fondo    | `thumb_image_url` |
+| Logo               | `logo_url` |
+| Descripción        | `description` |
+| ID                 | `id` |
+
+<br/>
+
+Ahora que sabemos cómo se llama cada dato de los elementos que queremos enseñar, vamos a poder mostrar dichos datos en cada `PortfolioItem`.
+
+
