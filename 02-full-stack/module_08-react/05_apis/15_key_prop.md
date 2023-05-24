@@ -1,7 +1,7 @@
 # Key prop
 
 
-[<< RENDER DATA](./14_render_data.md#render-data) | [HOME](../../../README.md#devcamp)
+[<< RENDER DATA](./14_render_data.md#render-data) | [HOME](../../../README.md#devcamp) | [JS DEBUGGER >>](./16_javascript_debugger.md#javascript-debugger)
 
 
 <br/><hr/>
@@ -38,4 +38,4 @@ portfolioItems() {
 <br/><hr/>
 <hr/><br/>
 
-[<< RENDER DATA](./14_render_data.md#render-data) | [HOME](../../../README.md#devcamp)
+[<< RENDER DATA](./14_render_data.md#render-data) | [HOME](../../../README.md#devcamp) | [JS DEBUGGER >>](./16_javascript_debugger.md#javascript-debugger)
