@@ -138,3 +138,70 @@ Ahora, vamos a hacer una lista de lo que queremos enseñar en cada `PortfolioIte
 Ahora que sabemos cómo se llama cada dato de los elementos que queremos enseñar, vamos a poder mostrar dichos datos en cada `PortfolioItem`.
 
 
+<br/><hr/><br/>
+
+
+### Refactorizar el código de PortfolioItem
+
+Ahora que sabemos qué datos queremos mostrar en cada `PortfolioItem`, vamos a refactorizar el código de dicho componente para que muestre dichos datos.
+
+Comenzaremos modificando la forma en la que se envían los props al componente `PortfolioItem`:
+
+```js
+// portfolio-container.js
+
+// ...
+
+export default class PortfolioContainer extends Component {
+    // ...
+
+    portfolioItems() {
+        return this.state.data.map(item => {
+            return <PortfolioItem
+                key={item.id}
+                item={item}
+            />;
+        });
+    }
+    
+    // ...
+}
+```
+
+<br/>
+
+Lo que queremos hacer con esto, es utilizar la opción de JavaScript de desestructurar objetos. De esta forma, mandamos todos los datos de cada ítem al componente `PortfolioItem`, y en dicho componente, tendremos acceso a cada uno de los datos.
+
+Para ello, vamos a descomponer el objeto obteniendo únicamente los datos que queramos:
+
+```js
+// portfolio-item.js
+
+// ...
+
+export default function(props) {
+    /** REMEMBER
+     * Data that we'll need:
+     * - bg image: thumb_image_url
+     * - logo: logo_url
+     * - description: description
+     * - id: id
+     */
+
+    // destructuring the object
+    const { id, description, thumb_image_url, logo } = props.item;
+
+    return (
+        <div>
+            <div>{description}</div>
+            <Link to={`/portfolio/${id}`}>Link</Link>
+        </div>
+    )
+}
+```
+
+<br/>
+
+Como se puede observar, hemos extraído los datos que queremos mostrar en cada `PortfolioItem` y los hemos almacenado en variables para facilitar su acceso.
+
+Además, dado que ahora no obtenemos un prop llamado `slug`, sino que obtenemos directamente el `id`, debemos modificar dicha línea de código para que funcione correctamente.
