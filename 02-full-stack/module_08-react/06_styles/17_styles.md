@@ -1,4 +1,16 @@
-# Crear estilos en React
+# Usar estilos en React
+
+<div id="index"></div>
+
+* [Crear archivos de estilo](#crear-archivos-de-estilo)
+* [Modificar la fuente del texto](#modificar-la-fuente-del-texto)
+
+<br/>
+
+[<< JS DEBUGGER](../05_apis/16_javascript_debugger.md#javascript-debugger) | [HOME](../../../README.md#devcamp)
+
+
+## Crear archivos de estilo
 
 Existen muchas formas diferentes de crear estilos en React. En este módulo se va a seguir una de esas muchas.
 
@@ -32,6 +44,11 @@ Si vemos que el estilo se aplica correctamente, significa que todo funciona bien
 <hr/><br/>
 
 
+<div align="right">
+    <a href="#index">Volver arriba</a>
+</div>
+
+
 ## Modificar la fuente de texto
 
 Para modificar la fuente de texto (`font-family`), vamos a acceder a la página [Google Fonts](https://fonts.google.com/), y vamos a seleccionar la fuente que queramos.
@@ -51,3 +68,10 @@ body {
     font-family: 'Titillium Web', sans-serif;
 }
 ```
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+[<< JS DEBUGGER](../05_apis/16_javascript_debugger.md#javascript-debugger) | [HOME](../../../README.md#devcamp)
