@@ -189,10 +189,12 @@ export default function(props) {
      */
 
     // destructuring the object
-    const { id, description, thumb_image_url, logo } = props.item;
+    const { id, description, thumb_image_url, logo_url } = props.item;
 
     return (
         <div>
+            <img src={thumb_image_url} />
+            <img src={logo_url} />
             <div>{description}</div>
             <Link to={`/portfolio/${id}`}>Link</Link>
         </div>
@@ -204,4 +206,20 @@ export default function(props) {
 
 Como se puede observar, hemos extraído los datos que queremos mostrar en cada `PortfolioItem` y los hemos almacenado en variables para facilitar su acceso.
 
-Además, dado que ahora no obtenemos un prop llamado `slug`, sino que obtenemos directamente el `id`, debemos modificar dicha línea de código para que funcione correctamente.
+Así, ahora modificamos los datos que se muestran en el componente de la siguiente forma:
+
+* Imagen de fondo: `thumb_image_url`
+* Logo: `logo_url`
+* Descripción: `description`
+* Link que nos lleva a otra página de detalles.
+
+<br/>
+
+> Dado que ahora no obtenemos un prop llamado `slug`, sino que obtenemos directamente el `id`, debemos modificar dicha línea de código para que funcione correctamente.
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+[<< KEY PROP](./15_key_prop.md#key-prop) | [HOME](../../../README.md#devcamp)
