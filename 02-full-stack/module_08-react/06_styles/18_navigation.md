@@ -47,3 +47,82 @@ Una vez hecho esto, le añadiremos el estilo deseado:
     padding: 30px;
 }
 ```
+
+
+## Estilos para los links de navegación
+
+Ya tenemos la distribución del panel de navegación, ahora vamos a modificar los estilos de los links de navegación.
+
+En primer lugar, vamos a crear insertar cada link dentro de una etiqueta `div` a la que pondremos la clase `nav-link-wrapper`. Esto nos permitirá modificar los estilos de todos los links de navegación a la vez.
+
+```jsx
+// navigation-container.js
+
+// ...
+
+export default class NavigationComponent extends Component {
+    // ...
+
+    render() {
+        return {
+            <div className="nav-wrapper">
+                <div className="left-side">
+                    <div className="nav-link-wrapper">
+                        <NavLink exact to='/' activeClassName='nav-link-active'>Home</NavLink>
+                    </div>
+
+                    <div className="nav-link-wrapper">
+                        <NavLink to='/about-me' activeClassName='nav-link-active'>About</NavLink>
+                    </div>
+
+                    <div className="nav-link-wrapper">
+                        <NavLink to='/contact' activeClassName='nav-link-active'>Contact</NavLink>
+                    </div>
+
+                    <div className="nav-link-wrapper">
+                        <NavLink to='/blog' activeClassName='nav-link-active'>Blog</NavLink>
+                    </div>
+                </div>
+
+                <div className="right-side">
+                    NAIA LARREA
+                </div>
+            </div>
+        }
+    }
+}
+```
+
+<br/>
+
+Ahora, procedemos a añaadir los estilos:
+
+```scss
+// _navigation.scss
+
+.nav-wrapper {
+    // ...
+
+    .left-side {
+        // para mantener los links en una sola línea
+        display: flex;
+    }
+
+    .nav-link-wrapper {
+        height: 22px;
+        
+        // para la animación al hacer hover
+        border-bottom: 1px solid transparent;
+        transition: 0.5s ease-in-out;
+
+        a {
+            color: black;
+            text-decoration: none;
+        }
+
+        &:hover {
+            border-bottom: 1px solid black;
+        }
+    }
+}
+```
