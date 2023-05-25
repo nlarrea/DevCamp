@@ -6,6 +6,7 @@
     * [Añadir clases](#añadir-clases)
     * [Añadir estilos](#añadir-estilos)
 * [Estilos Inline en React](#estilos-inline-en-react)
+* [Poner elementos sobre las imágenes de fondo](#poner-elementos-sobre-las-imágenes-de-fondo)
 
 <br/>
 
@@ -193,3 +194,93 @@ Finalmente, volveremos al archivo `_portfolio.scss` para añadir los estilos de 
     }
 }
 ```
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+<div align="right">
+    <a href="#index">Volver arriba</a>
+</div>
+
+
+## Poner elementos sobre las imágenes de fondo
+
+Ahora que tenemos las imágenes de fondo, vamos a poner encima de ellas el logo y la descripción.
+
+Como hemos hecho anteriormente, lo primero será modificar el componente para añadir las clases necesarias y situar los elementos como nosotros deseemos:
+
+```jsx
+// portfolio-item.js
+
+// ...
+
+export default function(props) {
+    // ...
+    
+    return (
+        <div className='portfolio-item-wrapper'>
+            <div
+                className='portfolio-img-background'
+                style={{
+                    backgroundImage: `url(${thumb_image_url})`
+                }}
+            />
+
+            <div className="img-text-wrapper">
+                <div className="logo-wrapper">
+                    <img src={logo_url} />
+                </div>
+
+                <div className="subtitle">{description}</div>
+            </div>
+        </div>
+    )
+}
+```
+
+<br/>
+
+Ahora, vamos a modificar los estilos:
+
+```scss
+// _portfolio.scss
+
+@use "./variables";
+
+.portfolio-items-wrapper {
+    // ...
+
+    .portfolio-item-wrapper {
+        // ...
+
+        .img-text-wrapper {
+            position: absolute;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            text-align: center;
+            padding: 0 100px;
+            
+            .subtitle {
+                // que no se vea hasta que se haga hover
+                transition: 1s ease-in-out;
+                color: transparent;
+            }
+        }
+
+        .img-text-wrapper:hover .subtitle {
+            color: variables.$teal;
+            font-weight: 400;
+        }
+
+        .logo-wrapper img {
+            width: 100%;    // ocupar el ancho del padre
+            margin-bottom: 20px;
+        }
+    }
+}
