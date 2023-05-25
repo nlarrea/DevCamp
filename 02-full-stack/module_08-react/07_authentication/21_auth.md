@@ -8,6 +8,7 @@
     * [Disposición de los elementos](#dispocisión-de-los-elementos)
 * [Formulario de inicio de sesión](#formulario-de-inicio-de-sesión)
     * [Cambiar el estado con los datos del formulario](#cambiar-el-estado-con-los-datos-del-formulario)
+    * [Manejo de errores](#manejo-de-errores)
 
 <br/>
 
@@ -435,3 +436,124 @@ Con esto, lo único que hemos hecho es enviar una petición `POST` a la API, con
 Si abrimos una ***ventana de incógnito*** (porque aún no hemos implementado una forma de cerrar sesión), e introducimos los datos de la cuenta que tenemos en [DevCamp Space](https://www.devcamp.space/), veremos que se muestra un objeto en la consola del navegador, con los datos del usuario que se ha logueado.
 
 Esto significa que todo funciona correctamente hasta ahora.
+
+
+<br/><hr/><br/>
+
+
+### Manejo de errores
+
+**¿Qué ocurre si se produce algún error?**
+
+Cuando se produce algún tipo de error, la API devuelve un error, y la petición no se completa.
+
+<br/>
+
+**¿Qué ocurre si se introducen datos incorrectos?**
+
+Cuando se introducen datos correctos, la API devuelve un objeto con los datos del usuario, e información sobre el estado de la petición. Si hacemos el `console.log()` de la respuesta, veremos que tiene una propiedad `data` que contiene un objeto donde pone `status: 'created'`.
+
+Si el usuario introduce datos incorrectos, el objeto de la respuesta tendrá una propiedad `data` que contiene un objeto donde pone `status: 401`, lo que significa que no se tiene acceso a la API.
+
+<br/>
+
+En ambos casos, hay que hacer saber al usuario qué es lo que está ocurriendo. Para ello, vamos a realizar lo siguiente:
+
+* Vamos a añadir una propiedad `errorText` al estado del componente, que contendrá el mensaje de error que se mostrará al usuario.
+* Para poder mostrar este error, vamos a añadir un `<div>` sobre los `input` del formulario, que se mostrará cuando haya un error, y que contendrá el mensaje del mismo.
+* Vamos a modificar el método `handleSubmit`, para que actualice el estado del componente con el mensaje de error, en caso de que se produzca algún error con la API.
+* Vamos a comprobar si el usuario ha introducido datos correctos, si no lo hace, se actualizará el estado del componente con el mensaje de error de inicio de sesión debido a credenciales erróneas.
+
+<br/>
+
+He aquí el código:
+
+```jsx
+// login.js
+
+// ...
+
+export default class Login extends Component {
+    constructor(props) {
+        // ...
+
+        this.state = {
+            email: '',
+            password: '',
+            errorText: ''
+        };
+
+        // ...
+    }
+
+    handleSubmit(event) {
+        axios.post(
+            'https://api.devcamp.space/sessionsasd',
+            {
+                client: {
+                    email: this.state.email,
+                    password: this.state.password
+                }
+            },
+            { withCredentials: true }
+        )
+        .then(response => {
+            // comprobar si el usuario ha introducido datos correctos
+            if (response.data.status === 'created') {
+                console.log('You can come in...');
+            } else {
+                // datos incorrectos -> actualizar mensaje de error
+                this.setState({
+                    errorText: 'Wrong email or password.'
+                })
+            }
+        }).catch(error => {
+            this.setState({
+                // error con la API -> actualizar mensaje de error
+                errorText: 'An error ocurred.'
+            })
+        });
+        event.preventDefault();
+    }
+
+    render() {
+        return (
+            <div>
+                /* ... */
+
+                <div>{this.state.errorText}</div>
+                
+                <form onSubmit={this.handleSubmit}>
+                    /* ... */
+                </form>
+            </div>
+        );
+    }
+}
+```
+
+<br/>
+
+Haciendo esto, veremos que se muestran dos mensajes diferentes:
+
+* Si el usuario introduce datos incorrectos, se mostrará el mensaje `Wrong email or password.`
+* Si se produce algún error con la API, se mostrará el mensaje `An error ocurred.`
+
+<br/>
+
+De esta forma, el usuario puede saber si el problema es que ha introducido datos incorrectos, o si se ha producido algún error con la API.
+
+Sin embargo, al introducir un dato incorrecto y corregirlo, vemos que se sigue mostrando dicho mensaje. Esto se debe a que no hemos modificado su valor para que vuelva al estado inicial (vacío, o sin errores).
+
+Para ello, introduciremos la siguiente línea en el método `handleChange`, para que se elimine el mensaje de error en el momento en el que el usuario comience a reescribir las credenciales:
+
+```jsx
+// login.js
+
+handleChange(event) {
+    this.setState({
+        // ...
+        errorText: ''   // actualizar mensaje de error
+    });
+}
+```
