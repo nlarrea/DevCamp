@@ -397,3 +397,41 @@ export default class Login extends Component {
     }
 }
 ```
+
+<br/>
+
+Hecho esto, debemos conectar con la API para poder *loguearnos* con nuestras credenciales de la misma. Para ello, vamos a importar `axios` en el componente, y vamos a añadir las siguientes líneas al método `handleSubmit`:
+
+```jsx
+// login.js
+
+handleSubmit(event) {
+    axios.post('https://api.devcamp.space/sessions',
+        {
+            client: {
+                email: this.state.email,
+                password: this.state.password
+            }
+        },
+        { withCredentials: true }
+    ).then(response => {
+        console.log('response', response);
+    })
+    
+    event.preventDefault();
+}
+```
+
+<br/>
+
+Con esto, lo único que hemos hecho es enviar una petición `POST` a la API, con los datos del formulario. Se necesitan 3 parámetros:
+
+* La URL a la que se va a enviar la petición.
+* Los datos que se van a enviar. En este caso, un objeto con las credenciales del usuario.
+* Un objeto con la configuración de la petición. Esto es necesario para que la API pueda identificar al usuario que se está logueando.
+
+<br/>
+
+Si abrimos una ***ventana de incógnito*** (porque aún no hemos implementado una forma de cerrar sesión), e introducimos los datos de la cuenta que tenemos en [DevCamp Space](https://www.devcamp.space/), veremos que se muestra un objeto en la consola del navegador, con los datos del usuario que se ha logueado.
+
+Esto significa que todo funciona correctamente hasta ahora.
