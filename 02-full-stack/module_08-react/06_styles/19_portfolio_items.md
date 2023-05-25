@@ -11,7 +11,7 @@
 
 <br/>
 
-[<< NAVBAR](./18_navigation.md#navigation-component) | [HOME](../../../README.md#devcamp)
+[<< NAVBAR](./18_navigation.md#navigation-component) | [HOME](../../../README.md#devcamp) | [MIXINS >>](./20_mixins.md#mixins)
 
 
 <br/><hr/>
@@ -460,3 +460,10 @@ export default class PortfolioItem extends Component {
 Lo que se consigue con ```className={`portfolio-img-background ${this.state.portfolioItemClass}`}``` es añadir las clases `portfolio-img-background` (*que debe estar siempre*) y `img-blur` (*que solo se añade cuando el ratón está dentro del elemento*).
 
 Cuando el ratón sale, se elimina la clase `img-blur` (*queda únicamente un `''`, que es como si no hubiera nada*) y se queda solo con `portfolio-img-background`.
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+[<< NAVBAR](./18_navigation.md#navigation-component) | [HOME](../../../README.md#devcamp) | [MIXINS >>](./20_mixins.md#mixins)
