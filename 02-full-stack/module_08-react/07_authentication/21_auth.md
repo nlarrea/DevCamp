@@ -3,7 +3,9 @@
 <div id="index"></div>
 
 * [Crear la ruta y el componente](#crear-la-ruta-y-el-componente)
-* [Importar una imagen estática](#importar-una-imagen-estática)
+* [Dar estilos al componente](#dar-estilos-al-componente)
+    * [Importar una imagen estática](#importar-una-imagen-estática)
+    * []
 
 <br/>
 
@@ -87,9 +89,11 @@ Escribimos cualquier cosa en él y comprobamos que funciona correctamente.
 </div>
 
 
-## Importar una imagen estática
+## Dar estilos al componente
 
-Aún no vamos a comenzar con la parte de los estilos de este componente, pero sí vamos a importar una imagen que va a ser utilizada posteriormente.
+### Importar una imagen estática
+
+Vamos a comenzar importando una imagen que va a ser utilizada posteriormente.
 
 Para ello, vamos a guardar la imagen `login.jpg` en la carpeta `static/assets/images/auth`.
 
@@ -120,3 +124,45 @@ export default class Auth extends Component {
     }
 }
 ```
+
+
+<br/><hr/><br/>
+
+
+### Dispocisión de los elementos
+
+Vamos a darle estilos a los elementos que hemos creado.
+
+Queremos que la imagen importada ocupe la mitad izquierda de la pantalla, y que la mitad derecha esté formada por el formulario de inicio de sesión.
+
+Vamos a crear el archivo `_auth.scss` y a importarlo en `main.scss`. Después, vamos a darle estilos a los elementos:
+
+```scss
+// _auth.scss
+
+@use "./variables";
+
+.auth-page-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    height: calc(100vh - 84px); // 84px = navbar height
+
+    .left-column {
+        background-size: cover;
+    }
+
+    .right-column {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        background-color: variables.$offwhite;
+    }
+}
+```
+
+
+<br/><hr/>
+<hr/><br/>
+
+
