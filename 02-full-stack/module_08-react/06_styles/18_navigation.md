@@ -3,7 +3,8 @@
 <div id="index"></div>
 
 * [Estilos para los links de navegación](#estilos-para-los-links-de-navegación)
-* [Crear y usar variables para los colores](#crear-y-usar-variables-para-los-colores)
+    * [Crear y usar variables para los colores](#crear-y-usar-variables-para-los-colores)
+    * [Finalizar los estilos de los links de navegación](#finalizar-los-estilos-de-los-links-de-navegación)
 
 <br/>
 
@@ -151,16 +152,10 @@ Ahora, procedemos a añaadir los estilos:
 ```
 
 
-<br/><hr/>
-<hr/><br/>
+<br/><hr/><br/>
 
 
-<div align="right">
-    <a href="index">Volver arriba</a>
-</div>
-
-
-## Crear y usar variables para los colores
+### Crear y usar variables para los colores
 
 Vamos a crear un nuevo archivo dentro del mismo directorio. Este archivo se llamará `_variables.scss`. En él, crearemos las variables que queramos usar en nuestro proyecto.
 
@@ -219,3 +214,47 @@ Ahora, importaremos este archivo tanto en el archivo `main.scss` como en el arch
     }
 }
 ```
+
+
+<br/><hr/><br/>
+
+
+### Finalizar los estilos de los links de navegación
+
+Vamos a añadir un poco más de estilo a los links de navegación. Cuando creamos los componentes, les añadimos la clase `nav-link-active`, esta clase servirá para mantener un estilo en el link que esté activo.
+
+Para ello, añadiremos lo siguiente:
+
+```scss
+// _navigation.scss
+
+@use "./variables";
+
+.nav-wrapper {
+    // ...
+
+    .nav-link-wrapper {
+        // ...
+
+        margin-right: 20px;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+
+        .nav-link-active {
+            color: black;
+            border-bottom: 1px solid black;
+        }
+
+        // ...
+    }
+}
+```
+
+<br/>
+
+Lo que hemos hecho es:
+
+* Añadir un margen en el lado derecho de nuestros links.
+* Hacer que todos estén escritos en mayúsculas.
+* Añadir un tamaño de fuente del 90% del tamaño de `root`.
+* Cambiar el color a negro y añadir el borde inferior al link que esté activo.
