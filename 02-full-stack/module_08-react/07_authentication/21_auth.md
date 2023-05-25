@@ -7,6 +7,7 @@
     * [Importar una imagen estática](#importar-una-imagen-estática)
     * [Disposición de los elementos](#dispocisión-de-los-elementos)
 * [Formulario de inicio de sesión](#formulario-de-inicio-de-sesión)
+    * [Cambiar el estado con los datos del formulario](#cambiar-el-estado-con-los-datos-del-formulario)
 
 <br/>
 
@@ -226,3 +227,119 @@ export default class Auth extends Component {
 <br/>
 
 Si arrancamos la aplicación, veremos que se muestra todo correctamente, aunque aún no tiene los estilos que queremos.
+
+
+<br/><hr/><br/>
+
+
+### Cambiar el estado con los datos del formulario
+
+En primer lugar, vamos a crear un constructor para el componente y vamos a definir el estado inicial del mismo:
+
+```jsx
+// login.js
+
+// ...
+
+export default class Login extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            email: '',
+            password: ''
+        };
+    }
+
+    // ...
+}
+```
+
+<br/>
+
+Vamos a añadir un botón de tipo `submit` al formulario, y vamos a actualizar los `input` para que tengan lo siguiente:
+
+* `type`: necesario para definir el elemento. En este caso, `email` y `password`.
+* `name`: le daremos el mismo nombre que la propiedad del estado que queremos actualizar (`email` y `password`).
+* `value`: tendrán el valor de la propiedad del estado (`this.state.email` y `this.state.password`).
+* `onChange`: le pasaremos una función que se ejecutará cada vez que el usuario escriba algo en el `input`. Esta función actualizará el estado del componente.
+
+<br/>
+
+```jsx
+// login.js
+
+// ...
+
+export default class Login extends Component {
+    // ...
+
+    render() {
+        return (
+            <div>
+                /* ... */
+                
+                <form onSubmit={this.handleSubmit}>
+                    <input type="email"
+                        name='email'
+                        placeholder='Your email'
+                        value={this.state.email}
+                        onChange={this.handleChange}
+                    />
+
+                    <input type="password"
+                        name='password'
+                        placeholder='Your password'
+                        value={this.state.password}
+                        onChange={this.handleChange}
+                    />
+
+                    <div>
+                        <button type='submit'>Login</button>
+                    </div>
+                </form>
+            </div>
+        );
+    }
+}
+```
+
+<br/>
+
+Ahora, vamos a comenzar por crear la clase `handleChange`, que se encargará de actualizar el estado del componente cada vez que el usuario escriba algo en los `input`:
+
+```jsx
+// login.js
+
+import React, { Component } from 'react';
+
+export default class Login extends Component {
+    constructor(props) {
+        // ...
+    }
+
+    handleChange(event) {
+        this.setState({
+            [event.target.name]: event.target.value
+        });
+    }
+
+    render() {
+        // ...
+    }
+}
+```
+
+<br/>
+
+Este método será accedido cada vez que se actualice el valor tanto del `input` de tipo `email` como del de tipo `password`. Necesitamos una forma de comprobar cuál de los dos `input` se está actualizando, para poder actualizar el estado correctamente.
+
+Para eso, se realiza la comprobación de forma dinámica mediante el nombre del `input` (`event.target.name`), que es el mismo que el nombre de la propiedad del estado que queremos actualizar.
+
+Lo metemos entre `[]` para que se evalúe como una expresión, y no como una cadena de texto.
+
+> Es decir, si el usuario está escribiendo en el `input` de tipo `email`, `event.target.name` será igual a `email`, y actualizará el estado de la siguiente forma:
+>
+> ```jsx
+> this.setState({ email: event.target.value })
+> ```
