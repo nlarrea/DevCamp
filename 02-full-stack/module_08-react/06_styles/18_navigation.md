@@ -9,7 +9,7 @@
 
 <br/>
 
-[<< USAR ESTILOS](./17_styles.md#usar-estilos-en-react) | [HOME](../../../README.md#devcamp)
+[<< USAR ESTILOS](./17_styles.md#usar-estilos-en-react) | [HOME](../../../README.md#devcamp) | [PORTFOLIO ITEMS >>](./19_portfolio_items.md#homepage-portfolio-items)
 
 
 <br/><hr/>
@@ -70,7 +70,7 @@ Una vez hecho esto, le añadiremos el estilo deseado:
 
 
 <div align="right">
-    <a href="index">Volver arriba</a>
+    <a href="#index">Volver arriba</a>
 </div>
 
 
@@ -266,7 +266,7 @@ Lo que hemos hecho es:
 
 
 <div align="right">
-    <a href="index">Volver arriba</a>
+    <a href="#index">Volver arriba</a>
 </div>
 
 
@@ -321,4 +321,4 @@ export default class App extends Component {
 <hr/><br/>
 
 
-[<< USAR ESTILOS](./17_styles.md#usar-estilos-en-react) | [HOME](../../../README.md#devcamp)
+[<< USAR ESTILOS](./17_styles.md#usar-estilos-en-react) | [HOME](../../../README.md#devcamp) | [PORTFOLIO ITEMS >>](./19_portfolio_items.md#homepage-portfolio-items)
