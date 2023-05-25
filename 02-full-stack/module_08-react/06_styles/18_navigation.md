@@ -5,6 +5,7 @@
 * [Estilos para los links de navegación](#estilos-para-los-links-de-navegación)
     * [Crear y usar variables para los colores](#crear-y-usar-variables-para-los-colores)
     * [Finalizar los estilos de los links de navegación](#finalizar-los-estilos-de-los-links-de-navegación)
+* [Terminar la barra de navegación](#terminar-la-barra-de-navegación)
 
 <br/>
 
@@ -258,3 +259,66 @@ Lo que hemos hecho es:
 * Hacer que todos estén escritos en mayúsculas.
 * Añadir un tamaño de fuente del 90% del tamaño de `root`.
 * Cambiar el color a negro y añadir el borde inferior al link que esté activo.
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+<div align="right">
+    <a href="index">Volver arriba</a>
+</div>
+
+
+## Terminar la barra de navegación
+
+Para terminar este apartado, vamos a eliminar el contenido que no deseamos del archivo `app.js`. El código debe quedar de la siguiente manera:
+
+```js
+import React, { Component } from 'react';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route
+} from 'react-router-dom';
+
+import NavigationContainer from './navigation/navigation-container';
+import Home from './pages/home';
+import About from './pages/about';
+import Contact from './pages/contact';
+import Blog from './pages/blog';
+import PortfolioDetail from './portfolio/portfolio-detail';
+import NoMatch from './pages/no-match';
+
+export default class App extends Component {
+    render() {
+        return (
+            <div className='app'>
+                <Router>
+                    <div>
+                        <NavigationContainer />
+                        
+                        <Switch>
+                            <Route exact path="/" component={Home}/>
+                            <Route path="/about-me" component={About}/>
+                            <Route path="/contact" component={Contact}/>
+                            <Route path="/blog" component={Blog}/>
+
+                            <Route exact path='/portfolio/:slug' component={PortfolioDetail} />
+                            
+                            <Route component={NoMatch} />
+                        </Switch>
+                    </div>
+                </Router>
+            </div>
+        );
+    }
+}
+```
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+[<< USAR ESTILOS](./17_styles.md#usar-estilos-en-react) | [HOME](../../../README.md#devcamp)
