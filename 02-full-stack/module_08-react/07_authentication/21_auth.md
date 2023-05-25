@@ -5,7 +5,8 @@
 * [Crear la ruta y el componente](#crear-la-ruta-y-el-componente)
 * [Dar estilos al componente](#dar-estilos-al-componente)
     * [Importar una imagen estática](#importar-una-imagen-estática)
-    * []
+    * [Disposición de los elementos](#dispocisión-de-los-elementos)
+* [Formulario de inicio de sesión](#formulario-de-inicio-de-sesión)
 
 <br/>
 
@@ -166,3 +167,62 @@ Vamos a crear el archivo `_auth.scss` y a importarlo en `main.scss`. Después, v
 <hr/><br/>
 
 
+<div align="right">
+    <a href="#index">Volver arriba</a>
+</div>
+
+
+## Formulario de inicio de sesión
+
+Por ahora, vamos a crear la estructura necesaria para el inicio de sesión, posteriormente, veremos cómo hacer que funcione.
+
+Vamos a crear un nuevo archivo, dentro del directorio `src/components/auth`, llamado `login.js`. Dentro de este archivo, vamos a crear un componente de tipo clase, que va a tener un título y un formulario:
+
+```jsx
+// login.js
+
+import React, { Component } from 'react';
+
+export default class Login extends Component {
+    render() {
+        return (
+            <div>
+                <h1>LOGIN TO ACCESS YOUR DASHBOARD</h1>
+                <form>
+                    <input type="text" />
+                    <input type="password" />
+                </form>
+            </div>
+        );
+    }
+}
+```
+
+<br/>
+
+Una vez creado el componente, vamos a importarlo en `auth.js` y a renderizarlo:
+
+```jsx
+// auth.js
+
+// ...
+import Login from '../auth/login';
+
+export default class Auth extends Component {
+    render() {
+        return (
+            <div className='auth-page-wrapper'>
+                /* ... */
+
+                <div className="right-column">
+                    <Login />
+                </div>
+            </div>
+        );
+    }
+}
+```
+
+<br/>
+
+Si arrancamos la aplicación, veremos que se muestra todo correctamente, aunque aún no tiene los estilos que queremos.
