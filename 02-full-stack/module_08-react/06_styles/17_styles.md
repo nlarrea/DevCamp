@@ -7,7 +7,7 @@
 
 <br/>
 
-[<< JS DEBUGGER](../05_apis/16_javascript_debugger.md#javascript-debugger) | [HOME](../../../README.md#devcamp)
+[<< JS DEBUGGER](../05_apis/16_javascript_debugger.md#javascript-debugger) | [HOME](../../../README.md#devcamp) | [NAVIGATION >>](./18_navigation.md#navigation-component)
 
 
 ## Crear archivos de estilo
@@ -74,4 +74,4 @@ body {
 <hr/><br/>
 
 
-[<< JS DEBUGGER](../05_apis/16_javascript_debugger.md#javascript-debugger) | [HOME](../../../README.md#devcamp)
+[<< JS DEBUGGER](../05_apis/16_javascript_debugger.md#javascript-debugger) | [HOME](../../../README.md#devcamp) | [NAVIGATION >>](./18_navigation.md#navigation-component)

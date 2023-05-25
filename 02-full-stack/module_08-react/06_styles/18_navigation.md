@@ -1,5 +1,19 @@
 # Navigation component
 
+<div id="index"></div>
+
+* [Estilos para los links de navegación](#estilos-para-los-links-de-navegación)
+* [Crear y usar variables para los colores](#crear-y-usar-variables-para-los-colores)
+
+<br/>
+
+[<< USAR ESTILOS](./17_styles.md#usar-estilos-en-react) | [HOME](../../../README.md#devcamp)
+
+
+<br/><hr/>
+<hr/><br/>
+
+
 Tenemos un componente encargado de la navegación. Este va a ser el primer componente que vamos a estilar dentro de nuestra aplicación (portfolio).
 
 En primer lugar, queremos que aparezcan los links en la parte superior izquierda de la pantalla, y nuestro nombre en la parte superior derecha.
@@ -47,6 +61,15 @@ Una vez hecho esto, le añadiremos el estilo deseado:
     padding: 30px;
 }
 ```
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+<div align="right">
+    <a href="index">Volver arriba</a>
+</div>
 
 
 ## Estilos para los links de navegación
@@ -118,6 +141,76 @@ Ahora, procedemos a añaadir los estilos:
         a {
             color: black;
             text-decoration: none;
+        }
+
+        &:hover {
+            border-bottom: 1px solid black;
+        }
+    }
+}
+```
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+<div align="right">
+    <a href="index">Volver arriba</a>
+</div>
+
+
+## Crear y usar variables para los colores
+
+Vamos a crear un nuevo archivo dentro del mismo directorio. Este archivo se llamará `_variables.scss`. En él, crearemos las variables que queramos usar en nuestro proyecto.
+
+Por ahora, crearemos una serie de colores:
+
+```scss
+$teal: #26bfd4;
+$dark-teal: #207b88;
+$charcoal: #42454a;
+$offwhite: #f6f6f6;
+$blue: #008dff;
+$warning: #922a2a;
+$grey: #8a8a8a;
+```
+
+<br/>
+
+Ahora, importaremos este archivo tanto en el archivo `main.scss` como en el archivo `_navigation.scss`, archivo en el que además usaremos una de estas variables ya:
+
+```scss
+// main.scss
+
+@use "./variables";
+@use "./base";
+@use "./navigation";
+```
+
+```scss
+// _navigation.scss
+
+@use "./variables";
+
+.nav-wrapper {
+    // ...
+
+    .left-side {
+        // ...
+    }
+
+    .nav-link-wrapper {
+        // ...
+
+        a {
+            color: variables.$grey; // cambio de color
+            text-decoration: none;
+
+            // añadimos el cambio de color al hacer hover
+            &:hover {
+                color: black;
+            }
         }
 
         &:hover {
