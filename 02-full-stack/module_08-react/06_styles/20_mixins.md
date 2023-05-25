@@ -1,6 +1,6 @@
 # Mixins
 
-[<< PORTFOLIO ITEMS](./19_portfolio_items.md#homepage-portfolio-items) | [HOME](../../../README.md#devcamp)
+[<< PORTFOLIO ITEMS](./19_portfolio_items.md#homepage-portfolio-items) | [HOME](../../../README.md#devcamp) | [AUTENTICACIÓN >>](../07_authentication/21_auth.md#auth-component)
 
 
 <br/><hr/>
@@ -107,4 +107,4 @@ Finalmente, vamos a aplicar dicho estilo a los botones:
 <hr/><br/>
 
 
-[<< PORTFOLIO ITEMS](./19_portfolio_items.md#homepage-portfolio-items) | [HOME](../../../README.md#devcamp)
+[<< PORTFOLIO ITEMS](./19_portfolio_items.md#homepage-portfolio-items) | [HOME](../../../README.md#devcamp) | [AUTENTICACIÓN >>](../07_authentication/21_auth.md#auth-component)
