@@ -315,7 +315,14 @@ import React, { Component } from 'react';
 
 export default class Login extends Component {
     constructor(props) {
-        // ...
+        super(props);
+
+        this.state = {
+            email: '',
+            password: ''
+        };
+
+        this.handleChange = this.handleChange.bind(this);
     }
 
     handleChange(event) {
@@ -343,3 +350,50 @@ Lo metemos entre `[]` para que se evalúe como una expresión, y no como una cad
 > ```jsx
 > this.setState({ email: event.target.value })
 > ```
+
+
+<br/><hr/><br/>
+
+
+### Enviar los datos del formulario
+
+Ahora, vamos a crear el método `handleSubmit`, que será accedido cada vez que el usuario pulse el botón de tipo `submit` del formulario.
+
+En primer lugar, si el usuario pulsa el botón, por defecto la página se va a actualizar, y va a mostrar los datos del formulario en la URL.
+
+Desde luego, esto no es lo que queremos que ocurra, así que lo primero que vamos a hacer dentro de esta nueva función, es prevenir el comportamiento por defecto del botón:
+
+```jsx
+// login.js
+
+import React, { Component } from 'react';
+
+export default class Login extends Component {
+    constructor(props) {
+        // ...
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    // ...
+
+    handleSubmit(event) {
+        event.preventDefault();
+    }
+
+    render() {
+        return (
+            <div>
+                /* ... */
+                
+                <form onSubmit={this.handleSubmit}>
+                    /* ... */
+
+                    <div>
+                        <button type='submit'>Login</button>
+                    </div>
+                </form>
+            </div>
+        );
+    }
+}
+```
