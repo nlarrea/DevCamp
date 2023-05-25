@@ -7,6 +7,7 @@
     * [Añadir estilos](#añadir-estilos)
 * [Estilos Inline en React](#estilos-inline-en-react)
 * [Poner elementos sobre las imágenes de fondo](#poner-elementos-sobre-las-imágenes-de-fondo)
+* [EventListener en React](#eventlistener-en-react)
 
 <br/>
 
@@ -284,3 +285,178 @@ Ahora, vamos a modificar los estilos:
         }
     }
 }
+```
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+<div align="right">
+    <a href="#index">Volver arriba</a>
+</div>
+
+
+## EventListener en React
+
+Vamos a crear un efecto sobre las imágenes de fondo, para que cuando se haga hover sobre ellas, la imagen se oscurezca. Para hacer esto, vamos a usar **eventos** desde React.
+
+En primer lugar, al querer usar eventos, deberemos hacer uso de los estados, sin embargo, nuestro `PortfolioItem` es un componente funcional. Para poder usar estados, deberemos convertirlo en un componente de clase:
+
+```jsx
+// portfolio-item.js
+
+import React, { Component } from 'react';
+// ...
+
+export default class PortfolioItem extends Component {
+    constructor(props) {
+        super();
+    }
+    
+    render() {
+        /** Data that we'll need:
+         * - bg image: thumb_image_url
+         * - logo: logo_url
+         * - description: description
+         * - id: id
+         */
+
+        const { id, description, thumb_image_url, logo_url } = this.props.item;
+        
+        return (
+            /* ... */
+        )
+    }
+}
+```
+
+<br/>
+
+Ahora que ya tenemos un componente de clase, añadiremos el estado dentro del constructor, dándole un valor inicial de un string vacío:
+
+```jsx
+// portfolio-item.js
+
+// ...
+
+export default class PortfolioItem extends Component {
+    constructor(props) {
+        super();
+
+        this.state = {
+            portfolioItemClass: ''
+        };
+    }
+
+    // ...
+}
+```
+
+<br/>
+
+Vamos a añadir al estado una clase cuando el ratón se encuentre dentro del `<div>`, y vamos a eliminar dicha clase cuando el ratón salga. Para conseguirlo, vamos a añadir dos métodos:
+
+```jsx
+// portfolio-item.js
+
+// ...
+
+export default class PortfolioItem extends Component {
+    constructor(props) {
+        super();
+
+        this.state = {
+            portfolioItemClass: ''
+        };
+    }
+
+    handleMouseEnter() {
+        this.setState({portfolioItemClass: 'img-blur'});
+    }
+
+    handleMouseLeave() {
+        this.setState({portfolioItemClass: ''});
+    }
+    
+    // ...
+}
+```
+
+<br/>
+
+Esos métodos son los encargados de actualizar el valor de `portfolioItemClass` en el estado. Ahora, vamos a añadir los eventos para que esas funciones sean llamadas cuando ocurran dichos eventos:
+
+```jsx
+// portfolio-item.js
+
+// ...
+
+export default class PortfolioItem extends Component {
+    constructor(props) {
+        // ...
+    }
+
+    // ...
+    
+    render() {
+        // ...
+        
+        return (
+            <div className='portfolio-item-wrapper'
+                onMouseEnter={() => this.handleMouseEnter()}
+                onMouseLeave={() => this.handleMouseLeave()}
+            >
+                /* ... */
+            </div>
+        )
+    }
+}
+```
+
+<br/>
+
+La sintaxis es la siguiente:
+
+* `onMouseEnter` es el evento, que se activa cuando el ratón entra en el elemento.
+* Después indicamos que se ejecute una función, que en este caso es una función anónima, que llama a la función que hemos creado en el componente.
+
+<br/>
+
+Si no se añadiera la función anónima, el evento se ejecutaría automáticamente en cuanto se renderizara el componente, y no queremos eso. Queremos que espere a que ocurra el evento y después se ejecute la función. Por eso, se añaden `() =>`, y después se llama a nuestro método.
+
+Finalmente, solo queda añadir la clase al elemento:
+
+```jsx
+// portfolio-item.js
+
+// ...
+
+export default class PortfolioItem extends Component {
+    // ...
+    
+    render() {
+        // ...
+        
+        return (
+            <div className='portfolio-item-wrapper'
+                onMouseEnter={() => this.handleMouseEnter()}
+                onMouseLeave={() => this.handleMouseLeave()}
+            >
+                <div
+                    className={`portfolio-img-background ${this.state.portfolioItemClass}`}
+                    /* ... */
+                />
+    
+                /* ... */
+            </div>
+        )
+    }
+}
+```
+
+<br/>
+
+Lo que se consigue con ```className={`portfolio-img-background ${this.state.portfolioItemClass}`}``` es añadir las clases `portfolio-img-background` (*que debe estar siempre*) y `img-blur` (*que solo se añade cuando el ratón está dentro del elemento*).
+
+Cuando el ratón sale, se elimina la clase `img-blur` (*queda únicamente un `''`, que es como si no hubiera nada*) y se queda solo con `portfolio-img-background`.
