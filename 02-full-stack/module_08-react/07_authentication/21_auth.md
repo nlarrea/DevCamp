@@ -488,7 +488,7 @@ export default class Login extends Component {
 
     handleSubmit(event) {
         axios.post(
-            'https://api.devcamp.space/sessionsasd',
+            'https://api.devcamp.space/sessions',
             {
                 client: {
                     email: this.state.email,
@@ -557,3 +557,10 @@ handleChange(event) {
     });
 }
 ```
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+[<< MIXINS](../06_styles/20_mixins.md#mixins) | [HOME](../../../README.md#devcamp) | [DEEP DIVE: AUTHENTICATION >>](./22_deepDive_authentication.md#deep-dive-authentication)

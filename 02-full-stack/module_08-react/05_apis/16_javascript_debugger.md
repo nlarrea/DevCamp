@@ -8,7 +8,7 @@
 
 <br/>
 
-[<< KEY PROP](./15_key_prop.md#key-prop) | [HOME](../../../README.md#devcamp) | [AÑADIR ESTILOS >>](../06_styles/17_styles.md#usar-estilos-en-react)
+[<< KEY PROP](./15_key_prop.md#key-prop) | [HOME](../../../README.md#devcamp) | [AÑADIR ESTILOS >>](../06_main_styles/17_styles.md#usar-estilos-en-react)
 
 
 ## Introducción al depurador de JavaScript
@@ -222,4 +222,4 @@ Así, ahora modificamos los datos que se muestran en el componente de la siguien
 <hr/><br/>
 
 
-[<< KEY PROP](./15_key_prop.md#key-prop) | [HOME](../../../README.md#devcamp) | [AÑADIR ESTILOS >>](../06_styles/17_styles.md#usar-estilos-en-react)
+[<< KEY PROP](./15_key_prop.md#key-prop) | [HOME](../../../README.md#devcamp) | [AÑADIR ESTILOS >>](../06_main_styles/17_styles.md#usar-estilos-en-react)
