@@ -12,7 +12,7 @@
 
 <br/>
 
-[<< MIXINS](../06_styles/20_mixins.md#mixins) | [HOME](../../../README.md#devcamp)
+[<< MIXINS](../06_styles/20_mixins.md#mixins) | [HOME](../../../README.md#devcamp) | [DEEP DIVE: AUTHENTICATION >>](./22_deepDive_authentication.md#deep-dive-authentication)
 
 
 <br/><hr/>
