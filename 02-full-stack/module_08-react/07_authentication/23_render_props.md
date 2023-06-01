@@ -13,6 +13,7 @@
 * [Convertir un componente de clase en uno de función](#convertir-un-componente-de-clase-en-uno-de-función)
 * [Ocultar enlaces de navegación](#ocultar-enlaces-de-navegación)
     * [Parte visual](#parte-visual)
+    * [Rutas](#rutas)
 
 <br/>
 
@@ -514,6 +515,56 @@ const NavigationComponent = (props) => {
 <br/>
 
 Lo que hemos hecho, ha sido crear una nueva función que se encargue de generar de forma dinámica los enlaces de navegación, y que recibe como parámetros la ruta y el texto del enlace. Después, haciendo uso de ***operadores ternarios***, comprobamos si el usuario está autenticado o no, y en función de ello, mostramos el enlace o devolvemos un `null`.
+
+
+<br/><hr/><br/>
+
+
+### Rutas
+
+Hemos conseguido que los usuarios no *loggeados* no puedan ver los links de navegación que no deben ver, pero si el usuario intenta acceder a dichas rutas escribiéndolas en la barra de navegación, podrá acceder a ellas.
+
+Para evitar esto, vamos a crear un nuevo método en el componente `App` que devuelva una lista de rutas que deseemos proteger. A continuación, haciendo uso de ***operadores ternarios***, para permitir el acceso a dichas rutas en función del estado de autenticación:
+
+```js
+// app.js
+
+// ...
+
+export default class App extends Component {
+    // ...
+
+    authorizedPages() {
+        return [
+            <Route path='/blog' component={BlogManager} />
+        ];
+    }
+
+    render() {
+        return (
+            <div className="container">
+                <Router>
+                    <div>
+                        /* ... */
+                        
+                        <Switch>
+                            /* ... */
+
+                            {this.state.loggedInStatus === 'LOGGED_IN' ? this.authorizedPages() : null}
+
+                            /* ... */
+                        </Switch>
+                    </div>
+                </Router>
+            </div>
+        );
+    }
+}
+```
+
+<br/>
+
+Haciendo esto, el usuario que no esté autenticado, no podrá acceder a la ruta `/blog`, y será redirigido a la página `no-match`.
 
 
 <br/><hr/>
