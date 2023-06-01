@@ -6,6 +6,9 @@
 * [Modificar el componente padre](#modificar-el-componente-padre)
     * [Crear un estado](#crear-un-estado)
     * [Manejar el login](#manejar-el-login)
+* [Modificar los componentes hijos](#modificar-los-componentes-hijos)
+    * [Modificar Auth](#modificar-auth)
+    * [Modificar Login](#modificar-login)
 
 <br/>
 
@@ -174,6 +177,140 @@ export default class App extends Component {
 En la ruta que lleva al componente `Auth`, hemos añadido un `render prop` que recibe unos `props` y que devuelve el componente `Auth` con los `props` que recibe, además de los métodos `handleSuccessfulLogin` y `handleUnsuccessfulLogin`.
 
 Esto lo hacemos para permitir al componente `Auth` tener acceso a estos métodos, y así poder llamarlos cuando sea necesario.
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+<div align="right">
+    <a href="#index">Volver arriba</a>
+</div>
+
+
+## Modificar los componentes hijos
+
+### Modificar Auth
+
+Ya hemos pasado los métodos `handleSuccessfulLogin` y `handleUnsuccessfulLogin` al componente `Auth`, por lo que ahora vamos a modificar el código de este componente para que haga uso de ellos.
+
+En primer lugar, deberemos crear el constructor de este componente y pasarle los `props` que recibe:
+
+```js
+// auth.js
+
+// ...
+
+export default class Auth extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {/* ... */}
+}
+```
+
+<br/>
+
+Si recordamos del [apartado anterior](#modificar-el-componente-padre), el componente `Auth` recibe los métodos `handleSuccessfulLogin` y `handleUnsuccessfulLogin` como `props`, por lo que ahora podremos usarlos en este componente.
+
+Vamos a comenzar creando dos nuevos métodos que hagan uso de estos `props`:
+
+```js
+// auth.js
+
+// ...
+
+export default class Auth extends Component {
+    constructor(props) {
+        super(props);
+
+        this.handleSuccessfulAuth = this.handleSuccessfulAuth.bind(this);
+        this.handleUnsuccessfulAuth = this.handleUnsuccessfulAuth.bind(this);
+    }
+
+    handleSuccessfulAuth() {
+        this.props.handleSuccessfulLogin();
+
+        // redirect user to home page
+        this.props.history.push('/');
+    }
+
+    handleUnsuccessfulAuth() {
+        this.props.handleUnsuccessfulLogin();
+    }
+
+    render() {/* ... */}
+}
+```
+
+<br/>
+
+En el método `handleSuccessfulAuth` llamamos al método `handleSuccessfulLogin` que hemos pasado como `prop` y que se encarga de actualizar el estado de la aplicación, y después redirigimos al usuario a la página de inicio.
+
+En el método `handleUnsuccessfulAuth` llamamos al método `handleUnsuccessfulLogin` que hemos pasado como `prop` y que se encarga de actualizar el estado de la aplicación.
+
+Finalmente, solo nos queda modificar los `props` que recibe el componente `Login`:
+
+```js
+// auth.js
+
+export default class Auth extends Component {
+    // ...
+
+    render() {
+        return (
+            <div className='auth-page-wrapper'>
+                /* ... */
+
+                <div className='right-column'>
+                    <Login
+                        handleSuccessfulAuth={this.handleSuccessfulAuth}
+                        handleUnsuccessfulAuth={this.handleUnsuccessfulAuth}
+                    />
+                </div>
+            </div>
+        );
+    }
+}
+```
+
+
+<br/><hr/><br/>
+
+
+### Modificar Login
+
+Habiendo modificado los datos enviados al componente `Login`, ahora debemos modificar el código de este componente para que haga uso de ellos.
+
+Todo el código a modificar se encuentra en el método `handleSubmit`:
+
+```js
+// login.js
+
+// ...
+
+export default class Login extends Component {
+    // ...
+    
+    handleSuibmit(event) {
+        axios.post(/* ... */)
+        .then(response => {
+            if (response.data.status === 'created') {
+                this.props.handleSuccessfulAuth();
+            } else {
+                // ...
+                this.props.handleUnsuccessfulAuth();
+            }
+        }).catch(error => {
+            // ...
+            this.props.handleUnsuccessfulAuth();
+        });
+
+        // ...
+    }
+}
+```
 
 
 <br/><hr/>
