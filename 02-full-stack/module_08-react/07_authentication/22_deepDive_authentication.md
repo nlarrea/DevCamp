@@ -1,7 +1,7 @@
 # Deep Dive: Authentication
 
 
-[<< AUTH](./21_auth.md#auth-component) | [HOME](../../../README.md#devcamp)
+[<< AUTH](./21_auth.md#auth-component) | [HOME](../../../README.md#devcamp) | [RENDER PROPS >>](./23_render_props.md#render-props)
 
 
 <br/><hr/>
@@ -93,4 +93,4 @@ Cuando indicamos en el código `withCredentials: true`, lo que estamos haciendo 
 <hr/><br/>
 
 
-[<< AUTH](./21_auth.md#auth-component) | [HOME](../../../README.md#devcamp)
+[<< AUTH](./21_auth.md#auth-component) | [HOME](../../../README.md#devcamp) | [RENDER PROPS >>](./23_render_props.md#render-props)
