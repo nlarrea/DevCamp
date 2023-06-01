@@ -317,4 +317,70 @@ export default class Login extends Component {
 <hr/><br/>
 
 
+<div align="right">
+    <a href="#index">Volver arriba</a>
+</div>
+
+
+## Comprobar el estado de autenticación
+
+Con lo que hemos hecho hasta ahora, el hecho de recargar la página, hace que el estado de autenticación se pierda, y se muestre que el usuario no está autenticado.
+
+Queremos conseguir que se mantenga el último estado, por lo que vamos a modificar el código de tal forma que compruebe si el usuario está autenticado o no llamando a la API.
+
+Para ello, vamos a crear un nuevo método llamado `checkLoginStatus()` que se encargará de hacer la llamada a la API:
+
+```js
+// app.js
+
+// ...
+
+export default class App extends Component {
+    // ...
+
+    checkLoginStatus() {
+        axios.get('https://api.devcamp.space/logged_in', { withCredentials: true })
+        .then(response => {
+            const loggedIn = response.data.logged_in;
+            const loggedInStatus = this.state.loggedInStatus;
+
+            // if loggedIn and status LOGGED_IN => return data
+            // if loggedIn status NOT_LOGGED_IN => update state
+            // if not loggedIn and status LOGGED_IN => update state
+            
+            if (loggedIn && loggedInStatus === 'LOGGED_IN') {
+                return loggedIn;
+            } else if (loggedIn && loggedInStatus === 'NOT_LOGGED_IN') {
+                this.setState({
+                    loggedInStatus: 'LOGGED_IN'
+                });
+            } else if (!loggedIn && loggedInStatus === 'LOGGED_IN') {
+                this.setState({
+                    loggedInStatus: 'NOT_LOGGED_IN'
+                });
+            }
+        }).catch(error => {
+            console.log('Error: ', error);
+        });
+    }
+
+    componentDidMount() {
+        this.checkLoginStatus();
+    }
+
+    render() {/* ... */}
+}
+```
+
+<br/>
+
+En este método, hacemos una llamada a la API, y en función de la respuesta, actualizamos el estado de la aplicación.
+
+Se comprueba el estado en el método `componentDidMount()` para que se ejecute cada vez que se recargue la página.
+
+
+<br/><hr/>
+<hr/><br/>
+
+
 [<< DEEP DIVE: AUTHENTICATION](./22_deepDive_authentication.md#deep-dive-authentication) | [HOME](../../../README.md#devcamp)
