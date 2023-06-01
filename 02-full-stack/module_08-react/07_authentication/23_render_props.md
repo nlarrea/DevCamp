@@ -9,6 +9,8 @@
 * [Modificar los componentes hijos](#modificar-los-componentes-hijos)
     * [Modificar Auth](#modificar-auth)
     * [Modificar Login](#modificar-login)
+* [Comprobar el estado de autenticación](#comprobar-el-estado-de-autenticación)
+* [Convertir un componente de clase en uno de función](#convertir-un-componente-de-clase-en-uno-de-función)
 
 <br/>
 
@@ -377,6 +379,57 @@ export default class App extends Component {
 En este método, hacemos una llamada a la API, y en función de la respuesta, actualizamos el estado de la aplicación.
 
 Se comprueba el estado en el método `componentDidMount()` para que se ejecute cada vez que se recargue la página.
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+<div align="right">
+    <a href="#index">Volver arriba</a>
+</div>
+
+
+## Convertir un componente de clase en uno de función
+
+En el componente `NavigationComponent` no vamos a necesitar hacer uso del estado ni de métodos de ciclo de vida, por lo que vamos a convertirlo en un componente de función:
+
+```js
+// navigation-container.js
+
+import React from "react";
+import { NavLink } from "react-router-dom";
+
+const NavigationComponent = (props) => {
+    return (
+        <div className="nav-wrapper">
+            <div className="left-side">
+                <div className="nav-link-wrapper">
+                    <NavLink exact to='/' activeClassName='nav-link-active'>Home</NavLink>
+                </div>
+
+                <div className="nav-link-wrapper">
+                    <NavLink to='/about-me' activeClassName='nav-link-active'>About</NavLink>
+                </div>
+
+                <div className="nav-link-wrapper">
+                    <NavLink to='/contact' activeClassName='nav-link-active'>Contact</NavLink>
+                </div>
+
+                <div className="nav-link-wrapper">
+                    <NavLink to='/blog' activeClassName='nav-link-active'>Blog</NavLink>
+                </div>
+            </div>
+
+            <div className="right-side">
+                NAIA LARREA
+            </div>
+        </div>
+    );
+}
+
+export default NavigationComponent;
+```
 
 
 <br/><hr/>
