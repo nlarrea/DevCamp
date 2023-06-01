@@ -11,6 +11,8 @@
     * [Modificar Login](#modificar-login)
 * [Comprobar el estado de autenticación](#comprobar-el-estado-de-autenticación)
 * [Convertir un componente de clase en uno de función](#convertir-un-componente-de-clase-en-uno-de-función)
+* [Ocultar enlaces de navegación](#ocultar-enlaces-de-navegación)
+    * [Parte visual](#parte-visual)
 
 <br/>
 
@@ -430,6 +432,88 @@ const NavigationComponent = (props) => {
 
 export default NavigationComponent;
 ```
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+<div align="right">
+    <a href="#index">Volver arriba</a>
+</div>
+
+
+## Ocultar enlaces de navegación
+
+### Parte visual
+
+Ahora que ya tenemos el estado de autenticación, vamos a modificar el componente `NavigationComponent` para que muestre los enlaces de navegación en función de si el usuario está autenticado o no.
+
+Más adelante crearemos los enlaces reales a utilizar en la aplicación, pero por ahora vamos a ocultar en enlace al blog cuando el usuario no esté autenticado.
+
+En primer lugar, vamos a modificar el componente `App` para que pase el estado de autenticación al componente `NavigationComponent`:
+
+```js
+// app.js
+
+// ...
+
+export default class App extends Component {
+    // ...
+
+    render() {
+        return (
+            <div className='app'>
+                <Router>
+                    <div>
+                        <NavigationContainer
+                            loggedInStatus={this.state.loggedInStatus}
+                        />
+
+                        /* ... */
+                    </div>
+                </Router>
+            </div>
+        );
+    }
+}
+```
+
+<br/>
+
+Una vez hecho esto, vamos a modificar el componente `NavigationComponent` para que muestre el enlace al blog en función del estado de autenticación:
+
+```js
+// navigation-container.js
+
+// ...
+
+const NavigationComponent = (props) => {
+    const dynamicLink = (route, linkText) => {
+        return (
+            <div className="nav-link-wrapper">
+                <NavLink to={route} activeClassName='nav-link-active'>{linkText}</NavLink>
+            </div>
+        );
+    }
+
+    return (
+        <div className="nav-wrapper">
+            <div className="left-side">
+                /* ... */
+
+                {props.loggedInStatus === 'LOGGED_IN' ? dynamicLink('/blog', 'Blog') : null}
+            </div>
+
+            /* ... */
+        </div>
+    );
+}
+```
+
+<br/>
+
+Lo que hemos hecho, ha sido crear una nueva función que se encargue de generar de forma dinámica los enlaces de navegación, y que recibe como parámetros la ruta y el texto del enlace. Después, haciendo uso de ***operadores ternarios***, comprobamos si el usuario está autenticado o no, y en función de ello, mostramos el enlace o devolvemos un `null`.
 
 
 <br/><hr/>
