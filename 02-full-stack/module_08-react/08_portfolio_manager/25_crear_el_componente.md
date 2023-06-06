@@ -5,6 +5,8 @@
 * [Crear el componente](#crear-el-componente)
     * [Crear la ruta](#crear-la-ruta)
 * [Estilar el layout del componente](#estilar-el-layout-del-componente)
+* [Portfolio Sidebar](#portfolio-sidebar)
+    * [Añadir los datos de la API al estado de PortfolioManager](#añadir-los-datos-de-la-api-al-estado-de-portfoliomanager)
 
 <br/>
 
@@ -208,3 +210,59 @@ Dentro del nuevo archivo, escribiremos lo siguiente:
 }
 ```
 
+
+<br/><hr/>
+<hr/><br/>
+
+
+<div align='right'>
+    <a href='#index'>Volver arriba</a>
+</div>
+
+
+## Portfolio Sidebar
+
+### Añadir los datos de la API al estado de PortfolioManager
+
+Vamos a comenzar llamando a la API para obtener y guardar los datos de los *portfolio items* en el estado del componente. Para ello, abrimos el archivo `portfolio-manager.js` y escribimos el siguiente código:
+
+```js
+// portfolio-manager.js
+
+// ...
+import axios from 'axios';
+
+export default class PortfolioManager extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            portfolioItems: []
+        };
+    }
+
+    getPortfolioItems() {
+        axios.get('https://nlarrea.devcamp.space/portfolio/portfolio_items', { withCredentials: true })
+        .then(response => {
+            this.setState({
+                portfolioItems: [...response.data.portfolio_items]
+            });
+        })
+        .catch(error => {
+            console.log('error in getPortfolioItems', error);
+        });
+    }
+
+    componentDidMount() {
+        this.getPortfolioItems();
+    }
+
+    // ...
+}
+```
+
+<br/>
+
+Comenzamos indicando en el estado un valor `[]` para la propiedad `portfolioItems` (que será un array que contendrá los *portfolio items*).
+
+A continuación, llamamos a la API a través de la función `getPortfolioItems()` y guardamos los datos en el estado. Desde la API se obtiene un array de arrays, por lo que no es necesario usar el *spread operator*, ya que eso es lo que queremos guardar en el estado. Sin embargo, se ha añadido para que quede más claro que se está guardando un array de arrays.
