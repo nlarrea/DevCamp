@@ -4,6 +4,7 @@
 
 * [Crear el componente](#crear-el-componente)
     * [Crear la ruta](#crear-la-ruta)
+* [Estilar el layout del componente](#estilar-el-layout-del-componente)
 
 <br/>
 
@@ -138,3 +139,72 @@ Ahora deberían mostrarse los siguientes links para todos los usuarios:
 <br/>
 
 Y el link `Portfolio Manager` únicamente para los usuarios que hayan iniciado sesión.
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+<div align='right'>
+    <a href='#index'>Volver arriba</a>
+</div>
+
+
+## Estilar el layout del componente
+
+Ahora que hemos creado el componente, vamos a generar ya el estilo del layout, el cual consistirá en dos columnas:
+
+* El formulario para añadir un nuevo *portfolio item*.
+* Una lista que contenga los *portfolio items*.
+
+<br/>
+
+Para ello, abrimos el archivo `portfolio-manager.js` y escribimos el siguiente código:
+
+```js
+// portfolio-manager.js
+
+// ...
+
+export default class PortfolioManager extends Component {
+    render() {
+        return (
+            <div className='portfolio-manager-wrapper'>
+                <div className='left-column'>
+                    <h1>Portfolio form...</h1>
+                </div>
+
+                <div className='right-column'>
+                    <h1>Portfolio sidebar...</h1>
+                </div>
+            </div>
+        );
+    }
+}
+```
+
+<br/>
+
+Una vez hecho esto, debemos estilar el layout. Para conseguirlo, crearemos un nuevo archivo dentro del directorio `src/style` llamado `_portfolio-manager.scss` (y lo añadiremos en el `main.scss`).
+
+Dentro del nuevo archivo, escribiremos lo siguiente:
+
+```scss
+// _portfolio-manager.scss
+
+@use './variables';
+
+.portfolio-manager-wrapper {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+
+    .left-column {
+        background-color: variables.$offwhite;
+    }
+    
+    .right-column {
+        background-color: variables.$charcoal;
+    }
+}
+```
+
