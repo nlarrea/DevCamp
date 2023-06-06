@@ -18,7 +18,7 @@
 <br/>
 
 
-[<< DEEP DIVE: AUTHENTICATION](./22_deepDive_authentication.md#deep-dive-authentication) | [HOME](../../../README.md#devcamp)
+[<< DEEP DIVE: AUTHENTICATION](./22_deepDive_authentication.md#deep-dive-authentication) | [HOME](../../../README.md#devcamp) | [LOGOUT HANDLER >>](./24_logout_handler.md#cerrar-la-sesión)
 
 
 <br/><hr/>
@@ -571,4 +571,4 @@ Haciendo esto, el usuario que no esté autenticado, no podrá acceder a la ruta 
 <hr/><br/>
 
 
-[<< DEEP DIVE: AUTHENTICATION](./22_deepDive_authentication.md#deep-dive-authentication) | [HOME](../../../README.md#devcamp)
+[<< DEEP DIVE: AUTHENTICATION](./22_deepDive_authentication.md#deep-dive-authentication) | [HOME](../../../README.md#devcamp) | [LOGOUT HANDLER >>](./24_logout_handler.md#cerrar-la-sesión)
