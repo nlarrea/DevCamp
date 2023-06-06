@@ -7,6 +7,7 @@
 * [Estilar el layout del componente](#estilar-el-layout-del-componente)
 * [Portfolio Sidebar](#portfolio-sidebar)
     * [Añadir los datos de la API al estado de PortfolioManager](#añadir-los-datos-de-la-api-al-estado-de-portfoliomanager)
+    * [Mostrar los datos en el Sidebar](#mostrar-los-datos-en-el-sidebar)
 
 <br/>
 
@@ -266,3 +267,75 @@ export default class PortfolioManager extends Component {
 Comenzamos indicando en el estado un valor `[]` para la propiedad `portfolioItems` (que será un array que contendrá los *portfolio items*).
 
 A continuación, llamamos a la API a través de la función `getPortfolioItems()` y guardamos los datos en el estado. Desde la API se obtiene un array de arrays, por lo que no es necesario usar el *spread operator*, ya que eso es lo que queremos guardar en el estado. Sin embargo, se ha añadido para que quede más claro que se está guardando un array de arrays.
+
+
+<br/><hr/><br/>
+
+
+### Mostrar los datos en el Sidebar
+
+Ahora que tenemos los datos, vamos a crear un nuevo componente dentro del directorio `src/components/portfolio` llamado `portfolio-sidebar-list.js`. En este componente, el cual es una lista, se renderizaran los *portfolio items* obtenidos en el componente `PortfolioManager`.
+
+Este es el código necesario en el componente `portfolio-sidebar-list.js`:
+
+```js
+// portfolio-sidebar-list.js
+
+import React from 'react';
+
+const PortfolioSidebarList = (props) => {
+    const portfolioItem = props.data.map(portfolioItem => {
+        return (
+            <div>
+                <div>
+                    <img src={portfolioItem.thumb_image_url} />
+                </div>
+                <h1>{portfolioItem.name}</h1>
+                <h2>{portfolioItem.id}</h2>
+            </div>
+        );
+    });
+
+    return (
+        <div>
+            {portfolioItem}
+        </div>
+    );
+}
+
+export default PortfolioSidebarList;
+```
+
+<br/>
+
+Como se puede observar, el componente recibe los datos a través de las props y los renderiza en el return. Para ello, primero utilizamos la función `map()` para recorrer cada uno de los *portfolio items* y, a continuación, renderizamos los datos que queremos mostrar. Todo esto lo guardamos en una constante llamada `portfolioItem`.
+
+Después, usamos el `return()` para renderizar la lista guardada en la constante `portfolioItem`.
+
+<br/>
+
+Como los datos se han pasado mediante `props`, debemos modificar el código del componente `portfolio-manajer.js` para que envíe dichos datos:
+
+```js
+// portfolio-manager.js
+
+// ...
+
+import PortfolioSidebarList from '../portfolio/portfolio-sidebar-list';
+
+export default class PortfolioManager extends Component {
+    // ...
+
+    render() {
+        return (
+            <div className='portfolio-manager-wrapper'>
+                /* ... */
+
+                <div className='right-column'>
+                    <PortfolioSidebarList data={this.state.portfolioItems} />
+                </div>
+            </div>
+        );
+    }
+}
+```
