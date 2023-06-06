@@ -9,6 +9,7 @@
     * [Añadir los datos de la API al estado de PortfolioManager](#añadir-los-datos-de-la-api-al-estado-de-portfoliomanager)
     * [Mostrar los datos en el Sidebar](#mostrar-los-datos-en-el-sidebar)
     * [Estilar el Sidebar](#estilar-el-sidebar)
+* [Portfolio Form](#portfolio-form)
 
 <br/>
 
@@ -402,3 +403,161 @@ Habiendo dado ya los nombres de clases deseados, creamos un nuevo archivo (`src/
     }
 }
 ```
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+<div align='right'>
+    <a href='#index'>Volver arriba</a>
+</div>
+
+
+## Portfolio Form
+
+En primer lugar, vamos a modificar el código de `portfolio-manager.js`, creando dos métodos que se encarguen de gestionar el estado del componente en caso de crear un formulario correcta o incorrectamente. Después, importaremos el componente del formulario (`portfolio-form.js`) y lo renderizaremos en el componente `portfolio-manager.js`:
+
+```js
+// portfolio-manager.js
+
+// ...
+
+// ...
+import PortfolioForm from '../portfolio/portfolio-form';
+
+export default class PortfolioManager extends Component {
+    constructor(props) {
+        // ...
+
+        this.handleSuccessfulFormSubmission = this.handleSuccessfulFormSubmission.bind(this);
+        this.handleFormSubmissionError = this.handleFormSubmissionError.bind(this);
+    }
+
+    handleSuccessfulFormSubmission(portfolioItem) {
+        /** TODO
+         * update the portfolioItems state
+         * and add the portfolioItem to the list
+         */
+    }
+
+    handleFormSubmissionError(error) {
+        console.log('handleFormSubmissionError error', error);
+    }
+
+    // ...
+
+    render() {
+        return (
+            <div className='portfolio-manager-wrapper'>
+                <div className="left-column">
+                    <PortfolioForm
+                        handleSuccessfulFormSubmission={this.handleSuccessfulFormSubmission}
+                        handleFormSubmissionError={this.handleFormSubmissionError}
+                    />
+                </div>
+            
+                /* ... */
+            </div>
+        );
+    }
+}
+```
+
+<br/>
+
+A continuación, vamos a crear el componente del formulario en cuestión, `src/components/portfolio/portfolio-form.js`. En este componente, vamos a crear un formulario que permita al usuario crear un nuevo *portfolio item*.
+
+```js
+// portfolio-form.js
+
+import React, { Component } from 'react';
+
+export default class PortfolioForm extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            name: '',
+            description: '',
+            category: '',
+            position: '',
+            url: '',
+            thumb_image: '',
+            banner_image: '',
+            logo: ''
+        };
+
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(event) {
+        // por ahora sin implementar
+        console.log('handle change', event);
+    }
+
+    render() {
+        return (
+            <div>
+                <h1>Portfolio Form</h1>
+
+                <form>
+                    <div>
+                        <input
+                            type="text"
+                            name='name'
+                            placeholder='Portfolio Item Name'
+                            value={this.state.name}
+                            onChange={this.handleChange}
+                        />
+                        
+                        <input
+                            type="text"
+                            name='url'
+                            placeholder='URL'
+                            value={this.state.url}
+                            onChange={this.handleChange}
+                        />
+                    </div>
+                    
+                    <div>
+                        <input
+                            type="text"
+                            name='position'
+                            placeholder='Position'
+                            value={this.state.position}
+                            onChange={this.handleChange}
+                        />
+                        
+                        <input
+                            type="text"
+                            name='category'
+                            placeholder='Category'
+                            value={this.state.category}
+                            onChange={this.handleChange}
+                        />
+                    </div>
+
+                    <div>
+                        <input
+                            type="text"
+                            name='description'
+                            placeholder='Description'
+                            value={this.state.description}
+                            onChange={this.handleChange}
+                        />
+                    </div>
+
+                    <div>
+                        <button type='submit'>Save</button>
+                    </div>
+                </form>
+            </div>
+        );
+    }
+}
+```
+
+<br/>
+
+Por ahora, los métodos ***handle*** no hacen nada, pero los implementaremos más adelante.
