@@ -8,6 +8,7 @@
 * [Portfolio Sidebar](#portfolio-sidebar)
     * [Añadir los datos de la API al estado de PortfolioManager](#añadir-los-datos-de-la-api-al-estado-de-portfoliomanager)
     * [Mostrar los datos en el Sidebar](#mostrar-los-datos-en-el-sidebar)
+    * [Estilar el Sidebar](#estilar-el-sidebar)
 
 <br/>
 
@@ -336,6 +337,68 @@ export default class PortfolioManager extends Component {
                 </div>
             </div>
         );
+    }
+}
+```
+
+
+<br/><hr/><br/>
+
+
+### Estilar el Sidebar
+
+Una vez creado el sidebar, vamos a darle ciertos estilos para que las imágnes y los nombres se muestren como queremos.
+
+En primer lugar, comenzaremos dando nobres a las clases de los elementos:
+
+```js
+// portfolio-sidebar-list.js
+
+// ...
+
+const PortfolioSidebarList = (props) => {
+    const portfolioList = props.data.map(portfolioItem => {
+        return (
+            <div className='portfolio-item-thumb'>
+                <div className='portfolio-thumb-img'>
+                    <img src={portfolioItem.thumb_image_url} />
+                </div>
+                <h1 className='title'>{portfolioItem.name}</h1>
+                <h2>{portfolioItem.id}</h2>
+            </div>
+        )
+    });
+
+    return (
+        <div className='portfolio-sidebar-list-wrapper'>
+            {portfolioList}
+        </div>
+    );
+}
+
+// ...
+```
+
+<br/>
+
+Habiendo dado ya los nombres de clases deseados, creamos un nuevo archivo (`src/style/_portfolio-sidebar-list.scss`), lo añadimos en el `main.scss` y escribimos el siguiente código:
+
+```scss
+// _portfolio-sidebar-list.scss
+
+@use './variables';
+
+.portfolio-sidebar-list-wrapper {
+    .portfolio-item-thumb {
+        padding: 21px;
+
+        .portfolio-thumb-img img {
+            width: 100%;
+        }
+
+        .title {
+            color: variables.$offwhite;
+        }
     }
 }
 ```
