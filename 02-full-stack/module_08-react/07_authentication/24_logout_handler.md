@@ -182,4 +182,4 @@ Lo que esto hace, es *encapsular* el componente `NavigationComponent` dentro de 
 <hr/><br/>
 
 
-[<< RENDER PROPS](./23_render_props.md#render-props) | [HOME](../../../README.md#devcamp)
+[<< RENDER PROPS](./23_render_props.md#render-props) | [HOME](../../../README.md#devcamp) | [PORTFOLIO MANAGER >>](../08_portfolio_manager/25_crear_el_componente.md#crear-el-portfolio-manager)
