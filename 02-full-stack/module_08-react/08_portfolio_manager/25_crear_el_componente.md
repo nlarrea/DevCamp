@@ -10,6 +10,8 @@
     * [Mostrar los datos en el Sidebar](#mostrar-los-datos-en-el-sidebar)
     * [Estilar el Sidebar](#estilar-el-sidebar)
 * [Portfolio Form](#portfolio-form)
+    * [Modificar el estado con los datos del formulario](#modificar-el-estado-con-los-datos-del-formulario)
+    * [Crear un objeto FormData](#crear-un-objeto-formdata)
 
 <br/>
 
@@ -624,5 +626,46 @@ export default class PortfolioForm extends Component {
             </div>
         );
     }
+}
+```
+
+
+<br/><hr/><br/>
+
+
+### Crear un objeto FormData
+
+En principio, podemos pensar en enviar los datos de la misma manera en la que se enviaron a la API cuando creamos el *login-form*. Sin embargo, en este caso no es posible porque querremos enviar datos que no son de tipo texto (como las imágenes).
+
+Por ello, vamos a crear un `FormData Object`, un objeto propio de JavaScript que nos permitirá enviar datos de cualquier tipo. Para ello, abrimos el archivo `portfolio-form.js` y escribimos el siguiente código:
+
+```js
+// portfolio-form.js
+
+// ...
+
+export default class PortfolioForm extends Component {
+    // ...
+
+    buildForm() {
+        let formData = new FormData();
+
+        formData.append('portfolio_item[name]', this.state.name);
+        formData.append('portfolio_item[description]', this.state.description);
+        formData.append('portfolio_item[url]', this.state.url);
+        formData.append('portfolio_item[category]', this.state.category);
+        formData.append('portfolio_item[position]', this.state.position);
+
+        return formData;
+    }
+
+    // ...
+
+    handleSubmit(event) {
+        this.buildForm();
+        event.preventDefault();
+    }
+
+    // ...
 }
 ```
