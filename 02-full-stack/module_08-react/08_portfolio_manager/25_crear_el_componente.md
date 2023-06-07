@@ -15,7 +15,7 @@
 
 <br/>
 
-[<< LOGOUT HANDLER](../07_authentication/24_logout_handler.md#cerrar-la-sesión) | [HOME](../../../README.md#devcamp)
+[<< LOGOUT HANDLER](../07_authentication/24_logout_handler.md#cerrar-la-sesión) | [HOME](../../../README.md#devcamp) | [KEY PROP WARNINGS >>](./26_eliminar_key_prop_warnings.md#eliminar-key-prop-warnings)
 
 
 <br/><hr/>
@@ -669,3 +669,10 @@ export default class PortfolioForm extends Component {
     // ...
 }
 ```
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+[<< LOGOUT HANDLER](../07_authentication/24_logout_handler.md#cerrar-la-sesión) | [HOME](../../../README.md#devcamp) | [KEY PROP WARNINGS >>](./26_eliminar_key_prop_warnings.md#eliminar-key-prop-warnings)
