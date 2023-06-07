@@ -560,4 +560,69 @@ export default class PortfolioForm extends Component {
 
 <br/>
 
-Por ahora, los métodos ***handle*** no hacen nada, pero los implementaremos más adelante.
+Por ahora, los métodos ***handle*** no hacen nada, pero los vamos a implementar a continuación.
+
+
+<br/><hr/><br/>
+
+
+### Modificar el estado con los datos del formulario
+
+En primer lugar, vamos a modificar el método `handleChange()` para que modifique el estado del componente en base a los datos introducidos en el formulario. Para ello, abrimos el archivo `portfolio-form.js` y escribimos el siguiente código:
+
+```js
+// portfolio-form.js
+
+// ...
+
+export default class PortfolioForm extends Component {
+    constructor(props) {
+        // ...
+
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(event) {
+        this.setState({
+            [event.target.name]: event.target.value
+        });
+    }
+
+    // ...
+}
+```
+
+<br/>
+
+Con esto, modificaremos el estado cada vez que se modifique la entrada de texto de un input. Ahora, crearemos un nuevo *handler* que se encargará del *submit* del formulario, pero por ahora, su única función será evitar el comportamiento por defecto del botón de *submit* (que es recargar la página):
+
+```js
+// portfolio-form.js
+
+// ...
+
+export default class PortfolioForm extends Component {
+    constructor(props) {
+        // ...
+
+        // ...
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    // ...
+
+    handleSubmit(event) {
+        event.preventDefault();
+    }
+
+    render() {
+        return (
+            <div>
+                <form onSubmit={this.handleSubmit}>
+                    /* ... */
+                </form>
+            </div>
+        );
+    }
+}
+```
