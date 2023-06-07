@@ -8,7 +8,7 @@
 <br/>
 
 
-[<< PORFOLIO MANAGER](./25_crear_el_componente.md#crear-el-portfolio-manager) | [HOME](../../../README.md#devcamp)
+[<< PORFOLIO MANAGER](./25_crear_el_componente.md#crear-el-portfolio-manager) | [HOME](../../../README.md#devcamp) | [CREAR ITEMS DESDE EL FORM >>](./27_crear_items_desde_form.md#crear-portfolioitems-desde-portfolioform)
 
 
 <br/><hr/>
@@ -116,4 +116,4 @@ Si recargamos la página, veremos que el aviso referido al componente `Portfolio
 <hr/><br/>
 
 
-[<< PORFOLIO MANAGER](./25_crear_el_componente.md#crear-el-portfolio-manager) | [HOME](../../../README.md#devcamp)
+[<< PORFOLIO MANAGER](./25_crear_el_componente.md#crear-el-portfolio-manager) | [HOME](../../../README.md#devcamp) | [CREAR ITEMS DESDE EL FORM >>](./27_crear_items_desde_form.md#crear-portfolioitems-desde-portfolioform)
