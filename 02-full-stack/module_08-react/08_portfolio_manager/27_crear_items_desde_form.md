@@ -7,7 +7,7 @@
 <br/>
 
 
-[<< KEY PROP WARNINGS](./26_eliminar_key_prop_warnings.md#eliminar-key-prop-warnings) | [HOME](../../../README.md#devcamp)
+[<< KEY PROP WARNINGS](./26_eliminar_key_prop_warnings.md#eliminar-key-prop-warnings) | [HOME](../../../README.md#devcamp) | [SELECT & TEXTAREA >>](./28_selectores_y_textareas.md#selectores-y-textareas)
 
 
 <br/><hr/>
@@ -66,3 +66,10 @@ Si rellenamos el formulario con datos y clicamos en el botón de enviar, veremos
 Tras esto, aún no se visualiza el ítem en el Sidebar, ya que no hemos actualizado el estado del componente `PortfolioManager`. Sin embargo, sí se mostrará si recargamos la página.
 
 Al acceder al `Home`, también debe mostrarse el espacio en blando (*porque aún no hay imágenes*) y el mensaje de la descripción del ítem tras hacer *hover* sobre el mismo.
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+[<< KEY PROP WARNINGS](./26_eliminar_key_prop_warnings.md#eliminar-key-prop-warnings) | [HOME](../../../README.md#devcamp) | [SELECT & TEXTAREA >>](./28_selectores_y_textareas.md#selectores-y-textareas)

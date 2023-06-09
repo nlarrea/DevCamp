@@ -1,0 +1,82 @@
+# Selectores y Textareas
+
+<div id="index"></div>
+
+* [Objetivo](#objetivo)
+* [Selectores](#selectores)
+* [Textareas](#textareas)
+
+<br/>
+
+
+[CREAR ITEMS DESDE EL FORM >>](./27_crear_items_desde_form.md#crear-portfolioitems-desde-portfolioform) | [HOME](../../../README.md#devcamp)
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+## Objetivo
+
+En el componente `PortfolioForm` tenemos un formulario que nos permite crear nuevos items para el portfolio. Ya hemos comprobado que los ítems se crean correctamente, sin embargo, tenemos dos elementos en el formulario que debemos modificar:
+
+* `Category`: es un campo de texto, pero vamos a modificarlo para que sea un selector (`select`) con las categorías disponibles.
+* `Description`: es un campo de texto, pero vamos a modificarlo para que sea un `textarea`.
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+<div align="right">
+    <a href="#index">Volver arriba</a>
+</div>
+
+
+## Selectores
+
+Para crear un selector, debemos utilizar la etiqueta `<select>` y dentro de ella, una serie de etiquetas `<option>` con los valores que queremos que se muestren en el selector.
+
+Para ello, vamos a acceder al archivo `portfolio-form.js` y vamos a modificar el código de la siguiente manera:
+
+```js
+// portfolio-form.js
+
+// ...
+
+export default class PortfolioForm extends Component {
+    // ...
+
+    render() {
+        return (
+            <div>
+                /* ... */
+
+                <form onSubmit={this.handleSubmit}>
+                    /* ... */
+                    
+                    <div>
+                        /* ... */
+                        
+                        <select
+                            name='category'
+                            value={this.state.category}
+                            onChange={this.handleChange}
+                        >
+                            <option value="eCommerce">eCommerce</option>
+                            <option value="Scheduling">Scheduling</option>
+                            <option value="Enterprise">Enterprise</option>
+                        </select>
+                    </div>
+
+                    /* ... */
+                </form>
+            </div>
+        );
+    }
+}
+```
+
+<br/>
+
+Mantenemos los atributos `name`, `value` y `onChange` que ya teníamos en el campo de texto, y añadimos las etiquetas `<option>` con los valores que queremos que se muestren en el selector.
