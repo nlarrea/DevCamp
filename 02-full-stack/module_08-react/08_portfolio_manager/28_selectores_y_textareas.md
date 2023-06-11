@@ -80,3 +80,51 @@ export default class PortfolioForm extends Component {
 <br/>
 
 Mantenemos los atributos `name`, `value` y `onChange` que ya teníamos en el campo de texto, y añadimos las etiquetas `<option>` con los valores que queremos que se muestren en el selector.
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+<div align="right">
+    <a href="#index">Volver arriba</a>
+</div>
+
+
+## Textareas
+
+Los cambios a realizar en nuestro código para modificar el input de tipo texto a un *textarea* son realmente mínimos. Simplemente debemos cambiar la etiqueta `<input>` por la etiqueta `<textarea>`:
+
+```js
+// portfolio-form.js
+
+// ...
+
+export default class PortfolioForm extends Component {
+    // ...
+
+    render() {
+        return (
+            <div>
+                /* ... */
+
+                <form onSubmit={this.handleSubmit}>
+                    /* ... */
+
+                    <div>
+                        <textarea
+                            type="text"
+                            name='description'
+                            placeholder='Description'
+                            value={this.state.description}
+                            onChange={this.handleChange}
+                        />
+                    </div>
+
+                    /* ... */
+                </form>
+            </div>
+        );
+    }
+}
+```
