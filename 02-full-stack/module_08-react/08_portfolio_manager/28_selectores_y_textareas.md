@@ -82,6 +82,42 @@ export default class PortfolioForm extends Component {
 Mantenemos los atributos `name`, `value` y `onChange` que ya teníamos en el campo de texto, y añadimos las etiquetas `<option>` con los valores que queremos que se muestren en el selector.
 
 
+<br/><hr/><br/>
+
+
+### Arreglar un error
+
+Aunque seleccionando los componentes del selector, parezca que todo funciona correctamente, en realidad existe un pequeño error en el código.
+
+Y es que, si entramos a la página de *crear* un nuevo Portfolio Item, y no seleccionamos ninguna categoría (*porque queremos usar la que está ya seleccionada por defecto*), y pulsamos el botón de *Create*, el item se crea correctamente, pero el valor de la categoría es `null`.
+
+Esto se debe a que al renderizar la página, el estado inicial del `PortfolioForm` es `''` para todos los campos, incluido el de `category`. Lo que significa que, aunque parezca que hay una categoría seleccionada, en realidad no lo está, porque hasta que no ocurra el evento `onChange`, no se modifica el valor del estado.
+
+Para solucionar esto, la idea más simple es modificar el valor inicial del estado por el valor del primer `option` del selector:
+
+```js
+// portfolio-form.js
+
+// ...
+
+export default class PortfolioForm extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            // ...
+            category: 'eCommerce',
+            // ...
+        };
+    }
+}
+```
+
+<br/>
+
+Si probamos a crear un nuevo Portfolio Item, veremos que ahora sí que se crea correctamente, con la categoría seleccionada por defecto.
+
+
 <br/><hr/>
 <hr/><br/>
 
