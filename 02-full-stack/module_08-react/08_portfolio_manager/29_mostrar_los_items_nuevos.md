@@ -8,6 +8,7 @@
 * [React Dropzone Component](#react-dropzone-component)
     * [Instalar la librería](#instalar-react-dropzone-component)
     * [Configurar el componente](#configurar-el-componente)
+    * [Subir una imagen](#subir-una-imagen)
 
 <br/>
 
@@ -233,7 +234,7 @@ Ahora, veremos que los ítems mostrados en el lateral de la página están orden
 
 ## React Dropzone Component
 
-Para completar la sección del formulario para crear nuevos PortfolioItems, vamos a añadir un componente que nos permita subir imágenes al formulario llamado `react-dropzone-component`.
+Para completar la sección del formulario para crear nuevos PortfolioItems, vamos a añadir un componente que nos permita subir imágenes al formulario llamado [`react-dropzone-component`](https://www.npmjs.com/package/react-dropzone-component).
 
 
 <br/><hr/><br/>
@@ -366,3 +367,87 @@ La configuración `postUrl` realmente es una URL de prueba que nos permite simul
 Finalmente, hemos creado un nuevo elemento `div` con la clase `image-uploaders` que contiene el componente `DropzoneComponent` con la configuración que hemos creado anteriormente.
 
 En este caso, los métodos pasados como `props` deben ser llamados con `()` al final, ya que queremos que se ejecuten en cuanto se monte el componente.
+
+
+<br/><hr/><br/>
+
+
+### Subir una imagen
+
+Ahora que tenemos toda la configuración del componente hecha, necesitamos modificar y añadir un par de líneas de código para poder subir una imagen a la API.
+
+En primer lugar, crearemos un *handler* para manejar el añadir una imagen al *dropzone*. Podemos crear un método con el nombre que queramos, sin embargo, éste debe retornar un objeto con la propiedad `addedfile`, que lo que hace es recibir el archivo y llama a una función, que en este caso es:
+
+```js
+// portfolio-form.js
+
+// ...
+
+export default class PortfolioForm extends Component {
+    constructor(props) {
+        // ...
+        this.handleThumbDrop = this.handleThumbDrop.bind(this);
+    }
+
+    handleThumbDrop() {
+        return {
+            addedfile: file => this.setState({ thumb_image: file })
+        };
+    }
+
+    // ...
+
+    render() {
+        return (
+            <div>
+                /* ... */
+
+                <form onSubmit={this.handleSubmit}>
+                    /* ... */
+
+                    <div className="image-uploaders">
+                        <DropzoneComponent
+                            /* ... */
+                            eventHandlers={this.handleThumbDrop()}
+                        />
+                    </div>
+
+                    /* ... */
+                </form>
+            </div>
+        );
+    }
+}
+```
+
+<br/>
+
+Lo que hace el método es recibir el archivo y lo añade al estado del componente con el nombre `thumb_image`. Después, en el componente `DropzoneComponent`, añadimos la propiedad `eventHandlers` (debe llamarse así [siguiendo la documentación](https://www.npmjs.com/package/react-dropzone-component#callbacks)) y le pasamos el método que hemos creado.
+
+Finalmente, solo queda actualizar el método encargado de enviar los datos a la API. En este caso, al tratarse de una imagen, y ser un elemento que pueda ser subido o no, primero debemos asegurarnos de que existe, es decir, de que el usuario haya introducido una imagen.
+
+```js
+// portfolio-form.js
+
+// ...
+
+export default class PortfolioForm extends Component {
+    // ...
+
+    buildForm() {
+        // ...
+
+        if (this.state.thumb_image) {
+            formData.append('portfolio_item[thumb_image]', this.state.thumb_image);
+        }
+
+        // ...
+    }
+
+    // ...
+}
+```
+
+<br/>
+
+Si no hiciéramos esto, la API nos devolvería un error, ya que no se puede enviar un archivo que no existe. En los demás casos no había sido necesario, ya que en caso de no rellenar algún campo, éste se enviaría como `null` (cadena de texto vacía) y la API lo acepta.
