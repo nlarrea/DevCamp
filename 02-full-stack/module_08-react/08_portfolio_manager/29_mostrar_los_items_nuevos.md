@@ -5,6 +5,9 @@
 * [PorftolioForm](#porftolioform)
 * [PorftolioManager](#porftoliomanager)
 * [Modificar el orden de los PortfolioItems](#modificar-el-orden-de-los-items)
+* [React Dropzone Component](#react-dropzone-component)
+    * [Instalar la librería](#instalar-react-dropzone-component)
+    * [Configurar el componente](#configurar-el-componente)
 
 <br/>
 
@@ -217,3 +220,149 @@ export default class PortfolioManager extends Component {
 <br/>
 
 Ahora, veremos que los ítems mostrados en el lateral de la página están ordenados desde el más reciente al más antiguo.
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+<div align='right'>
+    <a href='#index'>Volver arriba</a>
+</div>
+
+
+## React Dropzone Component
+
+Para completar la sección del formulario para crear nuevos PortfolioItems, vamos a añadir un componente que nos permita subir imágenes al formulario llamado `react-dropzone-component`.
+
+
+<br/><hr/><br/>
+
+
+### Instalar react-dropzone-component
+
+Para instalar este componente, debemos abrir la dirección donde está el proyecto en la terminal y, a continuación, debemos ejecutar el siguiente comando:
+
+```bash
+npm i react-dropzone-component
+```
+
+<br/>
+
+Una vez instalado, arrancaremos el servidor de desarrollo con `npm start` y veremos que el componente se ha instalado correctamente.
+
+
+<br/><hr/><br/>
+
+
+### Configurar el componente
+
+Ahora que el componente está instalado, debemos configurarlo para que funcione correctamente.
+
+En primer lugar, debemos importar el componente en el componente `PortfolioForm`:
+
+```js
+// portfolio-form.js
+
+// ...
+import { DropzoneComponent } from 'react-dropzone-component';
+
+// libraries from DropzoneComponent for styles
+import '../../../node_modules/react-dropzone-component/styles/filepicker.css';
+import '../../../node_modules/dropzone/dist/min/dropzone.min.css';
+
+// ...
+```
+
+<br/>
+
+La primera línea de código importa el componente `DropzoneComponent` desde el paquete `react-dropzone-component`. Las otras dos líneas importan las librerías para estilar el componente.
+
+Habiendo importado `DropzoneComponent`, vamos a configurarlo y añadir el código necesario para poder subir una imagen al formulario:
+
+```js
+// portfolio-form.js
+
+// ...
+
+export default class PortfolioForm extends Component {
+    constructor(props) {
+        // ...
+        this.componentConfig = this.componentConfig.bind(this);
+        this.djsConfig = this.djsConfig.bind(this);
+    }
+
+    componentConfig() {
+        return {
+            iconFiletypes: ['.jpg', '.png'],
+            showFiletypeIcon: true,
+            postUrl: 'https://httpbin.org/post'
+        }
+    }
+
+    djsConfig() {
+        return {
+            addRemoveLinks: true,
+            maxFiles: 1
+        }
+    }
+
+    // ...
+
+    render() {
+        return (
+            <div>
+                /* ... */
+
+                <form onSubmit={this.handleSubmit}>
+                    /* ... */
+
+                    <div className="image-uploaders">
+                        <DropzoneComponent
+                            config={this.componentConfig()}
+                            djsConfig={this.djsConfig()}
+                        />
+                    </div>
+
+                    /* ... */
+                </form>
+            </div>
+        );
+    }
+}
+```
+
+<br/>
+
+En primer lugar, hemos añadido dos métodos nuevos al constructor del componente: `componentConfig()` y `djsConfig()`. Estos métodos devuelven un objeto con la configuración del componente donde se indica lo siguiente:
+
+```js
+componentConfig() {
+    return {
+        // tipos de archivo permitidos
+        iconFiletypes: ['.jpg', '.png'],
+        // mostrar icono del tipo de archivo
+        showFiletypeIcon: true,
+        // url necesaria para subir el archivo
+        postUrl: 'https://httpbin.org/post'
+    }
+}
+
+djsConfig() {
+    return {
+        addRemoveLinks: true,
+        // número máximo de archivos
+        maxFiles: 1
+    }
+}
+```
+
+<br/>
+
+La configuración `postUrl` realmente es una URL de prueba que nos permite simular la subida de un archivo. La URL utilizada es realmente una que siempre devuelve un código 200, que nos sirve para permitir la subida del archivo sin errores, y podremos añadir un estilo al subir el archivo.
+
+<br/>
+
+Finalmente, hemos creado un nuevo elemento `div` con la clase `image-uploaders` que contiene el componente `DropzoneComponent` con la configuración que hemos creado anteriormente.
+
+En este caso, los métodos pasados como `props` deben ser llamados con `()` al final, ya que queremos que se ejecuten en cuanto se monte el componente.
