@@ -14,7 +14,7 @@
 <br/>
 
 
-[<< TERMINAR FUNCIONALIDAD DEL FORMULARIO](./29_terminar_funcionalidad_formulario.md#terminar-la-funcionalidad-del-formulario) | [HOME](../../../README.md#devcamp)
+[<< TERMINAR FUNCIONALIDAD DEL FORMULARIO](./29_terminar_funcionalidad_formulario.md#terminar-la-funcionalidad-del-formulario) | [HOME](../../../README.md#devcamp) | [ELIMINAR PORTFOLIO-ITEMS >>](./31_eliminar_portfolio_items.md#eliminar-portfolioitems)
 
 
 <br/><hr/>
@@ -592,3 +592,10 @@ Si miramos la página ahora, veremos que el texto de cada dropzone ha cambiado. 
 * Thumbnail
 * Banner
 * Logo
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+[<< TERMINAR FUNCIONALIDAD DEL FORMULARIO](./29_terminar_funcionalidad_formulario.md#terminar-la-funcionalidad-del-formulario) | [HOME](../../../README.md#devcamp) | [ELIMINAR PORTFOLIO-ITEMS >>](./31_eliminar_portfolio_items.md#eliminar-portfolioitems)
