@@ -6,6 +6,10 @@
 * [Textarea](#textarea)
 * [Selectores](#select)
 * [Grid Styles](#grid-styles)
+* [Botones](#botones)
+* [Dropzones](#dropzones)
+    * [Modificar estilos](#modificar-estilos)
+    * [Modificar contenido](#modificar-contenido)
 
 <br/>
 
@@ -399,3 +403,192 @@ En primer lugar, accederemos al archivo `_portfolio-form.scss` y añadiremos un 
     }
 }
 ```
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+<div align='right'>
+    <a href='#index'>Volver arriba</a>
+</div>
+
+
+## Botones
+
+Modificar el estilo de los botones de `submit` va a ser una tarea muy sencilla: solo debemos añadir a dichos botones la clase `btn`, puesto que ya creamos los estilos de dicha clase en el archivo `_buttons.scss`.
+
+```js
+// portfolio-form.js
+
+// ...
+
+export default class PortfolioForm extends Component {
+    // ...
+    
+    render() {
+        return (
+            <form /* ... */>
+                /* ... */
+
+                <div>
+                    <button type='submit' className='btn'>Save</button>
+                </div>
+            </form>
+        );
+    }
+}
+```
+
+<br/>
+
+Si miramos cómo se ve la página ahora, veremos que se ha aplicado dicho estilo al botón.
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+<div align='right'>
+    <a href='#index'>Volver arriba</a>
+</div>
+
+
+## Dropzones
+
+### Modificar estilos
+
+Habíamos definido un `grid` de tres columnas para estos elemenos, sin embargo, vamos a modificarlo para que tengan el mismo alto que ancho.
+
+En primer lugar, les eliminaremos la clase `three-column` del `div` que contiene estos componentes y le dejaremos la clase `image-uploaders`.
+
+Como la clase `three-column` ya no se usa, la podemos eliminar del archivo `_grid.scss`.
+
+A continuación, daremos estilo a la clase `image-uploaders` en el archivo `_portfolio-form.scss`:
+
+```scss
+// _portfolio-form.scss
+
+// ...
+
+.portfolio-form-wrapper {
+    // ...
+
+    .image-uploaders {
+        display: grid;
+        grid-template-columns: repeat(3, 200px);
+        gap: 21px;
+    }
+}
+```
+
+<br/>
+
+Hemos usado en varias ocasiones las dos líneas siguientes:
+
+```scss
+display: grid;
+gap: 21px;
+```
+
+<br/>
+
+Por lo que vamos a crear un `mixin` en el archivo `_mixins.scss` para no tener que repetirnos:
+
+```scss
+// _mixins.scss
+
+// ...
+
+@mixin base-grid {
+    display: grid;
+    gap: 21px;
+}
+```
+
+<br/>
+
+Ahora, modificaremos los estilos de la siguiente manera:
+
+```scss
+// _grid.scss
+
+@use './mixins';
+
+.one-column {
+    @include mixins.base-grid();
+    grid-template-columns: 1fr;
+}
+
+.two-column {
+    @include mixins.base-grid();
+    grid-template-columns: repeat(2, 1fr);
+}
+```
+
+```scss
+// _portfolio-form.scss
+
+// ...
+
+.portfolio-form-wrapper {
+    // ...    
+
+    .image-uploaders {
+        @include mixins.base-grid();
+        grid-template-columns: repeat(3, 200px);
+    }
+}
+```
+
+
+<br/><hr/><br/>
+
+
+### Modificar contenido
+
+Tenemos tres dropzones con el mismo texto, por lo que al usuario le es imposible saber en qué orden debe subir las imágenes. Para solucionar esto, vamos a modificar el contenido de cada uno de ellos.
+
+En React se trabaja con componentes *principal*, y cada componente está formado por otros componentes *hijos*. En el caso del `DropzoneComponent`, si accedemos a él clicando en `inspeccionar` en el navegador, veremos que en su interior tiene un elemento `div` con la clase `dz-message`. Ese es el elemento que contiene el texto que se muestra por defecto en el dropzone, y el que vamos a modificar:
+
+```js
+// portfolio-form.js
+
+// ...
+
+export default class PortfolioForm extends Component {
+    // ...
+
+    render() {
+        return (
+            <form /* ... */>
+                /* ... */
+
+                <div /* ... */>
+                    <DropzoneComponent /* ... */>
+                        <div className='dz-message'>Thumbnail</div>
+                    </DropzoneComponent>
+
+                    <DropzoneComponent /* ... */>
+                        <div className='dz-message'>Banner</div>
+                    </DropzoneComponent>
+
+                    <DropzoneComponent /* ... */>
+                        <div className='dz-message'>Logo</div>
+                    </DropzoneComponent>
+                </div>
+
+                /* ... */
+            </form>
+        );
+    }
+}
+```
+
+<br/>
+
+Si miramos la página ahora, veremos que el texto de cada dropzone ha cambiado. Ahora tenemos tres dropzones con textos diferentes:
+
+* Thumbnail
+* Banner
+* Logo
