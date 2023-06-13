@@ -10,7 +10,7 @@
 <br/>
 
 
-[<< ESTILAR LOS FORMULARIOS](./30_estilar_los_formularios.md#dar-estilo-a-los-formularios)
+[<< ESTILAR LOS FORMULARIOS](./30_estilar_los_formularios.md#dar-estilo-a-los-formularios) | [HOME](../../../README.md#devcamp) | [FONTAWESOME >>](./32_fontawesome.md#fontawesome)
 
 
 <br/><hr/>
@@ -182,3 +182,10 @@ export default class PortfolioManager extends Component {
 Con esto, indicamos que los `portfolioItems` del estado sean todos los que no tengan el ID del `portfolioItem` que hemos pasado como argumento, es decir, el que se acaba de eliminar. Esto se consigue haciendo uso del método `filter()`.
 
 De esta forma, el `portfolioItem` que hemos eliminado no se mostrará en el `sidebar`.
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+[<< ESTILAR LOS FORMULARIOS](./30_estilar_los_formularios.md#dar-estilo-a-los-formularios) | [HOME](../../../README.md#devcamp) | [FONTAWESOME >>](./32_fontawesome.md#fontawesome)
