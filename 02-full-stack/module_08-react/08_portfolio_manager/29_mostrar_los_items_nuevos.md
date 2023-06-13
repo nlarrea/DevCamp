@@ -9,6 +9,7 @@
     * [Instalar la librería](#instalar-react-dropzone-component)
     * [Configurar el componente](#configurar-el-componente)
     * [Subir una imagen](#subir-una-imagen)
+* [Eliminar elementos del formulario al crear un nuevo PortfolioItem](#eliminar-elementos-del-formulario-al-crear-un-nuevo-portfolioitem)
 
 <br/>
 
@@ -523,3 +524,114 @@ export default class PortfolioForm extends Component {
 <br/>
 
 Si probáramos a crear un nuevo ítem con todos los elementos, veríamos que funciona correctamente.
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+## Eliminar elementos del formulario al crear un nuevo PortfolioItem
+
+Hasta ahora, el formulario funciona correctamente, sin embargo, al clicar el botón de enviar, los datos se envían a la API, pero el formulario no se vacía, por lo que si queremos crear un nuevo ítem, tendremos que borrar los datos manualmente.
+
+En este apartado, vamos a añadir ciertas líneas de código para que el formulario se vacíe cuando se envíen los datos. Para ello, vamos a trabajar con **React Refs**.
+
+En primer lugar, vamos a crear las referencias a los elementos que queremos vaciar, y vamos a asignarlas a dichos elementos:
+
+```js
+// portfolio-form.js
+
+// ...
+
+export default class PortfolioForm extends Component {
+    constructor(props) {
+        // ...
+
+        this.thumbRef = React.createRef();
+        this.bannerRef = React.createRef();
+        this.logoRef = React.createRef();
+    }
+
+    // ...
+
+    render() {
+        return(
+            <div>
+                /* ... */
+
+                <form onSubmit={this.handleSubmit}>
+                    /* ... */
+
+                    <div className="image-uploaders">
+                        <DropzoneComponent
+                            ref={this.thumbRef}
+                            /* ... */
+                        />
+
+                        <DropzoneComponent
+                            ref={this.bannerRef}
+                            /* ... */
+                        />
+
+                        <DropzoneComponent
+                            ref={this.logoRef}
+                            /* ... */
+                        />
+                    </div>
+
+                    /* ... */
+                </form>
+            </div>
+        );
+    }
+}
+```
+
+<br/>
+
+Una vez creadas y asignadas las referencias, vamos a eliminar todos los datos del formulario cada vez que se envíen los datos a la API. El método encargado de enviar los datos es el `handleSumbit()`, por lo que vamos a realizar los cambios en él, justo debajo de la línea encargada de enviar los datos:
+
+```js
+// portfolio-form.js
+
+// ...
+
+export default class PortfolioForm extends Component {
+    // ...
+
+    handleSubmit() {
+        axios.post(/* ... */)
+        .then(response => {
+            // send data to the API
+            // ...
+
+            // remove data from the form when submited
+            this.setState({
+                name: '',
+                description: '',
+                category: 'eCommerce',
+                position: '',
+                url: '',
+                thumb_image: '',
+                banner_image: '',
+                logo: ''
+            });
+
+            // remove images from dropzone components
+            [this.thumbRef, this.bannerRef, this.logoRef].forEach(ref => {
+                ref.current.dropzone.removeAllFiles();
+            });
+        }).catch(error => {
+            // ...
+        })
+
+        // ...
+    }
+}
+```
+
+<br/>
+
+En primer lugar, eliminamos los datos del estado del componente, haciendo que el estado vuelva a sus valores iniciales. Después, utilizando las referencias que hemos creado, eliminamos los archivos de los componentes `DropzoneComponent`.
+
+Es necesario usar las referencias para modificar los componentes `DropzoneComponent` porque, al ser componentes externos, y trabajar con un DOM virtual, no tenemos acceso a ellos de forma directa.
