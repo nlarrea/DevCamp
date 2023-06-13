@@ -451,3 +451,75 @@ export default class PortfolioForm extends Component {
 <br/>
 
 Si no hiciéramos esto, la API nos devolvería un error, ya que no se puede enviar un archivo que no existe. En los demás casos no había sido necesario, ya que en caso de no rellenar algún campo, éste se enviaría como `null` (cadena de texto vacía) y la API lo acepta.
+
+
+<br/><hr/><br/>
+
+
+### Añadir el resto de imágenes
+
+Ya hemos creado el código para añadir la imagen de fondo en nuestros nuevos PortfolioItems, ahora, vamos a añadir las líneas encesarias para poder subir tanto el *banner* como el *logo*.
+
+El código a añadir es prácticamente una réplica del ya visto en el [apartado anterior](#subir-una-imagen):
+
+```js
+// portfolio-form.js
+
+// ...
+
+export default class PortfolioForm extends Component {
+    constructor(props) {
+        // ...
+        this.handleBannerDrop = this.handleBannerDrop.bind(this);
+        this.handleLogoDrop = this.handleLogoDrop.bind(this);
+    }
+
+    handleBannerDrop() {
+        return {
+            addedfile: file => this.setState({ banner_image: file })
+        };
+    }
+
+    handleLogoDrop() {
+        return {
+            addedfile: file => this.setState({ logo: file })
+        };
+    }
+
+    // ...
+
+    render() {
+        return (
+            <div>
+                /* ... */
+
+                <form onSubmit={this.handleSubmit}>
+                    /* ... */
+
+                    <div className="image-uploaders">
+                        /* ... */
+
+                        <DropzoneComponent
+                            config={this.componentConfig()}
+                            djsConfig={this.djsConfig()}
+                            eventHandlers={this.handleBannerDrop()}
+                        />
+
+                        <DropzoneComponent
+                            config={this.componentConfig()}
+                            djsConfig={this.djsConfig()}
+                            eventHandlers={this.handleLogoDrop()}
+                        />
+                    </div>
+
+                    /* ... */
+                </form>
+            </div>
+        );
+    }
+}
+```
+
+<br/>
+
+Si probáramos a crear un nuevo ítem con todos los elementos, veríamos que funciona correctamente.
