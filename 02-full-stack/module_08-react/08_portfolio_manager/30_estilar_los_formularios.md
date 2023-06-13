@@ -3,6 +3,9 @@
 <div id='index'></div>
 
 * [Inputs](#inputs)
+* [Textarea](#textarea)
+* [Selectores](#select)
+* [Grid Styles](#grid-styles)
 
 <br/>
 
@@ -297,3 +300,102 @@ Después, en el archivo `_forms.scss`, añadiremos los estilos del `select`:
 <br/>
 
 Si volvemos a la página de nuestra aplicación y vemos el `select`, veremos que ya tiene los estilos que hemos definido.
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+<div align='right'>
+    <a href='#index'>Volver arriba</a>
+</div>
+
+
+## Grid Styles
+
+El formulario sigue una distribución de filas y columnas. Para implementarla, lo más sencillo es utilizar un `display: grid`. Sin embargo, hay ocasiones en las que debe haber una cantidad de columnas, y en otras, otra.
+
+Para solucionar esto, vamos a crear un archivo `_grid.scss` y lo añadiremos al `main.scss`. Después, vamos a crear en él tres clases con las que podremos definir la cantidad de columnas que queremos que tenga un elemento:
+
+```scss
+// _grid.scss
+
+.one-column {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 21px;
+}
+
+.two-column {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 21px;
+}
+
+.three-column {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 21px;
+}
+```
+
+<br/>
+
+Ahora, daremos esos nombres de clase a los elementos que agrupen los inputs en base a la cantidad de columnas:
+
+```js
+// portfolio-form.js
+
+// ...
+
+export default class PortfolioForm extends Component {
+    // ...
+    
+    render() {
+        return (
+            <form onSubmit={this.handleSubmit} className='portfolio-form-wrapper'>
+                <div className='two-column'>
+                    /* input (name) & input (url) */
+                </div>
+                
+                <div className='two-column'>
+                    /* input & select */
+                </div>
+
+                <div className='one-column'>
+                    /* textarea */
+                </div>
+
+                <div className="image-uploaders three-column">
+                    /* dropzones */
+                </div>
+
+                /* ... */
+            </form>
+        );
+    }
+}
+```
+
+<br/>
+
+Hecho esto, veremos que el formulario luce bastante mejor, sin embargo debemos modificar un par de cosas aún.
+
+En primer lugar, accederemos al archivo `_portfolio-form.scss` y añadiremos un `gap` a la clase `portfolio-form-wrapper`. Además, indicaremos que el margen inferior de los `input` sea `0`:
+
+```scss
+// _portfolio-form.scss
+
+.portfolio-form-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 21px;
+    padding: 42px;
+
+    @include mixins.input-element();
+
+    input {
+        margin-bottom: 0;
+    }
+}
+```
