@@ -6,6 +6,7 @@
 * [Importar los iconos](#importar-los-iconos)
 * [Sustituir el texto por iconos](#sustituir-el-texto-por-iconos)
     * [Texto Delete](#texto-delete)
+    * [Estilar el icono delete](#estilar-el-icono-delete)
 
 <br/>
 
@@ -139,3 +140,84 @@ const PortfolioSidebarList = (props) => {
 <br/>
 
 Hemos importado el componente `FontAwesomeIcon` y lo hemos utilizado para mostrar el icono de la papelera (`trash`).
+
+
+<br/><hr/><br/>
+
+
+### Estilar el icono delete
+
+Habiendo añadido ya el icono encargado de eliminar los ítems que queramos, vamos a darle ciertos estilos.
+
+En primer lugar, vamos a modificar el archivo `portfolio-sidebar-list.scss` para eliminar el ID de aquí y mantener solo el título y el link de eliminar. Vamos, también, a añadirle una clase al link que contiene el icono:
+
+```js
+// portfolio-sidebar-list.scss
+
+// ...
+
+const PortfolioSidebarList = (props) => {
+    const portfolioList = props.data.map(portfolioItem => {
+        return (
+            <div key={portfolioItem.id} className='portfolio-item-thumb'>
+                <div className='portfolio-thumb-img'>
+                    <img src={portfolioItem.thumb_image_url} />
+                </div>
+                
+                <div className="text-content">
+                    <div className='title'>{portfolioItem.name}</div>
+                    
+                    <a className='delete-icon' onClick={() => props.handleDeleteClick(portfolioItem)}>
+                        <FontAwesomeIcon icon='trash' />
+                    </a>
+                </div>
+            </div>
+        )
+    });
+
+    // ...
+}
+
+// ...
+```
+
+<br/>
+
+Hemos cambiado también el `h1` por un `div` para darle el tamaño que queramos y hemos agrupado en un solo `div` los *elementos de texto*. Ahora, modificamos el estilo:
+
+```scss
+// _portfolio-sidebar.scss
+
+// ...
+
+.portfolio-sidebar-list-wrapper {
+    .portfolio-item-thumb {
+        // ...
+
+        // nueva clase: agrupa elementos de texto
+        .text-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            // title movido dentro de text-content
+            .title {
+                color: variables.$offwhite;
+                font-size: 1.5em;
+            }
+
+            .delete-icon {
+                cursor: pointer;
+                color: variables.$offwhite;
+                font-size: 1.5em;
+                transition: all 0.5s ease-in-out;
+
+                &:hover, &:focus {
+                    outline: none;
+                    color: variables.$warning;
+                }
+            }
+        }
+    }
+}
+```
