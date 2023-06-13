@@ -1,4 +1,4 @@
-# Mostrar los PortfolioItems nuevos
+# Terminar la funcionalidad del formulario
 
 <div id="index"></div>
 
@@ -14,7 +14,7 @@
 <br/>
 
 
-[<< SELECTORES Y TEXTAREAS](./28_selectores_y_textareas.md#selectores-y-textareas) | [HOME](../../../README.md#devcamp)
+[<< SELECTORES Y TEXTAREAS](./28_selectores_y_textareas.md#selectores-y-textareas) | [HOME](../../../README.md#devcamp) | [ESTILAR LOS FORMULARIOS >>](./30_estilar_los_formularios.md#dar-estilo-a-los-formularios)
 
 
 <br/><hr/>
@@ -635,3 +635,10 @@ export default class PortfolioForm extends Component {
 En primer lugar, eliminamos los datos del estado del componente, haciendo que el estado vuelva a sus valores iniciales. Después, utilizando las referencias que hemos creado, eliminamos los archivos de los componentes `DropzoneComponent`.
 
 Es necesario usar las referencias para modificar los componentes `DropzoneComponent` porque, al ser componentes externos, y trabajar con un DOM virtual, no tenemos acceso a ellos de forma directa.
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+[<< SELECTORES Y TEXTAREAS](./28_selectores_y_textareas.md#selectores-y-textareas) | [HOME](../../../README.md#devcamp) | [ESTILAR LOS FORMULARIOS >>](./30_estilar_los_formularios.md#dar-estilo-a-los-formularios)

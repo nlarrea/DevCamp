@@ -9,7 +9,7 @@
 <br/>
 
 
-[CREAR ITEMS DESDE EL FORM >>](./27_crear_items_desde_form.md#crear-portfolioitems-desde-portfolioform) | [HOME](../../../README.md#devcamp) | [MOSTRAR LOS PORTFOLIO ITEMS NUEVOS EN EL MANAGER >>](./29_mostrar_los_items_nuevos.md#mostrar-los-portfolioitems-nuevos)
+[CREAR ITEMS DESDE EL FORM >>](./27_crear_items_desde_form.md#crear-portfolioitems-desde-portfolioform) | [HOME](../../../README.md#devcamp) | [TERMINAR LA FUNCIONALIDAD DEL FORMULARIO >>](./29_terminar_funcionalidad_formulario.md#terminar-la-funcionalidad-del-formulario)
 
 
 <br/><hr/>
@@ -170,4 +170,4 @@ export default class PortfolioForm extends Component {
 <hr/><br/>
 
 
-[CREAR ITEMS DESDE EL FORM >>](./27_crear_items_desde_form.md#crear-portfolioitems-desde-portfolioform) | [HOME](../../../README.md#devcamp) | [MOSTRAR LOS PORTFOLIO ITEMS NUEVOS EN EL MANAGER >>](./29_mostrar_los_items_nuevos.md#mostrar-los-portfolioitems-nuevos)
+[CREAR ITEMS DESDE EL FORM >>](./27_crear_items_desde_form.md#crear-portfolioitems-desde-portfolioform) | [HOME](../../../README.md#devcamp) | [TERMINAR LA FUNCIONALIDAD DEL FORMULARIO >>](./29_terminar_funcionalidad_formulario.md#terminar-la-funcionalidad-del-formulario)
