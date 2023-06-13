@@ -189,3 +189,111 @@ Hecho esto, debemos implementar dichos estilos en nuestros inputs, para eso, cre
 <br/>
 
 Si volvemos a la página de nuestra aplicación y vemos los inputs, veremos que ya tienen los estilos que hemos definido.
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+<div align='right'>
+    <a href='#index'>Volver arriba</a>
+</div>
+
+
+## Textarea
+
+Queremos que todos los `textarea` de la aplicación (en caso de añadir más, puesto que por ahora solo tenemos uno) sean iguales. Por ello, en este caso, **no vamos a usar ningún `mixin`**.
+
+Crearemos un nuevo archivo llamado `_forms.scss` y lo añadiremos al `main.scss`. A continuación, escribiremos lo siguiente en el nuevo archivo:
+
+```scss
+// _forms.scss
+
+textarea {
+    height: 100px;
+    padding: 10px;
+
+    border: 1px solid variables.$teal;
+    background-color: transparent;
+
+    font-size: 1rem;
+    
+    outline: none;
+}
+```
+
+<br/>
+
+Si volvemos a la página de nuestra aplicación y vemos el `textarea`, veremos que ya tiene los estilos que hemos definido.
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+<div align='right'>
+    <a href='#index'>Volver arriba</a>
+</div>
+
+
+## Select
+
+En este caso, tampoco vamos a usar mixins, sin embargo, añadiremos una clase al `select` para poder darle estilos. Esto lo hacemos para poder personalizar mejor (dando más especificidad) los estilos de los `select` de la aplicación.
+
+Iremos al archivo `portfolio-form.js` y añadiremos la clase `select-element` al `select`:
+
+```js
+// portfolio-form.js
+
+// ...
+
+export default class PortfolioForm extends Component {
+    // ...
+
+    render() {
+        return (
+            <form onSubmit={this.handleSubmit} className='portfolio-form-wrapper'>
+                /* ... */
+                
+                <div>
+                    /* ... */
+                    
+                    <select
+                        /* ... */
+                        className='select-element'
+                    >
+                        /* ... */
+                    </select>
+                </div>
+
+                /* ... */
+            </form>
+        );
+    }
+}
+```
+
+<br/>
+
+Después, en el archivo `_forms.scss`, añadiremos los estilos del `select`:
+
+```scss
+// _forms.scss
+
+.select-element {
+    width: 100%;
+
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background-color: transparent;
+    
+    font-size: 0.8rem;
+    
+    overflow: hidden;
+    outline: none;
+}
+```
+
+<br/>
+
+Si volvemos a la página de nuestra aplicación y vemos el `select`, veremos que ya tiene los estilos que hemos definido.
