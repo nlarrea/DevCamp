@@ -1,0 +1,249 @@
+# Editar PortfolioItems
+
+<div id='index'></div>
+
+* [Crear el handler de editar](#crear-el-handler-de-editar)
+* [Añadir el link de editar](#añadir-el-link-de-editar)
+
+<br/>
+
+
+[<< FONTAWESOME](./32_usar_fontawesome.md#fontawesome) | [HOME](../../../README.md#devcamp)
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+Siguiendo las siglas **CRUD**, hemos realidazo ya las siguientes operaciones:
+
+* **Create**: Crear un nuevo portfolio-item
+* **Read**: Leer todos los portfolio-items
+* **Delete**: Eliminar un portfolio-item
+
+<br/>
+
+Ahora vamos a realizar la operación **Update**, es decir, editar un portfolio-item.
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+<div align='right'>
+    <a href='#index'>Volver arriba</a>
+</div>
+
+
+## Crear el handler de editar
+
+Para poder editar los `PortfolioItems`, vamos a crear un nuevo handler en el componente `PortfolioManager` que se encargue de ello.
+
+```js
+// portfolio-manager.js
+
+// ...
+
+export default class PortfolioManager extends Component {
+    constructor(props) {
+        // ...
+
+        this.state = {
+            // ...
+            portfolioToEdit: {}
+        };
+
+        // ...
+        this.handleEditClick = this.handleEditClick.bind(this);
+    }
+
+    handleEditClick(portfolioItem) {
+        this.setState({
+            portfolioToEdit: portfolioItem
+        });
+    }
+
+    // ...
+
+    render() {
+        return (
+            <div /* ... */>
+                /* ... */
+
+                <div className="right-column">
+                    <PortfolioSidebarList
+                        /* ... */
+                        handleEditClick={this.handleEditClick}
+                    />
+                </div>
+            </div>
+        );
+    }
+}
+```
+
+<br/>
+
+Por ahora, lo que hace el *handler* es editar una nueva propiedad que hemos añadido al estado, llamada `portfolioToEdit`, y le asigna el `portfolioItem` que le pasamos como argumento.
+
+Ahora, pasaremos este *handler* como `prop` al componente `PortfolioSidebarList` para poder utilizarlo en dicho componente, y, al igual que con la opción de eliminar, añadiremos un nuevo link que nos permita editar el `portfolioItem` en cada uno de dichos ítems.
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+<div align='right'>
+    <a href='#index'>Volver arriba</a>
+</div>
+
+
+## Añadir el link de editar
+
+Para crear un link de editar para cada uno de los ítems, debemos acceder al componente `PortfolioSidebarList` y añadirlo de la siguiente manera:
+
+```js
+// portfolio-sidebar-list.js
+
+// ...
+
+const PortfolioSidebarList = (props) => {
+    const portfolioList = props.data.map(portfolioItem => {
+        return (
+            <div /* ... */>
+                /* ... */
+                
+                <div className="text-content">
+                    /* ... */
+
+                    <div className="actions">
+                        <a className="action-icon" onClick={() => props.handleEditClick(portfolioItem)}>
+                            Edit
+                        </a>
+                    
+                        <a className='action-icon' onClick={() => props.handleDeleteClick(portfolioItem)}>
+                            <FontAwesomeIcon icon='trash' />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        );
+    });
+
+    // ...
+}
+
+// ...
+```
+
+<br/>
+
+Hemos creado un nuevo `div` con la clase `actions` para agrupar en él los links de editar y de eliminar los ítems del portfolio.
+
+Hemos cambiado también la clase `delete-icon` por la clase `action-icon` para que ambos links tengan el mismo estilo (*más adelante modificaremos el estilo de dicha clase*).
+
+Si accedemos a la aplicación ahora, veremos el texto `Edit` en cada uno de los ítems del portfolio, y, al hacer click en él, se actualizará la propiedad `portfolioToEdit` del estado de `PortfolioManager` ya que le hemos pasado como argumento al *handler* dicho `PortfolioItem`.
+
+
+<br/><hr/><br/>
+
+
+### Modificar el texto Edit
+
+Ahora que ya tenemos el link de editar y que hemos aprendido a usar **FontAwesome**, vamos a sustituir el texto por un icono.
+
+Lo primero que debemos hacer es escoger un icono e importarlo en `app.js`:
+
+```js
+// app.js
+
+// ...
+import { faTrash, faSignOutAlt, faEdit } from '@fortawesome/free-solid-svg-icons';
+
+// ...
+
+library.add(faTrash, faSignOutAlt, faEdit);
+
+// ...
+```
+
+<br/>
+
+Hecho esto, volveremos al archivo `portfolio-sidebar-list.js` y sustituiremos el texto `Edit` por el icono que acabamos de importar:
+
+```js
+// portfolio-sidebar-list.js
+
+// ...
+
+const PortfolioSidebarList = (props) => {
+    const portfolioList = props.data.map(portfolioItem => {
+        return (
+            <div /* ... */>
+                /* ... */
+                
+                <div className="text-content">
+                    /* ... */
+
+                    <div className="actions">
+                        <a className="action-icon" onClick={() => props.handleEditClick(portfolioItem)}>
+                            <FontAwesomeIcon icon='edit' />
+                        </a>
+                    
+                        /* ... */
+                    </div>
+                </div>
+            </div>
+        );
+    });
+
+    // ...
+}
+
+// ...
+```
+
+<br/>
+
+Ahora, veremos que tenemos el icono deseado en la aplicación.
+
+
+<br/><hr/><br/>
+
+
+### Modificar el estilo de los iconos
+
+Hemos mencionado antes que se ha cambiado el nombre de la clase `delete-icon`, por lo que debemos modificar ciertos estilos para mantener el estilo del icono eliminar, y para que el nuevo icono también tenga el mismo estilo.
+
+Para conseguirlo, realizaremos los siguientes cambios:
+
+```scss
+// _portfolio-sidebar.scss
+
+// ...
+
+.portfolio-sidebar-list-wrapper {
+    // ...
+
+    .text-content {
+        // ...
+
+        .actions {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+
+            .action-icon {
+                cursor: pointer;
+                color: variables.$offwhite;
+                font-size: 1.5em;
+                transition: 0.5s ease-in-out;
+
+                &:hover {
+                    color: variables.$warning;
+                }
+            }
+        }
+    }
+}
+```

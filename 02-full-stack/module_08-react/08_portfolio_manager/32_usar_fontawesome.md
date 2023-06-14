@@ -12,7 +12,7 @@
 <br/>
 
 
-[<< ELIMINAR PORTFOLIO-ITEMS](./31_eliminar_portfolio_items.md#eliminar-portfolioitems) | [HOME](../../../README.md#devcamp)
+[<< ELIMINAR PORTFOLIO-ITEMS](./31_eliminar_portfolio_items.md#eliminar-portfolioitems) | [HOME](../../../README.md#devcamp) | [EDITAR PORTFOLIO-ITEMS >>](./33_editar_portfolio_items.md#editar-portfolioitems)
 
 
 <br/><hr/>
@@ -301,3 +301,10 @@ Habiendo añadido ya el icono encargado de cerrar sesión, vamos a darle ciertos
     // ...
 }
 ```
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+[<< ELIMINAR PORTFOLIO-ITEMS](./31_eliminar_portfolio_items.md#eliminar-portfolioitems) | [HOME](../../../README.md#devcamp) | [EDITAR PORTFOLIO-ITEMS >>](./33_editar_portfolio_items.md#editar-portfolioitems)
