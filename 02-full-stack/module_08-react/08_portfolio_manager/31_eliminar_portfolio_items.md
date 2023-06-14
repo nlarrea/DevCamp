@@ -10,7 +10,7 @@
 <br/>
 
 
-[<< ESTILAR LOS FORMULARIOS](./30_estilar_los_formularios.md#dar-estilo-a-los-formularios) | [HOME](../../../README.md#devcamp) | [FONTAWESOME >>](./32_fontawesome.md#fontawesome)
+[<< ESTILAR LOS FORMULARIOS](./30_estilar_los_formularios.md#dar-estilo-a-los-formularios) | [HOME](../../../README.md#devcamp) | [FONTAWESOME >>](./32_usar_fontawesome.md#fontawesome)
 
 
 <br/><hr/>
@@ -188,4 +188,4 @@ De esta forma, el `portfolioItem` que hemos eliminado no se mostrará en el `sid
 <hr/><br/>
 
 
-[<< ESTILAR LOS FORMULARIOS](./30_estilar_los_formularios.md#dar-estilo-a-los-formularios) | [HOME](../../../README.md#devcamp) | [FONTAWESOME >>](./32_fontawesome.md#fontawesome)
+[<< ESTILAR LOS FORMULARIOS](./30_estilar_los_formularios.md#dar-estilo-a-los-formularios) | [HOME](../../../README.md#devcamp) | [FONTAWESOME >>](./32_usar_fontawesome.md#fontawesome)
