@@ -4,6 +4,9 @@
 
 * [Crear el handler de editar](#crear-el-handler-de-editar)
 * [Añadir el link de editar](#añadir-el-link-de-editar)
+    * [Modificar el texto Edit](#modificar-el-texto-edit)
+    * [Modificar el estilo de los iconos](#modificar-el-estilo-de-los-iconos)
+* [Actualizar el formulario](#actualizar-el-formulario)
 
 <br/>
 
@@ -247,3 +250,112 @@ Para conseguirlo, realizaremos los siguientes cambios:
     }
 }
 ```
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+<div align='right'>
+    <a href='#index'>Volver arriba</a>
+</div>
+
+
+## Actualizar el formulario
+
+Ahora que ya tenemos el `PortfolioItem` que queremos editar, debemos actualizar el formulario para que rellene con los datos de dicho `PortfolioItem` y nos permita editarlos.
+
+Para ello, hay que crear una conexión entre el `PortfolioManager`, que es donde tenemos los datos del ítem a editar, y el `PortfolioForm`, que es donde tenemos el formulario.
+
+En primer lugar, crearemos un método para devolver al valor inicial el `portfolioToEdir`, y pasaremos como `props` tanto el método como el `portfolioToEdit` al componente `PortfolioForm`:
+
+```js
+// portfolio-manager.js
+
+// ...
+
+export default class PortfolioManager extends Component {
+    constructor(props) {
+        // ...
+        
+        this.clearPortfolioToEdit = this.clearPortfolioToEdit.bind(this);
+    }
+
+    clearPortfolioToEdit() {
+        this.setState({
+            portfolioToEdit: {}
+        });
+    }
+
+    // ...
+
+    render() {
+        return (
+            <div className='portfolio-manager-wrapper'>
+                /* <div className="left-column">
+                    <PortfolioForm
+                        /* ... */
+                        clearPortfolioToEdit={this.clearPortfolioToEdit}
+                        portfolioToEdit={this.state.portfolioToEdit}
+                    />
+                </div> */
+
+                /* ... */
+            </div>
+        );
+    }
+}
+```
+
+<br/>
+
+Hecho esto, modificaremos el archivo `portfolio-form.js` para que, si existe un `portfolioToEdit`, rellene el formulario con los datos de dicho `PortfolioItem`:
+
+```js
+// portfolio-form.js
+
+// ...
+
+export default class PortfolioForm extends Component {
+    // ...
+
+    componentDidUpdate() {
+        if (Object.keys(this.props.portfolioToEdit).length > 0) {
+            const { 
+                id,
+                name,
+                description,
+                category,
+                position,
+                url,
+                thumb_image,
+                banner_image,
+                logo
+             } = this.props.portfolioToEdit;
+
+             this.props.clearPortfolioToEdit();
+
+             this.setState({
+                id,
+                name: name || '',
+                description: description || '',
+                category: category || 'eCommerce',
+                position: position || '',
+                url: url || '',
+             });
+        }
+    }
+
+    // ...
+}
+```
+
+<br/>
+
+El método `componentDidUpdate()` se ejecuta cada vez que se actualiza algo en el formulario, por ello, introducimos una sentencia `if` para comprobar si se ha indicado que debe editarse o no un `PortfolioItem` (o simplemente se está rellenando el formulario para crear un ítem nuevo).
+
+Lo que hace este código es que, si existe un `portfolioToEdit` (*es decir, se ha clicado en el icono de editar*), en primer lugar, almacena los valores en constantes haciendo uso de la propiedad de JS de deconstruir objetos, y se limpia el `portfolioToEdit` para que no siga entrando en el `if`.
+
+Después, se actualiza el estado del formulario con los valores del `PortfolioItem` que se quiere editar. En caso de no tener algún valor asignado, se asigna un valor por defecto.
+
+Como el estado se actualiza, los componentes del formulario actualizan sus valores, y, por tanto, se rellenan dichos campos con los valores del `PortfolioItem`.
