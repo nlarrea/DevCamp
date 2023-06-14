@@ -7,6 +7,7 @@
 * [Sustituir el texto por iconos](#sustituir-el-texto-por-iconos)
     * [Texto Delete](#texto-delete)
     * [Estilar el icono delete](#estilar-el-icono-delete)
+    * [Texto Sign Out](#texto-sign-out)
 
 <br/>
 
@@ -219,5 +220,84 @@ Hemos cambiado también el `h1` por un `div` para darle el tamaño que queramos 
             }
         }
     }
+}
+```
+
+
+<br/><hr/><br/>
+
+
+### Texto Sign Out
+
+El otro link que tenemos que modificar es el que se encuentra en el *navbar* de la aplicación, dentro del archivo `navigation-container.js`.
+
+Vamos a acceder a dicho archivo y a realizar los siguientes cambios:
+
+```js
+// navigation-container.js
+
+// ...
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+const NavigationComponent = (props) => {
+    // ...
+
+    return (
+        <div /* ... */>
+            /* ... */
+
+            <div className="right-side">
+                NAIA LARREA
+
+                {props.loggedInStatus === 'LOGGED_IN' ?
+                    <a onClick={handleSignOut}>
+                        <FontAwesomeIcon icon='sign-out-alt' />
+                    </a> :
+                    null
+                }
+            </div>
+        </div>
+    );
+}
+
+// ...
+```
+
+<br/>
+
+Vemos que, en este caso, para añadir el icono hemos tenido que escribir el nombre del icono de una forma diferente. Esto se debe a que, a pesar de haber añadido el icono a la librería como `faSignOutAlt`, el nombre del icono es `sign-out-alt` (*esto puede comprobarse en la página de [FontAwesome](https://fontawesome.com/icons)).
+
+Ahora, deberíamos ver el icono en la aplicación, siempre que estemos *loggeados*.
+
+
+<br/><hr/><br/>
+
+
+### Estilar el icono sign out
+
+Habiendo añadido ya el icono encargado de cerrar sesión, vamos a darle ciertos estilos:
+
+```scss
+// _navigation.scss
+
+// ...
+
+.nav-wrapper {
+    // ...
+
+    .right-side {
+        a {
+            margin-left: 15px;
+            cursor: pointer;
+            color: variables.$teal;
+            transition: 0.5s ease-in-out;
+
+            &:hover {
+                color: variables.$dark-teal;
+            }
+        }
+    }
+
+    // ...
 }
 ```
