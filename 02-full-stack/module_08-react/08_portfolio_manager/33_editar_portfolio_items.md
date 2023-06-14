@@ -7,6 +7,7 @@
     * [Modificar el texto Edit](#modificar-el-texto-edit)
     * [Modificar el estilo de los iconos](#modificar-el-estilo-de-los-iconos)
 * [Actualizar el formulario](#actualizar-el-formulario)
+* [Actualizar los datos de la API](#actualizar-los-datos-de-la-api)
 
 <br/>
 
@@ -359,3 +360,93 @@ Lo que hace este código es que, si existe un `portfolioToEdit` (*es decir, se h
 Después, se actualiza el estado del formulario con los valores del `PortfolioItem` que se quiere editar. En caso de no tener algún valor asignado, se asigna un valor por defecto.
 
 Como el estado se actualiza, los componentes del formulario actualizan sus valores, y, por tanto, se rellenan dichos campos con los valores del `PortfolioItem`.
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+<div align='right'>
+    <a href='#index'>Volver arriba</a>
+</div>
+
+
+## Actualizar los datos de la API
+
+Si clicamos en **editar** y después de modificar algún dato clicamos en el botón **Save**, veremos que en lugar de actualizar los datos del ítem, se crea uno nuevo.
+
+Para evitar esto, debemos modificar el método `handleSubmit()` del componente `PortfolioForm` para que, en lugar de hacer un `POST` a la API, haga un `PATCH`. Además, habría que modificar el link de la API para que haga referencia al ítem que se quiere editar.
+
+He aquí el código:
+
+```js
+// portfolio-form.js
+
+// ...
+
+export default class PortfolioForm extends Component {
+    constructor(props) {
+        // ...
+
+        this.state = {
+            // ...
+            /* axios config */
+            editMode: false,
+            apiUrl: 'https://nlarrea.devcamp.space/portfolio/portfolio_items',
+            apiAction: 'post'
+        }
+
+        // ...
+    }
+
+    componentDidUpdate() {
+        if (Object.keys(this.props.portfolioToEdit).length > 0) {
+            // ...
+
+            this.setState({
+                // ...
+                /* axios config */
+                editMode: true,
+                apiUrl: `https://nlarrea.devcamp.space/portfolio/portfolio_items/${id}`,
+                apiAction: 'patch'
+            });
+
+            // ...
+        }
+    }
+
+    // ...
+
+    handleSubmit() {
+        axios({
+            method: this.state.apiAction,
+            url: this.state.apiUrl,
+            data: this.buildForm(),
+            withCredentials: true
+        }).then(/* ... */)
+        .catch(/* ... */);
+
+        // ...
+    }
+
+    // ...
+}
+```
+
+<br/>
+
+En primer lugar, se han añadido nuevas propiedades al estado:
+
+* **editMode**: indica si se desea editar un ítem o no (*lo utilizaremos más adelante*).
+* **apiUrl**: indica la URL de la API a la que se hará la petición.
+* **apiAction**: indica el tipo de petición que se hará a la API.
+
+<br/>
+
+Los valores por defecto de dichas propiedades indican que se debe crear un nuevo ítem.
+
+Por ello, en el método `componentDidUpdate()`, se ha añadido el código para actualizar dichas propiedades para indicar que sí se quiere editar el ítem, indicando la nueva url y el tipo de petición.
+
+En el caso de la `apiUrl`, se ha añadido el `id` del `PortfolioItem` que se quiere editar de forma dinámica.
+
+Por último, en el método `handleSubmit()`, se ha realizado la configuración necesaria para poder modificar el tipo de petición y la url de forma dinámica, y así poder hacer un `PATCH` en lugar de un `POST` sin tener que crear un nuevo *handler* repitiendo gran parte del código.
