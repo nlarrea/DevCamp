@@ -8,6 +8,7 @@
     * [Modificar el estilo de los iconos](#modificar-el-estilo-de-los-iconos)
 * [Actualizar el formulario](#actualizar-el-formulario)
 * [Actualizar los datos de la API](#actualizar-los-datos-de-la-api)
+* [Actualizar el Sidebar](#actualizar-el-sidebar)
 
 <br/>
 
@@ -450,3 +451,111 @@ Por ello, en el método `componentDidUpdate()`, se ha añadido el código para a
 En el caso de la `apiUrl`, se ha añadido el `id` del `PortfolioItem` que se quiere editar de forma dinámica.
 
 Por último, en el método `handleSubmit()`, se ha realizado la configuración necesaria para poder modificar el tipo de petición y la url de forma dinámica, y así poder hacer un `PATCH` en lugar de un `POST` sin tener que crear un nuevo *handler* repitiendo gran parte del código.
+
+
+<br/><hr/>
+<hr/><br>
+
+
+## Actualizar el Sidebar
+
+Por ahora, hemos conseguido actualizar la API con los datos editados en lugar de crear un nuevo ítem, pero en el `Sidebar` se crea uno nuevo, hasta que se recarga la página, que entonces vemos que se ha actualizado el ítem.
+
+Para evitar que se añada un nuevo `PortfolioItem` cada vez que se edita uno, debemos modificar el método `handleSubmit()` del `portfolio-form.js`. En primer lugar, abriremos el archivo `portfolio-manager.js` para realizar las siguientes operaciones:
+
+* Modificar el nombre del método `handleSuccessfulFormSubmission()` por `handleNewFormSubmission()`.
+* Crear el método `handleEditFormSubmission()`.
+
+```js
+// portfolio-manager.js
+
+// ...
+
+export default class PortfolioManager extends Component {
+    constructor(props) {
+        // ...
+
+        this.handleNewFormSubmission = this.handleNewFormSubmission.bind(this);
+        this.handleEditFormSubmission = this.handleEditFormSubmission.bind(this);
+        // ...
+    }
+
+    // ...
+
+    handleEditFormSubmission() {
+        this.getPortfolioItems();
+    }
+
+    handleNewFormSubmission(portfolioItem) {
+        // this.setState({
+        //     portfolioItems: [portfolioItem].concat(this.state.portfolioItems)
+        // });
+    }
+
+    // ...
+
+    render() {
+        return (
+            <div className='portfolio-manager-wrapper'>
+                <div className="left-column">
+                    <PortfolioForm
+                        handleEditFormSubmission={this.handleEditFormSubmission}
+                        handleNewFormSubmission={this.handleNewFormSubmission}
+                        /* ... */
+                    />
+                </div>
+
+                /* ... */
+            </div>
+        );
+    }
+}
+```
+
+<br/>
+
+El nuevo método solo debe llamar al método `getPortfolioItems()` para que se actualice el estado del componente `PortfolioManager` y, por tanto, se actualice el `Sidebar`. El método que ya teníamos, añadía un nuevo ítem al estado, por lo que no queremos que se llame cuando se edita un `PortfolioItem`.
+
+Ahora, vamos al componente hijo, `PortfolioForm`, para modificar el método `handleSubmit()`:
+
+```js
+// portfolio-form.js
+
+// ...
+
+export default class PortfolioForm extends Component {
+    // ...
+
+    handleSubmit(event) {
+        axios({/* ... */})
+        .then(response => {
+            // send data to the API
+            if (this.state.editMode) {
+                this.props.handleEditFormSubmission();
+            } else {
+                this.props.handleNewFormSubmission(response.data.portfolio_item);
+            }
+
+            // remove data from the form when submited
+            this.setState({
+                // ...,
+                editMode: true,
+                apiUrl: `https://nlarrea.devcamp.space/portfolio/portfolio_items/${id}`,
+                apiAction: 'patch'
+            });
+
+            // ...
+        }).catch(error => {
+            console.log('portfolio form handleSubmit error', error);
+        })
+
+        // ...
+    }
+
+    // ...
+}
+```
+
+<br/>
+
+Si editamos algún récord que ya tuvieramos, veremos que ahora el `Sidebar` se actualiza en lugar de añadir un nuevo componente.
