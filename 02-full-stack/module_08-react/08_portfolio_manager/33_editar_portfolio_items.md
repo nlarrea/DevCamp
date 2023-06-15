@@ -10,6 +10,7 @@
 * [Actualizar los datos de la API](#actualizar-los-datos-de-la-api)
 * [Actualizar el Sidebar](#actualizar-el-sidebar)
 * [Actualizar los Dropzones](#actualizar-los-dropzones)
+    * [Mostrar las imágenes](#mostrar-las-imágenes)
 
 <br/>
 
@@ -568,6 +569,8 @@ Si editamos algún récord que ya tuvieramos, veremos que ahora el `Sidebar` se 
 
 ## Actualizar los Dropzones
 
+### Mostrar las imágenes
+
 Si editamos un ítem, veremos que el `Dropzone` no se actualiza, por lo que no se puede editar la imagen que se ha subido anteriormente.
 
 Para solucionar esto, vamos a realizar los siguientes cambios en el componente `PortfolioForm`:
@@ -609,18 +612,19 @@ export default class PortfolioForm extends Component {
 
                 <div className="image-uploaders">
                     {this.state.thumb_image && this.state.editMode ? (
+                        <div className="portfolio-manager-image-wrapper">
                             <img src={this.state.thumb_image} />
-                        ) : (
-                            <DropzoneComponent
-                                ref={this.thumbRef}
-                                config={this.componentConfig()}
-                                djsConfig={this.djsConfig()}
-                                eventHandlers={this.handleThumbDrop()}
-                            >
-                                <div className='dz-message'>Thumbnail</div>
-                            </DropzoneComponent>
-                        )
-                    }
+                        </div>
+                    ) : (
+                        <DropzoneComponent
+                            ref={this.thumbRef}
+                            config={this.componentConfig()}
+                            djsConfig={this.djsConfig()}
+                            eventHandlers={this.handleThumbDrop()}
+                        >
+                            <div className='dz-message'>Thumbnail</div>
+                        </DropzoneComponent>
+                    )}
 
                     /* ... */
                 </div>
@@ -637,3 +641,34 @@ export default class PortfolioForm extends Component {
 Por ahora, hemos modificado únicamente el `DropzoneComponent` del `thumb_image`, después modificaremos el resto de la misma manera.
 
 Lo que se ha hecho es usar un ***operador ternario*** para, en caso de haber imagen y estar en el *modo de edición*, mostrar la imagen que se ha subido anteriormente, y en caso contrario, mostrar el `DropzoneComponent` para poder subir una nueva imagen.
+
+Comprobamos si esto funciona y **repetimos el proceso para el resto de imágenes**.
+
+
+<br/><hr/><br/>
+
+
+### Editar el estilo
+
+Si se ha comprobado el funcionamiento del código introducido en el apartado anterior, se habrá visto que las imágenes ocupan mucho espacio.
+
+Vamos a modificar el estilo de las imágenes para que se vean más pequeñas y centradas en el lugar que ocupaban dichos `DropzoneComponent`:
+
+```scss
+// _portfolio-form.scss
+
+// ...
+
+.portfolio-form-wrapper {
+    // ...
+
+    .portfolio-manager-image-wrapper {
+        img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+    }
+}
+```
