@@ -9,6 +9,7 @@
 * [Actualizar el formulario](#actualizar-el-formulario)
 * [Actualizar los datos de la API](#actualizar-los-datos-de-la-api)
 * [Actualizar el Sidebar](#actualizar-el-sidebar)
+* [Actualizar los Dropzones](#actualizar-los-dropzones)
 
 <br/>
 
@@ -559,3 +560,80 @@ export default class PortfolioForm extends Component {
 <br/>
 
 Si editamos algún récord que ya tuvieramos, veremos que ahora el `Sidebar` se actualiza en lugar de añadir un nuevo componente.
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+## Actualizar los Dropzones
+
+Si editamos un ítem, veremos que el `Dropzone` no se actualiza, por lo que no se puede editar la imagen que se ha subido anteriormente.
+
+Para solucionar esto, vamos a realizar los siguientes cambios en el componente `PortfolioForm`:
+
+```js
+// portfolio-form.js
+
+// ...
+
+export default class PortfolioForm extends Component {
+    // ...
+
+    componentDidUpdate() {
+        if (Object.keys(this.props.portfolioToEdit).length > 0) {
+            const {
+                // ...,
+                thumb_image_url,
+                banner_image_url,
+                logo_url
+            } = this.props.portfolioToEdit;
+
+            // ...
+
+            this.setState({
+                // ...,
+                thumb_image: thumb_image_url || '',
+                banner_image: banner_image_url || '',
+                logo: logo_url || ''
+            });
+        }
+    }
+
+    // ...
+
+    render() {
+        return (
+            <form /* ... */>
+                /* ... */
+
+                <div className="image-uploaders">
+                    {this.state.thumb_image && this.state.editMode ? (
+                            <img src={this.state.thumb_image} />
+                        ) : (
+                            <DropzoneComponent
+                                ref={this.thumbRef}
+                                config={this.componentConfig()}
+                                djsConfig={this.djsConfig()}
+                                eventHandlers={this.handleThumbDrop()}
+                            >
+                                <div className='dz-message'>Thumbnail</div>
+                            </DropzoneComponent>
+                        )
+                    }
+
+                    /* ... */
+                </div>
+
+                /* ... */
+            </form>
+        )
+    }
+}
+```
+
+<br/>
+
+Por ahora, hemos modificado únicamente el `DropzoneComponent` del `thumb_image`, después modificaremos el resto de la misma manera.
+
+Lo que se ha hecho es usar un ***operador ternario*** para, en caso de haber imagen y estar en el *modo de edición*, mostrar la imagen que se ha subido anteriormente, y en caso contrario, mostrar el `DropzoneComponent` para poder subir una nueva imagen.
