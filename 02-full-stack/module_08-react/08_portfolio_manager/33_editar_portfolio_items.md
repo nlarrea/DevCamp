@@ -11,6 +11,7 @@
 * [Actualizar el Sidebar](#actualizar-el-sidebar)
 * [Actualizar los Dropzones](#actualizar-los-dropzones)
     * [Mostrar las imágenes](#mostrar-las-imágenes)
+    * [Eliminar las imágenes](#eliminar-las-imágenes)
 
 <br/>
 
@@ -668,6 +669,125 @@ Vamos a modificar el estilo de las imágenes para que se vean más pequeñas y c
             height: 120px;
             object-fit: cover;
             border-radius: 5px;
+        }
+    }
+}
+```
+
+
+<br/><hr/><br/>
+
+
+### Eliminar imágenes
+
+Vamos a realizar el proceso para, en caso de querer editar alguno de los ítems, poder eliminar las imágenes que se han subido anteriormente (*ya sea para subir una nueva o para no tener ninguna*).
+
+Vamos a partir del archivo `portfolio-form.js`:
+
+```js
+// portfolio-form.js
+
+// ...
+
+export default class PortfolioForm extends Component {
+    constructor(props) {
+        // ...
+
+        this.deleteImage = this.deleteImage.bind(this);
+
+        // ...
+    }
+
+    deleteImage(imageType) {
+        // por ahora, solo mostraremos qué imagen se quiere eliminar
+        console.log('deleteImage', imageType);
+    }
+
+    // ...
+
+    render() {
+        return (
+            <form onSubmit={this.handleSubmit} className='portfolio-form-wrapper'>
+                /* ... */
+
+                <div className="image-uploaders">
+                    {this.state.thumb_image && this.state.editMode ? (
+                        <div className="portfolio-manager-image-wrapper">
+                            /* ... */
+
+                            <div className="image-removal-link">
+                                <a onClick={() => this.deleteImage('thumb_image')}>
+                                    Remove File
+                                </a>
+                            </div>
+                        </div>
+                    ) : (
+                        /* DropzoneComponent del thumb */
+                    )}
+
+                    {this.state.banner_image && this.state.editMode ? (
+                        <div className="portfolio-manager-image-wrapper">
+                            /* ... */
+
+                            <div className="image-removal-link">
+                                <a onClick={() => this.deleteImage('banner_image')}>
+                                    Remove File
+                                </a>
+                            </div>
+                        </div>
+                    ) : (
+                        /* DropzoneComponent del banner */
+                    )}
+
+                    {this.state.logo && this.state.editMode ? (
+                        <div className="portfolio-manager-image-wrapper">
+                            /* ... */
+
+                            <div className="image-removal-link">
+                                <a onClick={() => this.deleteImage('logo')}>
+                                    Remove File
+                                </a>
+                            </div>
+                        </div>
+                    ) : (
+                        /* DropzoneComponent del logo */
+                    )}
+                </div>
+
+                /* ... */
+            </form>
+        );
+    }
+}
+```
+
+<br/>
+
+Para comprobar que está funcionando, basta con ir al apartado de `Portfolio Manager` y editar alguno de los ítems, y ver que al pulsar en `Remove File` se muestra por consola el nombre de la imagen que se quiere eliminar.
+
+Teniendo esto, vamos a abrir el archivo `portfolio-form.scss` y vamos a modificar el estilo de los enlaces que acabamos de añadir para alertar a los usuarios de que se van a eliminar las imágenes:
+
+```scss
+// _portfolio-form.scss
+
+@use './variables' as var;
+/* ... */
+
+.portfolio-form-wrapper {
+    /* ... */
+
+    .portfolio-manager-image-wrapper {
+        /* ... */
+
+        .image-removal-link {
+            display: flex;
+            justify-content: center;
+
+            a {
+                cursor: pointer;
+                color: var.$warning;
+                font-weight: 700;
+            }
         }
     }
 }
