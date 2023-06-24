@@ -792,3 +792,65 @@ Teniendo esto, vamos a abrir el archivo `portfolio-form.scss` y vamos a modifica
     }
 }
 ```
+
+<br/>
+
+Llegados a este punto y antes de continuar, vamos a solucionar un pequeño progblema que se ha generado con las imágenes. Y es que si tratamos de editar un ítem que no tiene imágenes, y añadimos una, veremos que la imagen no se muestra correctamente.
+
+Para solucionar esto, vamos a realizar las siguientes modificaciones en el archivo `portfolio-form.js`:
+
+```js
+// portfolio-form.js
+
+// ...
+
+export default class PortfolioForm extends Component {
+    // ...
+
+    componentDidUpdate() {
+        if (Object.keys(this.props.portfolioToEdit).length > 0) {
+            // ...
+
+             this.setState({
+                // ...
+                // modify the names
+                thumb_image_url: thumb_image_url || '',
+                banner_image_url: banner_image_url || '',
+                logo_url: logo_url || ''
+             });
+        }
+    }
+
+    // ...
+
+    render() {
+        return (
+            <form onSubmit={this.handleSubmit} className='portfolio-form-wrapper'>
+                /* ... */
+
+                <div className="image-uploaders">
+                    {this.state.thumb_image_url && this.state.editMode ? (
+                        /* ... */
+                    ) : (
+                        /* ... */
+                    )}
+
+                    {this.state.banner_image_url && this.state.editMode ? (
+                        /* ... */
+                    ) : (
+                        /* ... */
+                    )}
+
+                    {this.state.logo_url && this.state.editMode ? (
+                        /* ... */
+                    ) : (
+                        /* ... */
+                    )}
+                </div>
+
+                /* ... */
+            </form>
+        )
+    }
+}
+```
