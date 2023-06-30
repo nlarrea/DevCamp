@@ -16,7 +16,7 @@
 <br/>
 
 
-[<< FONTAWESOME](./32_usar_fontawesome.md#fontawesome) | [HOME](../../../README.md#devcamp)
+[<< FONTAWESOME](./32_usar_fontawesome.md#fontawesome) | [HOME](../../../README.md#devcamp) | [CREAR EL BLOG >>](../09_blog/34_crear_el_blog.md#crear-el-blog)
 
 
 <br/><hr/>
@@ -880,3 +880,11 @@ export default class PortfolioForm extends Component {
         });
     }
 }
+```
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+[<< FONTAWESOME](./32_usar_fontawesome.md#fontawesome) | [HOME](../../../README.md#devcamp) | [CREAR EL BLOG >>](../09_blog/34_crear_el_blog.md#crear-el-blog)
