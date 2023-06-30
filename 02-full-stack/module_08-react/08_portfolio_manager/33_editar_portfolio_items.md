@@ -272,7 +272,7 @@ Ahora que ya tenemos el `PortfolioItem` que queremos editar, debemos actualizar 
 
 Para ello, hay que crear una conexión entre el `PortfolioManager`, que es donde tenemos los datos del ítem a editar, y el `PortfolioForm`, que es donde tenemos el formulario.
 
-En primer lugar, crearemos un método para devolver al valor inicial el `portfolioToEdir`, y pasaremos como `props` tanto el método como el `portfolioToEdit` al componente `PortfolioForm`:
+En primer lugar, crearemos un método para devolver al valor inicial el `portfolioToEdit`, y pasaremos como `props` tanto el método como el `portfolioToEdit` al componente `PortfolioForm`:
 
 ```js
 // portfolio-manager.js
@@ -854,3 +854,29 @@ export default class PortfolioForm extends Component {
     }
 }
 ```
+
+<br/>
+
+Finalmente, vamos a modificar el método `deleteImage()` para que, en lugar de mostrar por consola el nombre de la imagen que se quiere eliminar, se elimine la propia imagen:
+
+```js
+// portfolio-form.js
+
+// ...
+
+export default class PortfolioForm extends Component {
+    // ...
+
+    deleteImage(imageType) {
+        axios.delete(
+            `https://api/.devcamp.space/portfolio/delete-portfolio-image/${this.state.id}?image_type=${imageType}`,
+            { withCredentials: true }
+        ).then(response => {
+            this.setState({
+                [`${imageType}_url`]: ''
+            });
+        }).catch(error => {
+            console.log('deleteImage error', error);
+        });
+    }
+}
