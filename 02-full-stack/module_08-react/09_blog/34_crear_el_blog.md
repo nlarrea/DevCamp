@@ -4,6 +4,7 @@
 
 * [Cambiar el componente funcional a uno basado en clase](#cambiar-el-componente-funcional-a-uno-basado-en-clase)
 * [Crear y obtener datos de la API](#crear-y-obtener-datos-de-la-api)
+* [Mostrar los datos de los blogs](#mostrar-los-datos-de-los-blogs)
 
 <br/>
 
@@ -133,3 +134,40 @@ export default class Blog extends Component {
 <br/>
 
 Para comprobar si se ha modificado o no el estado de la app, podemos hacer uso de la extensión de Chrome `React Developer Tools`. Si abrimos la pestaña de `Components` y buscamos nuestro componente, podremos ver que el estado ha sido modificado correctamente.
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+## Mostrar los datos de los blogs
+
+Ahora que sabemos que recibimos los datos de los blogs creados, vamos a mostrarlos en la aplicación. En primer lugar, vamos a crear una nueva constante dentro de la función `render()` que contenga una lista de los blogs formateados para mostrar lo que queramos de ellos.
+
+Comenzaremos mostrando el título y comprobando que el código es correcto:
+
+```js
+// blog.js
+
+// ...
+
+export default class Blog extends Component {
+    // ...
+
+    render() {
+        const blogRecords = this.state.blogItems.map(blogItem => {
+            return <h1>{blogItem.title}</h1>;
+        });
+
+        return (
+            <div>
+                {blogRecords}
+            </div>
+        );
+    }
+}
+```
+
+<br/>
+
+Si abrimos la aplicación, veremos que se muestran los títulos de los blogs que hemos creado.
