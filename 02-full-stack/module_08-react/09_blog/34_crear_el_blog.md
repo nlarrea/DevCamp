@@ -4,7 +4,8 @@
 
 * [Cambiar el componente funcional a uno basado en clase](#cambiar-el-componente-funcional-a-uno-basado-en-clase)
 * [Crear y obtener datos de la API](#crear-y-obtener-datos-de-la-api)
-* [Mostrar los datos de los blogs](#mostrar-los-datos-de-los-blogs)
+    * [Mostrar los datos de los blogs](#mostrar-los-datos-de-los-blogs)
+* [Crear el componente BlogDetail](#crear-el-componente-blogdetail)
 
 <br/>
 
@@ -136,11 +137,10 @@ export default class Blog extends Component {
 Para comprobar si se ha modificado o no el estado de la app, podemos hacer uso de la extensión de Chrome `React Developer Tools`. Si abrimos la pestaña de `Components` y buscamos nuestro componente, podremos ver que el estado ha sido modificado correctamente.
 
 
-<br/><hr/>
-<hr/><br/>
+<br/><hr/><br/>
 
 
-## Mostrar los datos de los blogs
+### Mostrar los datos de los blogs
 
 Ahora que sabemos que recibimos los datos de los blogs creados, vamos a mostrarlos en la aplicación. En primer lugar, vamos a crear una nueva constante dentro de la función `render()` que contenga una lista de los blogs formateados para mostrar lo que queramos de ellos.
 
@@ -231,3 +231,106 @@ const BlogItem = props => {
 <br/>
 
 Accediendo a la app, veremos que debería mostrarse el título y el contenido de cada blog.
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+<div>
+    <a href='#index'>Volver arriba</a>
+</div>
+
+
+## Crear el componente BlogDetail
+
+Vamos a crear un nuevo componente llamado `BlogDetail` para que podamos clicar en el título de cada `BlogItem` y nos muestre el contenido completo de dicho blog.
+
+Para esto, primero deberemos crear la ruta a dicho componente en el archivo `app.js`:
+
+```js
+// app.js
+
+// ...
+
+// import Blog from ...;
+import BlogDetail from './pages/blog-detail';
+// ...
+
+export default class App extends Component {
+    // ...
+
+    render() {
+        return (
+            <div className="container">
+                <Router>
+                    <div>
+                        /* ... */
+
+                        <Switch>
+                            /* ... */
+                            /* <Route path="/blog" ... /> */
+                            <Route path="/b/:slug" component={BlogDetail}/>
+
+                            /* ... */
+                        </Switch>
+                    </div>
+                </Router>
+            </div>
+        );
+    }
+}
+```
+
+<br/>
+
+Lo que hace el código anterior es crear una ruta que contenga la palabra `b` seguida de un `slug` que será el identificador de cada blog. El `slug` es un identificador único que se crea automáticamente para cada blog, donde aprovecharemos el ID que se genera en la API al crear cada uno de los blogs.
+
+Una vez creada la ruta, vamos a crear el componente `BlogDetail`, de tal forma que simplemente muestre un texto para que podamos comprobar que funciona:
+
+```js
+// blog-detail.js
+
+import React, { Component } from 'react';
+
+export default class BlogDetail extends Component {
+    render() {
+        return (
+            <div>
+                <h1>Blog detail</h1>
+            </div>
+        );
+    }
+}
+```
+
+<br/>
+
+Finalmente, volveremos al archivo `blog-item.js` y editaremos el código para añadir el enlace que nos permita acceder al detalle de cada blog:
+
+```js
+// blog-item.js
+
+// ...
+import { Link } from 'react-router-dom';
+
+const BlogItem = props => {
+    // ...
+
+    return (
+        <div>
+            <Link to={`/b/${id}`}>
+                <h1>{title}</h1>
+            </Link>
+
+            /* ... */
+        </div>
+    );
+};
+
+// ...
+```
+
+<br/>
+
+En este código se puede ver perfectamente cómo la palabra `slug` utilizada al crear la ruta, se sustituye por el ID de cada blog.
