@@ -171,3 +171,63 @@ export default class Blog extends Component {
 <br/>
 
 Si abrimos la aplicación, veremos que se muestran los títulos de los blogs que hemos creado.
+
+A continuación, dado que se va a alargar bastante el contenido de dicha constante, lo que haremos será reorganizar el código, creando así un nuevo componente llamado `blog-item.js`.
+
+Así es como quedaría el código de `blog.js`:
+
+```js
+// blog.js
+
+// ...
+
+import BlogItem from '../blog/blog-item';
+
+export default class Blog extends Component {
+    // ...
+
+    render() {
+        const blogRecords = this.state.blogItems.map(blogItem => {
+            return <BlogItem key={blogItem.id} blogItem={blogItem} />;
+        });
+
+        return (
+            <div>
+                {blogRecords}
+            </div>
+        );
+    }
+}
+```
+
+<br/>
+
+Y en el nuevo componente, en primer lugar mostraremos únicamente el título y el contenido de cada blog:
+
+```js
+// blog-item.js
+
+import React from 'react';
+
+const BlogItem = props => {
+    const {
+        id,
+        title,
+        content,
+        blog_status,
+        featured_image_url
+    } = props.blogItem;
+
+    return (
+        <div>
+            <h1>{title}</h1>
+
+            <div>{content}</div>
+        </div>
+    )
+}
+```
+
+<br/>
+
+Accediendo a la app, veremos que debería mostrarse el título y el contenido de cada blog.
