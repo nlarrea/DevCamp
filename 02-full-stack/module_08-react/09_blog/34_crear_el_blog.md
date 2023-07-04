@@ -442,3 +442,78 @@ export default class BlogDetail extends Component {
 <br/>
 
 Si accedemos a la aplicación, veremos que se muestran los datos del blog actual.
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+<div>
+    <a href='#index'>Volver arriba</a>
+</div>
+
+
+## Estilar el componente BlogDetail
+
+Para estilar este componente, vamos a comenzar añadiendo clases a los elementos que queremos modificar:
+
+```js
+// blog-detail.js
+
+// ...
+
+export default class BlogDetail extends Component {
+    // ...
+
+    render() {
+        // ...
+
+        return (
+            <div className='blog-container'>
+                <div className="content-container">
+                    <h1>{title}</h1>
+
+                    <div className="featured-image-wrapper">
+                        <img src={featured_image_url} alt='featured-image' />
+                    </div>
+                    
+                    <div className='content'>
+                        {content}
+                    </div>
+                </div>
+            </div>
+        );
+    }
+}
+```
+
+<br/>
+
+Hecho esto, vamos a crear el archivo `_blog.scss` dentro de la carpeta `src/style` y tras añadir el archivo al `main.scss`, añadiremos el siguiente código:
+
+```scss
+// _blog.scss
+
+.blog-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .content-container {
+        width: 800px;
+        display: flex;
+        flex-direction: column;
+
+        .featured-image-wrapper {
+            img {
+                width: 100%;
+                height: 350px;
+                margin: 15px 0;
+
+                border-radius: 5px;
+                object-fit: cover;
+            }
+        }
+    }
+}
+```
