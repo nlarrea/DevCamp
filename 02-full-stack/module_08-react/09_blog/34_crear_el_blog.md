@@ -393,3 +393,52 @@ export default class BlogDetail extends Component {
 En primer lugar, hemos obtenido el ID del blog actual. Con él, hacemos uso de `axios` para obtener los datos del blog con ese ID.
 
 Por ahora, solo hacemos un `console.log` para comprobar que se obtienen los datos correctamente. Si abrimos la consola del navegador, veremos que se muestran los datos del blog actual.
+
+Viendo que los datos se han obtenido correctamente, para poder mostrarlos por pantalla, vamos a realizar las siguientes modificaciones:
+
+```js
+// blog-detail.js
+
+// ...
+
+export default class BlogDetail extends Component {
+    // ...
+
+    getBlogItem() {
+        axios.get(/* ... */)
+        .then(response => {
+            this.setState({
+                blogItem: response.data.portfolio_blog
+            });
+        }).catch(error => {
+            // ...
+        });
+    }
+
+    // ...
+
+    render() {
+        const {
+            title,
+            content,
+            blog_status
+            featured_image_url,
+        } = this.state.blogItem;
+
+        return (
+            <div>
+                <h1>{title}</h1>
+                <img src={featured_image_url} alt='featured-image' />
+                
+                <div>
+                    {content}
+                </div>
+            </div>
+        );
+    }
+}
+```
+
+<br/>
+
+Si accedemos a la aplicación, veremos que se muestran los datos del blog actual.
