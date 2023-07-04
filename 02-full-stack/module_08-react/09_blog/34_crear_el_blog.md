@@ -7,6 +7,8 @@
     * [Mostrar los datos de los blogs](#mostrar-los-datos-de-los-blogs)
 * [Crear el componente BlogDetail](#crear-el-componente-blogdetail)
 * [Obtener los datos de cada blog](#obtener-los-datos-de-cada-blog)
+* [Estilar el componente BlogDetail](#estilar-el-componente-blogdetail)
+* [Estilar el index de los blogs](#estilar-el-index-de-los-blogs)
 
 <br/>
 
@@ -514,6 +516,76 @@ Hecho esto, vamos a crear el archivo `_blog.scss` dentro de la carpeta `src/styl
                 object-fit: cover;
             }
         }
+    }
+}
+```
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+<div>
+    <a href='#index'>Volver arriba</a>
+</div>
+
+
+## Estilar el index de los blogs
+
+Vamos a aplicar estilos que acabamos de crear para el componente `BlogDetail` al componente `Blog`. Por ello, lo único que debemos hacer es aplicar las clases creadas en este último componente:
+
+```js
+// blog.js
+
+// ...
+
+export default class Blog extends Component {
+    // ...
+
+    render() {
+        // ...
+
+        return (
+            <div className='blog-container'>
+                <div className="content-container">
+                    {blogRecords}
+                </div>
+            </div>
+        );
+    }
+}
+```
+
+<br/>
+
+Hecho esto, lo que vamos a modificar a continuación, es el link que nos lleva al detalle de cada blog. Para modificarlo, abriremos el archivo `_blog.scss` y añadiremos el siguiente código:
+
+```scss
+// _blog.scss
+
+@use './variables' as var;
+
+.blog-container {
+    // ...
+
+    .content-container {
+        // ...
+
+        a {
+            text-decoration: none;
+            color: var.$teal;
+            transition: all 0.5s ease-in-out;
+
+            &:hover {
+                color: var.$dark-teal;
+            }
+        }
+
+        h1 {
+            font-size: 1.5em;
+        }
+
+        // ...
     }
 }
 ```
