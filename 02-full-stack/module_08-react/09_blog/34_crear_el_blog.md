@@ -6,6 +6,7 @@
 * [Crear y obtener datos de la API](#crear-y-obtener-datos-de-la-api)
     * [Mostrar los datos de los blogs](#mostrar-los-datos-de-los-blogs)
 * [Crear el componente BlogDetail](#crear-el-componente-blogdetail)
+* [Obtener los datos de cada blog](#obtener-los-datos-de-cada-blog)
 
 <br/>
 
@@ -334,3 +335,61 @@ const BlogItem = props => {
 <br/>
 
 En este código se puede ver perfectamente cómo la palabra `slug` utilizada al crear la ruta, se sustituye por el ID de cada blog.
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+<div>
+    <a href='#index'>Volver arriba</a>
+</div>
+
+
+## Obtener los datos de cada blog
+
+Ahora que ya tenemos la ruta creada y el componente `BlogDetail` creado, vamos a obtener los datos de cada blog para mostrarlos en el componente.
+
+Para ello, vamos a crear el constructor de la clase `BlogDetail` para obtener el ID del blog actual usando los `props` pasados directamente gracias al uso de `react-router-dom`, y los datos de dicho blog.
+
+Para ello, vamos a añadir las siguientes líneas de código:
+
+```js
+// blog-detail.js
+
+// ...
+import axios from 'axios';
+
+export default class BlogDetail extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            currentId: this.props.match.params.slug,
+            blogItem: {}
+        };
+    }
+
+    getBlogItem() {
+        axios.get(
+            'https://nlarrea.devcamp.space/portfolio/portfolio_blogs/${this.state.currentId}'
+        ).then(response => {
+            console.log('response', response);
+        }).catch(error => {
+            console.log('getBlogItem error', error);
+        });
+    }
+
+    componentDidMount() {
+        this.getBlogItem();
+    }
+
+    // ...
+}
+```
+
+<br/>
+
+En primer lugar, hemos obtenido el ID del blog actual. Con él, hacemos uso de `axios` para obtener los datos del blog con ese ID.
+
+Por ahora, solo hacemos un `console.log` para comprobar que se obtienen los datos correctamente. Si abrimos la consola del navegador, veremos que se muestran los datos del blog actual.
