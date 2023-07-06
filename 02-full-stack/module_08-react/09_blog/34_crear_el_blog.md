@@ -10,6 +10,8 @@
 * [Estilar el componente BlogDetail](#estilar-el-componente-blogdetail)
 * [Estilar el index de los blogs](#estilar-el-index-de-los-blogs)
 * [Scroll infinito](#scroll-infinito)
+    * [Crear la función para detectar el scroll](#crear-la-función-para-detectar-el-scroll)
+    * [Saber si se ha llegado al final de la página](#saber-si-se-ha-llegado-al-final-de-la-página)
 
 <br/>
 
@@ -607,6 +609,12 @@ En esta sección vamos a ver cómo realizar un *scroll infinito*. Se conoce con 
 
 Esto se hace para evitar que la página se cargue con una cantidad excesiva de elementos, lo que podría ralentizar la carga de la misma.
 
+
+<br/><hr/><br/>
+
+
+### Crear la función para detectar el scroll
+
 En primer lugar, comenzaremos por crear la función encargada detectar el scroll:
 
 ```js
@@ -633,3 +641,46 @@ export default class Blog extends Component {
 <br/>
 
 Si accedemos a la sección de blogs en la aplicación y hacemos scroll en ella, por consola veremos que se imprime el mensaje `onscroll` cada vez que se detecta un scroll.
+
+
+<br/><hr/><br/>
+
+
+### Saber si se ha llegado al final de la página
+
+Existen tres atributos clave para saber si se ha llegado al final de la página:
+
+* `window.innerHeight`: Altura de la ventana actual del navegador.
+* `document.documentElement.scrollTop`: Altura del scroll (*posición vertical*) actual.
+* `document.documentElement.offsetHeight`: Altura total de la página.
+
+<br/>
+
+Para saber si se ha llegado al final de la página, debemos comprobar si la altura del scroll actual más la altura de la ventana actual es igual a la altura total de la página. Para ello, añadiremos el siguiente código a la función `activateInfiniteScroll()`:
+
+```js
+// blog.js
+
+// ...
+
+export default class Blog extends Component {
+    // ...
+
+    activateInfiniteScroll() {
+        window.onscroll = () => {
+            if (
+                window.innerHeight + document.documentElement.scrollTop ===
+                document.documentElement.offsetHeight
+            ) {
+                console.log('get more posts');
+            }
+        }
+    }
+
+    // ...
+}
+```
+
+<br/>
+
+Veremos que si hacemos scroll hasta el final de la página, se imprime el mensaje `get more posts` por consola.
