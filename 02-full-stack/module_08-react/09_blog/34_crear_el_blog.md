@@ -12,6 +12,7 @@
 * [Scroll infinito](#scroll-infinito)
     * [Crear la función para detectar el scroll](#crear-la-función-para-detectar-el-scroll)
     * [Saber si se ha llegado al final de la página](#saber-si-se-ha-llegado-al-final-de-la-página)
+    * [Obtener el total de posts](#obtener-el-total-de-posts)
 
 <br/>
 
@@ -684,3 +685,97 @@ export default class Blog extends Component {
 <br/>
 
 Veremos que si hacemos scroll hasta el final de la página, se imprime el mensaje `get more posts` por consola.
+
+
+<br/><hr/><br/>
+
+
+### Obtener el total de posts
+
+Para saber si se deberán hacer más cargas y evitar mostrar todo el contenido de golpe, vamos a obtener el total de posts que hay en la API. Para ello, vamos a añadir nuevos atributos al estado y añadiremos el siguiente código a la función `getBlogItems()`:
+
+```js
+// blog.js
+
+// ...
+
+export default class Blog extends Component {
+    constructor() {
+        // ...
+
+        this.state = {
+            // ...
+            totalCount: 0,
+            currentPage: 0
+        };
+
+        // ...
+    }
+
+    // ...
+
+    getBlogItems() {
+        this.setState({
+            currentPage: ++this.state.currentPage
+        });
+
+        axios.get(/* ... */)
+        .then(response => {
+            debugger;
+            // ...
+        }).catch(error => {
+            // ...
+        });
+    }
+
+    // ...
+}
+```
+
+<br/>
+
+En primer lugar, añadimos al estado los atributos `totalCount` y `currentPage` para guardar el total de posts y la página actual en la que nos encontramos.
+
+En el método `getBlogItems()` incrementamos en uno el valor de `currentPage` en uno, para que cada vez que se haga una petición a la API, se sume uno a la página actual.
+
+Al acceder a la aplicación, como hemos usado `debugger`, abrimos la terminal y escribimos `response` en ella. Veremos los datos que se obtienen de la API, entre ellos, si accedemos a `data.meta` veremos que hay un atributo llamado `total_records` que nos indica el total de posts que hay en la API. Por lo que guardaremos dicho valor en el estado de la aplicación:
+
+```js
+// blog.js
+
+// ...
+
+export default class Blog extends Component {
+    constructor() {
+        // ...
+
+        this.state = {
+            // ...
+            totalCount: 0,
+            currentPage: 0
+        };
+
+        // ...
+    }
+
+    // ...
+
+    getBlogItems() {
+        this.setState({
+            currentPage: ++this.state.currentPage
+        });
+
+        axios.get(/* ... */)
+        .then(response => {
+            this.setState({
+                // ...
+                totalCount: response.data.meta.total_records
+            });
+        }).catch(error => {
+            // ...
+        });
+    }
+
+    // ...
+}
+```
