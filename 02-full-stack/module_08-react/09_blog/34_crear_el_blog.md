@@ -13,6 +13,7 @@
     * [Crear la función para detectar el scroll](#crear-la-función-para-detectar-el-scroll)
     * [Saber si se ha llegado al final de la página](#saber-si-se-ha-llegado-al-final-de-la-página)
     * [Obtener el total de posts](#obtener-el-total-de-posts)
+    * [Spinner de carga](#spinner-de-carga)
 
 <br/>
 
@@ -779,3 +780,126 @@ export default class Blog extends Component {
     // ...
 }
 ```
+
+
+<br/><hr/><br/>
+
+
+### Spinner de carga
+
+Para saber si se están cargando los posts, vamos a añadir un nuevo atributo al estado llamado `isLoading` y lo modificaremos en la función `getBlogItems()`:
+
+```js
+// blog.js
+
+// ...
+
+export default class Blog extends Component {
+    constructor() {
+        // ...
+
+        this.state = {
+            // ...
+            isLoading: true
+        };
+
+        // ...
+    }
+
+    // ...
+
+    getBlogItems() {
+        // ...
+
+        axios.get(/* ... */)
+        .then(response => {
+            this.setState({
+                // ...
+                isLoading: false
+            });
+        }).catch(error => {
+            // ...
+        });
+    }
+
+    // ...
+}
+```
+
+<br/>
+
+Ahora, añadiremos un icono de FontAwesome con forma de spinner para hacer este efecto de carga.
+
+Primero, importaremos el icono en el archivo `app.js`:
+
+```js
+// app.js
+
+// ...
+import {
+    // ...,
+    faSpinner
+} from '@fortawesome/free-solid-svg-icons';
+// ...
+
+library.add(
+    // ...,
+    faSpinner
+);
+
+// ...
+```
+
+<br/>
+
+Después, añadiremos el icono en el componente `Blog` y haremos uso de un operador ternario para mostrarlo únicamente cuando se estén cargando los posts:
+
+```js
+// blog.js
+
+// ...
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+// ...
+
+export default class Blog extends Component {
+    // ...
+
+    render() {
+        // ...
+
+        return (
+            <div className='blog-container'>
+                /* ... */
+
+                {this.state.isLoading ? (
+                    <div className='content-loader'>
+                        <FontAwesomeIcon icon='spinner' spin />
+                    </div>
+                ) : (null)}
+            </div>
+        );
+    }
+}
+```
+
+<br/>
+
+Finalmente, crearemos el archivo `_loaders.scss` y añadiremos el siguiente código al mismo:
+
+> Recordar que para que el archivo sea leído por la aplicación, debemos importarlo en el archivo `main.scss`.
+
+```scss
+// _loaders.scss
+
+@use './variables' as var;
+
+.content-loader {
+    font-size: 2em;
+    color: var.$teal;
+}
+```
+
+<br/>
+
+Si accedemos a la aplicación, veremos que se muestra el icono de carga cuando se están cargando los posts.
