@@ -9,6 +9,7 @@
 * [Obtener los datos de cada blog](#obtener-los-datos-de-cada-blog)
 * [Estilar el componente BlogDetail](#estilar-el-componente-blogdetail)
 * [Estilar el index de los blogs](#estilar-el-index-de-los-blogs)
+* [Scroll infinito](#scroll-infinito)
 
 <br/>
 
@@ -589,3 +590,46 @@ Hecho esto, lo que vamos a modificar a continuación, es el link que nos lleva a
     }
 }
 ```
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+<div>
+    <a href='#index'>Volver arriba</a>
+</div>
+
+
+## Scroll infinito
+
+En esta sección vamos a ver cómo realizar un *scroll infinito*. Se conoce con este nombre al hecho de mostrar una cantidad determinada de elementos y, al llegar al final de la página, cargar y mostrar más elementos.
+
+Esto se hace para evitar que la página se cargue con una cantidad excesiva de elementos, lo que podría ralentizar la carga de la misma.
+
+En primer lugar, comenzaremos por crear la función encargada detectar el scroll:
+
+```js
+// blog.js
+
+// ...
+
+export default class Blog extends Component {
+    constructor() {
+        // ...
+        this.activateInfiniteScroll();
+    }
+
+    activateInfiniteScroll() {
+        window.onscroll = () => {
+            console.log('onscroll');
+        }
+    }
+
+    // ...
+}
+```
+
+<br/>
+
+Si accedemos a la sección de blogs en la aplicación y hacemos scroll en ella, por consola veremos que se imprime el mensaje `onscroll` cada vez que se detecta un scroll.
