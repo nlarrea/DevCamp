@@ -903,3 +903,127 @@ Finalmente, crearemos el archivo `_loaders.scss` y añadiremos el siguiente cód
 <br/>
 
 Si accedemos a la aplicación, veremos que se muestra el icono de carga cuando se están cargando los posts.
+
+
+<br/><hr/><br/>
+
+
+### Mostrar más posts
+
+Para mostrar más posts, lo que haremos será modificar el método `activateInfiniteScroll()` para que, cuando se llegue al final de la página, se llame a la API para obtener más posts:
+
+```js
+// blog.js
+
+// ...
+
+export default class Blog extends Component {
+    // ...
+
+    activateInfiniteScroll() {
+        window.onscroll = () => {
+            if (
+                window.innerHeight + document.documentElement.scrollTop ===
+                document.documentElement.offsetHeight
+            ) {
+                this.getBlogItems();
+            }
+        }
+    }
+}
+```
+
+<br/>
+
+Haciendo esto, veremos que cada vez que se llega al final se llama a la API para obtener más posts. Sin embargo, éstos eliminan los anteriores, aunque no se nota dado que estamos llamando a todos los datos desde el inicio.
+
+Para llamar a los datos *por partes*, vamos a modificar el link de la API, indicando el parámetro de la página que se desea cargar:
+
+```js
+// blog.js
+
+// ...
+
+export default class Blog extends Component {
+    // ...
+
+    getBlogItems() {
+        axios.get(
+            `https://nlarrea.devcamp.space/portfolio/portfolio_blogs?page=${this.state.currentPage}`,
+            // ...
+        )
+        // ...
+    }
+
+    // ...
+}
+```
+
+<br/>
+
+Si accedemos a la aplicación, veremos que esta vez se cargan los posts en cantidades correctas, sin embargo, los nuevos posts sobreescriben a los anteriores.
+
+Para evitar esto, realizaremos la siguiente modificación:
+
+```js
+// blog.js
+
+// ...
+
+export default class Blog extends Component {
+    // ...
+
+    getBlogItems() {
+        // ...
+
+        axios.get(/* ... */)
+        .then(response => {
+            this.setState({
+                blogItems: this.state.blogItems.concat(
+                    response.data.portfolio_blogs
+                ),
+                // ...
+            });
+        }).catch(error => {
+            // ...
+        });
+    }
+
+    // ...
+}
+```
+
+<br/>
+
+Aparentemente, la funcionalidad completa del *scroll infinito* ya funciona, sin embargo, si accedemos a la consola del navegador, veremos que se siguen haciendo peticiones a la API aunque no haya más posts que mostrar.
+
+Para solucionar esto, vamos a añadir una condición en la función `activateInfiniteScroll()`:
+
+```js
+// blog.js
+
+// ...
+
+export default class Blog extends Component {
+    // ...
+
+    activateInfiniteScroll() {
+        window.onscroll = () => {
+            /**
+             * if the blogs are loading or all the blog items are
+             * loaded, get out of this function
+             */
+            if (
+                this.state.isLoading ||
+                this.state.blogItems.length === this.state.totalCount
+            ) {
+                return;
+            }
+
+            // ...
+        }
+    }
+
+    // ...
+}
+```
