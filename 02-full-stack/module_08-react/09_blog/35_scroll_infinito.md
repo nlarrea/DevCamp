@@ -11,7 +11,7 @@
 <br/>
 
 
-[<< CREAR EL BLOG](./34_crear_el_blog.md#crear-el-blog) | [HOME](../../../README.md#devcamp)
+[<< CREAR EL BLOG](./34_crear_el_blog.md#crear-el-blog) | [HOME](../../../README.md#devcamp) | [MODALS >>](./36_modals.md#modals)
 
 
 <br/><hr/>
@@ -538,4 +538,4 @@ Finalmente, para evitar que se sigan ejecutando eventos de scroll cuando no esta
 <hr/><br/>
 
 
-[<< CREAR EL BLOG](./34_crear_el_blog.md#crear-el-blog) | [HOME](../../../README.md#devcamp)
+[<< CREAR EL BLOG](./34_crear_el_blog.md#crear-el-blog) | [HOME](../../../README.md#devcamp) | [MODALS >>](./36_modals.md#modals)
