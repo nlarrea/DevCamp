@@ -14,6 +14,7 @@
     * [Saber si se ha llegado al final de la página](#saber-si-se-ha-llegado-al-final-de-la-página)
     * [Obtener el total de posts](#obtener-el-total-de-posts)
     * [Spinner de carga](#spinner-de-carga)
+    * [Refactorizar el evento de scroll](#refactorizar-el-evento-de-scroll)
 
 <br/>
 
@@ -1027,3 +1028,61 @@ export default class Blog extends Component {
     // ...
 }
 ```
+
+
+<br/><hr/><br/>
+
+
+### Refactorizar el evento de scroll
+
+Ahora mismo, nuestro código funciona correctamente, excepto por un pequeño bug:
+
+* Si entramos en la página del blog, vamos a otra diferente (*por ejemplo, la página de inicio*) y hacemos scroll hasta abajo, se intentarán cargar más posts, lo que dará un error en la consola.
+
+<br/>
+
+Para solucionar esto y hacer que sólo se haga caso a ese evento cuando estemos en la página de los blogs, vamos a modificar el código de la siguiente forma:
+
+```js
+// blog.js
+
+// ...
+
+export default class Blog extends Component {
+    constructor() {
+        // ...
+        this.onScroll = this.onScroll.bind(this);
+        window.addEventListener('scroll', this.onScroll, false);
+    }
+
+    onScroll() {
+        if (
+            this.state.isLoading ||
+            this.state.blogItems.length === this.state.totalCount
+        ) {
+            return;
+        }
+
+        if (
+            window.innerHeight + document.documentElement.scrollTop ===
+            document.documentElement.offsetHeight
+        ) {
+            this.getBlogItems();
+        }
+    }
+
+    // ...
+
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.onScroll, false);
+    }
+
+    // ...
+}
+```
+
+<br/>
+
+Lo que hemos hecho ha sido crear un nuevo método llamado `onScroll()` que se ejecutará cada vez que se haga scroll en la página. Dentro de él, hemos añadido el código que teníamos en la función `activateInfiniteScroll()` (*función que ha sido eliminada*) sin añadir el evento de scroll, que ahora está en el constructor de la clase.
+
+Finalmente, para evitar que se sigan ejecutando eventos de scroll cuando no estamos en la página de los blogs, hemos añadido el método `componentWillUnmount()` para eliminar dicho evento.
