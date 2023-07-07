@@ -6,6 +6,7 @@
 * [Crear un Modal](#crear-un-modal)
 * [Abrir y cerrar Modals](#abrir-y-cerrar-un-modal)
     * [Abrir un Modal](#abrir-un-modal)
+    * [Cerrar un Modal](#cerrar-un-modal)
 
 <br/>
 
@@ -214,3 +215,111 @@ export default class Blog extends Component {
 Hemos creado un nuevo estado `blogModalIsOpen` que inicializamos a `false`, y hemos creado un método `handleNewBlogClick()` que se encarga de cambiar el valor de esta propiedad a `true`.
 
 Después, hemos añadido un link que, al hacer click, ejecuta este nuevo método, y, como resultado, se abre el modal.
+
+
+<br/><hr/><br/>
+
+
+### Cerrar un Modal
+
+Ahora que ya sabemos cómo abrir un modal, vamos a ver cómo cerrarlo.
+
+En primer lugar, vamos a añadir una nueva propiedad al componente `ReactModal` que se está renderizando en el componente `BlogModal`:
+
+```js
+// blog-modal.js
+
+// ...
+
+export default class BlogModal extends Component {
+    // ...
+
+    render() {
+        return (
+            <ReactModal
+                // ...
+                onRequestClose={() => {
+                    console.log('testing modal close');
+                }}
+            >
+                /* ... */
+            </ReactModal>
+        );
+    }
+}
+```
+
+<br/>
+
+Si ejecutamos el código y abrimos el modal, veremos que se imprime el mensaje por pantalla siempre que se clica fuera del modal, o se pulsa la tecla `ESC`. Esto siginifica que podemos hacer que el modal se cierre en estos casos.
+
+Modificamos el `console.log()` por lo siguiente:
+
+```js
+// blog-modal.js
+
+// ...
+
+export default class BlogModal extends Component {
+    // ...
+
+    render() {
+        return (
+            <ReactModal
+                // ...
+                onRequestClose={() => {
+                    this.props.handleModalClose();
+                }}
+            >
+                /* ... */
+            </ReactModal>
+        );
+    }
+}
+```
+
+<br/>
+
+Ahora, accedemos al archivo `blog.js` y creamos y pasamos dicho método como `prop` al componente `BlogModal`:
+
+```js
+// blog.js
+
+// ...
+
+export default class Blog extends Component {
+    constructor() {
+        // ...
+        this.handleModalClose = this.handleModalClose.bind(this);
+    }
+
+    // ...
+
+    handleModalClose() {
+        this.setState({
+            blogModalIsOpen: false
+        });
+    }
+
+    // ...
+
+    render() {
+        // ...
+
+        return (
+            <div className='blog-container'>
+                <BlogModal
+                    /* ... */
+                    handleModalClose={this.handleModalClose}
+                />
+
+                /* ... */
+            </div>
+        );
+    }
+}
+```
+
+<br/>
+
+Ahora, si abrimos el modal y hacemos click fuera de él, veremos que se cierra. También se cierra si pulsamos la tecla `ESC`.
