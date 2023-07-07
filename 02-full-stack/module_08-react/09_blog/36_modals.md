@@ -4,6 +4,8 @@
 
 * [Instalar react-modal](#instalar-react-modal)
 * [Crear un Modal](#crear-un-modal)
+* [Abrir y cerrar Modals](#abrir-y-cerrar-un-modal)
+    * [Abrir un Modal](#abrir-un-modal)
 
 <br/>
 
@@ -116,3 +118,99 @@ export default class Blog extends Component {
 Hemos añadido el componente en la parte superior del `return` del método `render()`. Esto nos facilitará saber si en un componente se están renderizando modals o no.
 
 Ahora, al arrancar la app y entrar en la página de Blogs, veremos que se nos muestra el modal con el título que hemos definido.
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+<div align='right'>
+    <a href='#index'>Volver arriba</a>
+</div>
+
+
+## Abrir y cerrar Modals
+
+Hasta ahora, hemos creado un modal que se abre y se mantiene abierto automáticamente. En esta sección, veremos cómo abrir y cerrar modals de forma manual, a base de pulsar botones o links.
+
+
+<br/><hr/><br/>
+
+
+### Abrir un Modal
+
+Para abrir un modal, lo primero que haremos será modificar la propiedad `isOpen` del componente `BlogModal` para que sea dinámica, y no esté siempre a `true`:
+
+```js
+// blog-modal.js
+
+// ...
+
+export default class BlogModal extends Component {
+    // ...
+
+    render() {
+        return (
+            <ReactModal isOpen={this.props.modalIsOpen}>
+                /* ... */
+            </ReactModal>
+        );
+    }
+}
+```
+
+<br/>
+
+Ahora que nuestro modal se abre en base a una prop, vamos a modificar el componente `Blog` para modificar este valor:
+
+```js
+// blog.js
+
+// ...
+
+export default class Blog extends Component {
+    constructor() {
+        // ...
+
+        this.state = {
+            // ...
+            blogModalIsOpen: false
+        };
+
+        // ...
+        this.handleNewBlogClick = this.handleNewBlogClick.bind(this);
+    }
+
+    handleNewBlogClick() {
+        this.setState({
+            blogModalIsOpen: true
+        });
+    }
+
+    // ...
+
+    render() {
+        // ...
+
+        return (
+            <div className='blog-container'>
+                <BlogModal modalIsOpen={this.state.blogModalIsOpen} />
+
+                <div className="new-blog-link">
+                    <a onClick={this.handleNewBlogClick}>
+                        Open Modal
+                    </a>
+                </div>
+
+                /* ... */
+            </div>
+        );
+    }
+}
+```
+
+<br/>
+
+Hemos creado un nuevo estado `blogModalIsOpen` que inicializamos a `false`, y hemos creado un método `handleNewBlogClick()` que se encarga de cambiar el valor de esta propiedad a `true`.
+
+Después, hemos añadido un link que, al hacer click, ejecuta este nuevo método, y, como resultado, se abre el modal.
