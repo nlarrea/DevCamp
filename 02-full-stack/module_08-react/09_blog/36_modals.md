@@ -7,6 +7,7 @@
 * [Abrir y cerrar Modals](#abrir-y-cerrar-un-modal)
     * [Abrir un Modal](#abrir-un-modal)
     * [Cerrar un Modal](#cerrar-un-modal)
+* [Dar estilos al Modal](#dar-estilos-al-modal)
 
 <br/>
 
@@ -323,3 +324,62 @@ export default class Blog extends Component {
 <br/>
 
 Ahora, si abrimos el modal y hacemos click fuera de él, veremos que se cierra. También se cierra si pulsamos la tecla `ESC`.
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+<div align='right'>
+    <a href='#index'>Volver arriba</a>
+</div>
+
+
+## Dar estilos al Modal
+
+Para estilar el Modal, lo que haremos será modificar el código del componente `BlogModal` de tal forma que creemos los estilos `inline` en el propio componente.
+
+Esto lo hacemos porque queremos que se sobreescriban los estilos por defecto de la librería `react-modal`.
+
+Para ello, leyendo la [documentación de la librería](https://www.npmjs.com/package/react-modal), veremos que podemos crear un objeto con los estilos que queremos y aplicarlo en la propiedad `style` del componente `ReactModal`:
+
+```js
+// blog-modal.js
+
+// ...
+
+export default class BlogModal extends Component {
+    constructor(props) {
+        // ...
+
+        this.customStyles = {
+            content: {
+                width: '800px',
+                marginRight: '-50%',
+                top: '50%',
+                left: '50%',
+                right: 'auto',
+                transform: 'translate(-50%, -50%)'
+            },
+            overlay: {
+                backgroundColor: 'rgba(1, 1, 1, 0.75)'
+            }
+        };
+    }
+
+    render() {
+        return (
+            <ReactModal
+                /* ... */
+                style={this.customStyles}
+            >
+                /* ... */
+            </ReactModal>
+        );
+    }
+}
+```
+
+<br/>
+
+Hemos creado un objeto `customStyles` que contiene dos propiedades: `content` y `overlay`. El nombre de estas propiedades coincide con los nombres de las clases que traen por defecto los estilos de la librería `react-modal`, y son los que queremos sobreescribir.
