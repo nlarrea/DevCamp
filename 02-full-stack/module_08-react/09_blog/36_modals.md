@@ -383,3 +383,25 @@ export default class BlogModal extends Component {
 <br/>
 
 Hemos creado un objeto `customStyles` que contiene dos propiedades: `content` y `overlay`. El nombre de estas propiedades coincide con los nombres de las clases que traen por defecto los estilos de la librería `react-modal`, y son los que queremos sobreescribir.
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+<div align='right'>
+    <a href='#index'>Volver arriba</a>
+</div>
+
+
+## Corregir errores de consola
+
+Si abrimos el modal, veremos que nos aparece un error en la consola. Este error es debido a la accesibilidad de la librería `react-modal` cuando se está utilizando un elemento como el *screen reader*.
+
+Para solucionarlo, abriremos el archivo `index.html` y miraremos cuál es el nombre de la clase o id de nuestra aplicación (*en nuestro caso, es una clase llamada `app-wrapper`*).
+
+Sabiendo esto, volveremos al archivo `blog-modal.js` y añadiremos la siguiente línea de código debajo de las importaciones:
+
+```js
+ReactModal.setAppElement('.app-wrapper');
+```
