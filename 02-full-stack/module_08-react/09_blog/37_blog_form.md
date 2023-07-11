@@ -4,7 +4,9 @@
 
 * [Crear el componente BlogForm](#crear-el-componente-blogform)
 * [Crear los handlers para los inputs](#crear-los-handlers-para-los-inputs)
-* [Emparejar el formulario con la API](#emparejar-el-formulario-con-la-api)
+* [Crear Blogs](#crear-blogs)
+    * [Enviar datos a la API](#enviar-datos-a-la-api)
+    * [Añadir el formulario a la app](#añadir-el-formulario-a-la-app)
 
 <br/>
 
@@ -203,7 +205,9 @@ Ahora, al entrar en la aplicación y abrir el modal, podremos escribir en los in
 </div>
 
 
-## Emparejar el formulario con la API
+## Crear Blogs
+
+### Enviar datos a la API
 
 Ahora que hemos visto que los `handlers` funcionan correctamente, vamos a emparejar el formulario con la API. Para ello, comenzaremos por abrir el archivo `blog-form.js` y añadir el siguiente código:
 
@@ -251,3 +255,125 @@ export default class BlogForm extends Component {
 Hemos utilizado el `prop` del `handler` creado en el componente padre para mostrar los datos que se han enviado a la API.
 
 Aún no hemos actualizado la página, pero si abrimos la web donde tenemos la API y refrescamos, veremos que lo que escribamos en el formulario se añade a la lista de blogs.
+
+
+<br/><hr/><br/>
+
+
+### Añadir el formulario a la app
+
+Una vez que hemos comprobado que el blog se crea correctamente, vamos a hacer que éste se muestre en la aplicación.
+
+Comenzaremos por el archivo `blog-form.js` y modificaremos el siguiente código:
+
+```js
+// blog-form.js
+
+// ...
+
+export default class BlogForm extends Component {
+    // ...
+
+
+    handleSubmit(event) {
+        axios.post(/* ... */)
+        .then(response => {
+            this.props.handleSuccessfulFormSubmission(response.data.portfolio_blog);
+
+            // clear the blog form
+            this.setState({
+                title: '',
+                blog_status: ''
+            });
+        }).catch(error => {
+            // ...
+        });
+
+        // ...
+    }
+
+
+    // ...
+}
+```
+
+<br/>
+
+Hemos modificado los datos enviados al `handler` del componente padre para que sólo se muestre el blog que se ha creado.
+
+Además, para vaciar los inputs del formulario, hemos modificado el estado del componente.
+
+<br/>
+
+Ahora, accederemos al archivo `blog-modal.js` y modificaremos el siguiente código:
+
+```js
+// blog-modal.js
+
+// ...
+
+export default class BlogModal extends Component {
+    // ...
+
+
+    handleSuccessfulFormSubmission(blog) {
+        this.props.handleSuccessfulNewBlogSubmission(blog);
+    }
+
+
+    // ...
+}
+```
+
+<br/>
+
+Aún no hemos creado ese `handler` que se ha obtenido como `prop`, pero lo que hemos hecho es enviar el blog que se ha creado al componente padre, es decir, al componente `Blog`.
+
+<br/>
+
+Por último, accederemos al archivo `blog.js` y modificaremos el siguiente código:
+
+```js
+// blog.js
+
+// ...
+
+export default class Blog extends Component {
+    constructor() {
+        // ...
+
+        this.handleSuccessfulNewBlogSubmission = this.handleSuccessfulNewBlogSubmission.bind(this);
+    }
+
+
+    handleSuccessfulNewBlogSubmission(blog) {
+        this.setState({
+            blogModalIsOpen: false,
+            blogItems: [blog].concat(this.state.blogItems)
+        });
+    }
+
+
+    // ...
+
+
+    render() {
+        // ...
+
+        return (
+            <div className='blog-container'>
+                <BlogModal
+                    /* ... */
+                    handleSuccessfulNewBlogSubmission={this.handleSuccessfulNewBlogSubmission}
+                />
+
+                /* ... */
+            </div>
+        );
+    }
+}
+```
+
+<br/>
+
+Hemos creado el `handler` que recibe el nuevo blog desde el formulario del modal, y lo hemos añadido al estado del componente, en la primera posición.
