@@ -3,6 +3,8 @@
 <div id="index"></div>
 
 * [Crear el componente BlogForm](#crear-el-componente-blogform)
+* [Crear los handlers para los inputs](#crear-los-handlers-para-los-inputs)
+* [Emparejar el formulario con la API](#emparejar-el-formulario-con-la-api)
 
 <br/>
 
@@ -190,3 +192,62 @@ export default class BlogForm extends Component {
 <br/>
 
 Ahora, al entrar en la aplicación y abrir el modal, podremos escribir en los inputs y ver cómo se muestra el estado del componente hijo a través del `handler` del componente padre.
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+<div align='right'>
+    <a href="#index">Volver arriba</a>
+</div>
+
+
+## Emparejar el formulario con la API
+
+Ahora que hemos visto que los `handlers` funcionan correctamente, vamos a emparejar el formulario con la API. Para ello, comenzaremos por abrir el archivo `blog-form.js` y añadir el siguiente código:
+
+```js
+// blog-form.js
+
+// ...
+import axios from 'axios';
+
+export default class BlogForm extends Component {
+    // ...
+
+
+    buildForm() {
+        let formData = new FormData();
+
+        formData.append('portfolio_blog[title]', this.state.title);
+        formData.append('portfolio_blog[blog_status]', this.state.blog_status);
+
+        return formData;
+    }
+
+
+    handleSubmit(event) {
+        axios.post(
+            'https://nlarrea.devcamp.space/portfolio/portfolio_blogs',
+            this.buildForm(),
+            { withCredentials: true }
+        ).then(response => {
+            this.props.handleSuccessfulFormSubmission(response.data);
+        }).catch(error => {
+            console.log('handleSubmit for blog error', error);
+        });
+
+        event.preventDefault();
+    }
+
+
+    // ...
+}
+```
+
+<br/>
+
+Hemos utilizado el `prop` del `handler` creado en el componente padre para mostrar los datos que se han enviado a la API.
+
+Aún no hemos actualizado la página, pero si abrimos la web donde tenemos la API y refrescamos, veremos que lo que escribamos en el formulario se añade a la lista de blogs.
