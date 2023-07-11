@@ -7,6 +7,7 @@
 * [Crear Blogs](#crear-blogs)
     * [Enviar datos a la API](#enviar-datos-a-la-api)
     * [Añadir el formulario a la app](#añadir-el-formulario-a-la-app)
+* [Estilar el formulario](#estilar-el-formulario)
 
 <br/>
 
@@ -377,3 +378,64 @@ export default class Blog extends Component {
 <br/>
 
 Hemos creado el `handler` que recibe el nuevo blog desde el formulario del modal, y lo hemos añadido al estado del componente, en la primera posición.
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+<div align='right'>
+    <a href="#index">Volver arriba</a>
+</div>
+
+
+## Estilar el formulario
+
+Aunque el formulario aún no está completo, vamos a aplicarle ciertos estilos básicos.
+
+Para ello, crearemos un nuevo archivo llamado `blog-form.scss` y lo importaremos en el archivo `main.scss`:
+
+```scss
+// blog-form.scss
+
+@use './mixins';
+
+.blog-form-wrapper {
+    @include mixins.base-grid();
+    grid-template-columns: 1fr;
+    padding: 42px;
+    
+    @include mixins.input-element();
+    
+    input {
+        margin-bottom: 0;
+    }
+}
+```
+
+<br>
+
+Finalmente, accederemos al archivo `blog-form.js` y añadiremos las clases necesarias para estilar los elementos:
+
+```js
+// blog-form.js
+
+// ...
+
+export default class BlogForm extends Component {
+    // ...
+
+
+    render() {
+        return (
+            <form onSubmit={this.handleSubmit} className='blog-form-wrapper'>
+                <div className="two-column">
+                    /* inputs */
+                </div>
+
+                <button className='btn'>/* ... */</button>
+            </form>
+        );
+    }
+}
+```
