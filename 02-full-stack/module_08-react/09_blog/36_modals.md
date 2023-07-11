@@ -12,7 +12,7 @@
 <br/>
 
 
-[<< SCROLL INFINITO](./35_scroll_infinito.md#scroll-infinito) | [HOME](../../../README.md#devcamp)
+[<< SCROLL INFINITO](./35_scroll_infinito.md#scroll-infinito) | [HOME](../../../README.md#devcamp) | [BLOG FORM >>](./37_blog_form.md#blog-form)
 
 
 <br/><hr/>
@@ -405,3 +405,10 @@ Sabiendo esto, volveremos al archivo `blog-modal.js` y añadiremos la siguiente 
 ```js
 ReactModal.setAppElement('.app-wrapper');
 ```
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+[<< SCROLL INFINITO](./35_scroll_infinito.md#scroll-infinito) | [HOME](../../../README.md#devcamp) | [BLOG FORM >>](./37_blog_form.md#blog-form)
