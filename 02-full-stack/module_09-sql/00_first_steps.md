@@ -60,3 +60,12 @@ A pesar de existir diferentes implementaciones, el lenguaje SQL es el mismo para
 </div>
 
 
+## Descargar e instalar MySQL
+
+Para poder trabajar con MySQL, lo primero que tenemos que hacer es descargarlo e instalarlo en nuestro ordenador.
+
+Para poder descargar el programa, accederemos a la [página del producto](https://dev.mysql.com/downloads/installer/) y escogeremos la opción de descarga que más se ajuste a nuestro sistema operativo. Después, escogeremos la opción de descarga web (*si estamos conectados a internet*) o la opción de descarga offline (*si no estamos conectados a internet*).
+
+Una vez descargado, clicaremos en él y seguiremos los pasos mostrados [en este vídeo](https://www.youtube.com/watch?v=GIRcpjg-3Eg) o realizaremos la configuración que nos parezca más adecuada.
+
+
