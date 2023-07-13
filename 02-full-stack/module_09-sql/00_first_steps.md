@@ -3,7 +3,9 @@
 <div id="index"></div>
 
 * [Implementaciones](#implementaciones)
-* [CRUD](#crud)
+* [Descargar e instalar MySQL](#descargar-e-instalar-mysql)
+* [Crear un esquema de base de datos](#crear-un-esquema-de-base-de-datos)
+* [Crear una tabla](#crear-una-tabla)
 
 <br/>
 
@@ -15,7 +17,7 @@
 <hr/><br/>
 
 
-<div align='rigth'>
+<div align='right'>
     <a href='#index'>Volver arriba</a>
 </div>
 
@@ -31,7 +33,7 @@ Las aplicaciones modernas, en su inmensa mayoría, utilizan bases de datos para 
 <hr/><br/>
 
 
-<div align='rigth'>
+<div align='right'>
     <a href='#index'>Volver arriba</a>
 </div>
 
@@ -55,7 +57,7 @@ A pesar de existir diferentes implementaciones, el lenguaje SQL es el mismo para
 <hr/><br/>
 
 
-<div align='rigth'>
+<div align='right'>
     <a href='#index'>Volver arriba</a>
 </div>
 
@@ -69,3 +71,41 @@ Para poder descargar el programa, accederemos a la [página del producto](https:
 Una vez descargado, clicaremos en él y seguiremos los pasos mostrados [en este vídeo](https://www.youtube.com/watch?v=GIRcpjg-3Eg) o realizaremos la configuración que nos parezca más adecuada.
 
 
+<br/><hr/>
+<hr/><br/>
+
+
+<div align='right'>
+    <a href='#index'>Volver arriba</a>
+</div>
+
+
+## Crear un esquema de base de datos
+
+Ahora que hemos instalado y configurado el *Workbench* de MySQL, vamos a crear un esquema de base de datos.
+
+Para crear un esquema desde aquí, crearemos una conexión clicando el símbolo `+` que aparece en la parte izquierda de la pantalla, o clicando dos veces en alguna conexión que ya tengamos creada (*se nos pedirá la contraseña introducida durante la instalación*).
+
+![00_mysql_home.jpg](./images/00_mysql_home.jpg)
+
+<br/>
+
+Hecho esto, crearemos un nuevo esquema siguiendo estos pasos:
+
+* **Rojo**: Clicar el botón `Create a new schema in the connected server` que aparece en la parte superior de la pantalla (*tiene una base de datos como icono*). Le pondremos el nombre que queramos (en este caso `devcamp_sql_course_schema`).
+* **Verde**: clicar en `Apply` (*abajo a la derecha*). Se nos abrirá una ventana con el código SQL que se ejecutará para crear el esquema. Clicaremos en `Apply` (*abajo a la derecha*) y el esquema se creará.
+* **Naranja**: una vez creado el esquema, aparecerá en la parte izquierda de la pantalla, en la sección `SCHEMAS`.
+
+![01_create_schema.jpg](./images/01_create_schema.jpg)
+
+<br/>
+
+El código SQL que se ha ejecutado es el siguiente:
+
+```sql
+CREATE SCHEMA `devcamp_sql_course_schema`;
+```
+
+<br/>
+
+Hemos realizado esta operación utilizando el *Workbench* de MySQL, pero podríamos haber ejecutado el mismo código desde la consola de comandos de MySQL.
