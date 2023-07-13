@@ -12,7 +12,7 @@
 <br/>
 
 
-[<< MODALS](./36_modals.md#modals) | [HOME](../../../README.md#devcamp)
+[<< MODALS](./36_modals.md#modals) | [HOME](../../../README.md#devcamp) | [SQL >>](../../module_09-sql/00_first_steps.md#sql)
 
 
 <br/><hr/>
@@ -439,3 +439,10 @@ export default class BlogForm extends Component {
     }
 }
 ```
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+[<< MODALS](./36_modals.md#modals) | [HOME](../../../README.md#devcamp) | [SQL >>](../../module_09-sql/00_first_steps.md#sql)

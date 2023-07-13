@@ -38,6 +38,7 @@ He aquí el contenido trabajado:
 * #06 - [Git & GitHub](./02-full-stack/module_06-git_github/)
 * #07 - [UML](./02-full-stack/module_07-uml/)
 * #08 - [React](./02-full-stack/module_08-react/)
+* #09 - [SQL](./02-full-stack/module_09-sql/)
 
 
 <br><hr>
