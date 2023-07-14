@@ -209,3 +209,38 @@ CREATE TABLE `devcamp_sql_course_schema`.`addresses` (
         ON DELETE CASCADE
         ON UPDATE NO ACTION);
 ```
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+<div align='right'>
+    <a href='#index'>Volver arriba</a>
+</div>
+
+
+## Modificar columnas
+
+Realizar modificaciones en las columnas de una tabla en MySQL es muy sencillo. Para ello, posicionaremos el ratón encima de la tabla que queremos modificar y veremos que se muestran unos iconos. Pulsaremos en el que tiene el símbolo de una llave inglesa para abrir la tabla en modo edición (***rojo***).
+
+Una vez hecho esto, modificaremos los campos que queramos (***verde***), y pulsaremos en `Apply` para ejecutar el código SQL que se ha generado (***naranja***).
+
+![05_changing_columns.jpg](./images/05_changing_columns.jpg)
+
+<br/>
+
+El código SQL que se ha generado es el siguiente:
+
+```sql
+ALTER TABLE `devcamp_sql_course_schema`.`addresses`
+DROP FOREIGN KEY `addresses_users_id`;
+ALTER TABLE `devcamp_sql_course_schema`.`addresses`
+CHANGE COLUMN `addresses_users_id` `addresses_users_id` INT NOT NULL ;
+ALTER TABLE `devcamp_sql_course_schema`.`addresses`
+ADD CONSTRAINT `addresses_users_id`
+    FOREIGN KEY (`addresses_users_id`)
+    REFERENCES `devcamp_sql_course_schema`.`users` (`users_id`)
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION;
+```
