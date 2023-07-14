@@ -96,6 +96,8 @@ Hecho esto, crearemos un nuevo esquema siguiendo estos pasos:
 * **Verde**: clicar en `Apply` (*abajo a la derecha*). Se nos abrirá una ventana con el código SQL que se ejecutará para crear el esquema. Clicaremos en `Apply` (*abajo a la derecha*) y el esquema se creará.
 * **Naranja**: una vez creado el esquema, aparecerá en la parte izquierda de la pantalla, en la sección `SCHEMAS`.
 
+<br/>
+
 ![01_create_schema.jpg](./images/01_create_schema.jpg)
 
 <br/>
@@ -109,3 +111,40 @@ CREATE SCHEMA `devcamp_sql_course_schema`;
 <br/>
 
 Hemos realizado esta operación utilizando el *Workbench* de MySQL, pero podríamos haber ejecutado el mismo código desde la consola de comandos de MySQL.
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+<div align='right'>
+    <a href='#index'>Volver arriba</a>
+</div>
+
+
+## Crear una tabla
+
+Estos son los pasos a seguir para crear una nueva tabla desde el *Workbench* de MySQL:
+
+![02_create_table.jpg](./images/02_create_table.jpg)
+
+* **Rojo**: Para crear una nueva tabla, haremos clic derecho en el esquema que acabamos de crear y seleccionaremos la opción `Create table...`. A continuación, indicaremos el nombre que queremos darle a la tabla (en este caso `users`).
+* **Verde**: rellenaremos las filas de la tabla con los datos que queramos. Indicaremos (*marcando los checkbox*) qué condiciones queremos que cumpla cada dato. En la parte inferior podremos abrir diferentes pestañas para ver cómo se han generado los diferentes campos de la tabla. En nuestro caso, hemos creado tres campos:
+    * `users_id`: campo de tipo `INT`, clave primaria y autoincremental.
+    * `users_name`: campo de tipo `VARCHAR` de 100 caracteres.
+    * `users_email`: campo de tipo `VARCHAR` de 80 caracteres, no nulo y único.
+* **Naranja**: botón de `Apply`, que ejecutará el código SQL que se ha generado para crear la tabla.
+
+<br/>
+
+Al pulsar el botón, se abre una ventana donde se muestra el código SQL que se va a ejecutar teniendo en cuenta las opeaciones que hemos realizado. Este es el código que se ha generado:
+
+```sql
+CREATE TABLE `devcamp_sql_course_schema`.`users` (
+    `users_id` INT NOT NULL AUTO_INCREMENT,
+    `users_name` VARCHAR(100) NULL,
+    `users_email` VARCHAR(80) NOT NULL,
+    PRIMARY KEY (`users_id`),
+    UNIQUE INDEX `users_id_UNIQUE` (`users_id` ASC) VISIBLE,
+    UNIQUE INDEX `users_email_UNIQUE` (`users_email` ASC) VISIBLE);
+```
