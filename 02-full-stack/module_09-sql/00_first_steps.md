@@ -6,6 +6,7 @@
 * [Descargar e instalar MySQL](#descargar-e-instalar-mysql)
 * [Crear un esquema de base de datos](#crear-un-esquema-de-base-de-datos)
 * [Crear una tabla](#crear-una-tabla)
+* [Crear una tabla con Foreign Key](#crear-una-tabla-con-foreign-key)
 
 <br/>
 
@@ -147,4 +148,64 @@ CREATE TABLE `devcamp_sql_course_schema`.`users` (
     PRIMARY KEY (`users_id`),
     UNIQUE INDEX `users_id_UNIQUE` (`users_id` ASC) VISIBLE,
     UNIQUE INDEX `users_email_UNIQUE` (`users_email` ASC) VISIBLE);
+```
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+<div align='right'>
+    <a href='#index'>Volver arriba</a>
+</div>
+
+
+## Crear una tabla con Foreign Key'
+
+Para crear una tabla con una clave foránea, en primer lugar, necesitaremos tener **al menos 2 tablas**.
+
+Ya hemos creado una tabla en el apartado anterior, por lo que vamos a crear otra tabla a continuación siguiendo los mismos pasos, pero esta vez la llamaremos `addresses` y tendrá los siguientes campos:
+
+* `addresses_id`: campo de tipo `INT`, clave primaria y autoincremental.
+* `addresses_street_one`: campo de tipo `VARCHAR` de 45 caracteres y obligatorio.
+* `addresses_street_two`: campo de tipo `VARCHAR` de 45 caracteres.
+* `addresses_city`: campo de tipo `VARCHAR` de 45 caracteres y obligatorio.
+* `addresses_state`: campo de tipo `VARCHAR` de 2 caracteres y obligatorio.
+* `addresses_postal_code`: campo de tipo `VARCHAR` de 20 caracteres.
+* `addresses_users_id`: campo de tipo `INT` y clave foránea.
+
+<br/>
+
+![03_create_table_with_foreign_key.jpg](./images/03_create_table_with_foreign_key.jpg)
+
+<br/>
+
+A estas alturas, habremos creado los datos e indicado que uno de ellos es una clave foránea, pero no habremos indicado a qué tabla hace referencia. Para hacerlo, clicaremos en `Foreign Keys` (*abajo, en naranja*) y seguiremos los siguientes pasos:
+
+![04_create_table_with_foreign_key.jpg](./images/04_create_table_with_foreign_key.jpg)
+
+* **Rojo**: indicaremos el nombre que queremos darle a la clave foránea (en este caso `addresses_users_id`) y la tabla a la que hace referencia (en este caso `users` del esquema `devcamp_sql_course_schema`). A continuación, tenemos que indicar el campo de la tabla `users` al que hace referencia (en este caso `users_id`).
+* **Verde**: al crear claves foráneas, suele ser una práctica común hacer que se eliminen los datos de la tabla que contiene la clave foránea cuando se eliminen los datos de la tabla a la que hace referencia. Para ello, marcaremos la opción `ON DELETE CASCADE`.
+* **Naranja**: clicaremos en `Apply` para ejecutar el código SQL que se ha generado.
+
+<br/>
+
+De nuevo, se mostrará una ventana con el código SQL que se va a ejecutar. Este es el código que se ha generado:
+
+```sql
+CREATE TABLE `devcamp_sql_course_schema`.`addresses` (
+    `addresses_id` INT NOT NULL AUTO_INCREMENT,
+    `addresses_street_one` VARCHAR(45) NOT NULL,
+    `addresses_street_two` VARCHAR(45) NULL,
+    `addresses_city` VARCHAR(45) NOT NULL,
+    `addresses_state` VARCHAR(2) NOT NULL,
+    `addresses_postal_code` VARCHAR(20) NULL,
+    `addresses_users_id` INT NULL,
+    PRIMARY KEY (`addresses_id`),
+    INDEX `addresses_users_id_idx` (`addresses_users_id` ASC) VISIBLE,
+    CONSTRAINT `addresses_users_id`
+        FOREIGN KEY (`addresses_users_id`)
+        REFERENCES `devcamp_sql_course_schema`.`users` (`users_id`)
+        ON DELETE CASCADE
+        ON UPDATE NO ACTION);
 ```
