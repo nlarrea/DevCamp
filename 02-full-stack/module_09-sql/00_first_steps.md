@@ -13,7 +13,7 @@
 <br/>
 
 
-[<< BLOG FORM (React)](../module_08-react/09_blog/37_blog_form.md#blog-form) | [HOME](../../README.md#devcamp)
+[<< BLOG FORM (React)](../module_08-react/09_blog/37_blog_form.md#blog-form) | [HOME](../../README.md#devcamp) | [DATA TYPES >>](./01_data_types.md#sql-data-types)
 
 
 <br/><hr/>
@@ -297,3 +297,10 @@ Este es el código SQL que se ha generado:
 ALTER TABLE `devcamp_sql_course_schema`.`guides` 
 ADD COLUMN `guides_title` VARCHAR(150) NOT NULL AFTER `guides_users_id`;
 ```
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+[<< BLOG FORM (React)](../module_08-react/09_blog/37_blog_form.md#blog-form) | [HOME](../../README.md#devcamp) | [DATA TYPES >>](./01_data_types.md#sql-data-types)
