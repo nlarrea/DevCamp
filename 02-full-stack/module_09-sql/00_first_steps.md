@@ -7,6 +7,8 @@
 * [Crear un esquema de base de datos](#crear-un-esquema-de-base-de-datos)
 * [Crear una tabla](#crear-una-tabla)
 * [Crear una tabla con Foreign Key](#crear-una-tabla-con-foreign-key)
+* [Modificar columnas](#modificar-columnas)
+* [Añadir columnas](#añadir-columnas)
 
 <br/>
 
@@ -243,4 +245,55 @@ ADD CONSTRAINT `addresses_users_id`
     REFERENCES `devcamp_sql_course_schema`.`users` (`users_id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION;
+```
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+<div align='right'>
+    <a href='#index'>Volver arriba</a>
+</div>
+
+
+## Añadir columnas
+
+Para mostrar cómo añadir columnas, vamos a crear una nueva tabla llamada `guides` con los siguientes campos:
+
+* `guides_id`: campo de tipo `INT`, clave primaria y autoincremental.
+* `guides_revenue`: campo de tipo `VARCHAR` de 45 caracteres y obligatorio.
+* `guides_users_id`: campo de tipo `INT` y clave foránea.
+
+<br/>
+
+Haremos que el campo `guides_users_id` sea una clave foránea siguiendo los mismos pasos que hemos seguido en el apartado [Crear una tabla con Foreign Key](#crear-una-tabla-con-foreign-key).
+
+Este sería el código SQL que se ha generado:
+
+```sql
+CREATE TABLE `devcamp_sql_course_schema`.`guides` (
+  `guides_id` INT NOT NULL AUTO_INCREMENT,
+  `guides_revenue` VARCHAR(45) NOT NULL,
+  `guides_users_id` INT NOT NULL,
+  PRIMARY KEY (`guides_id`),
+  INDEX `guides_users_id_idx` (`guides_users_id` ASC) VISIBLE,
+  CONSTRAINT `guides_users_id`
+    FOREIGN KEY (`guides_users_id`)
+    REFERENCES `devcamp_sql_course_schema`.`users` (`users_id`)
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION);
+```
+
+<br/>
+
+Finalmente, para añadir un nuevo dato a la tabla, vamos a añadir un nuevo campo llamado `guides_title` que será de tipo `VARCHAR` de 150 caracteres y obligatorio.
+
+Para hacerlo, es tan sencillo como tener la tabla en modo edición, escribir el nombre del campo en la última fila de la tabla y pulsar en `Apply` para ejecutar el código SQL que se ha generado.
+
+Este es el código SQL que se ha generado:
+
+```sql
+ALTER TABLE `devcamp_sql_course_schema`.`guides` 
+ADD COLUMN `guides_title` VARCHAR(150) NOT NULL AFTER `guides_users_id`;
 ```
