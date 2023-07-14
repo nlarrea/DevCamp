@@ -18,7 +18,7 @@ Estos son los datos más comunes:
 <br/>
 
 
-[<< PRIMEROS PASOS](./00_first_steps.md#sql) | [HOME](../../README.md#devcamp)
+[<< PRIMEROS PASOS](./00_first_steps.md#sql) | [HOME](../../README.md#devcamp) | [SQL QUERIES >>](./02_basic_queries.md#sql-queries)
 
 
 <br/><hr/>
@@ -439,4 +439,4 @@ Binary based image file
 <hr/><br/>
 
 
-[<< PRIMEROS PASOS](./00_first_steps.md#sql) | [HOME](../../README.md#devcamp)
+[<< PRIMEROS PASOS](./00_first_steps.md#sql) | [HOME](../../README.md#devcamp) | [SQL QUERIES >>](./02_basic_queries.md#sql-queries)

@@ -3,6 +3,7 @@
 <div id="index"></div>
 
 * [Implementaciones](#implementaciones)
+* [CRUD](#crud)
 * [Descargar e instalar MySQL](#descargar-e-instalar-mysql)
 * [Crear un esquema de base de datos](#crear-un-esquema-de-base-de-datos)
 * [Crear una tabla](#crear-una-tabla)
@@ -54,6 +55,29 @@ Existen muchas implementaciones de SQL, pero las más utilizadas son:
 <br/>
 
 A pesar de existir diferentes implementaciones, el lenguaje SQL es el mismo para todas ellas. La diferencia entre unas y otras es mínima y aprender a usar una implementación hará que sea muy sencillo aprender a usar las demás.
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+<div align='right'>
+    <a href='#index'>Volver arriba</a>
+</div>
+
+
+## CRUD
+
+El acrónimo **CRUD** es muy utilizado en el mundo de la programación a la hora de trabajar con bases de datos. Este acrónimo significa:
+
+* **C**reate: crear datos.
+* **R**ead: leer datos.
+* **U**pdate: actualizar datos.
+* **D**elete: eliminar datos.
+
+<br/>
+
+Estas son las operaciones básicas que se pueden realizar sobre una base de datos. En este curso, aprenderemos a realizar todas ellas.
 
 
 <br/><hr/>
