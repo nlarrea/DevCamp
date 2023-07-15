@@ -3,6 +3,7 @@
 <div id='index'></div>
 
 * [Añadir registros a una base de datos](#añadir-registros-a-una-base-de-datos)
+* [Consultar todos los registros de una tabla](#consultar-todos-los-registros-de-una-tabla)
 
 <br/>
 
@@ -70,3 +71,46 @@ Si miramos las tablas, veremos que se han añadido los datos indicados.
 
 * No es necesario seguir el orden de las columnas a la hora de insertar datos, pero sí el orden de la sentancia: `INSERT INTO table_name(column1, column2, column3, ...) VALUES (value1, value2, value3, ...)`.
 * Si no se indica el valor de una columna, se insertará el valor por defecto, que puede ser `NULL` o un valor por defecto que se haya indicado al crear la tabla.
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+<div align='right'>
+    <a href='#index'>Volver arriba</a>
+</div>
+
+
+## Consultar todos los registros de una tabla
+
+Para consultar todos los registros de una tabla, usaremos la siguiente sintaxis:
+
+```sql
+SELECT * FROM table_name;
+```
+
+<br/>
+
+En nuestro caso, para cada una de las tablas:
+
+```sql
+SELECT * FROM users;
+SELECT * FROM addresses;
+SELECT * FROM guides;
+```
+
+<br/>
+
+**Notas:**
+
+* El asterisco `*` indica que queremos seleccionar todas las columnas de la tabla.
+* Si queremos seleccionar solo algunas columnas, debemos indicarlas separadas por comas:
+
+```sql
+SELECT column1, column2, column3 FROM table_name;
+```
+
+<br/>
+
+> Si tenemos varias líneas de código SQL, podemos ejecutar la línea que queramos seleccionando la línea y ejecutando el código (*con el símbolo del rayo, o con `Control + Enter`*).
