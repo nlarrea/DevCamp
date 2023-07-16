@@ -5,6 +5,7 @@
 * [Añadir registros a una base de datos](#añadir-registros-a-una-base-de-datos)
 * [Consultar todos los registros de una tabla](#consultar-todos-los-registros-de-una-tabla)
 * [Filtrar con WHERE](#filtrar-con-where)
+* [Limitar la cantidad de resultados](#limitar-la-cantidad-de-resultados)
 
 <br/>
 
@@ -157,3 +158,40 @@ AND addresses_city = 'Manhattan';
 
 * Podemos usar `AND` y `OR` para filtrar los resultados.
 * Usar `AND` es más restrictivo que usar `OR`.
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+<div align='right'>
+    <a href='#index'>Volver arriba</a>
+</div>
+
+
+## Limitar la cantidad de resultados
+
+Para limitar el número de resultados, usaremos la sentencia `LIMIT`:
+
+```sql
+USE devcamp_sql_course_schema;
+
+-- limit to the first 10 records
+SELECT * FROM users
+LIMIT 10;
+
+-- limit to 10 records but skipping the first 5
+-- it starts on the 6th record
+SELECT * FROM users
+LIMIT 5, 10;
+```
+
+<br/>
+
+**Notas:**
+
+* `LIMIT` acepta dos parámetros:
+    1. **Offset**: el número de registros que queremos saltarnos.
+    2. **Count**: el número de registros que queremos obtener.
+
+
