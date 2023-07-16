@@ -7,6 +7,7 @@
 * [Filtrar con WHERE](#filtrar-con-where)
 * [Limitar la cantidad de resultados](#limitar-la-cantidad-de-resultados)
 * [Actualizar registros](#actualizar-registros)
+* [Usar BEGIN y ROLLBACK para revertir cambios](#usar-begin-y-rollback-para-revertir-cambios)
 
 <br/>
 
@@ -247,3 +248,31 @@ AND guides_users_id = 3;
 ```
 
 
+<br/><hr/>
+<hr/><br/>
+
+
+<div align='right'>
+    <a href='#index'>Volver arriba</a>
+</div>
+
+
+## Usar BEGIN y ROLLBACK para revertir cambios
+
+En los ejemplos de `UPDATE` anteriores, no podríamos devolver la base de datos a los valores previos a los cambios. Para poder hacerlo, se debe usar la sentencia `BEGIN`:
+
+```sql
+USE devcamp_sql_course_schema;
+
+BEGIN;	-- allows for reverting the update
+UPDATE guides
+SET guides_title = 'Oops'
+WHERE guides_users_id = 3;
+
+SELECT * FROM guides;
+
+ROLLBACK; -- resets everything to the point it was at BEGIN
+
+-- veremos que está todo como al principio
+SELECT * FROM guides;
+```
