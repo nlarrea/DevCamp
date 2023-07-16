@@ -4,6 +4,7 @@
 
 * [Añadir registros a una base de datos](#añadir-registros-a-una-base-de-datos)
 * [Consultar todos los registros de una tabla](#consultar-todos-los-registros-de-una-tabla)
+* [Filtrar con WHERE](#filtrar-con-where)
 
 <br/>
 
@@ -114,3 +115,45 @@ SELECT column1, column2, column3 FROM table_name;
 <br/>
 
 > Si tenemos varias líneas de código SQL, podemos ejecutar la línea que queramos seleccionando la línea y ejecutando el código (*con el símbolo del rayo, o con `Control + Enter`*).
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+<div align='right'>
+    <a href='#index'>Volver arriba</a>
+</div>
+
+
+## Filtrar con WHERE
+
+Para filtrar los resultados de una consulta, usaremos la sentencia `WHERE`:
+
+```sql
+USE devcamp_sql_course_shema;
+
+-- select all users
+SELECT * FROM users;
+
+-- select all users with one of those two emails
+SELECT * FROM users
+WHERE users_email = 'kristine@test.com'
+OR users_email = 'jordan@test.com';
+
+-- select city and state from all addresses in NY
+SELECT addresses_city, addresses_state FROM addresses
+WHERE addresses_state = 'NY';
+
+-- select all columns in Manhattan
+SELECT * FROM addresses
+WHERE addresses_state = 'NY'
+AND addresses_city = 'Manhattan';
+```
+
+<br/>
+
+**Notas:**
+
+* Podemos usar `AND` y `OR` para filtrar los resultados.
+* Usar `AND` es más restrictivo que usar `OR`.
