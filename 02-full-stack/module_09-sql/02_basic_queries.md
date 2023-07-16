@@ -6,6 +6,7 @@
 * [Consultar todos los registros de una tabla](#consultar-todos-los-registros-de-una-tabla)
 * [Filtrar con WHERE](#filtrar-con-where)
 * [Limitar la cantidad de resultados](#limitar-la-cantidad-de-resultados)
+* [Actualizar registros](#actualizar-registros)
 
 <br/>
 
@@ -193,5 +194,56 @@ LIMIT 5, 10;
 * `LIMIT` acepta dos parámetros:
     1. **Offset**: el número de registros que queremos saltarnos.
     2. **Count**: el número de registros que queremos obtener.
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+<div align='right'>
+    <a href='#index'>Volver arriba</a>
+</div>
+
+
+## Actualizar registros
+
+Para actualizar registros, usaremos la sentencia `UPDATE`:
+
+```sql
+USE devcamp_sql_course_schema;
+
+-- see what the user looks like before the update
+SELECT * FROM users
+WHERE users_id = 2;
+
+/* OUTPUT:
+	- id = 2
+	- name = Kristine
+	- email = kristine@test.com
+*/
+
+-- update the user's email
+UPDATE users 
+SET users_email = 'update@test.com'
+WHERE users_id = 2;
+
+-- see what the user looks like after the update
+SELECT * FROM users
+WHERE users_id = 2;
+
+/* OUTPUT:
+	- id = 2
+	- name = Kristine
+	- email = update@test.com
+*/
+
+
+
+-- can use AND to specify multiple conditions
+UPDATE guides
+SET guides_title = 'Something Else'
+WHERE guides_title = 'Another Post'
+AND guides_users_id = 3;
+```
 
 
