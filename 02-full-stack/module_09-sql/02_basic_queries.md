@@ -8,6 +8,8 @@
 * [Limitar la cantidad de resultados](#limitar-la-cantidad-de-resultados)
 * [Actualizar registros](#actualizar-registros)
 * [Usar BEGIN y ROLLBACK para revertir cambios](#usar-begin-y-rollback-para-revertir-cambios)
+* [Obtener los valores únicos de una columna](#obtener-los-valores-únicos-de-una-columna)
+* [Usar ORDER BY y CAST para ordenar los resultados](#usar-order-by-y-cast-para-ordenar-los-resultados)
 
 <br/>
 
@@ -311,5 +313,83 @@ FROM addresses;
 	Manhattan
     Phoenix
     Queens
+*/
+```
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+<div align='right'>
+    <a href='#index'>Volver arriba</a>
+</div>
+
+
+## Usar ORDER BY y CAST para ordenar los resultados
+
+Para ordenar los resultados de una consulta, usaremos la sentencia `ORDER BY`:
+
+```sql
+-- whithout ORDER BY
+SELECT guides_title FROM guides;
+/* prints:
+	My Blog
+    Something Else
+    My Great Post
+*/
+
+SELECT guides_title FROM guides
+ORDER BY guides_title DESC;
+/* prints:
+	Something Else
+    My Great Post
+    My Blog
+*/
+
+SELECT guides_title FROM guides
+ORDER BY guides_title ASC;
+/* prints:
+	My Blog
+    My Great Post
+    Something Else
+*/
+```
+
+<br/>
+
+Sin embargo, ¿qué ocurre si pretendemos ordenar un valor numérico que realmente es de tipo *texto*? Veámoslo con un ejemplo:
+
+```sql
+SELECT guides_revenue, guides_title FROM guides;
+/* prints:
+	 500 | My Blog
+    1500 | Something Else
+     750 | My Great Post
+*/
+
+-- If we try to order those by guides_revenue (apparently numeric)
+SELECT guides_revenue, guides_title FROM guides
+ORDER BY guides_revenue ASC;
+/* prints:
+	1500 | Something Else
+     500 | My Blog
+     750 | My Great Post
+*/
+```
+
+<br/>
+
+Si nos fijamos, el orden aparentemente no tiene ningún sentido. Esto se debe a que `guides_revenue` realmente es de tipo `VARCHAR()`, lo que significa que MySQL ordena esa variable como si fuera texto, es decir, `1`500 es menor que `5`00, que es menor que `7`50. No importa lo largo que sea el número, MySQL solo se fija en el primer dígito.
+
+Para arreglar esto, debemos *convertir* el tipo de dato de `VARCHAR()` a algún tipo numérico usando la sentencia `CAST`, que cambiará el tipo de dato temporalmente para poder indicar cómo queremos que se trate a dicha variable:
+
+```sql
+SELECT guides_revenue, guides_title FROM guides
+ORDER BY CAST(guides_revenue AS UNSIGNED) ASC;
+/* prints:
+     500 | My Blog
+     750 | My Great Post
+	1500 | Something Else
 */
 ```
