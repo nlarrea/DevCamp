@@ -276,3 +276,40 @@ ROLLBACK; -- resets everything to the point it was at BEGIN
 -- veremos que está todo como al principio
 SELECT * FROM guides;
 ```
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+<div align='right'>
+    <a href='#index'>Volver arriba</a>
+</div>
+
+
+## Obtener los valores únicos de una columna
+
+Se llaman *valores únicos* a los valores de una columna pero sin repetirla, es decir, si tuviéramos una columna con los valores `1, 1, 2, 3, 3, 3, 4, 5, 5`, los valores únicos serían `1, 2, 3, 4, 5`.
+
+Para poder hacer esto con SQL, usaremos la sentencia `DISTINCT`:
+
+```sql
+-- Find all values
+SELECT addresses_city
+FROM addresses;
+/* prints:
+	Manhattan
+    Phoenix
+    Manhattan
+    Queens
+*/
+
+-- Find unique values
+SELECT DISTINCT addresses_city
+FROM addresses;
+/* prints:
+	Manhattan
+    Phoenix
+    Queens
+*/
+```
