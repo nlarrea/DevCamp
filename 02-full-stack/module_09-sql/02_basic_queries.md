@@ -15,7 +15,7 @@
 <br/>
 
 
-[<< TIPOS DE DATOS](./01_data_types.md#sql-data-types) | [HOME](../../README.md#devcamp)
+[<< TIPOS DE DATOS](./01_data_types.md#sql-data-types) | [HOME](../../README.md#devcamp) | [CONSLTAS AVANZADAS >>](./03_advanced_queries.md#consultas-avanzadas)
 
 
 <br/><hr/>
@@ -414,3 +414,10 @@ WHERE users_id = 2;
 <br/>
 
 Si hacemos un `SELECT` de la tabla `users`, veremos que el registro con `users_id = 2` ya no existe.
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+[<< TIPOS DE DATOS](./01_data_types.md#sql-data-types) | [HOME](../../README.md#devcamp) | [CONSLTAS AVANZADAS >>](./03_advanced_queries.md#consultas-avanzadas)
