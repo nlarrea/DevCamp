@@ -10,6 +10,7 @@
 * [Usar BEGIN y ROLLBACK para revertir cambios](#usar-begin-y-rollback-para-revertir-cambios)
 * [Obtener los valores únicos de una columna](#obtener-los-valores-únicos-de-una-columna)
 * [Usar ORDER BY y CAST para ordenar los resultados](#usar-order-by-y-cast-para-ordenar-los-resultados)
+* [Eliminar registros](#eliminar-registros)
 
 <br/>
 
@@ -393,3 +394,23 @@ ORDER BY CAST(guides_revenue AS UNSIGNED) ASC;
 	1500 | Something Else
 */
 ```
+
+
+<br/><hr/>
+<hr/><br/>
+
+
+## Eliminar registros
+
+Para eliminar registros, usaremos la sentencia `DELETE`:
+
+```sql
+USE devcamp_sql_course_schema;
+
+DELETE FROM users
+WHERE users_id = 2;
+```
+
+<br/>
+
+Si hacemos un `SELECT` de la tabla `users`, veremos que el registro con `users_id = 2` ya no existe.
