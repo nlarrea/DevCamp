@@ -4,6 +4,7 @@
 
 *   [Rangos](#rangos)
 *   [Wildcard Search](#wildcard-search)
+*   [Código más limpio al usar WHERE con IN](#código-más-limpio-al-usar-where-con-in)
 
 <br/>
 
@@ -73,3 +74,30 @@ WHERE guides_title LIKE 'My%';
 <br/>
 
 En este caso, se mostrarían todas las filas menos la segunda y la última en la tabla.
+
+<br/><hr/><hr/><br/>
+
+## Código más limpio al usar WHERE con IN
+
+Para realizar consultas con ciertos filtros, podemos realizar lo siguinete:
+
+```sql
+SELECT * FROM addresses
+WHERE addresses_city = 'Queens'
+OR addresses_city = 'Manhattan';
+```
+
+<br/>
+
+Esto es muy útil, sin embargo, ¿qué ocurriría si tuviéramos cientos de filtros a realizar? Este código podría ser muy tedioso.
+
+Si vamos a comprobar siempre la misma columna, el código puede verse reducido significativamente si lo hacemos de la siguiente manera:
+
+```sql
+SELECT * FROM addresses
+WHERE addresses_city IN ('Queens', 'Manhattan');
+```
+
+<br/>
+
+Con esto, creamos una lista de posibles valores y usamos la palabra reservada `IN` para indicar que queremos las consultas cuya columna `addresses_city` tenga alguno de los valores de la lista.
