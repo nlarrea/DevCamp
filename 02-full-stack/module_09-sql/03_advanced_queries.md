@@ -6,6 +6,7 @@
 *   [Wildcard Search](#wildcard-search)
 *   [Código más limpio al usar WHERE con IN](#código-más-limpio-al-usar-where-con-in)
 *   [Subconsultas](#subconsultas)
+    *   [Ejemplos adicionales de subconsultas](#ejemplos-adicionales-de-subconsultas)
 
 <br/>
 
@@ -139,6 +140,41 @@ SELECT guides_title, guides_revenue FROM guides
 WHERE guides_revenue = (
   	-- seleccionar el valor más alto de guides_revenue
 	SELECT MAX(CAST(guides_revenue AS UNSIGNED)) FROM guides
+);
+```
+
+<br/><hr/><br/>
+
+### Ejemplos adicionales de subconsultas
+
+Partiendo de la siguiente tabla de datos:
+
+| addresses_id | addresses_street_one | addresses_street_two | addresses_city | addresses_state | addresses_postal_code | addresses_users_id |
+| ------------ | -------------------- | -------------------- | -------------- | --------------- | --------------------- | ------------------ |
+| 1            | 123 Any Street       |                      | Manhattan      | NY              | 53853                 | 1                  |
+| 2            | 123 Any Street       | Suite 333            | Phoenix        | AZ              | 84632                 | 1                  |
+| 3            | 123 Any Street       |                      | Manhattan      | NY              | 53853                 | 2                  |
+| 4            | 123 Any Street       |                      | Queens         | NY              | 53853                 | 3                  |
+
+<br/>
+
+Si quisiéramos obtener la información de aquellas filas cuya `addresses_city` fuera `'Queens'` o `'Manhattan'`, hemos visto en apartados anteriores que podría hacerse algo así:
+
+```sql
+SELECT * FROM addresses
+WHERE addresses_city IN ('Queens', 'Manhattan');
+```
+
+<br/>
+
+Sin embargo, si en lugar de obtener los datos coincidentes con esos dos valores, tomáramos aquellos que pertenezcan al `addresses_state` de `'NY'` y añadiéramos algún otro filtro, nos convendría más hacer uso de las subconsultas:
+
+```sql
+SELECT * FROM addresses
+WHERE addresses_city IN (
+	SELECT addresses_city FROM addresses
+  	WHERE addresses_state = 'NY'
+  	AND addresses_users_id = 1
 );
 ```
 
