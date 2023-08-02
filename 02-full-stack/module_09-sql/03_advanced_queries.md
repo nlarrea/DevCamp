@@ -7,12 +7,15 @@
 *   [Código más limpio al usar WHERE con IN](#código-más-limpio-al-usar-where-con-in)
 *   [Subconsultas](#subconsultas)
     *   [Ejemplos adicionales de subconsultas](#ejemplos-adicionales-de-subconsultas)
+    *   [Usar subconsultas para insertar datos](#usar-subconsultas-para-insertar-datos)
 
 <br/>
 
 [<< CONSULTAS BÁSICAS](./02_basic_queries.md#sql-queries) | [HOME](../../../README.md#devcamp)
 
-<br/><hr/><hr/><br/>
+<br/>
+
+<hr/><hr/><br/>
 
 <div align='right'><a href='#index'>Volver arriba</a></div>
 
@@ -32,7 +35,9 @@ SELECT * FROM guides
 WHERE guides_revenue NOT BETWEEN 1000 and 5000;
 ```
 
-<br/><hr/><hr/><br/>
+<br/>
+
+<hr/><hr/><br/>
 
 <div align='right'><a href='#index'>Volver arriba</a></div>
 
@@ -77,7 +82,9 @@ WHERE guides_title LIKE 'My%';
 
 En este caso, se mostrarían todas las filas menos la segunda y la última en la tabla.
 
-<br/><hr/><hr/><br/>
+<br/>
+
+<hr/><hr/><br/>
 
 ## Código más limpio al usar WHERE con IN
 
@@ -104,7 +111,9 @@ WHERE addresses_city IN ('Queens', 'Manhattan');
 
 Con esto, creamos una lista de posibles valores y usamos la palabra reservada `IN` para indicar que queremos las consultas cuya columna `addresses_city` tenga alguno de los valores de la lista.
 
-<br/><hr/><hr/><br/>
+<br/>
+
+<hr/><hr/><br/>
 
 ## Subconsultas
 
@@ -143,7 +152,9 @@ WHERE guides_revenue = (
 );
 ```
 
-<br/><hr/><br/>
+<br/>
+
+<hr/><br/>
 
 ### Ejemplos adicionales de subconsultas
 
@@ -178,3 +189,55 @@ WHERE addresses_city IN (
 );
 ```
 
+<br/>
+
+<hr/><br/>
+
+### Usar subconsultas para insertar datos
+
+Imaginemos que tenemos la siguiente tabla llamada `guides`:
+
+| guides_id | guides_revenue | guides_users_id | guides_title            |
+| --------- | -------------- | --------------- | ----------------------- |
+| 1         | 500            | 2               | My Blog                 |
+| 2         | 1500           | 3               | Something Else          |
+| 3         | 750            | 3               | My Great Post           |
+| 4         | 1000           | 2               | My Blog                 |
+| 5         | 750            | 3               | My Blog                 |
+| 6         | 5000           | 2               | Another One of My Posts |
+
+<br/>
+
+Si queremos crear un usuario y añadir, además, un *guide* para este nuevo usuario, habría que seguir los siguientes pasos:
+
+1. Crear el nuevo usuario.
+2. Crear un nuevo *guide*, para lo que es necesario obtener el ID del usuario.
+
+<br/>
+
+***Pero, ¿cómo podemos indicar cuál es el ID de ese nuevo usuario?***
+
+Para ello, hay que realizar una subconsulta. He aquí la solución:
+
+```sql
+USE devcamp_sql_course_schema;
+
+-- Creamos el nuevo usuario
+INSERT INTO users (users_name, users_email)
+VALUES ('Jon', 'jon@snow.com');
+
+-- Creamos el nuevo 'guide'
+INSERT INTO guides (guides_revenue, guides_title, guides_users_id)
+VALUES (
+	500,
+    'Guide by Jon',
+    -- Usamos una subconsulta para obtener el ID
+    (SELECT users_id FROM users WHERE users_name = 'Jon' AND users_email = 'jon@snow.com' LIMIT 1)
+);
+```
+
+<br/>
+
+> Con el `LIMIT 1` nos aseguramos de que solo obtenemos un `users_id`, aunque no sería necesario en este caso puesto que el dato `users_email` está definido como `UNIQUE`.
+
+Como no conocemos el `users_id` del nuevo usuario, debemos realizar una subconsulta para obtener ese dato. Si ahora hacemos una consulta de todos los elementos de la tabla `guides`, veremos la misma tabla que al principio pero con una fila más, que se corresponde con la que acabamos de crear.
