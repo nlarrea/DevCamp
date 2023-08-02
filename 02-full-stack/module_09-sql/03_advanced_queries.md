@@ -11,7 +11,7 @@
 
 <br/>
 
-[<< CONSULTAS BÁSICAS](./02_basic_queries.md#sql-queries) | [HOME](../../../README.md#devcamp)
+[<< CONSULTAS BÁSICAS](./02_basic_queries.md#sql-queries) | [HOME](../../../README.md#devcamp) | [FUNCIONES >>](./04_functions.md#funciones)
 
 <br/>
 
@@ -241,3 +241,9 @@ VALUES (
 > Con el `LIMIT 1` nos aseguramos de que solo obtenemos un `users_id`, aunque no sería necesario en este caso puesto que el dato `users_email` está definido como `UNIQUE`.
 
 Como no conocemos el `users_id` del nuevo usuario, debemos realizar una subconsulta para obtener ese dato. Si ahora hacemos una consulta de todos los elementos de la tabla `guides`, veremos la misma tabla que al principio pero con una fila más, que se corresponde con la que acabamos de crear.
+
+<br/>
+
+<hr/><hr/><br/>
+
+[<< CONSULTAS BÁSICAS](./02_basic_queries.md#sql-queries) | [HOME](../../..README.md#devcamp) | [FUNCIONES >>](./04_functions.md#funciones)
