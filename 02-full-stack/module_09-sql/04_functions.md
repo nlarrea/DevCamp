@@ -4,6 +4,7 @@
 
 * [Introducción a las funciones](#introducción-a-las-funciones)
 * [Cambiar el tipo de dato de String a Decimal](#cambiar-el-tipo-de-dato-de-string-a-decimal)
+* [Las funciones MIN, MAX, SUM, AVG y COUNT](#las-funciones-min,-max,-sum,-avg-y-count)
 
 <br/>
 
@@ -12,6 +13,8 @@
 <br/>
 
 <hr/><hr/><br/>
+
+<div align='right'><a href='#index'>Volver arriba</a></div>
 
 ## Introducción a las funciones
 
@@ -22,6 +25,8 @@ A ese tipo de funciones se les llama ***aggregate functions***, que son aquellas
 <br/>
 
 <hr/><hr/><br/>
+
+<div align='right'><a href='#index'>Volver arriba</a></div>
 
 ## Cambiar el tipo de dato de String a Decimal
 
@@ -77,3 +82,43 @@ SELECT MIN(guides_revenue) FROM guides;
 <br/>
 
 En esta ocasión, el resultado será `500`, por lo que veremos que funciona correctamente.
+
+<br/>
+
+<hr/><hr/><br/>
+
+<div align='right'><a href='#index'>Volver arriba</a></div>
+
+## Las funciones MIN, MAX, SUM, AVG y COUNT
+
+Las funciones `MIN`, `MAX`, `SUM`, `AVG` y `COUNT` son *aggregate functions* también, porque toman un montón de información, realizan las operaciones necesarias y devuelven un único dato. Vamos a ver unos pocos ejemplos:
+
+```sql
+USE devcamp_sql_course_schema;
+
+SELECT MIN(guides_revenue) FROM guides;		-- min value
+-- 500
+
+SELECT MAX(guides_revenue) FROM guides;		-- max value
+-- 5000
+
+SELECT SUM(guides_revenue) FROM guides;		-- summatory
+-- 10000
+
+SELECT AVG(guides_revenue) FROM guides;		-- average
+-- 1428.5714
+
+SELECT COUNT(*) FROM users;					-- counts how many users are in users table
+-- 2004
+```
+
+<br/>
+
+Además de estos ejemplos simples donde se toman todos los datos de las columnas o incluso de la tabla, una de las cosas que se puede hacer con estas funciones, es pasar cierto filtro, por ejemplo:
+
+```sql
+SELECT COUNT(*) FROM addresses
+WHERE addresses_state = 'NY';
+-- 3
+```
+
