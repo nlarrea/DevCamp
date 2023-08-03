@@ -8,6 +8,7 @@
 * [Generar informes resumidos con GROUP BY](#generar-informes-resumidos-con-group-by)
 * [Utilizar comentarios](#utilizar-comentarios)
 * [Deshabilitar temporalmente el Modo Seguro](#deshabilitar-temporalmente-el-modo-seguro)
+* [Añadir una columna y llenarla con datos aleatorios](#añadir-una-columna-y-llenarla-con-datos-aleatorios)
 
 <br/>
 
@@ -260,4 +261,52 @@ Para devolver la columna a sus valores anteriores, finalmente ejecutaremos lo si
 ```sql
 ROLLBACK;
 ```
+
+<br/>
+
+<hr/><hr/><br/>
+
+<div align='right'><a href='#index'>Volver arriba</a></div>
+
+## Añadir una columna y llenarla con datos aleatorios
+
+Antes de realizar ningún tipo de operación, vamos a comenzar añadiendo una nueva columna a la tabla `guides` llamada `guides_qty`. De nuevo, tenemos dos opciones:
+
+* Realizarlo *a mano*:
+    * Clicar en la llave inglesa situada a la derecha del nombre de la tabla en el panel izquierdo.
+    * Añadir la nueva columna:
+        * **Nombre:** `guides_qty`
+        * **Tipo:** `INT`
+        * **Extras:** `NOT NULL`
+    * Clicar en `Apply` abajo a la derecha.
+* Ejecutar el siguiente comando:
+
+```sql
+ALTER TABLE `devcamp_sql_course_schema`.`guides` 
+ADD COLUMN `guides_qty` INT NOT NULL AFTER `guides_title`;
+```
+
+<br/>
+
+Hecho esto, veremos que al tener la condición `NOT NULL` todas las filas de dicha nueva columna tienen el valor `0`. Ahora, pongámonos en la situación en la que quisiéramos rellenar con datos aleatorios una columna entera. En este caso es relativamente sencillo porque nuestra tabla `guides` tiene pocas entradas, pero ***¿qué ocurriría si estuviéramos trabajando con una aplicación de miles de datos?***
+
+Rellenar miles de filas con datos aleatorios a mano es impensable.
+
+Para ello, podemos realizar lo siguiente:
+
+```sql
+-- Deshabilitar temporalmente el modo seguro
+SET SQL_SAFE_UPDATES = 0;
+
+BEGIN;	-- Por si acaso hacemos algo mal
+UPDATE guides
+SET guides_qty = RAND()*1000;
+
+-- Ejecutar solo si queremos deshacer los cambios
+ROLLBACK;
+```
+
+<br/>
+
+Si ahora vemos cómo ha quedado la tabla `guides`, veremos que la nueva columna `guides_qty` está llena de valores aleatorios entre `1` y `1000` (*porque hemos multiplicado el resultado de `RAND()` por `1000`*).
 
