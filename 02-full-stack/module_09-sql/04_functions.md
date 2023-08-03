@@ -5,6 +5,7 @@
 * [Introducción a las funciones](#introducción-a-las-funciones)
 * [Cambiar el tipo de dato de String a Decimal](#cambiar-el-tipo-de-dato-de-string-a-decimal)
 * [Las funciones MIN, MAX, SUM, AVG y COUNT](#las-funciones-min,-max,-sum,-avg-y-count)
+* [Generar informes resumidos con GROUP BY](#generar-informes-resumidos-con-group-by)
 
 <br/>
 
@@ -121,4 +122,73 @@ SELECT COUNT(*) FROM addresses
 WHERE addresses_state = 'NY';
 -- 3
 ```
+
+<br/>
+
+<hr/><hr/><br/>
+
+<div align='right'><a href='#index'>Volver arriba</a></div>
+
+## Generar informes resumidos con GROUP BY
+
+Gracias a las funciones descritas en el [apartado anterior](#las-funciones-min,-max,-sum,-avg-y-count), combinadas con `GROUP BY`, podemos generar informes realmente interesantes de los datos que tenemos en las tablas de las bases de datos.
+
+He aquí unos pocos ejemplos:
+
+```sql
+SELECT addresses_state, COUNT(addresses_state)
+FROM addresses
+GROUP BY addresses_state;
+```
+
+<br/>
+
+El resultado de esta ejecución muestra lo siguiente:
+
+| `addresses_state` | `COUNT(addresses_state)` |
+| ----------------- | ------------------------ |
+| NY                | 3                        |
+| AZ                | 1                        |
+
+<br/>
+
+Como podemos observar, lo que ha ocurrido es que nos muestra todas las opciones (*valores únicos*) de la columna `addresses_state` y, a continuación, gracias a la función `COUNT()`, nos muestra cuántas veces se usa dicho valor. Esto puede resultar muy útil para saber la cantidad de usuarios que cumplen cierto requisito, por ejemplo.
+
+Veamos otro ejemplo similar:
+
+```sql
+SELECT addresses_city, COUNT(addresses_city)
+FROM addresses
+GROUP BY addresses_city;
+```
+
+<br/>
+
+Este es el resultado:
+
+| `addresses_city` | `COUNT(addresses_city)` |
+| ---------------- | ----------------------- |
+| Manhattan        | 2                       |
+| Phoenix          | 1                       |
+| Queens           | 1                       |
+
+<br/>
+
+Incluso podríamos obtener la cantidad de ingresos que ha tenido cada usuario con la tabla `guides` y agruparlo por usuario:
+
+```sql
+SELECT guides_users_id, SUM(guides_revenue)
+FROM guides
+GROUP BY guides_users_id;
+```
+
+<br/>
+
+Este sería el resultado:
+
+| `guides_users_id` | `SUM(guides_revenue)` |
+| ----------------- | --------------------- |
+| 2                 | 6500                  |
+| 3                 | 3000                  |
+| 2006              | 500                   |
 
