@@ -6,6 +6,7 @@
 * [Cambiar el tipo de dato de String a Decimal](#cambiar-el-tipo-de-dato-de-string-a-decimal)
 * [Las funciones MIN, MAX, SUM, AVG y COUNT](#las-funciones-min,-max,-sum,-avg-y-count)
 * [Generar informes resumidos con GROUP BY](#generar-informes-resumidos-con-group-by)
+* [Utilizar comentarios](#utilizar-comentarios)
 
 <br/>
 
@@ -192,3 +193,20 @@ Este sería el resultado:
 | 3                 | 3000                  |
 | 2006              | 500                   |
 
+<br/>
+
+<hr/><hr/><br/>
+
+<div align='right'><a href='#index'>Volver arriba</a></div>
+
+## Utilizar comentarios
+
+Existen tres formas de crear comentarios en SQL:
+
+* `-- Inline comment`: comentarios de una sola línea, bastante común de utilizar sobre alguna consulta o para dividir en secciones el código.
+* `# Inline comment`: otra forma de generar comentarios en una sola línea.
+* `/* Multiline comment */`: una forma de escribir un bloque entero de comentario que puede tener la cantidad de líneas que sean siempre que el texto vaya entre los signos de apertura (`/*`) y cierre (`*/`) de comentarios.
+
+<br/>
+
+Con los comentarios hay que tener en cuenta que por mucho que describamos el comportamiento de un bloque de código, si ese bloque se modifica para que realice otra función, el comentario **no se modifica solo**, es decir, **debemos modificar los comentarios que describen nuestro código cuando dicho código es modificado**.
