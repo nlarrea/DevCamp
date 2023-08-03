@@ -7,6 +7,7 @@
 * [Las funciones MIN, MAX, SUM, AVG y COUNT](#las-funciones-min,-max,-sum,-avg-y-count)
 * [Generar informes resumidos con GROUP BY](#generar-informes-resumidos-con-group-by)
 * [Utilizar comentarios](#utilizar-comentarios)
+* [Deshabilitar temporalmente el Modo Seguro](#deshabilitar-temporalmente-el-modo-seguro)
 
 <br/>
 
@@ -210,3 +211,53 @@ Existen tres formas de crear comentarios en SQL:
 <br/>
 
 Con los comentarios hay que tener en cuenta que por mucho que describamos el comportamiento de un bloque de código, si ese bloque se modifica para que realice otra función, el comentario **no se modifica solo**, es decir, **debemos modificar los comentarios que describen nuestro código cuando dicho código es modificado**.
+
+<br/>
+
+<hr/><hr/><br/>
+
+<div align='right'><a href='#index'>Volver arriba</a></div>
+
+## Deshabilitar temporalmente el Modo Seguro
+
+En ocasiones, MySQL detiene la ejecución de nuestro código y no nos permite realizar ciertas operaciones porque las considera *peligrosas*. Esto ocurre, por ejemplo, cuando queremos rellenar o modificar los datos de todas las columnas de una tabla.
+
+Para poder solucionar esto, existen dos opciones:
+
+* Deshabilitar desde los ajustes de MySQL el Modo Seguro.
+* Deshabilitar mediante comandos el Modo Seguro temporalmente (Recomendado).
+
+<br/>
+
+Esta última opción es la que vamos a realizar a continuación. Vamos a modificar toda la columna de `addresses_city` a un valor cualquiera a modo de ejemplo. Pero, para poder hacer esto, debemos deshabilitar el Modo Seguro.
+
+He aquí el código:
+
+```sql
+-- Deshabilitar el modo seguro
+SET SQL_SAFE_UPDATES = 0;
+
+-- Modificar una columna entera
+BEGIN;	# Para poder deshacer la modificación después
+UPDATE addresses
+SET addresses_city = 'Oops';
+```
+
+<br/>
+
+A continuación, comprobaremos si se ha modificado la columna correctamente:
+
+```sql
+SELECT * FROM addresses;
+```
+
+<br/>
+
+Veremos que todas las filas de la columna `addresses_city` tienen como valor la palabra `Oops`, por lo que ha funcionado correctamente.
+
+Para devolver la columna a sus valores anteriores, finalmente ejecutaremos lo siguiente:
+
+```sql
+ROLLBACK;
+```
+
