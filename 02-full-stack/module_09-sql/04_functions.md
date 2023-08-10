@@ -14,7 +14,7 @@
 
 <br/>
 
-[<< CONSULTAS AVANZADAS](./03_advanced_queries.md#consultas-avanzadas) | [HOME](../../..README.md#devcamp)
+[<< CONSULTAS AVANZADAS](./03_advanced_queries.md#consultas-avanzadas) | [HOME](../../..README.md#devcamp) | [CONTROL FLOW >>](./05_control_flow.md#control-flow)
 
 <br/>
 
@@ -395,3 +395,9 @@ El resultado obtenido en este caso sería el siguiente:
 Como ya hemos mencionado, esto puede resultar muy útil si pretendemos presentar miles de datos con columnas que pueden confundirse entre sí. De esta forma, queda mucho más claro a qué hace referencia cada uno de los datos.
 
 Además, si se exporta la tabla a determinados formatos, los encabezados podrían no estar presentes. Exportando los datos de esta forma, no son necesarios dichos encabezados y se solucionaría ese problema.
+
+<br/>
+
+<hr/><hr/><br/>
+
+[<< CONSULTAS AVANZADAS](./03_advanced_queries.md#consultas-avanzadas) | [HOME](../../..README.md#devcamp) | [CONTROL FLOW >>](./05_control_flow.md#control-flow)
