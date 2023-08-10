@@ -3,6 +3,7 @@
 <div id='index'></div>
 
 * [Aliases](#aliases)
+    * [Alias en tablas](#alias-en-tablas)
 
 <br/>
 
@@ -50,3 +51,25 @@ De esta forma, a la hora de mostrar o exportar los datos, se obtendría lo sigui
 | ...            | ...      | ...       | ...   | ...         |
 
 <br/>
+
+<hr/><br/>
+
+### Alias en tablas
+
+Además de poder usar aliases en los nombres de las columnas, podemos usarlos también para hacer referencia a las tablas:
+
+```sql
+-- Sin alias
+SELECT guides_title, guides_revenue
+FROM guides
+WHERE guides_revenue > 600;
+
+-- Con alias
+SELECT g.guides_title, g.guides_revenue
+FROM guides g
+WHERE g.guides_revenue > 600;
+```
+
+​	<br/>
+
+Puede no parecer algo útil ahora mismo, sin embargo, a la hora de obtener datos de varias tablas, esto puede resultar de lo más práctico.
