@@ -9,6 +9,7 @@
 * [Utilizar comentarios](#utilizar-comentarios)
 * [Deshabilitar temporalmente el Modo Seguro](#deshabilitar-temporalmente-el-modo-seguro)
 * [Añadir una columna y llenarla con datos aleatorios](#añadir-una-columna-y-llenarla-con-datos-aleatorios)
+* [Usar operadores matemáticos para obtener datos](#usar-operadores-matemáticos-para-obtener-datos)
 
 <br/>
 
@@ -310,3 +311,50 @@ ROLLBACK;
 
 Si ahora vemos cómo ha quedado la tabla `guides`, veremos que la nueva columna `guides_qty` está llena de valores aleatorios entre `1` y `1000` (*porque hemos multiplicado el resultado de `RAND()` por `1000`*).
 
+<br/>
+
+<hr/><hr/><br/>
+
+<div align='right'><a href='#index'>Volver arriba</a></div>
+
+## Usar operadores matemáticos para obtener datos
+
+Habrá momentos en los que queramos obtener datos muy concretos para los que utilicemos las *aggregate functions*, sin embargo, en otras ocasiones, querremos obtener simplemente datos en los que una simple función matemática nos baste. Estos son los operadores más simples que se pueden utilizar en las consultas de SQL:
+
+* `+`: sumas
+* `-`: restas
+* `*`: multiplicaciones
+* `/`: divisiones
+
+<br/>
+
+He aquí un pequeño ejemplo, partiendo de la siguiente tabla `guides`:
+
+| guides_id | guides_revenue | guides_users_id | guides_title            | guides_qty |
+| --------- | -------------- | --------------- | ----------------------- | ---------- |
+| 1         | 500            | 2               | My Blog                 | 543        |
+| 2         | 1500           | 3               | Something Else          | 685        |
+| 3         | 750            | 3               | My Great Post           | 847        |
+| 4         | 1000           | 2               | My Blog                 | 148        |
+| 5         | 750            | 3               | My Blog                 | 100        |
+| 6         | 5000           | 2               | Another One of My Posts | 552        |
+| 7         | 500            | 2006            | Guide by Jon            | 331        |
+
+<br/>
+
+Si quisiéramos obtener cuánto ha ganado cada usuario por sus posts, podríamos realizar la división entre `guides_revenue` y `guides_qty`:
+
+```sql
+USE devcamp_sql_course_schema;
+
+SELECT
+/* Seleccionamos estas columnas para mejorar
+la legibilidad de los datos obtenidos */
+guides_title,
+guides_revenue,
+guides_qty,
+guides_revenue / guides_qty	-- Operación matemática
+FROM guides;
+```
+
+<br/>
