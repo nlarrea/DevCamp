@@ -10,6 +10,7 @@
 * [Deshabilitar temporalmente el Modo Seguro](#deshabilitar-temporalmente-el-modo-seguro)
 * [Añadir una columna y llenarla con datos aleatorios](#añadir-una-columna-y-llenarla-con-datos-aleatorios)
 * [Usar operadores matemáticos para obtener datos](#usar-operadores-matemáticos-para-obtener-datos)
+* [Añadir nombres customizados a las columnas](#añadir-nombres-customizados-a-las-columnas)
 
 <br/>
 
@@ -358,3 +359,39 @@ FROM guides;
 ```
 
 <br/>
+
+<hr/><hr/><br/>
+
+<div align='right'><a href='#index'>Volver arriba</a></div>
+
+## Añadir nombres customizados a las columnas
+
+A la hora de presentar u exportar los datos, es muy importante saber cómo realizar esta presentación de tal forma que se diferencien y se obtenga fácilmente la información.
+
+Si quisiéramos mostrar a alguien los datos almacenados en la tabla `users`, veríamos que tenemos miles de usuarios registrados en ella. A la hora de presentar estos datos, quizá no queda claro si la columna es el nombre, el apellido, etc. Para solucionar esto, podemos añadir columnas con nombres customizados al lado de cada dato.
+
+He aquí un ejemplo sencillo:
+
+```sql
+USE devcamp_sql_course_schema;
+
+SELECT 'Email:', users_email, 'Name:', users_name
+FROM users;
+```
+
+<br/>
+
+El resultado obtenido en este caso sería el siguiente:
+
+| Email: | users_email    | Name: | users_name |
+| ------ | -------------- | ----- | ---------- |
+| Email: | test0@test.com | Name: | Demo 0     |
+| Email: | test1@test.com | Name: | Demo 1     |
+| Email: | test3@test.com | Name: | Demo 3     |
+| Email: | ...            | Name: | ...        |
+
+<br/>
+
+Como ya hemos mencionado, esto puede resultar muy útil si pretendemos presentar miles de datos con columnas que pueden confundirse entre sí. De esta forma, queda mucho más claro a qué hace referencia cada uno de los datos.
+
+Además, si se exporta la tabla a determinados formatos, los encabezados podrían no estar presentes. Exportando los datos de esta forma, no son necesarios dichos encabezados y se solucionaría ese problema.
