@@ -3,6 +3,8 @@
 <div id='index'></div>
 
 * [Inner Joins](#inner-joins)
+    * [Varios condicionales en un Inner Join](#varios-condicionales-en-un-inner-join)
+
 
 <br/>
 
@@ -109,3 +111,34 @@ Con esto, lo que conseguimos es lo siguiente:
 <br/>
 
 Como se puede observar en la tabla, tenemos las 4 columnas que habíamos seleccionado, podemos ver qué usuario ha realizado cada guía (*al igual que en el ejemplo anterior*), y tenemos la consulta ordenada de forma descendiente según la columna `guides_revenue`.
+
+<br/>
+
+<hr/><br/>
+
+### Varios condicionales en un Inner Join
+
+Hemos visto cómo realizar consultas simples utilizando la unión `INNER JOIN` (*también llamada simplemente `JOIN`*). Vamos a ver otro ejemplo donde añadir varias condiciones:
+
+```sql
+# 1 condición basada en la tabla `users`
+SELECT * FROM guides g
+JOIN users u
+ON g.guides_users_id = u.users_id
+WHERE u.users_name = 'Tiffany';
+
+# 1 condición basada en la tabla `guides`
+SELECT * FROM guides g
+JOIN users u
+ON g.guides_users_id = u.users_id
+WHERE g.guides_revenue > 700;
+
+# Varias condiciones basadas en ambas tablas
+SELECT * FROM guides g
+JOIN users u
+ON g.guides_users_id = u.users_id
+WHERE g.guides_revenue > 750
+AND u.users_name = 'Tiffany'
+OR u.users_name = 'Kristine';
+```
+
