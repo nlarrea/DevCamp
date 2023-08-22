@@ -4,6 +4,7 @@
 
 * [Inner Joins](#inner-joins)
     * [Varios condicionales en un Inner Join](#varios-condicionales-en-un-inner-join)
+    * [Unir varias tablas a la vez](#unir-varias-tablas-a-la-vez)
 
 
 <br/>
@@ -142,3 +143,32 @@ AND u.users_name = 'Tiffany'
 OR u.users_name = 'Kristine';
 ```
 
+<br/>
+
+<hr/><hr/><br/>
+
+### Unir varias tablas a la vez
+
+Tenemos 3 tablas en la base de datos. Hasta ahora, hemos visto cómo unir dos de ellas, pero vamos a ver cómo podemos unir las 3 (*o más, si las tuviéramos*), y qué características debemos tener en cuenta:
+
+```sql
+SELECT *
+FROM users u
+JOIN guides g
+	ON g.guides_users_id = u.users_id
+JOIN addresses a
+	ON a.addresses_users_id = u.users_id
+ORDER BY g.guides_revenue DESC;
+```
+
+<br/>
+
+Esta consulta nos da como resultado **todas** las columnas de las 3 tablas, sin embargo, algunas de ellas aparecen duplicadas y no aparecen todos los usuarios.
+
+***- ¿Por qué ocurre esto?***
+
+Esto se debe a que solo se muestran los usuarios que tienen relación con las tablas `guides` y `addresses`. Es decir, aquellos usuarios que no tengan guías ni direcciones asignadas, no aparecerán en estas consultas.
+
+Además, algunos usuarios tienen insertadas dos direcciones, por lo que sus datos de la tabla `users` y la tabla `guides` aparecen *duplicados* con motivo de enseñar toda la información de `addresses`.
+
+> Más adelante veremos otros tipos de `JOINS` con los que solucionar estos problemas.
