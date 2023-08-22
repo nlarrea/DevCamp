@@ -11,7 +11,7 @@
 
 <br/>
 
-[<< CONSULTAS BÁSICAS](./02_basic_queries.md#sql-queries) | [HOME](../../../README.md#devcamp) | [FUNCIONES >>](./04_functions.md#funciones)
+[<< CONSULTAS BÁSICAS](./02_basic_queries.md#sql-queries) | [HOME](../../README.md#devcamp) | [FUNCIONES >>](./04_functions.md#funciones)
 
 <br/>
 

@@ -14,7 +14,7 @@
 
 <br/>
 
-[<< CONSULTAS AVANZADAS](./03_advanced_queries.md#consultas-avanzadas) | [HOME](../../..README.md#devcamp) | [CONTROL FLOW >>](./05_control_flow.md#control-flow)
+[<< CONSULTAS AVANZADAS](./03_advanced_queries.md#consultas-avanzadas) | [HOME](../../README.md#devcamp) | [CONTROL FLOW >>](./05_control_flow.md#control-flow)
 
 <br/>
 

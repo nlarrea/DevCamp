@@ -8,7 +8,7 @@
 
 <br/>
 
-[<< FUNCIONES](./04_functions.md#funciones) | [HOME](../../..README.md#devcamp) |
+[<< FUNCIONES](./04_functions.md#funciones) | [HOME](../../README.md#devcamp) | [CONSULTAS RELACIONALES >>](./06_relational_queries.md#consultas-relacionales)
 
 <br/>
 
@@ -167,3 +167,8 @@ else:
     "Average Sellers"
 ```
 
+<br/>
+
+<hr/><hr/><br/>
+
+[<< FUNCIONES](./04_functions.md#funciones) | [HOME](../../..README.md#devcamp) | [CONSULTAS RELACIONALES >>](./06_relational_queries.md#consultas-relacionales)
