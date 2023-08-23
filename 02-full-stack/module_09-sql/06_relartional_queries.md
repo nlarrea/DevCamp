@@ -5,6 +5,10 @@
 * [Inner Joins](#inner-joins)
     * [Varios condicionales en un Inner Join](#varios-condicionales-en-un-inner-join)
     * [Unir varias tablas a la vez](#unir-varias-tablas-a-la-vez)
+* [Inner vs Outer Joins](#inner-vs-outer-joins)
+    * [RIGHT JOIN](#right-join)
+    * [LEFT JOIN](#left-join)
+
 
 
 <br/>
@@ -113,6 +117,12 @@ Con esto, lo que conseguimos es lo siguiente:
 
 Como se puede observar en la tabla, tenemos las 4 columnas que habíamos seleccionado, podemos ver qué usuario ha realizado cada guía (*al igual que en el ejemplo anterior*), y tenemos la consulta ordenada de forma descendiente según la columna `guides_revenue`.
 
+> * **`INNER JOIN`: Sólo los registros que coinciden con la condición de combinación son retornados.**
+>
+> * Imagen representativa:
+>
+> ![inner-join](./images/joins/inner-join.png)
+
 <br/>
 
 <hr/><br/>
@@ -171,4 +181,119 @@ Esto se debe a que solo se muestran los usuarios que tienen relación con las ta
 
 Además, algunos usuarios tienen insertadas dos direcciones, por lo que sus datos de la tabla `users` y la tabla `guides` aparecen *duplicados* con motivo de enseñar toda la información de `addresses`.
 
-> Más adelante veremos otros tipos de `JOINS` con los que solucionar estos problemas.
+<br/>
+
+<hr/><hr/><br/>
+
+## Inner vs Outer Joins
+
+En el apartado anterior hablamos de los `INNER JOIN`s (*también llamado solo `JOIN`*), en esta sección vamos a ver las diferencias entre los `INNER` y los ***Outer*** Joins.
+
+A modo de recordatorio,  si queremos realizar un `INNER JOIN` debemos hacer lo siguiente:
+
+```sql
+SELECT *
+FROM guides g
+JOIN users u
+ON g.guides_users_id = u.users_id;
+```
+
+<br/>
+
+Haciendo esto, obtenemos como resultado una tabla donde se muestran todos los `guides`  y solos los `users` que tienen un `guide` asociado. Es decir, **no se muestran todos los usuarios**, solo aquellos que tienen una guía escrita.
+
+<br/>
+
+<hr/><br/>
+
+### RIGHT JOIN
+
+Si quisiéramos generar algún informe donde se mostraran todos los usuarios, deberíamos hacer uso de los **Outer Joins**:
+
+```sql
+SELECT *
+FROM guides g
+RIGHT JOIN users u
+ON g.guides_users_id = u.users_id;
+```
+
+<br/>
+
+En este caso, se muestran los mismos datos que en el caso anterior, pero **añadiendo los usuarios que no tienen guías asociadas**, por lo que en las columnas pertenecientes a `guides`, aparece como dato `NULL`.
+
+| `guides_id` | `guides_revenue` | `guides_users_id` | `guides_title`          | `guides_qty` | `users_id` | `users_name` | `users_email`    |
+| ----------- | ---------------- | ----------------- | ----------------------- | ------------ | ---------- | ------------ | ---------------- |
+| 6           | 5000             | 2                 | Another One of My Posts | 552          | 2          | Kristine     | update@test.com  |
+| 4           | 1000             | 2                 | My Blog                 | 148          | 2          | Kristine     | update@test.com  |
+| 1           | 500              | 2                 | My Blog                 | 148          | 2          | Kristine     | update@test.com  |
+| 5           | 750              | 3                 | My Blog                 | 199          | 3          | Tiffany      | tiffany@test.com |
+| 3           | 750              | 3                 | My Great Post           | 847          | 3          | Tiffany      | tiffany@test.com |
+| 2           | 1500             | 3                 | Something Else          | 685          | 3          | Tiffany      | tiffany@test.com |
+| `NULL`      | `NULL`           | `NULL`            | `NULL`                  | `NULL`       | 6          | Demo 0       | test0@test.com   |
+| `NULL`      | `NULL`           | `NULL`            | `NULL`                  | `NULL`       | 7          | Demo 1       | test1@test.com   |
+| ...         | ...              | ...               | ...                     | ...          | ...        | ...          | test0@test.com   |
+
+> * **`RIGHT JOIN`: retorna todas las filas de la tabla derecha aunque no haya coincidencias en la tabla izquierda.**
+> * Imagen representativa:
+>
+> ![right-outer-join](./images/joins/right-outer-join.png)
+
+<br/>
+
+<hr/><br/>
+
+### LEFT JOIN
+
+Este método tiene otro muy similar a él, llamado `LEFT JOIN`. Veamos qué es lo que ocurre con él:
+
+```sql
+SELECT *
+FROM guides g
+LEFT JOIN users u
+ON g.guides_users_id = u.users_id;
+```
+
+<br/>
+
+Haciendo esto, se obtiene **el mismo resultado que realizando un `INNER JOIN`**.
+
+*** - ¿Y si cambiamos el orden de las tablas?***
+
+```sql
+SELECT *
+FROM users u
+LEFT JOIN guides g
+ON g.guides_users_id = u.users_id;
+```
+
+<br/>
+
+Ahora se obtiene el **mismo resultado que con `RIGHT JOIN`, pero cambiando el orden de las columnas**, mostrando primero las columnas pertenecientes a la tabla `users`, seguidas de aquellas pertenecientes a la tabla `guides`.
+
+*** - ¿Por qué?***
+
+* En los ***Outer Joins*** importa el orden de las tablas. Tenemos dos opciones:
+    * Mantener siempre el mismo orden de las tablas y simplemente cambiar un `RIGHT JOIN` por un `LEFT JOIN`.
+    * Cambiar el orden en el que se *unen* las tablas.
+
+> * **`LEFT JOIN`: retorna todas las filas de la tabla izquierda aunque no haya coincidencias en la tabla derecha.**
+> * Imagen representativa:
+>
+> ![left-outer-join](./images/joins/left-outer-join.png)
+>
+> El conjunto resultante contiene todas las filas de la tabla izquierda y los datos que coincidan de la tabla derecha. Si no se encuentra ninguna coincidencia para una fila particular, `NULL` es retornado.
+
+<br/>
+
+Por todo eso, al hacer:
+
+```sql
+SELECT *
+FROM guides g
+LEFT JOIN users u
+ON g.guides_users_id = u.users_id;
+```
+
+<br/>
+
+Obtenemos lo mismo que un `INNER JOIN`, porque en nuestro ejemplo todos los registros de la tabla izquierda (`guides`) tienen un usuario asignado.

@@ -113,7 +113,7 @@ Ahora que hemos instalado y configurado el *Workbench* de MySQL, vamos a crear u
 
 Para crear un esquema desde aquí, crearemos una conexión clicando el símbolo `+` que aparece en la parte izquierda de la pantalla, o clicando dos veces en alguna conexión que ya tengamos creada (*se nos pedirá la contraseña introducida durante la instalación*).
 
-![00_mysql_home.jpg](./images/00_mysql_home.jpg)
+![00_mysql_home.jpg](./images/steps/00_mysql_home.jpg)
 
 <br/>
 
@@ -125,7 +125,7 @@ Hecho esto, crearemos un nuevo esquema siguiendo estos pasos:
 
 <br/>
 
-![01_create_schema.jpg](./images/01_create_schema.jpg)
+![01_create_schema.jpg](./images/steps/01_create_schema.jpg)
 
 <br/>
 
@@ -153,7 +153,7 @@ Hemos realizado esta operación utilizando el *Workbench* de MySQL, pero podría
 
 Estos son los pasos a seguir para crear una nueva tabla desde el *Workbench* de MySQL:
 
-![02_create_table.jpg](./images/02_create_table.jpg)
+![02_create_table.jpg](./images/steps/02_create_table.jpg)
 
 * **Rojo**: Para crear una nueva tabla, haremos clic derecho en el esquema que acabamos de crear y seleccionaremos la opción `Create table...`. A continuación, indicaremos el nombre que queremos darle a la tabla (en este caso `users`).
 * **Verde**: rellenaremos las filas de la tabla con los datos que queramos. Indicaremos (*marcando los checkbox*) qué condiciones queremos que cumpla cada dato. En la parte inferior podremos abrir diferentes pestañas para ver cómo se han generado los diferentes campos de la tabla. En nuestro caso, hemos creado tres campos:
@@ -202,13 +202,13 @@ Ya hemos creado una tabla en el apartado anterior, por lo que vamos a crear otra
 
 <br/>
 
-![03_create_table_with_foreign_key.jpg](./images/03_create_table_with_foreign_key.jpg)
+![03_create_table_with_foreign_key.jpg](./images/steps/03_create_table_with_foreign_key.jpg)
 
 <br/>
 
 A estas alturas, habremos creado los datos e indicado que uno de ellos es una clave foránea, pero no habremos indicado a qué tabla hace referencia. Para hacerlo, clicaremos en `Foreign Keys` (*abajo, en naranja*) y seguiremos los siguientes pasos:
 
-![04_create_table_with_foreign_key.jpg](./images/04_create_table_with_foreign_key.jpg)
+![04_create_table_with_foreign_key.jpg](./images/steps/04_create_table_with_foreign_key.jpg)
 
 * **Rojo**: indicaremos el nombre que queremos darle a la clave foránea (en este caso `addresses_users_id`) y la tabla a la que hace referencia (en este caso `users` del esquema `devcamp_sql_course_schema`). A continuación, tenemos que indicar el campo de la tabla `users` al que hace referencia (en este caso `users_id`).
 * **Verde**: al crear claves foráneas, suele ser una práctica común hacer que se eliminen los datos de la tabla que contiene la clave foránea cuando se eliminen los datos de la tabla a la que hace referencia. Para ello, marcaremos la opción `ON DELETE CASCADE`.
@@ -252,7 +252,7 @@ Realizar modificaciones en las columnas de una tabla en MySQL es muy sencillo. P
 
 Una vez hecho esto, modificaremos los campos que queramos (***verde***), y pulsaremos en `Apply` para ejecutar el código SQL que se ha generado (***naranja***).
 
-![05_changing_columns.jpg](./images/05_changing_columns.jpg)
+![05_changing_columns.jpg](./images/steps/05_changing_columns.jpg)
 
 <br/>
 
@@ -325,6 +325,5 @@ ADD COLUMN `guides_title` VARCHAR(150) NOT NULL AFTER `guides_users_id`;
 
 <br/><hr/>
 <hr/><br/>
-
 
 [<< BLOG FORM (React)](../module_08-react/09_blog/37_blog_form.md#blog-form) | [HOME](../../README.md#devcamp) | [DATA TYPES >>](./01_data_types.md#sql-data-types)
