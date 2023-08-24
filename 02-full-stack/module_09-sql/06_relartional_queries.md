@@ -8,6 +8,7 @@
 * [Inner vs Outer Joins](#inner-vs-outer-joins)
     * [RIGHT JOIN](#right-join)
     * [LEFT JOIN](#left-join)
+* [Realizar un resumen del contenido de varias tablas](#realizar-un-resumen-del-contenido-de-varias-tablas)
 
 
 
@@ -297,3 +298,72 @@ ON g.guides_users_id = u.users_id;
 <br/>
 
 Obtenemos lo mismo que un `INNER JOIN`, porque en nuestro ejemplo todos los registros de la tabla izquierda (`guides`) tienen un usuario asignado.
+
+<br/>
+
+<hr/><hr/><br/>
+
+## Realizar un resumen del contenido de varias tablas
+
+Si ejecutamos el siguiente código:
+
+```sql
+SELECT *
+FROM users u
+JOIN addresses a
+	ON a.addresses_users_id = u.users_id
+JOIN guides g
+	ON g.guides_users_id = u.users_id;
+```
+
+<br/>
+
+Veremos que en el resultado obtenido se muestran únicamente dos usuarios con varias entradas (*puesto que tienen varias guías cada uno*), y se repiten las direcciones de la tabla `addresses`. Esto se debe a que el resto de usuarios no tiene ningún dato asociado a ambas tablas (*`addresses` o `guides`*), puede que tengan registros en una u otra, pero no en ambas.
+
+> Los únicos usuarios que se van a mostrar aquí (*puesto que se trata de un `INNER JOIN`, son aquellos que tengan datos asociados en todas las tablas que se vayan a unir*).
+
+<br/>
+
+Vamos a tratar de resolver eso con el siguiente objetivo:
+
+* Mostrar cada usuario.
+* Mostrar cuántas guías ha escrito cada uno.
+* Mostrar cuántas direcciones hay registradas para cada usuario.
+
+<br/>
+
+Este es el código que vamos a utilizar:
+
+```sql
+SELECT 						# (1) -- Qué queremos seleccionar
+	u.users_email AS 'Email',
+    COALESCE(g.guide_count, 0) AS guide_count,
+	COALESCE(a.address_count, 0) AS address_count
+FROM users u				# (2) -- Cuál es la tabla principal
+LEFT JOIN (					# (3) -- Unión de tablas
+	SELECT COUNT(*) AS guide_count, guides_users_id
+    FROM guides
+    GROUP BY guides_users_id
+) AS g
+	ON g.guides_users_id = u.users_id
+LEFT JOIN (					# (4) -- Unión de tablas
+	SELECT COUNT(*) AS address_count, addresses_users_id
+    FROM addresses
+    GROUP BY addresses_users_id
+) AS a
+	ON a.addresses_users_id = u.users_id
+ORDER BY u.users_email;		# (5) -- Ordenamos el resultado
+```
+
+<br/>
+
+Lo que se hace es lo siguiente:
+
+1. Seleccionamos el email de los usuarios y le ponemos el alias `'Email'`. Utilizamos `COALESCE()` para contar la cantidad de guías y direcciones sin tener en cuenta valores de tipo `NULL`, a los cuales se les dará un valor de `0`.
+
+    > La función `COALESCE()` se utiliza para manejar valores nulos, donde dichos valores se reemplazan por el valor definido en el segundo parámetro de la función.
+
+2. Indicamos que la tabla *principal* va a ser la tabla `users`, a la cual le damos el alias `u`.
+3. Realizamos una *Outer Join* del resultado de la subconsulta, donde contamos la cantidad de guías que tiene cada usuario. Como en `(1)` hemos usado la función `COALESCE()`, aquellos valores nulos se mostrarán con un valor de `0`.
+4. Realizamos una *Outer Join* del resultado de la subconsulta, donde contamos la cantidad de direcciones que tiene cada usuario. Como en `(1)` hemos usado la función `COALESCE()`, aquellos valores nulos se mostrarán con un valor de `0`.
+5. Indicamos que queremos que se ordene todo en función del email del usuario.
