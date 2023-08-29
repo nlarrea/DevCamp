@@ -10,8 +10,6 @@
     * [LEFT JOIN](#left-join)
 * [Realizar un resumen del contenido de varias tablas](#realizar-un-resumen-del-contenido-de-varias-tablas)
 
-
-
 <br/>
 
 [<< CONTROL FLOW](./05_control_flow.md#control-flow) | [HOME](../../README.md#devcamp) | [CONCEPTOS AVANZADOS >>](./07_advanced_topics.md#conceptos-avanzados)
@@ -262,7 +260,7 @@ ON g.guides_users_id = u.users_id;
 
 Haciendo esto, se obtiene **el mismo resultado que realizando un `INNER JOIN`**.
 
-*** - ¿Y si cambiamos el orden de las tablas?***
+***- ¿Y si cambiamos el orden de las tablas?***
 
 ```sql
 SELECT *
@@ -275,7 +273,7 @@ ON g.guides_users_id = u.users_id;
 
 Ahora se obtiene el **mismo resultado que con `RIGHT JOIN`, pero cambiando el orden de las columnas**, mostrando primero las columnas pertenecientes a la tabla `users`, seguidas de aquellas pertenecientes a la tabla `guides`.
 
-*** - ¿Por qué?***
+***- ¿Por qué?***
 
 * En los ***Outer Joins*** importa el orden de las tablas. Tenemos dos opciones:
     * Mantener siempre el mismo orden de las tablas y simplemente cambiar un `RIGHT JOIN` por un `LEFT JOIN`.
@@ -341,24 +339,24 @@ Vamos a tratar de resolver eso con el siguiente objetivo:
 Este es el código que vamos a utilizar:
 
 ```sql
-SELECT 						# (1) -- Qué queremos seleccionar
+SELECT 							# (1) -- Qué queremos seleccionar
 	u.users_email AS 'Email',
-    COALESCE(g.guide_count, 0) AS guide_count,
+  	COALESCE(g.guide_count, 0) AS guide_count,
 	COALESCE(a.address_count, 0) AS address_count
-FROM users u				# (2) -- Cuál es la tabla principal
-LEFT JOIN (					# (3) -- Unión de tablas
-	SELECT COUNT(*) AS guide_count, guides_users_id
+FROM users u					# (2) -- Cuál es la tabla principal
+LEFT JOIN (						# (3) -- Unión de tablas
+    SELECT COUNT(*) AS guide_count, guides_users_id
     FROM guides
     GROUP BY guides_users_id
 ) AS g
 	ON g.guides_users_id = u.users_id
-LEFT JOIN (					# (4) -- Unión de tablas
-	SELECT COUNT(*) AS address_count, addresses_users_id
+LEFT JOIN (						# (4) -- Unión de tablas
+    SELECT COUNT(*) AS address_count, addresses_users_id
     FROM addresses
     GROUP BY addresses_users_id
 ) AS a
 	ON a.addresses_users_id = u.users_id
-ORDER BY u.users_email;		# (5) -- Ordenamos el resultado
+ORDER BY u.users_email;			# (5) -- Ordenamos el resultado
 ```
 
 <br/>

@@ -14,7 +14,7 @@
 
 <br/>
 
-[<< CONSULTAS RELACIONALES](./06_relational_queries.md#consultas-relacionales) | [HOME](../../README.md#devcamp)
+[<< CONSULTAS RELACIONALES](./06_relational_queries.md#consultas-relacionales) | [HOME](../../README.md#devcamp) | [PROYECTO >>](./08_project#proyecto)
 
 <hr/><hr/><br/>
 
@@ -80,6 +80,8 @@ He aquí una pequeña lista de buenas prácticas a seguir a la hora de crear una
 <br/>
 
 <hr/><hr/><br/>
+
+<div align='right'><a href='#index'>Volver arriba</a></div>
 
 ## Modelizado de diagramas
 
@@ -158,3 +160,9 @@ Ahora tenemos una visualización de nuestras tablas de la base de datos. Podemos
 ![diagrams_10](./images/diagrams/diagrams_10.jpg)
 
 * Podemos gestionar y manejar todos los aspectos de la base de datos desde aquí. Sin embargo, en este curso se opta por hacerlo mediante comandos, por lo que no se verá cómo hacerlo, simplemente, comentar que existe la opción.
+
+<br/>
+
+<hr/><hr/><br/>
+
+[<< CONSULTAS RELACIONALES](./06_relational_queries.md#consultas-relacionales) | [HOME](../../README.md#devcamp) | [PROYECTO >>](./08_project#proyecto)
