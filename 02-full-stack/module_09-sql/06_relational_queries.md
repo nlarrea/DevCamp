@@ -14,7 +14,7 @@
 
 <br/>
 
-[<< CONTROL FLOW](./05_control_flow.md#control-flow) | [HOME](../../README.md#devcamp) | 
+[<< CONTROL FLOW](./05_control_flow.md#control-flow) | [HOME](../../README.md#devcamp) | [CONCEPTOS AVANZADOS >>](./07_advanced_topics.md#conceptos-avanzados)
 
 <br/>
 
@@ -29,6 +29,8 @@ Como su nombre indica, una consulta relacional es aquella consulta que obtiene i
 <br/>
 
 <hr/><hr/><br/>
+
+<div align='right'><a href="#index">Volver arriba</a></div>
 
 ## Inner Joins
 
@@ -156,7 +158,7 @@ OR u.users_name = 'Kristine';
 
 <br/>
 
-<hr/><hr/><br/>
+<hr/><br/>
 
 ### Unir varias tablas a la vez
 
@@ -185,6 +187,8 @@ Además, algunos usuarios tienen insertadas dos direcciones, por lo que sus dato
 <br/>
 
 <hr/><hr/><br/>
+
+<div align='right'><a href='#index'>Volver arriba</a></div>
 
 ## Inner vs Outer Joins
 
@@ -303,6 +307,8 @@ Obtenemos lo mismo que un `INNER JOIN`, porque en nuestro ejemplo todos los regi
 
 <hr/><hr/><br/>
 
+<div align='right'><a href='#index'>Volver arriba</a></div>
+
 ## Realizar un resumen del contenido de varias tablas
 
 Si ejecutamos el siguiente código:
@@ -367,3 +373,9 @@ Lo que se hace es lo siguiente:
 3. Realizamos una *Outer Join* del resultado de la subconsulta, donde contamos la cantidad de guías que tiene cada usuario. Como en `(1)` hemos usado la función `COALESCE()`, aquellos valores nulos se mostrarán con un valor de `0`.
 4. Realizamos una *Outer Join* del resultado de la subconsulta, donde contamos la cantidad de direcciones que tiene cada usuario. Como en `(1)` hemos usado la función `COALESCE()`, aquellos valores nulos se mostrarán con un valor de `0`.
 5. Indicamos que queremos que se ordene todo en función del email del usuario.
+
+<br/>
+
+<hr/><hr/><br/>
+
+[<< CONTROL FLOW](./05_control_flow.md#control-flow) | [HOME](../../README.md#devcamp) | [CONCEPTOS AVANZADOS >>](./07_advanced_topics.md#conceptos-avanzados)
