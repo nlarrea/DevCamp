@@ -7,6 +7,7 @@
 * [SET y GET](#set-y-get)
 * [Estructurar las claves](#estructurar-las-claves)
 * [Eliminar ítems](#eliminar-ítems)
+* [Comprobar si una clave existe](#comprobar-si-una-clave-existe)
 
 <br/>
 
@@ -218,3 +219,29 @@ OK
 127.0.0.6379> 
 ```
 
+<br/>
+
+<hr/><hr/><br/>
+
+## Comprobar si una clave existe
+
+Técnicamente, se puede usar el comando `GET` para saber si una clave existe o no, sin embargo, ésta se considera una práctica pobre.
+
+La mejor forma de comprobar si existe o no una clave, es hacer uso de `EXISTS`. Veámoslo con un ejemplo:
+
+```bash
+127.0.0.1:6379> SET title "My post"
+OK
+127.0.0.1:6379> EXISTS title
+(integer) 1
+127.0.0.1:6379> EXISTS a_key_that_has_not_been_created
+(integer) 0
+127.0.0.1:6379> GET a_key_that_has_not_been_created
+(nil)
+```
+
+<br/>
+
+Puede que estés pensando: ***¿por qué usar `EXISTS` y no un simple `GET`?***
+
+La respuesta es más sencilla de lo que parece. Si se usa `EXISTS` y el ítem existe, se recibe un `1`, sin embargo, cuando éste no existe, se obtiene un `0`. Estos valores pueden ser muy útiles para usarlos en condicionales. Sin embargo, usando `GET`, no se obtiene un valor que pueda usarse para comparar o para decidir si una condición se cumple o no.
