@@ -5,6 +5,7 @@
 * [Instalar Redis en Mac](#instalar-redis-en-mac)
 * [Primeros pasos](#primeros-pasos)
 * [SET y GET](#set-y-get)
+* [Estructurar las claves](#estructurar-las-claves)
 
 <br/>
 
@@ -118,3 +119,76 @@ Lo que significa que todo está funcionando y que podemos proseguir utilizando e
     > En el primer ejemplo se intenta obtener el valor de una clave que no existe. Sin embargo, esto no es problema, puesto que cuando esto sucede, Redis simplemente devuelve un `(nil)`.
     >
     > Finalmente, intentamos acceder a la clave correcta, lo que da como resultado el valor esperado.
+
+<br/>
+
+<hr/><hr/><br/>
+
+## Estructurar las claves
+
+En SQL se suele disponer (*o por lo menos es buena práctica hacerlo*) de una variable de tipo **ID**, con un valor único para saber a qué elemento se está haciendo referencia.
+
+En Redis, esto no ocurre. No existe un **ID** para los registros, sino que los datos se almacenan en pares clave-valor. Entonces, ***¿cómo se puede saber a qué registro está haciendo referencia una clave?***
+
+Un ***truco*** muy habitual para solucionar esto suele ser escribir una especie de **ID**, seguido de un `:` y finalmente el nombre de la clave que se quiere usar. Por ejemplo:
+
+```bash
+127.0.0.1:6379> SET 105:guide_like_count 0
+OK
+127.0.0.1:6379> GET 105:guide_like_count
+"0"
+```
+
+<br/>
+
+De esta forma se podría conseguir saber a qué elemento se está haciendo referencia.
+
+<br/>
+
+<hr/><hr/><br/>
+
+## Incrementar y decrementar valores
+
+Vamos a comenzar creando un *post*:
+
+```bash
+127.0.0.6379> SET post_like_count:42 0
+OK
+```
+
+
+
+
+* **Incrementar valores:**
+
+```bash
+# Incrementar de 1 en 1
+127.0.0.6379> INCR post_like_count:42
+(integer) 1
+127.0.0.6379> INCR post_like_count:42
+(integer) 2
+127.0.0.6379> GET post_like_count:42
+"2"
+
+# Incrementar en cantidades concretas
+127.0.0.6379> INCRBY post_like_count:42 100
+(integer) 102
+127.0.0.6379> GET post_like_count:42
+"102"
+```
+
+
+* **Decrementar valores:** funciona de la misma manera que las funciones `INCR` e `INCRBY`.
+
+```bash
+# Decrementar de 1 en 1
+127.0.0.6379> DECR post_like_count:42
+(integer) 101
+127.0.0.6379> GET post_like_count:42
+"101"
+
+# Decrementar en cantidades concretas
+127.0.0.6379> DECRBY post_like_count:42 21
+(integer) 80
+```
+
