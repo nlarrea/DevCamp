@@ -6,6 +6,7 @@
 * [Primeros pasos](#primeros-pasos)
 * [SET y GET](#set-y-get)
 * [Estructurar las claves](#estructurar-las-claves)
+* [Eliminar ítems](#eliminar-ítems)
 
 <br/>
 
@@ -190,5 +191,30 @@ OK
 # Decrementar en cantidades concretas
 127.0.0.6379> DECRBY post_like_count:42 21
 (integer) 80
+```
+
+<br/>
+
+<hr/><hr/><br/>
+
+## Eliminar ítems
+
+Para eliminar ítems, se hace uso de la función `DEL`:
+
+```bash
+# Creamos varios ítems
+127.0.0.6379> SET first_name "Jordan"
+OK
+127.0.0.6379> SET last_name "Hudgens"
+OK
+127.0.0.6379> SET middle_name "David"
+OK
+
+# Se pueden eliminar varios a la vez
+127.0.0.6379> DEL first_name last_name
+(integer) 2		# cuántos ítems se han eliminado
+127.0.0.6379> GET first_name
+(nil)			# si no encuentra algo, no da error, devuelve (nil)
+127.0.0.6379> 
 ```
 
