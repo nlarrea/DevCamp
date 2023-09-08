@@ -8,6 +8,7 @@
 * [Estructurar las claves](#estructurar-las-claves)
 * [Eliminar ítems](#eliminar-ítems)
 * [Comprobar si una clave existe](#comprobar-si-una-clave-existe)
+* [Expirar una clave](#expirar-una-clase)
 
 <br/>
 
@@ -141,6 +142,8 @@ OK
 "0"
 ```
 
+> A lo largo del curso, solo usaremos esta práctica en casos necesarios por cuestiones de *comodidad* a la hora de escribir las claves.
+
 <br/>
 
 De esta forma se podría conseguir saber a qué elemento se está haciendo referencia.
@@ -245,3 +248,39 @@ OK
 Puede que estés pensando: ***¿por qué usar `EXISTS` y no un simple `GET`?***
 
 La respuesta es más sencilla de lo que parece. Si se usa `EXISTS` y el ítem existe, se recibe un `1`, sin embargo, cuando éste no existe, se obtiene un `0`. Estos valores pueden ser muy útiles para usarlos en condicionales. Sin embargo, usando `GET`, no se obtiene un valor que pueda usarse para comparar o para decidir si una condición se cumple o no.
+
+<br/>
+
+<hr/><hr/><br/>
+
+## Expirar una clave
+
+En ocasiones, no se suele desear que una clave permanezca *de por vida*, por lo que se suele **expirar**.
+
+Para poder expirar un ítem, se hace uso del comando `EXPIRE`, seguido del nombre de la clave y de la cantidad de segundos a esperar para que el ítem se expire. Vamos con un ejemplo:
+
+```bash
+# Inicializar una clave
+127.0.0.1:6379> SET featured_image "somepicture.png"
+
+# Indicar 21 segundos para que expire
+127.0.0.1:6379> EXPIRE featured_image 21
+(integer) 1
+
+# Comprobar el tiempo restante para que expire
+127.0.0.1:6379> TTL featured_image
+(integer) 11	# quedan 11 segundos para que expire
+
+# Comprobar si se puede acceder a su valor
+127.0.0.1:6379> GET featured_image
+"somepicture.png"
+127.0.0.1:6379> TTL featured_image
+(integer) 3
+
+# Tras unos segundos:
+127.0.0.1:6379> TTL featured_image
+(integer) -2	# se mantendrá así siempre
+127.0.0.1:6379> GET featured_image
+(nil)			# ya se ha expirado
+```
+
