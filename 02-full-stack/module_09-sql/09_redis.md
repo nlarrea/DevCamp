@@ -9,6 +9,7 @@
 * [Eliminar ítems](#eliminar-ítems)
 * [Comprobar si una clave existe](#comprobar-si-una-clave-existe)
 * [Expirar una clave](#expirar-una-clase)
+* [Sobrescribir el valor de una clave](#sobrescribir-el-valor-de-una-clave)
 
 <br/>
 
@@ -284,3 +285,39 @@ Para poder expirar un ítem, se hace uso del comando `EXPIRE`, seguido del nombr
 (nil)			# ya se ha expirado
 ```
 
+<br/>
+
+<hr/><hr/><br/>
+
+## Sobrescribir el valor de una clave
+
+Se pueden sobrescribir los valores de una clave simplemente usando `SET` de nuevo:
+
+```bash
+127.0.0.1:6379> SET current_batter "Altuve"
+OK
+127.0.0.1:6379> GET current_batter
+"Altuve"
+127.0.0.1:6379> SET current_batter "Correa"
+OK
+127.0.0.1:6379> GET current_batter
+"Correa"
+```
+
+<br/>
+
+Sin embargo, se puede hacer lo siguiente:
+
+```bash
+# Siguiendo desde donde estábamos
+127.0.0.1:6379> GETSET current_batter "Bregman"
+"Correa"
+127.0.0.1:6379> GET current_batter
+"Bregman"
+```
+
+> `GETSET`: Se obtiene el valor anterior y se inserta el nuevo.
+
+<br/>
+
+Si se usa `GETSET` sobre un valor que no existía previamente, se obtiene el valor `(nil)`, lo cual tiene sentido porque era una clave que no existía, por lo que el valor anterior al insertado era `(nil)`.
