@@ -10,6 +10,7 @@
 * [Comprobar si una clave existe](#comprobar-si-una-clave-existe)
 * [Expirar una clave](#expirar-una-clase)
 * [Sobrescribir el valor de una clave](#sobrescribir-el-valor-de-una-clave)
+* [Usar Redis con HASHes](#usar-redis-con-hashes)
 
 <br/>
 
@@ -387,3 +388,52 @@ OK
 1) "user:123"
 ```
 
+<br/>
+
+<hr/><hr/><br/>
+
+## Usar Redis con HASHes
+
+> **HASH:** un tipo de dato con la estructura clave-valor que permite además almacenar colecciones de ítems.
+
+<br/>
+
+Vamos a ver cómo usar HASHes para almacenar datos de una forma un poco diferente a la vista hasta ahora. Para poder crear nuevos ítems, usaremos el comando `HSET`, con la siguiente sintaxis:
+
+```bash
+HSET key field value
+```
+
+<br/>
+
+Y para obtener los valores, usaremos `HGET` siguiendo la siguiente sintaxis:
+
+```bash
+HGET key field
+```
+
+<br/>
+
+Vamos con un ejemplo:
+
+```bash
+# Creación de un HASH con los campos 'name' y 'email'
+127.0.0.1:6379> HSET user:123 name "Kristine"
+(integer) 1
+127.0.0.1:6379> HSET user:123 email "kristine@devcamp.com"
+(integer) 1
+
+# Si se intenta obtener datos sin usar el campo, da error
+127.0.0.1:6379> HGET user:123
+(error) ERR wrong number of arguments for 'hget' command
+
+# Ahora obtenemos datos introduciendo los campos
+127.0.0.1:6379> HGET user:123 name
+"Kristine"
+127.0.0.1:6379> HGET user:123 email
+"kristine@devcamp.com"
+```
+
+<br/>
+
+Como se puede observar, los HASH pueden resultar muy útiles porque permiten almacenar mucha información sobre algo concreto en una sola clave, generando varios campos para los atributos de la misma.
