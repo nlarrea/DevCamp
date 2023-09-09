@@ -11,6 +11,8 @@
 * [Expirar una clave](#expirar-una-clase)
 * [Sobrescribir el valor de una clave](#sobrescribir-el-valor-de-una-clave)
 * [Usar Redis con HASHes](#usar-redis-con-hashes)
+    * [Comandos HASH](#comandos-hash)
+
 
 <br/>
 
@@ -437,3 +439,124 @@ Vamos con un ejemplo:
 <br/>
 
 Como se puede observar, los HASH pueden resultar muy útiles porque permiten almacenar mucha información sobre algo concreto en una sola clave, generando varios campos para los atributos de la misma.
+
+<br/>
+
+<hr/><br/>
+
+### Comandos HASH
+
+Vamos a ver unos pocos ejemplos de los comandos más comunes usados con HASH en Redis:
+
+* **Crear múltiples campos en una sola línea:**
+
+```bash
+127.0.0.1:6379> HMSET user:42 name "Darth" email "darth@vader.com"
+OK
+127.0.0.1:6379> HGET user:42 name
+"Darth"
+```
+<br/>
+
+* **Obtener múltiples valores:**
+
+```bash
+127.0.0.1:6379> HMGET user:42 name email
+1) "Darth"
+2) "darth@vader.com"
+```
+> Se devuelve un array con los valores de los campos que se quieren obtener.
+
+<br/>
+
+* **Obtener todo lo que esté dentro de una clave:**
+
+```bash
+127.0.0.1:6379> HGETALL user:42
+1) "name"
+2) "Darth"
+3) "email"
+4) "darth@vader.com"
+```
+> Devuelve una lista donde los números (índices) impares representan el nombre del campo y los pares son el valor correspondiente al campo.
+
+<br/>
+
+* **Obtener los campos de una clave:**
+
+```bash
+127.0.0.1:6379> HKEYS user:42
+1) "name"
+2) "email"
+```
+<br/>
+
+* **Comprobar si un campo existe dentro de una clave:**
+
+```bash
+127.0.0.1:6379> HEXISTS user:42 email
+(integer) 1
+127.0.0.1:6379> HEXISTS user:42 altemail
+(integer) 0
+```
+<br/>
+
+* **Crear / Añadir un nuevo campo para una clave:**
+
+```bash
+127.0.0.1:6379> HSET user:42 id 1
+(integer) 1
+127.0.0.1:6379> HGETALL user:42
+1) "name"
+2) "Darth"
+3) "email"
+4) "darth@vader.com"
+5) "id"
+6) "1"
+```
+<br/>
+
+* **Incrementar / Decrementar un valor:**
+
+```bash
+127.0.0.1:6379> HINCRBY user:42 id 123
+(integer) 124
+127.0.0.1:6379> HGETALL user:42
+1) "name"
+2) "Darth"
+3) "email"
+4) "darth@vader.com"
+5) "id"
+6) "124"
+```
+> Existen los equivalentes de:
+>
+> * `INCR`
+> * `INCRBY`
+> * `DECR`
+> * `DECRBY`
+>
+> Para los HASH, solo se debe añadir una `H` delante de los comandos.
+
+<br/>
+
+* **Eliminar un campo de una clave:**
+
+```bash
+127.0.0.1:6379> HDEL user:42 id
+(integer) 1
+127.0.0.1:6379> HGETALL user:42
+1) "name"
+2) "Darth"
+3) "email"
+4) "darth@vader.com"
+```
+<br/>
+
+* **Obtener la cantidad de campos que tiene una clave:**
+
+```bash
+127.0.0.1:6379> HLEN user:42
+(integer) 2
+```
+
