@@ -321,3 +321,69 @@ Sin embargo, se puede hacer lo siguiente:
 <br/>
 
 Si se usa `GETSET` sobre un valor que no existía previamente, se obtiene el valor `(nil)`, lo cual tiene sentido porque era una clave que no existía, por lo que el valor anterior al insertado era `(nil)`.
+
+<br/>
+
+<hr/><hr/><br/>
+
+## Saber qué claves existen
+
+En ocasiones, creemos que una clave existe y sin embargo, esto no es así. En esos casos, debemos comprobar la lista de claves que tenemos para saber si efectivamente esa clave existe o no.
+
+Existen diferentes formas de saber qué claves tenemos disponibles en Redis, he aquí algunos ejemplos:
+
+* **Obtener todas las claves:**
+
+```bash
+127.0.0.1:6379> KEYS *
+ 1) "users:123"
+ 2) "post_like_count:42"
+ 3) "105:guide_like_count"
+ 4) "post_id"
+ 5) "105:post_like_count"
+ 6) "title"
+ 7) "asdfasadfasdf"
+ 8) "page_name"
+ 9) "current_batter"
+10) "user:42"
+11) "middle_name"
+```
+
+<br/>
+
+* **Obtener las claves que contengan una palabra concreta en ellas:**
+
+```bash
+127.0.0.1:6379> KEYS *post*
+1) "post_like_count:42"
+2) "post_id"
+3) "105:post_like_count"
+127.0.0.1:6379> KEYS *user*
+1) "user:123"
+2) "user:42"
+```
+
+<br/>
+
+* **Más ejemplos de *plantillas*:**
+
+```bash
+127.0.0.1:6379> SET myusername "jordan"
+OK
+
+# Que contenga la palabra 'user'
+127.0.0.1:6379> KEYS *user*
+1) "user:123"
+2) "myusername"
+3) "user:42"
+
+# Que empiece por la palabra 'user'
+127.0.0.1:6379> KEYS user*
+1) "user:123"
+2) "user:42"
+
+# Que empiece por 'user' y tenga 4 chars más detrás
+127.0.0.1:6379> KEYS user????
+1) "user:123"
+```
+
