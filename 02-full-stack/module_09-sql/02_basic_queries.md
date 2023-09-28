@@ -25,6 +25,7 @@
 <div align='right'>
     <a href='#index'>Volver arriba</a>
 </div>
+
 ## Añadir registros a una base de datos
 
 Para añadir registros a las tablas que ya hemos creado, debemos escribir una serie de líneas de código SQL:
@@ -85,6 +86,7 @@ Si miramos las tablas, veremos que se han añadido los datos indicados.
 <div align='right'>
     <a href='#index'>Volver arriba</a>
 </div>
+
 ## Consultar todos los registros de una tabla
 
 Para consultar todos los registros de una tabla, usaremos la siguiente sintaxis:
@@ -126,6 +128,7 @@ SELECT column1, column2, column3 FROM table_name;
 <div align='right'>
     <a href='#index'>Volver arriba</a>
 </div>
+
 ## Filtrar con WHERE
 
 Para filtrar los resultados de una consulta, usaremos la sentencia `WHERE`:
@@ -166,6 +169,7 @@ AND addresses_city = 'Manhattan';
 <div align='right'>
     <a href='#index'>Volver arriba</a>
 </div>
+
 ## Limitar la cantidad de resultados
 
 Para limitar el número de resultados, usaremos la sentencia `LIMIT`:
@@ -199,6 +203,7 @@ LIMIT 5, 10;
 <div align='right'>
     <a href='#index'>Volver arriba</a>
 </div>
+
 ## Actualizar registros
 
 Para actualizar registros, usaremos la sentencia `UPDATE`:
@@ -248,6 +253,7 @@ AND guides_users_id = 3;
 <div align='right'>
     <a href='#index'>Volver arriba</a>
 </div>
+
 ## Usar BEGIN y ROLLBACK para revertir cambios
 
 En los ejemplos de `UPDATE` anteriores, no podríamos devolver la base de datos a los valores previos a los cambios. Para poder hacerlo, se debe usar la sentencia `BEGIN`:
@@ -276,6 +282,7 @@ SELECT * FROM guides;
 <div align='right'>
     <a href='#index'>Volver arriba</a>
 </div>
+
 ## Obtener los valores únicos de una columna
 
 Se llaman *valores únicos* a los valores de una columna pero sin repetirla, es decir, si tuviéramos una columna con los valores `1, 1, 2, 3, 3, 3, 4, 5, 5`, los valores únicos serían `1, 2, 3, 4, 5`.
@@ -311,6 +318,7 @@ FROM addresses;
 <div align='right'>
     <a href='#index'>Volver arriba</a>
 </div>
+
 ## Usar ORDER BY y CAST para ordenar los resultados
 
 Para ordenar los resultados de una consulta, usaremos la sentencia `ORDER BY`:

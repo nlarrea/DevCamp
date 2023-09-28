@@ -40,6 +40,7 @@ Las aplicaciones modernas, en su inmensa mayoría, utilizan bases de datos para 
 <div align='right'>
     <a href='#index'>Volver arriba</a>
 </div>
+
 ## Implementaciones
 
 Existen muchas implementaciones de SQL, pero las más utilizadas son:
@@ -62,6 +63,7 @@ A pesar de existir diferentes implementaciones, el lenguaje SQL es el mismo para
 <div align='right'>
     <a href='#index'>Volver arriba</a>
 </div>
+
 ## CRUD
 
 El acrónimo **CRUD** es muy utilizado en el mundo de la programación a la hora de trabajar con bases de datos. Este acrónimo significa:
@@ -83,6 +85,7 @@ Estas son las operaciones básicas que se pueden realizar sobre una base de dato
 <div align='right'>
     <a href='#index'>Volver arriba</a>
 </div>
+
 ## Descargar e instalar MySQL
 
 Para poder trabajar con MySQL, lo primero que tenemos que hacer es descargarlo e instalarlo en nuestro ordenador.
@@ -99,6 +102,7 @@ Una vez descargado, clicaremos en él y seguiremos los pasos mostrados [en este 
 <div align='right'>
     <a href='#index'>Volver arriba</a>
 </div>
+
 ## Crear un esquema de base de datos
 
 Ahora que hemos instalado y configurado el *Workbench* de MySQL, vamos a crear un esquema de base de datos.
@@ -139,6 +143,7 @@ Hemos realizado esta operación utilizando el *Workbench* de MySQL, pero podría
 <div align='right'>
     <a href='#index'>Volver arriba</a>
 </div>
+
 ## Crear una tabla
 
 Estos son los pasos a seguir para crear una nueva tabla desde el *Workbench* de MySQL:
@@ -174,6 +179,7 @@ CREATE TABLE `devcamp_sql_course_schema`.`users` (
 <div align='right'>
     <a href='#index'>Volver arriba</a>
 </div>
+
 ## Crear una tabla con Foreign Key'
 
 Para crear una tabla con una clave foránea, en primer lugar, necesitaremos tener **al menos 2 tablas**.
@@ -232,6 +238,7 @@ CREATE TABLE `devcamp_sql_course_schema`.`addresses` (
 <div align='right'>
     <a href='#index'>Volver arriba</a>
 </div>
+
 ## Modificar columnas
 
 Realizar modificaciones en las columnas de una tabla en MySQL es muy sencillo. Para ello, posicionaremos el ratón encima de la tabla que queremos modificar y veremos que se muestran unos iconos. Pulsaremos en el que tiene el símbolo de una llave inglesa para abrir la tabla en modo edición (***rojo***).
@@ -265,6 +272,7 @@ ADD CONSTRAINT `addresses_users_id`
 <div align='right'>
     <a href='#index'>Volver arriba</a>
 </div>
+
 ## Añadir columnas
 
 Para mostrar cómo añadir columnas, vamos a crear una nueva tabla llamada `guides` con los siguientes campos:

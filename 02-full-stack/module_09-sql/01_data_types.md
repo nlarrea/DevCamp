@@ -28,6 +28,7 @@ Estos son los datos más comunes:
 <div align='right'>
     <a href='#index'>Volver arriba</a>
 </div>
+
 ## CHARACTER
 
 * Fixed length string
@@ -72,6 +73,7 @@ CHAR(10)
 <div align='right'>
     <a href='#index'>Volver arriba</a>
 </div>
+
 ## VARCHAR
 
 * Variable length string
@@ -117,6 +119,7 @@ VARCHAR(150)
 <div align='right'>
     <a href='#index'>Volver arriba</a>
 </div>
+
 ## BOOLEAN
 
 * True or False values
@@ -159,6 +162,7 @@ Yes, No
 <div align='right'>
     <a href='#index'>Volver arriba</a>
 </div>
+
 ## SMALLINT
 
 * Integers ranging from -32768 to 32767
@@ -199,6 +203,7 @@ SMALLINT
 <div align='right'>
     <a href='#index'>Volver arriba</a>
 </div>
+
 ## INTEGER
 
 * Integers ranging from -2147483647 to 2147483647
@@ -279,6 +284,7 @@ DECIMAL(7, 2)   -- 7 dígitos (total), 2 decimales -> 12345.67
 <div align='right'>
     <a href='#index'>Volver arriba</a>
 </div>
+
 ## FLOAT
 
 * Large numeric values
@@ -320,6 +326,7 @@ FLOAT
 <div align='right'>
     <a href='#index'>Volver arriba</a>
 </div>
+
 ## DATETIME
 
 * Date/Time values
@@ -355,6 +362,7 @@ DATETIME
 <div align='right'>
     <a href='#index'>Volver arriba</a>
 </div>
+
 ## CLOB
 
 * Very large character based data
@@ -390,6 +398,7 @@ CLOB
 <div align='right'>
     <a href='#index'>Volver arriba</a>
 </div>
+
 ## BLOB
 
 * Very large binary based data
